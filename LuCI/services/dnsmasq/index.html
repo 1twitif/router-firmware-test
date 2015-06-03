@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/dnsmasq/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Dnsmasq - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.12 0.09 0.03
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="../index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init">
+				<a href="../init/index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="../dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq active">
+				<a href="index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="../crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn">
+				<a href="../openvpn/index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-dhcp">
+	<h2><a id="content" name="content">Dnsmasq</a></h2>
+	<div class="cbi-map-descr">Dnsmasq est un serveur DHCP combiné à un requêteur DNS pour les pare-feu NAT</div>
+<fieldset class="cbi-section" id="cbi-dhcp-dnsmasq">
+	<legend>Réglages</legend>
+	<div class="cbi-section-descr"></div>
+	
+
+
+		
+	<ul class="cbi-tabmenu">
+
+		<script type="text/javascript">cbi_c['container.dhcp.cfg024c78.general'] = 9;</script>
+		<li id="tab.dhcp.cfg024c78.general" class="cbi-tab">
+			<a onclick="this.blur(); return cbi_t_switch('dhcp.cfg024c78', 'general')" href="../dnsmasq61db.html?tab.dhcp.cfg024c78=general">General Settings</a>
+			<input type="hidden" id="tab.dhcp.cfg024c78" name="tab.dhcp.cfg024c78" value="general" />
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.dhcp.cfg024c78.files'] = 6;</script>
+		<li id="tab.dhcp.cfg024c78.files" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('dhcp.cfg024c78', 'files')" href="../dnsmasq1861.html?tab.dhcp.cfg024c78=files">Resolv and Hosts Files</a>
+			
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.dhcp.cfg024c78.tftp'] = 3;</script>
+		<li id="tab.dhcp.cfg024c78.tftp" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('dhcp.cfg024c78', 'tftp')" href="../dnsmasqb0c9.html?tab.dhcp.cfg024c78=tftp">TFTP Settings</a>
+			
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.dhcp.cfg024c78.advanced'] = 11;</script>
+		<li id="tab.dhcp.cfg024c78.advanced" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('dhcp.cfg024c78', 'advanced')" href="../dnsmasq65d9.html?tab.dhcp.cfg024c78=advanced">Paramètres de base</a>
+			
+		</li>
+	</ul>
+
+
+		<fieldset class="cbi-section-node" id="cbi-dhcp-cfg024c78">
+			
+
+
+	
+	<div class="cbi-tabcontainer" id="container.dhcp.cfg024c78.files" style="display:none">
+		
+		<div class="cbi-value" id="cbi-dhcp-cfg024c78-readethers"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.readethers">Utiliser /etc/ethers</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.readethers" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.readethers" name="cbid.dhcp.cfg024c78.readethers" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Lire /etc/ethers pour configurer le serveur DHCP
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-leasefile"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.leasefile">Fichier de baux</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.leasefile" id="cbid.dhcp.cfg024c78.leasefile" value="/tmp/dhcp.leases" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				fichier dans lequel les baux DHCP seront stockés
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-noresolv"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.noresolv">Ignorer le fichier de résolution</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.noresolv" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.noresolv" name="cbid.dhcp.cfg024c78.noresolv" value="1" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-resolvfile"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.resolvfile">Resolve file</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.resolvfile" id="cbid.dhcp.cfg024c78.resolvfile" value="/tmp/resolv.conf.auto" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				fichier de résolution local
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-resolvfile">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-resolvfile", {"cbid.dhcp.cfg024c78.noresolv":""}, "cbip-dhcp-cfg024c78-resolvfile");
+	</script>
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-nohosts"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.nohosts">Ignore Hosts files</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.nohosts" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.nohosts" name="cbid.dhcp.cfg024c78.nohosts" value="1" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-addnhosts"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.addnhosts">Additional Hosts files</label>
+		<div class="cbi-value-field">
+
+<div>
+
+	<input class="cbi-input-text" value="" onchange="cbi_d_update(this.id)" type="text" id="cbid.dhcp.cfg024c78.addnhosts.1" name="cbid.dhcp.cfg024c78.addnhosts" /><br />
+
+</div>
+<script type="text/javascript">
+cbi_dynlist_init('cbid.dhcp.cfg024c78.addnhosts', '/luci-static/resources');
+</script>
+
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-addnhosts">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-addnhosts", {"cbid.dhcp.cfg024c78.nohosts":""}, "cbip-dhcp-cfg024c78-addnhosts");
+	</script>
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('dhcp.cfg024c78', 'files')</script>
+
+	<div class="cbi-tabcontainer" id="container.dhcp.cfg024c78.tftp" style="display:none">
+		
+		<div class="cbi-value" id="cbi-dhcp-cfg024c78-enable_tftp"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.enable_tftp">Enable TFTP server</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.enable_tftp" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.enable_tftp" name="cbid.dhcp.cfg024c78.enable_tftp" value="1" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-tftp_root"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.tftp_root">TFTP server root</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.tftp_root" id="cbid.dhcp.cfg024c78.tftp_root" value="" placeholder="/" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Root directory for files served via TFTP
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-tftp_root">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-tftp_root", {"cbid.dhcp.cfg024c78.enable_tftp":"1"}, "cbip-dhcp-cfg024c78-tftp_root");
+	</script>
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-dhcp_boot"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.dhcp_boot">Network boot image</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.dhcp_boot" id="cbid.dhcp.cfg024c78.dhcp_boot" value="" placeholder="pxelinux.0" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Filename of the boot image advertised to clients
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-dhcp_boot">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-dhcp_boot", {"cbid.dhcp.cfg024c78.enable_tftp":"1"}, "cbip-dhcp-cfg024c78-dhcp_boot");
+	</script>
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('dhcp.cfg024c78', 'tftp')</script>
+
+	<div class="cbi-tabcontainer" id="container.dhcp.cfg024c78.general">
+		
+		<div class="cbi-value" id="cbi-dhcp-cfg024c78-domainneeded"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.domainneeded">Domain requis</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.domainneeded" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.domainneeded" name="cbid.dhcp.cfg024c78.domainneeded" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Ne pas transmettre de requêtes DNS sans nom DNS
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-authoritative"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.authoritative">Authoritaire</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.authoritative" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.authoritative" name="cbid.dhcp.cfg024c78.authoritative" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				C'est le seul serveur DHCP sur le réseau local
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-local"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.local">Local server</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.local" id="cbid.dhcp.cfg024c78.local" value="/lan/" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Local domain specification. Names matching this domain are never forwared and resolved from DHCP or hosts files only
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-domain"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.domain">Local domain</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.domain" id="cbid.dhcp.cfg024c78.domain" value="lan" />
+	
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Local domain suffix appended to DHCP names and hosts file entries
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-logqueries"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.logqueries">Journaliser les requêtes</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.logqueries" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.logqueries" name="cbid.dhcp.cfg024c78.logqueries" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Write received DNS requests to syslog
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-server"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.server">DNS forwardings</label>
+		<div class="cbi-value-field">
+
+<div>
+
+	<input class="cbi-input-text" value="" onchange="cbi_d_update(this.id)" type="text" id="cbid.dhcp.cfg024c78.server.1" name="cbid.dhcp.cfg024c78.server" placeholder="/example.org/10.1.2.3" /><br />
+
+</div>
+<script type="text/javascript">
+cbi_dynlist_init('cbid.dhcp.cfg024c78.server', '/luci-static/resources');
+</script>
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				List of <abbr title="Domain Name System">DNS</abbr> servers to forward requests to
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-rebind_protection"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.rebind_protection">Rebind protection</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.rebind_protection" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.rebind_protection" name="cbid.dhcp.cfg024c78.rebind_protection" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Discard upstream RFC1918 responses
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-rebind_localhost"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.rebind_localhost">Allow localhost</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.rebind_localhost" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.rebind_localhost" name="cbid.dhcp.cfg024c78.rebind_localhost" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-rebind_localhost">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-rebind_localhost", {"cbid.dhcp.cfg024c78.rebind_protection":"1"}, "cbip-dhcp-cfg024c78-rebind_localhost");
+	</script>
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-rebind_domain"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.rebind_domain">Domain whitelist</label>
+		<div class="cbi-value-field">
+
+<div>
+
+	<input class="cbi-input-text" value="" onchange="cbi_d_update(this.id)" type="text" id="cbid.dhcp.cfg024c78.rebind_domain.1" name="cbid.dhcp.cfg024c78.rebind_domain" placeholder="ihost.netflix.com" /><br />
+
+</div>
+<script type="text/javascript">
+cbi_dynlist_init('cbid.dhcp.cfg024c78.rebind_domain', '/luci-static/resources');
+cbi_validate_field('cbid.dhcp.cfg024c78.rebind_domain.1', true, 'host');
+</script>
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				List of domains to allow RFC1918 responses for
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-dhcp-cfg024c78-rebind_domain">
+		
+		cbi_d_add("cbi-dhcp-cfg024c78-rebind_domain", {"cbid.dhcp.cfg024c78.rebind_protection":"1"}, "cbip-dhcp-cfg024c78-rebind_domain");
+	</script>
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('dhcp.cfg024c78', 'general')</script>
+
+	<div class="cbi-tabcontainer" id="container.dhcp.cfg024c78.advanced" style="display:none">
+		
+		<div class="cbi-value" id="cbi-dhcp-cfg024c78-boguspriv"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.boguspriv">Filtrer les requêtes privées</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.boguspriv" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.boguspriv" name="cbid.dhcp.cfg024c78.boguspriv" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Do not forward reverse lookups for local networks
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-filterwin2k"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.filterwin2k">Filtrer les requêtes inutiles</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.filterwin2k" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.filterwin2k" name="cbid.dhcp.cfg024c78.filterwin2k" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Do not forward requests that cannot be answered by public name servers
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-localise_queries"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.localise_queries">Localiser les requêtes</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.localise_queries" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.localise_queries" name="cbid.dhcp.cfg024c78.localise_queries" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Localise hostname depending on the requesting subnet if multiple IPs are available
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-expandhosts"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.expandhosts">Expand hosts</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.expandhosts" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.expandhosts" name="cbid.dhcp.cfg024c78.expandhosts" value="1" checked="checked" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Add local domain suffix to names served from hosts files
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-nonegcache"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.nonegcache">No negative cache</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.nonegcache" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.nonegcache" name="cbid.dhcp.cfg024c78.nonegcache" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Do not cache negative replies, e.g. for not existing domains
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-strictorder"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.strictorder">Ordre stricte</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.dhcp.cfg024c78.strictorder" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.dhcp.cfg024c78.strictorder" name="cbid.dhcp.cfg024c78.strictorder" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				<abbr title="Domain Name System">DNS</abbr> servers will be queried in the order of the resolvfile
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-port"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.port"><abbr title="Domain Name System">DNS</abbr> server port</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.port" id="cbid.dhcp.cfg024c78.port" value="" placeholder="53" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.dhcp.cfg024c78.port', true, 'port');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Listening port for inbound DNS queries
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-queryport"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.queryport"><abbr title="Domain Name System">DNS</abbr> query port</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.queryport" id="cbid.dhcp.cfg024c78.queryport" value="" placeholder="any" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.dhcp.cfg024c78.queryport', true, 'port');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Fixed source port for outbound DNS queries
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-dhcpleasemax"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.dhcpleasemax"><abbr title="maximal">Max.</abbr> <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> leases</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.dhcpleasemax" id="cbid.dhcp.cfg024c78.dhcpleasemax" value="" placeholder="unlimited" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.dhcp.cfg024c78.dhcpleasemax', true, 'uinteger');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Maximum allowed number of active DHCP leases
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-ednspacket_max"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.ednspacket_max"><abbr title="maximal">Max.</abbr> <abbr title="Extension Mechanisms for Domain Name System">EDNS0</abbr> paket size</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.ednspacket_max" id="cbid.dhcp.cfg024c78.ednspacket_max" value="" placeholder="1280" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.dhcp.cfg024c78.ednspacket_max', true, 'uinteger');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Maximum allowed size of EDNS.0 UDP packets
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-dhcp-cfg024c78-dnsforwardmax"><label class="cbi-value-title" for="cbid.dhcp.cfg024c78.dnsforwardmax"><abbr title="maximal">Max.</abbr> concurrent queries</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.dhcp.cfg024c78.dnsforwardmax" id="cbid.dhcp.cfg024c78.dnsforwardmax" value="" placeholder="150" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.dhcp.cfg024c78.dnsforwardmax', true, 'uinteger');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				Maximum allowed number of concurrent DNS queries
+			</div>
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('dhcp.cfg024c78', 'advanced')</script>
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br />
+
+	
+
+	
+</fieldset>
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/dnsmasq/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

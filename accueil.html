@@ -1,0 +1,488 @@
+
+<html>
+<head> 
+	<title>Comparatif entre DD-WRT, OpenWrt LuCI, Gargoyle et le firmware d'origine du Netgear WNDR3700</title> 
+	<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+	<link href="routage.css" rel="stylesheet" type="text/css" />
+	<link rel="icon" type="image/gif" href="img/favicon.gif" />
+</head>
+<body>
+    <div id="bandeau"><div class="inner"><div class="routeur">
+    	<h1>Comparatif des firmwares alternatifs pour le WNDR3700</h1>
+    </div></div></div>
+    
+    
+    <div id="centre">
+	    <p>
+			   Ce site est destiné à vous aider à choisir le firmware de routeur le plus adapté à vos besoins.<br/>
+			   Vous y trouverez un tableau comparatif (non exhaustif) des différentes interfaces disponibles pour le routeur WNDR3700.<br/>
+			   Un guide d'installation des firmwares alternatifs.
+			   Et surtout, une copie navigable de chacune des interfaces d'administration testées<br/>
+			   (Interface d'origine Netgear, DD-WRT, LuCI et Gargoyle).
+			</p>
+	    <div class="ieSucks">
+	      <table>
+	       <thead>
+	         <tr>
+	           <td class="tabCoin" rowspan="2"></td>
+	           <th class="edge">Firmware d'Origine</th>
+	           <th rowspan="2">DD-WRT</th>
+	           <th colspan="2">Firware OpenWrt</th>
+	         </tr>
+	      
+	         <tr>
+	           <th>Netgear</th>
+	           <th>LuCI</th>
+	           <th>Gargoyle</th>
+	         </tr>
+	        </thead>
+	        <tbody>
+	         <tr>
+	           <th class="edge">Multi-wan</th>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	           <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	        </tr>
+	         <tr>
+	           <th>Open VPN</th>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	         </tr>
+	          <tr>
+	           <th>Multi SSID</th>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	         </tr>
+	          <tr>
+	            <th>Interface Conviviale</th>
+	            <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	           <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	           <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	         </tr>
+	          <tr>
+	           <th>Facilité d'installation</th>
+	           <td class="ok"><img src= "img/ok.gif" alt="ok.gif"/></td>
+	           <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	           <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	           <td class="partial"><img src= "img/partial.gif" alt="partial.gif"/></td>
+	         </tr>
+	          <tr>
+	            <th>Overclock CPU</th>
+	            <td class="ko"><img src= "img/ko.gif" alt="ko.gif"/></td>
+	            <td class="ko"><img src= "img/ko.gif" alt="pas pour WNDR 3700"/></td>
+	           <td>-</td>
+	           <td>-</td>
+	         </tr>
+	         <tr>
+	          <th>Fonction d'origine non gérée</th>
+	            <td class="ok">0</td>
+	            <td>-</td>
+	           <td>-</td>
+	           <td>-</td>
+	         </tr>
+	         </tbody>
+	      </table>
+	   	</div>
+<!--
+NAT
+DHCP Relai
+DHCP serveur
+Réservation d'IP par adresse MAC
+PPPoE Relay
+PPPoE Serveur
+SIP Router
+
+XBOX Kaid
+
+Adresse MAC modifiable
+
+NTP Client
+NTP Serveur LAN WAN
+
+Cron personnalisé
+Reboot plannifié
+WatchDog
+Wake On LAN
+
+Firewall
+SPI
+DPI
+
+Blocage site
+Blocage par port
+Blocage horaire
+Blocage P2P
+
+Langue Française
+IPv6
+DMZ
+UPnP
+Redirection de port
+Port Triggering
+Controle parental
+Quota Utilisateur
+QoS avec débis garantis par service, par machine
+QoS avec priorité par service, par machine
+Adminstration à distance http, https, ssh, filtre par ip
+Routage statique
+
+Wifi :
+Non crypté
+  WEP
+  WPA
+  WPA2
+  RADIUS
+WPS
+WDS
+WMM
+SSID masqué
+filtrage MAC
+Puissance d'émission réglable
+Auto-ajustement de la puissance d'émission
+Fréquence "SuperChannel"
+Pond Wifi (wifi en tant que WAN)
+Repeteur Wifi
+Multi SSID
+Réseau Invité
+Hotspot
+
+
+
+PPTP Passthrough, Client, Serveur, Les deux à la fois
+IPSec Passthrough, Client, Serveur, Les deux à la fois
+L2TP Passthrough, Client, Serveur, Les deux à la fois
+OpenVPN Passthrough, Client, Serveur, Les deux à la fois
+VPN Bonding
+IPsec
+
+
+EoIP (Ethernet over IP)
+VLAN
+Bridge
+Bonding
+Proxy DNS
+DynDNS
+
+Partage d'imprimante USB
+NAS pour périférique USB
+SAMBA 
+HTTP HTTPS accès wan LAMP
+FTP FTPS accès wan
+
+Accès internet par Clef 3G USB
+
+Stat trafic
+Stat CPU, RAM
+Stat Stockage 
+
+Log dans l'interface
+Log par mail
+Log SNMP
+
+Sauvegarde/réstauration des paramètres
+Réinitialisation du routeur
+Mise à jour depuis l'interface
+Vérification des mise à jour
+
+Modication du mot de passe
+Gestion multi utilisateur
+Gestion des droits utilisateur
+Info/stat publique en accès libre (sans authentification)
+
+Extension par plugin
+-->
+
+      <h2>Tutoriel : Flasher votre routeur</h2>
+<p>Il existe plusieurs méthodes pour changer le micrologiciel (firmware) de votre routeur.
+Celle que nous allons voir n'est pas la plus simple, mais on peut l'utiliser en toutes circonstances
+(firmware d'origine ou non, routeur planté / briqué...) tout du moins sur le routeur Netgear WNDR3700.
+</p>
+<p class="warning">IMPORTANT : Tous les réglages de votre routeur serons effacés en changeant de firmware.</p>
+
+<h3>Pré-requis Windows :</h3>
+<ul>
+<li>Un <a href="http://www.winagents.com/downloads/tftp.exe">client TFTP</a></li>
+<li>Un <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe">client Telnet (pour LuCI uniquement)</a></li>
+</ul>
+
+<h3>Firmware disponible pour le WNDR3700</h3>
+<p>Téléchargez le firmware que vous souhaitez installer.</p>
+<ul>
+	<li><a href="ftp://downloads.netgear.com/files/WNDR3700-V1.0.7.98.img">Firmware d'origine du WNDR3700</a></li>
+<!-- <li><a href="ftp://downloads.netgear.com/files/WNDR3700v2-V1.0.0.8.img">Firmware d'origine du WNDR3700v2</a></li> -->
+	<li><a href="http://www.dd-wrt.com/routerdb/de/download/Netgear/WNDR3700/-/wndr3700-factory.img/3755">Firmware DD-WRT</a></li>
+	<li><a href="http://downloads.openwrt.org/snapshots/trunk/ar71xx/openwrt-ar71xx-generic-wndr3700-squashfs-factory.img">Firmware OpenWrt (pour LuCI)</a></li>
+	<li><a href="http://www.gargoyle-router.com/downloads/images/ar71xx/gargoyle_1.3.11-ar71xx-wndr3700-squashfs-factory.img">Firmware Gargoyle</a></li>
+</ul>
+<p>
+	Prêt pour le flashage ? C'est parti !
+</p>
+
+<h3>I. Passer le routeur en mode restauration.</h3>
+<ul>
+	<li>Assurez vous que votre ordinateur est correctement relié au routeur par un cable Ethernet.</li>
+	<li><span class="OS">Windows</span> Ouvrir une fenêtre <span> d'invite de commandes
+		<span class="hover">Pour ouvrir la fenêtre <strong>Invite de commandes</strong>, cliquez sur le <strong>Menu Démarrer</strong>, sur <strong>Tous les programmes</strong>, sur <strong>Accessoires</strong>, puis sur <strong>Invite de commandes</strong>.
+		</span></span><br/>
+		<span class="OS">Mac &amp; Linux</span> ou un terminal.
+	</li>
+	<li>Vérifiez que votre adresse ip commence par 192.168.1. en tappant :<br/>
+		<span class="OS">Windows</span> <strong>ipconfig</strong> dans l'invite de commande<br/>
+		<span class="OS">Mac &amp; Linux</span> <strong>ifconfig</strong> dans le terminal.<br/>
+		Puis validez.<br/>
+		Si votre ip ne commence pas par 192.168.1. modifiez la en 192.168.1.2<br/>
+		<span class="OS">Windows</span> Procédure détaillée pour <a href="http://www.tutoriels-animes.com/creer-une-adresse-ip-fixe-sous-windows-xp.html" target="_blank">XP</a> ou <a href="http://www.tutoriels-animes.com/creer-une-adresse-ip-fixe-sous-vista.html" target="_blank">Vista</a><br/>
+		<span class="OS">Mac &amp; Linux</span> <strong>sudo ifconfig eth0 192.168.1.2</strong> (votre mot de passe vous sera demandé)
+	</li>
+	<li>Lancer un ping infini du routeur :<br/>
+	<span class="OS">Windows</span> ping -t 192.168.1.1<br/>
+	<span class="OS">Mac &amp; Linux</span> ping 192.168.1.1
+	</li>
+	<li>A l'aide d'un trombonne ou d'un tournevis très fin, presser et maintenir le bouton
+		<strong>Restore Factory Settings</strong>.
+	</li>
+	<li>Redémarrer le routeur à l'aide du bouton a l'arrière.<br/>
+	 Les résultats de la commande ping vont passer par plusieurs phases :
+<pre class="console">
+C:\Users\Moi&gt; <strong>ping -t 192.168.1.1</strong>
+
+Envoi d'une requête 'Ping' 192.168.1.1 avec 32 octets de données :
+Réponse de 192.168.1.1 : octets=32 temps&lt;1ms TTL=64
+Réponse de 192.168.1.1 : octets=32 temps&lt;1ms TTL=64
+[...]
+Défaillance générale.
+Défaillance générale.
+[...]
+Réponse de 192.168.1.2 : Impossible de joindre l'hôte de destination.
+Réponse de 192.168.1.2 : Impossible de joindre l'hôte de destination.
+[...]
+Délai d'attente de la demande dépassé.
+Délai d'attente de la demande dépassé.
+[...]
+Réponse de 192.168.1.1 : octets=32 temps&lt;1ms TTL=64
+Réponse de 192.168.1.1 : octets=32 temps&lt;1ms TTL=64
+[...]
+</pre></li>
+	<li>Une fois la reprise du ping, relachez le bouton <strong>Restore Factory Settings</strong></li>
+	<li>Interrompez maintenant la commande ping en tappant <strong>CTRL + C</strong>.<br/>
+	Ignorez les statistiques qui s'affichent alors.</li>
+</ul>
+<p>Vous êtes maintenant en mode restauration.</p>
+
+<h3>II. Charger le nouveau firmware.</h3>
+<ul>
+	<li>Déplacez vous dans le dossier où se trouve TFTP et l'image du frimware à installer. Exemple :<br/>
+<pre class="console">
+C:\Users\Moi&gt; <strong>cd Downloads</strong>
+C:\Users\Moi\Downloads&gt;
+</pre>
+	</li>
+	<li>Transferez le firmware sur le routeur à l'aide de la commande :<br/>
+		tftp -i 192.168.1.1 PUT monFirmware.img
+		Voici ce qui devrais s'afficher après une minute :
+<pre class="console">
+C:\Users\Moi\Downloads&gt; <strong>tftp -i 192.168.1.1 PUT DD-wndr3700-factory.img</strong>
+
+WinAgents TFTP Client version 1.4 Copyright (c)2004-2007  by Tandem Sytems,Ltd.
+http://www.winagents.com - Software for network administrators
+
+Transfering file DD-wndr3700-factory.img to server in octet mode...
+File DD-wndr3700-factory.img was transferred successfully.
+6189185 bytes transfered for 3 seconds, 2063061 bytes/second
+
+C:\Users\Moi\Downloads&gt;
+</pre>
+	</li>
+	<li>Le routeur va maintenant redémarrer automatiquement, patientez quelques minutes avant de continuer.</li>
+</ul>
+<p>
+	Félicitation, votre routeur utilise désormais votre nouveau firmware.<br/>
+	Sautez à l'étape IV sauf si vous souhaitez installer l'interface de gestion LuCI sur le firmware OpenWrt.
+</p>
+
+<h3>III. (Spécial) Installer l'interface LuCI</h3>
+<p>Etape réservé aux utilisateurs du firmware Open-Source OpenWrt.</p>
+
+<ul>
+	<li> Connectez vous au routeur en telnet :<br/>
+		<span class="OS">Mac &amp; Linux</span> telnet 192.168.1.1<br/> 
+		<span class="OS">Windows</span> Lancez PuTTY comme suit :<br/>
+		<img src="img/putty.png" alt="connexion telnet avec putty" />
+	</li>
+	<li>Chargez maintenant la liste des programmes installable en tappant : <strong>opkg update</strong></li>
+	<li>Vous afficher la liste des programmes installable en tappant : <strong>opkg list</strong></li>
+	<li>Installez LuCI en français avec la commande : <strong>opkg install luci-ssl luci-i18n-french</strong></li>
+	<li>Quand l'installation est finie, activez l'interface web LuCI en tappant :<br/>
+		<strong>/etc/init.d/uhttpd enable</strong><br/>
+		puis :<br/>
+		<strong>/etc/init.d/uhttpd start</strong><br/>
+		A titre d'exemple, voici à quoi devrais ressembler votre fenêtre Telnet :<br/>
+<pre class="console">
+ === IMPORTANT ============================
+  Use 'passwd' to set your login password
+  this will disable telnet and enable SSH
+ ------------------------------------------
+
+
+BusyBox v1.17.3 (2011-02-20 15:38:29 CET) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ ATTITUDE ADJUSTMENT (bleeding edge, r25598) ----------
+  * 1/4 oz Vodka      Pour all ingredents into mixing
+  * 1/4 oz Gin        tin with ice, strain into glass.
+  * 1/4 oz Amaretto
+  * 1/4 oz Triple sec
+  * 1/4 oz Peach schnapps
+  * 1/4 oz Sour mix
+  * 1 splash Cranberry juice
+ -----------------------------------------------------
+root@OpenWrt:/# <strong>opkg update</strong>
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/Packages.gz.
+Inflating http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/Packages.gz.
+Updated list of available packages in /var/opkg-lists/snapshots.
+root@OpenWrt:/# <strong>opkg install luci-ssl luci-i18n-french</strong>
+Installing luci-ssl (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-ssl_0.10+svn6936-1_ar71xx.ipk.
+Installing uhttpd (22) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/uhttpd_22_ar71xx.ipk.
+Installing uhttpd-mod-tls (22) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/uhttpd-mod-tls_22_ar71xx.ipk.
+Installing libcyassl (1.6.5-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/libcyassl_1.6.5-1_ar71xx.ipk.
+Installing px5g (1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/px5g_1_ar71xx.ipk.
+Installing luci-mod-admin-full (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-mod-admin-full_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-mod-admin-core (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-mod-admin-core_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-lib-web (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-web_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-lib-core (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-core_0.10+svn6936-1_ar71xx.ipk.
+Installing lua (5.1.4-7) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/lua_5.1.4-7_ar71xx.ipk.
+Installing liblua (5.1.4-7) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/liblua_5.1.4-7_ar71xx.ipk.
+Installing libuci-lua (2011-01-19.1-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/libuci-lua_2011-01-19.1-1_ar71xx.ipk.
+Installing luci-lib-sys (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-sys_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-lib-nixio (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-nixio_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-sgi-cgi (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-sgi-cgi_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-lib-lmo (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-lmo_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-i18n-english (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-i18n-english_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-lib-ipkg (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-lib-ipkg_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-theme-openwrt (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-theme-openwrt_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-theme-base (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-theme-base_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-app-firewall (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-app-firewall_0.10+svn6936-1_ar71xx.ipk.
+Installing luci-app-initmgr (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-app-initmgr_0.10+svn6936-1_ar71xx.ipk.
+Installing libiwinfo (13) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/libiwinfo_13_ar71xx.ipk.
+Installing luci-i18n-french (0.10+svn6936-1) to root...
+Downloading http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci-i18n-french_0.10+svn6936-1_ar71xx.ipk.
+Configuring luci-lib-sys.
+Configuring liblua.
+Configuring libuci-lua.
+Configuring lua.
+Configuring luci-lib-core.
+Configuring luci-lib-nixio.
+Configuring luci-sgi-cgi.
+Configuring luci-lib-lmo.
+Configuring luci-lib-web.
+Configuring luci-i18n-english.
+Configuring luci-mod-admin-core.
+Configuring libiwinfo.
+Configuring luci-theme-base.
+Configuring luci-theme-openwrt.
+Configuring luci-app-firewall.
+Configuring luci-lib-ipkg.
+Configuring libcyassl.
+Configuring uhttpd.
+Configuring uhttpd-mod-tls.
+Configuring px5g.
+Configuring luci-mod-admin-full.
+Configuring luci-app-initmgr.
+Configuring luci-ssl.
+Configuring luci-i18n-french.
+root@OpenWrt:/# <strong>/etc/init.d/uhttpd enable</strong>
+root@OpenWrt:/# <strong>/etc/init.d/uhttpd start</strong>
+Generating RSA private key, 1024 bit long modulus
+Generating selfsigned certificate with subject
+'C=DE;ST=Berlin;L=Berlin;CN=OpenWrt;' and validity 2011-03-04
+14:29:41-2013-03-03 14:29:41
+root@OpenWrt:/#
+</pre>
+	</li>
+	<li>Vous avez fini, vous pouvez fermer les fenêtres de commandes et charger l'interface Web.</li>
+</ul>
+<h3>IV. (Bonus) Accéder à l'interface d'administration du routeur</h3>
+<p>
+Dans la barre d'adresse de votre navigateur préféré tappez :<br/>
+<a href="http://192.168.1.1/" target="_blank">http://192.168.1.1/</a> (ou cliquez sur ce lien).<br/>
+Puis authentifiez vous.
+</p>
+<div class="ieSucks">
+	<table>
+		<thead>
+			<tr><th class="edge">Firmware</th><th>Login</th><th>Password</th></tr>
+		</thead>
+		<tbody>
+			<tr><th>Netgear</th><td>admin</td><td>password</td></tr>
+			<tr><th>DD-WRT</th><td class="disable">- à définir -</td><td class="disable">- à définir -</td></tr>
+			<tr><th>LuCI</th><td>root</td><td class="disable">- vide -</td></tr>
+			<tr><th>Gargoyle</th><td class="disable">- absent -</td><td class="disable">- vide -</td></tr>
+		</tbody>
+	</table>
+	
+	<div id="footer"> Site co-réalisé par : <a href="http://www.1twitif.fr/">Millicent Billette</a>, <a href="http://1dex.fr/">Aurore Sanchez</a> et <a href="#">Mickaël Monteiro</a></div>
+</div>
+
+
+	</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.tooltip.pack.js"></script>
+<!--[if IE]>
+	<script type="text/javascript" src="jquery.corner.pack.js"></script>
+	<script type="text/javascript" src="routage.js"></script>
+<![endif]-->
+	
+<script type="text/javascript">
+// force le menu sur la page d'accueil
+if(top.location.href == window.location.href)
+window.location.href = "index.html";
+
+// affichage des survols
+
+
+$(".hover").parent().css("font-style", "italic");
+$(".hover").parent().tooltip({
+track: true,
+delay: 0,
+showURL: false,
+bodyHandler: function() {
+return $(".hover", this).html();},
+fade: 250 });
+</script>
+	
+</body>
+</html>

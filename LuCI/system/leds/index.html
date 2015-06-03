@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/leds/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Configuration des LED s - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.13 0.09 0.03
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system active">
+				<a href="../index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-packages">
+				<a href="../packages/index.html">Logiciels</a>
+			</li>
+		
+			<li class="tabmenu-item-passwd">
+				<a href="../passwd/index.html">Mot de passe administrateur</a>
+			</li>
+		
+			<li class="tabmenu-item-sshkeys">
+				<a href="../sshkeys/index.html">Clés SSH </a>
+			</li>
+		
+			<li class="tabmenu-item-processes">
+				<a href="../processes/index.html">Processus</a>
+			</li>
+		
+			<li class="tabmenu-item-leds active">
+				<a href="index.html">Configuration des LED s</a>
+			</li>
+		
+			<li class="tabmenu-item-backup">
+				<a href="../backup/index.html">Sauvegarder / Restaurer</a>
+			</li>
+		
+			<li class="tabmenu-item-upgrade">
+				<a href="../upgrade/index.html">Flash Firmware</a>
+			</li>
+		
+			<li class="tabmenu-item-reboot">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Redémarrage</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-system">
+	<h2><a id="content" name="content">Configuration des <abbr title="Light Emitting Diode">LED</abbr>s</a></h2>
+	<div class="cbi-map-descr">Personnaliser le comportement des <abbr title="Light Emitting Diode">LED</abbr>s si possible.</div>
+<fieldset class="cbi-section" id="cbi-system-led">
+	
+	<div class="cbi-section-descr"></div>
+	<div class="cbi-section-remove right">
+				<input type="submit" name="cbi.rts.system.wan_led" onclick="this.form.cbi_state='del-section'; return true" value="Effacer" />
+			</div>
+
+
+		
+
+		<fieldset class="cbi-section-node" id="cbi-system-wan_led">
+			
+
+
+	<div class="cbi-value" id="cbi-system-wan_led-name"><label class="cbi-value-title" for="cbid.system.wan_led.name">Nom</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.wan_led.name" id="cbid.system.wan_led.name" value="WAN LED (green)" />
+	
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-wan_led-sysfs"><label class="cbi-value-title" for="cbid.system.wan_led.sysfs"><abbr title="Light Emitting Diode">LED</abbr> Name</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.wan_led.sysfs" name="cbid.system.wan_led.sysfs" size="1">
+	<option id="cbi-system-wan_led-sysfs-wndr3700:green:power" value="wndr3700:green:power">wndr3700:green:power</option><option id="cbi-system-wan_led-sysfs-wndr3700:orange:power" value="wndr3700:orange:power">wndr3700:orange:power</option><option id="cbi-system-wan_led-sysfs-wndr3700:green:wps" value="wndr3700:green:wps">wndr3700:green:wps</option><option id="cbi-system-wan_led-sysfs-wndr3700:orange:wps" value="wndr3700:orange:wps">wndr3700:orange:wps</option><option id="cbi-system-wan_led-sysfs-wndr3700:green:wan" value="wndr3700:green:wan" selected="selected">wndr3700:green:wan</option><option id="cbi-system-wan_led-sysfs-ath9k-phy0" value="ath9k-phy0">ath9k-phy0</option><option id="cbi-system-wan_led-sysfs-ath9k-phy1" value="ath9k-phy1">ath9k-phy1</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-wan_led-default"><label class="cbi-value-title" for="cbid.system.wan_led.default">Default state</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.system.wan_led.default" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.system.wan_led.default" name="cbid.system.wan_led.default" value="1" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-wan_led-trigger"><label class="cbi-value-title" for="cbid.system.wan_led.trigger">Trigger</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.wan_led.trigger" name="cbid.system.wan_led.trigger" size="1">
+	<option id="cbi-system-wan_led-trigger-none" value="none">aucun</option><option id="cbi-system-wan_led-trigger-timer" value="timer">timer</option><option id="cbi-system-wan_led-trigger-heartbeat" value="heartbeat">heartbeat</option><option id="cbi-system-wan_led-trigger-default-on" value="default-on">defaulton</option><option id="cbi-system-wan_led-trigger-netdev" value="netdev">netdev</option><option id="cbi-system-wan_led-trigger-phy0rx" value="phy0rx">phy0rx</option><option id="cbi-system-wan_led-trigger-phy0tx" value="phy0tx">phy0tx</option><option id="cbi-system-wan_led-trigger-phy0assoc" value="phy0assoc">phy0assoc</option><option id="cbi-system-wan_led-trigger-phy0radio" value="phy0radio">phy0radio</option><option id="cbi-system-wan_led-trigger-phy0tpt" value="phy0tpt">phy0tpt</option><option id="cbi-system-wan_led-trigger-phy1rx" value="phy1rx">phy1rx</option><option id="cbi-system-wan_led-trigger-phy1tx" value="phy1tx">phy1tx</option><option id="cbi-system-wan_led-trigger-phy1assoc" value="phy1assoc">phy1assoc</option><option id="cbi-system-wan_led-trigger-phy1radio" value="phy1radio">phy1radio</option><option id="cbi-system-wan_led-trigger-phy1tpt" value="phy1tpt">phy1tpt</option><option id="cbi-system-wan_led-trigger-usbdev" value="usbdev">usbdev</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-wan_led-delayon"><label class="cbi-value-title" for="cbid.system.wan_led.delayon">On-State Delay</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.wan_led.delayon" id="cbid.system.wan_led.delayon" value="" />
+	
+	
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-wan_led-delayon">
+		
+		cbi_d_add("cbi-system-wan_led-delayon", {"cbid.system.wan_led.trigger":"timer"}, "cbip-system-wan_led-delayon");
+	</script>
+
+
+<div class="cbi-value" id="cbi-system-wan_led-delayoff"><label class="cbi-value-title" for="cbid.system.wan_led.delayoff">Off-State Delay</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.wan_led.delayoff" id="cbid.system.wan_led.delayoff" value="" />
+	
+	
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-wan_led-delayoff">
+		
+		cbi_d_add("cbi-system-wan_led-delayoff", {"cbid.system.wan_led.trigger":"timer"}, "cbip-system-wan_led-delayoff");
+	</script>
+
+
+<div class="cbi-value" id="cbi-system-wan_led-dev"><label class="cbi-value-title" for="cbid.system.wan_led.dev">Equipement</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.wan_led.dev" name="cbid.system.wan_led.dev" size="1">
+	<option id="cbi-system-wan_led-dev-" value=""></option><option id="cbi-system-wan_led-dev-eth0" value="eth0">eth0</option><option id="cbi-system-wan_led-dev-eth1" value="eth1">eth1</option><option id="cbi-system-wan_led-dev-eth0.1" value="eth0.1">eth0.1</option><option id="cbi-system-wan_led-dev-br-lan" value="br-lan">br-lan</option><option id="cbi-system-wan_led-dev-wlan0" value="wlan0">wlan0</option><option id="cbi-system-wan_led-dev-wlan1" value="wlan1">wlan1</option>
+	</select>
+
+
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-wan_led-dev">
+		
+		cbi_d_add("cbi-system-wan_led-dev", {"cbid.system.wan_led.trigger":"netdev"}, "cbip-system-wan_led-dev");
+	</script>
+
+
+
+<div class="cbi-value" id="cbi-system-wan_led-mode"><label class="cbi-value-title" for="cbid.system.wan_led.mode">Trigger Mode</label>
+		<div class="cbi-value-field">
+
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.wan_led.mode1" name="cbid.system.wan_led.mode" value="link" />
+	<label for="cbid.system.wan_led.mode1">Lien établi</label><br />
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.wan_led.mode2" name="cbid.system.wan_led.mode" value="tx" />
+	<label for="cbid.system.wan_led.mode2">Transmet</label><br />
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.wan_led.mode3" name="cbid.system.wan_led.mode" value="rx" />
+	<label for="cbid.system.wan_led.mode3">Reçoit</label><br />
+
+
+
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-wan_led-mode">
+		
+		cbi_d_add("cbi-system-wan_led-mode", {"cbid.system.wan_led.trigger":"netdev"}, "cbip-system-wan_led-mode");
+	</script>
+
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br /><div class="cbi-section-remove right">
+				<input type="submit" name="cbi.rts.system.usb_led" onclick="this.form.cbi_state='del-section'; return true" value="Effacer" />
+			</div>
+
+
+		
+
+		<fieldset class="cbi-section-node" id="cbi-system-usb_led">
+			
+
+
+	<div class="cbi-value" id="cbi-system-usb_led-name"><label class="cbi-value-title" for="cbid.system.usb_led.name">Nom</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.usb_led.name" id="cbid.system.usb_led.name" value="USB" />
+	
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-usb_led-sysfs"><label class="cbi-value-title" for="cbid.system.usb_led.sysfs"><abbr title="Light Emitting Diode">LED</abbr> Name</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.usb_led.sysfs" name="cbid.system.usb_led.sysfs" size="1">
+	<option id="cbi-system-usb_led-sysfs-wndr3700:green:power" value="wndr3700:green:power">wndr3700:green:power</option><option id="cbi-system-usb_led-sysfs-wndr3700:orange:power" value="wndr3700:orange:power">wndr3700:orange:power</option><option id="cbi-system-usb_led-sysfs-wndr3700:green:wps" value="wndr3700:green:wps">wndr3700:green:wps</option><option id="cbi-system-usb_led-sysfs-wndr3700:orange:wps" value="wndr3700:orange:wps">wndr3700:orange:wps</option><option id="cbi-system-usb_led-sysfs-wndr3700:green:wan" value="wndr3700:green:wan">wndr3700:green:wan</option><option id="cbi-system-usb_led-sysfs-ath9k-phy0" value="ath9k-phy0">ath9k-phy0</option><option id="cbi-system-usb_led-sysfs-ath9k-phy1" value="ath9k-phy1">ath9k-phy1</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-usb_led-default"><label class="cbi-value-title" for="cbid.system.usb_led.default">Default state</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.system.usb_led.default" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.system.usb_led.default" name="cbid.system.usb_led.default" value="1" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-usb_led-trigger"><label class="cbi-value-title" for="cbid.system.usb_led.trigger">Trigger</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.usb_led.trigger" name="cbid.system.usb_led.trigger" size="1">
+	<option id="cbi-system-usb_led-trigger-none" value="none">aucun</option><option id="cbi-system-usb_led-trigger-timer" value="timer">timer</option><option id="cbi-system-usb_led-trigger-heartbeat" value="heartbeat">heartbeat</option><option id="cbi-system-usb_led-trigger-default-on" value="default-on">defaulton</option><option id="cbi-system-usb_led-trigger-netdev" value="netdev">netdev</option><option id="cbi-system-usb_led-trigger-phy0rx" value="phy0rx">phy0rx</option><option id="cbi-system-usb_led-trigger-phy0tx" value="phy0tx">phy0tx</option><option id="cbi-system-usb_led-trigger-phy0assoc" value="phy0assoc">phy0assoc</option><option id="cbi-system-usb_led-trigger-phy0radio" value="phy0radio">phy0radio</option><option id="cbi-system-usb_led-trigger-phy0tpt" value="phy0tpt">phy0tpt</option><option id="cbi-system-usb_led-trigger-phy1rx" value="phy1rx">phy1rx</option><option id="cbi-system-usb_led-trigger-phy1tx" value="phy1tx">phy1tx</option><option id="cbi-system-usb_led-trigger-phy1assoc" value="phy1assoc">phy1assoc</option><option id="cbi-system-usb_led-trigger-phy1radio" value="phy1radio">phy1radio</option><option id="cbi-system-usb_led-trigger-phy1tpt" value="phy1tpt">phy1tpt</option><option id="cbi-system-usb_led-trigger-usbdev" value="usbdev" selected="selected">usbdev</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-usb_led-delayon"><label class="cbi-value-title" for="cbid.system.usb_led.delayon">On-State Delay</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.usb_led.delayon" id="cbid.system.usb_led.delayon" value="" />
+	
+	
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-usb_led-delayon">
+		
+		cbi_d_add("cbi-system-usb_led-delayon", {"cbid.system.usb_led.trigger":"timer"}, "cbip-system-usb_led-delayon");
+	</script>
+
+
+<div class="cbi-value" id="cbi-system-usb_led-delayoff"><label class="cbi-value-title" for="cbid.system.usb_led.delayoff">Off-State Delay</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.usb_led.delayoff" id="cbid.system.usb_led.delayoff" value="" />
+	
+	
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-usb_led-delayoff">
+		
+		cbi_d_add("cbi-system-usb_led-delayoff", {"cbid.system.usb_led.trigger":"timer"}, "cbip-system-usb_led-delayoff");
+	</script>
+
+
+<div class="cbi-value" id="cbi-system-usb_led-dev"><label class="cbi-value-title" for="cbid.system.usb_led.dev">Equipement</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.usb_led.dev" name="cbid.system.usb_led.dev" size="1">
+	<option id="cbi-system-usb_led-dev-" value=""></option><option id="cbi-system-usb_led-dev-eth0" value="eth0">eth0</option><option id="cbi-system-usb_led-dev-eth1" value="eth1">eth1</option><option id="cbi-system-usb_led-dev-eth0.1" value="eth0.1">eth0.1</option><option id="cbi-system-usb_led-dev-br-lan" value="br-lan">br-lan</option><option id="cbi-system-usb_led-dev-wlan0" value="wlan0">wlan0</option><option id="cbi-system-usb_led-dev-wlan1" value="wlan1">wlan1</option>
+	</select>
+
+
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-usb_led-dev">
+		
+		cbi_d_add("cbi-system-usb_led-dev", {"cbid.system.usb_led.trigger":"netdev"}, "cbip-system-usb_led-dev");
+	</script>
+
+
+
+<div class="cbi-value" id="cbi-system-usb_led-mode"><label class="cbi-value-title" for="cbid.system.usb_led.mode">Trigger Mode</label>
+		<div class="cbi-value-field">
+
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.usb_led.mode1" name="cbid.system.usb_led.mode" value="link" />
+	<label for="cbid.system.usb_led.mode1">Lien établi</label><br />
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.usb_led.mode2" name="cbid.system.usb_led.mode" value="tx" />
+	<label for="cbid.system.usb_led.mode2">Transmet</label><br />
+
+	<input class="cbi-input-checkbox" type="checkbox" id="cbid.system.usb_led.mode3" name="cbid.system.usb_led.mode" value="rx" />
+	<label for="cbid.system.usb_led.mode3">Reçoit</label><br />
+
+
+
+</div></div>
+
+
+<script type="text/javascript" id="cbip-system-usb_led-mode">
+		
+		cbi_d_add("cbi-system-usb_led-mode", {"cbid.system.usb_led.trigger":"netdev"}, "cbip-system-usb_led-mode");
+	</script>
+
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br />
+
+	
+
+	<div class="cbi-section-create">
+			<input type="submit" class="cbi-button cbi-button-add" name="cbi.cts.system.led" value="Ajouter" />
+		</div>
+
+</fieldset>
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/leds/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

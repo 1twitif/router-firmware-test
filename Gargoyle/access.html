@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="access.js"></script>
+
+<link rel="stylesheet" type="text/css" href="access.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="access_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="access_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var wirelessIf = "wlan0";
+	var uciWireless = "radio0";
+	var currentWirelessMac = "30:46:9A:0B:88:35";
+	var defaultLanIf = "eth0";
+	var currentLanIf = "br-lan";
+	var currentLanMac = "30:46:9A:0B:88:35";
+	var currentLanIp = "192.168.1.1";
+	var currentLanMask = "255.255.255.0";
+	var defaultWanIf = "eth1";
+	var defaultWanMac = "30:46:9A:0B:88:36";
+	var currentWanIf = "eth1";
+	var currentWanMac = "30:46:9A:0B:88:36";
+	var currentWanIp = "192.168.0.8";
+	var currentWanMask = "255.255.255.0";
+	var currentWanGateway = "192.168.0.1";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('httpd_gargoyle', 'server', '', "server");
+	uciOriginal.set('httpd_gargoyle', 'server', 'web_protocol', "both");
+	uciOriginal.set('httpd_gargoyle', 'server', 'http_port', "80");
+	uciOriginal.set('httpd_gargoyle', 'server', 'https_port', "443");
+	uciOriginal.set('httpd_gargoyle', 'server', 'web_root', "/www");
+	uciOriginal.set('httpd_gargoyle', 'server', 'default_page_file', "overview.sh");
+	uciOriginal.set('httpd_gargoyle', 'server', 'page_not_found_file', "login.sh");
+	uciOriginal.set('httpd_gargoyle', 'server', 'no_password', "1");
+	uciOriginal.set('dropbear', 'cfg02541f', '', "dropbear");
+	uciOriginal.set('dropbear', 'cfg02541f', 'PasswordAuth', "on");
+	uciOriginal.set('dropbear', 'cfg02541f', 'Port', "22");
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', '', "defaults");
+	uciOriginal.set('firewall', 'cfg02f50e', 'syn_flood', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg04e8f0', '', "zone");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'name', "lan");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', '', "zone");
+	uciOriginal.set('firewall', 'cfg062fd8', 'name', "wan");
+	uciOriginal.set('firewall', 'cfg062fd8', 'input', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'masq', "1");
+	uciOriginal.set('firewall', 'cfg062fd8', 'mtu_fix', "1");
+	uciOriginal.set('firewall', 'cfg087a91', '', "forwarding");
+	uciOriginal.set('firewall', 'cfg087a91', 'src', "lan");
+	uciOriginal.set('firewall', 'cfg087a91', 'dest', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', '', "rule");
+	uciOriginal.set('firewall', 'cfg0a0261', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', 'proto', "udp");
+	uciOriginal.set('firewall', 'cfg0a0261', 'dest_port', "68");
+	uciOriginal.set('firewall', 'cfg0a0261', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0c0a5e', '', "rule");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'proto', "icmp");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'icmp_type', "echo-request");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0e2df3', '', "include");
+	uciOriginal.set('firewall', 'cfg0e2df3', 'path', "/etc/firewall.user");
+	uciOriginal.set('firewall', 'cfg10536b', '', "include");
+	uciOriginal.set('firewall', 'cfg10536b', 'path', "/usr/lib/gargoyle_firewall_util/gargoyle_additions.firewall");
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+	uciOriginal.set('wireless', 'radio0', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio0', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio0', 'channel', "11");
+	uciOriginal.set('wireless', 'radio0', 'macaddr', "30:46:9a:0b:88:35");
+	uciOriginal.set('wireless', 'radio0', 'hwmode', "11ng");
+	uciOriginal.set('wireless', 'radio0', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio0', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio0', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg035040', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg035040', 'device', "radio0");
+	uciOriginal.set('wireless', 'cfg035040', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg035040', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg035040', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg035040', 'encryption', "none");
+	uciOriginal.set('wireless', 'radio1', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio1', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio1', 'channel', "36");
+	uciOriginal.set('wireless', 'radio1', 'macaddr', "30:46:9a:0b:88:37");
+	uciOriginal.set('wireless', 'radio1', 'hwmode', "11na");
+	uciOriginal.set('wireless', 'radio1', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio1', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio1', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg062561', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg062561', 'device', "radio1");
+	uciOriginal.set('wireless', 'cfg062561', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg062561', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg062561', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg062561', 'encryption', "none");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+
+<form action="http://192.168.1.1/access.sh">
+	<fieldset>
+		<legend class="sectionheader">Web Access</legend>
+		
+
+
+		<div>
+			<label class="leftcolumn" id="local_web_protocol_label" for="local_web_protocol">Web Admin Protocol:</label>
+			<select class="rightcolumn" id="local_web_protocol" onchange="updateVisibility()">
+				<option value="https">HTTPS</option>
+				<option value="http">HTTP</option>
+				<option value="both">HTTP &amp; HTTPS</option>
+			</select>
+		</div>
+		
+		<div class="indent">
+			<div style="display: block;" id="local_http_port_container">
+				<label class="leftcolumn" for="local_http_port" id="local_http_port_label">Local HTTP Port:</label>
+				<input value="80" class="rightcolumn" id="local_http_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+			</div>
+			<div style="display: block;" id="local_https_port_container">
+				<label class="leftcolumn" for="local_https_port" id="local_https_port_label">Local HTTPS Port:</label>
+				<input value="443" class="rightcolumn" id="local_https_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+			</div>
+		</div>
+		<div id="remote_web_protocol_container">
+			<label class="leftcolumn" id="remote_web_protocol_label" for="remote_web_protocol">Remote Web Admin Access:</label>
+			<select class="rightcolumn" id="remote_web_protocol" onchange="updateVisibility()">
+				
+				
+				
+				
+			<option value="both">HTTPS &amp; HTTP</option><option value="https">HTTPS</option><option value="http">HTTP</option><option value="disabled">Disabled</option></select>
+		</div>
+		<div class="indent" id="remote_web_ports_container">
+			<div style="display: none;" id="remote_http_port_container">
+				<label class="leftcolumn" for="remote_http_port" id="remote_http_port_label">Remote HTTP Port:</label>
+				<input value="" class="rightcolumn" id="remote_http_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+			</div>
+			<div style="display: none;" id="remote_https_port_container">
+				<label class="leftcolumn" for="remote_https_port" id="remote_https_port_label">Remote HTTPS Port:</label>
+				<input value="" class="rightcolumn" id="remote_https_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+			</div>
+		</div>
+		<div id="session_length_container">
+			<label class="leftcolumn" id="session_length_label" for="session_length">Web Login Session Length:</label>
+			<select class="rightcolumn" id="session_length">
+				<option value="15">15 minutes</option>
+				<option value="30">30 minutes</option>
+				<option value="60">1 hour</option>
+				<option value="120">2 hours</option>
+				<option value="240">4 hours</option>
+				<option value="720">12 hours</option>
+				<option value="1440">24 hours</option>
+			</select>
+		</div>
+
+		<div class="nocolumn">
+			<input id="disable_web_password" type="checkbox">
+			<label id="disable_web_password_label" for="disable_web_password">Disable password protection of web interface</label> <em>(Not Recommended!)</em>
+		</div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend class="sectionheader">SSH Access</legend>
+
+		<div>
+			<label class="leftcolumn" for="local_ssh_port" id="local_ssh_port_label">Local SSH Port:</label>
+			<input value="22" class="rightcolumn" id="local_ssh_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+		</div>
+
+		<div class="nocolumn" id="remote_ssh_enabled_container">
+			<input id="remote_ssh_enabled" onclick="updateVisibility()" type="checkbox">
+			<label id="remote_ssh_enabled_label" for="remote_ssh_enabled">Enable Remote SSH Access</label>
+		</div>
+		<div class="indent" id="remote_ssh_port_container">
+			<label class="leftcolumn" for="remote_ssh_port" id="remote_ssh_port_label">Remote SSH Port:</label>
+			<input value="22" style="color: rgb(170, 170, 170);" disabled="disabled" class="text_disabled" id="remote_ssh_port" size="7" maxlength="5" onkeyup="proofreadNumericRange(this,1,65535)" type="text">
+		</div>
+		<div class="indent" id="remote_ssh_attempts_container">
+			<label class="leftcolumn" for="remote_ssh_attempts" id="remote_ssh_attempts_label">Max Remote Login Attempts:</label>
+			<select disabled="disabled" class="select_disabled" id="remote_ssh_attempts">
+				<option value="1">1 Attempt Every Five Minutes</option>
+				<option value="3">3 Attempts Every Five Minutes</option>
+				<option value="5">5 Attempts Every Five Minutes</option>
+				<option value="10">10 Attempts Every Five Minutes</option>
+				<option value="15">15 Attempts Every Five Minutes</option>
+				<option value="unlimited">Unlimited Attempts</option>
+			</select>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<legend class="sectionheader">Change Administrator Password</legend>
+		<div>
+			<label class="leftcolumn" for="password1" id="password1_label">New Password:</label>
+			<input class="rightcolumn" id="password1" size="25" type="password">
+		</div>
+		<div>
+			<label class="leftcolumn" for="password2" id="password2_label">Confirm Password:</label>
+			<input class="rightcolumn" id="password2" size="25" type="password">
+		</div>
+
+	</fieldset>
+
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+
+
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">System</div>
+							<div id="submenu_container">
+								<div class="submenu_selected">Router Access</div>
+								<a indepth="true" href="identification.html">Identification</a>
+								<a indepth="true" href="time.html">Time</a>
+								<a indepth="true" href="usb_storage.html">USB Storage</a>
+								<a href="backup.html">Backup / Restore</a>
+								<a indepth="true" href="update.html">Update Firmware</a>
+								<a href="reboot.html">Reboot</a>
+								<a indepth="true" href="about.html">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

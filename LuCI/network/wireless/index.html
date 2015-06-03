@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/wireless/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Wi-Fi - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.25 0.12 0.04
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network active">
+				<a href="../index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-network">
+				<a href="../network/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-wireless active">
+				<a href="index.html">Wi-Fi</a>
+			</li>
+		
+			<li class="tabmenu-item-vlan">
+				<a href="../vlan/index.html">Switch</a>
+			</li>
+		
+			<li class="tabmenu-item-dhcpleases">
+				<a href="../dhcpleases/index.html">DHCP Leases</a>
+			</li>
+		
+			<li class="tabmenu-item-hosts">
+				<a href="../hosts/index.html">Noms d&#39;hôtes</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Routes statiques</a>
+			</li>
+		
+			<li class="tabmenu-item-diagnostics">
+				<a href="../diagnostics/index.html">Diagnostics</a>
+			</li>
+		
+			<li class="tabmenu-item-firewall">
+				<a href="../firewall/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-multiwan">
+				<a href="../multiwan/index.html">Multi-WAN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu3">
+	<ul class="tabmenu l3">
+		
+			<li class="tabmenu-item-radio0.network1">
+				<a href="radio0.network1/index.html">radio0: Master &#34;OpenWrt&#34;</a>
+			</li>
+		
+			<li class="tabmenu-item-radio1.network1">
+				<a href="radio1.network1/index.html">radio1: Master &#34;OpenWrt&#34;</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+
+
+
+<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+<script type="text/javascript">//<![CDATA[
+	var iwxhr = new XHR();
+	var wifidevs = { "radio0.network1": "radio0", "radio1.network1": "radio1" };
+	var arptable = { "00:00:00:00:00:00": "192.168.0.16", "90:E6:BA:4E:00:18": "192.168.1.238", "C0:3F:0E:43:05:00": "192.168.0.1" };
+
+	var update_status = function() {
+		iwxhr.get('/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/wireless_status/radio0.network1,radio1.network1', null,
+			function(x, st)
+			{
+				if (st)
+				{
+					var assoctable = document.getElementById('iw-assoclist');
+					if (assoctable)
+						while (assoctable.rows.length > 1)
+							assoctable.rows[1].parentNode.removeChild(assoctable.rows[1]);
+
+					var devup = { };
+
+					for( var i = 0; i < st.length; i++ )
+					{
+						var iw = st[i];
+						var is_assoc = (iw.bssid && iw.channel);
+						var p = (100 / iw.quality_max * iw.quality);
+						var q = is_assoc ? p : -1;
+
+						var icon;
+						if (q < 0)
+							icon = "../../luci-static/resources/icons/signal-none.png";
+						else if (q == 0)
+							icon = "../../luci-static/resources/icons/signal-0.png";
+						else if (q < 25)
+							icon = "../../luci-static/resources/icons/signal-0-25.png";
+						else if (q < 50)
+							icon = "../../luci-static/resources/icons/signal-25-50.png";
+						else if (q < 75)
+							icon = "../../luci-static/resources/icons/signal-50-75.png";
+						else
+							icon = "../../luci-static/resources/icons/signal-75-100.png";
+
+						if (!devup[wifidevs[iw.id]])
+							devup[wifidevs[iw.id]] = is_assoc;
+
+						var sig = document.getElementById(iw.id + '-iw-signal');
+						if (sig)
+							sig.innerHTML = String.format(
+								'<img src="%s" title="Signal: %d dBm / Noise: %d dBm" /><br />' +
+								'<small>%d%%</small>', icon, iw.signal, iw.noise, p
+							);
+
+						var info = document.getElementById(iw.id + '-iw-status');
+						if (info)
+						{
+							if (is_assoc)
+								info.innerHTML = String.format(
+									'<strong>SSID:</strong> %h | ' +
+									'<strong>Mode:</strong> %s<br />' +
+									'<strong>BSSID:</strong> %s | ' +
+									'<strong>Chiffrement:</strong> %s',
+										iw.ssid, iw.mode, iw.bssid,
+										iw.encryption ? iw.encryption.description : 'None'
+								);
+							else
+								info.innerHTML = String.format(
+									'<strong>SSID:</strong> %h | ' +
+									'<strong>Mode:</strong> %s<br />' +
+									'<em>Wireless is disabled or not associated</em>',
+										iw.ssid || '?', iw.mode
+								);
+						}
+
+						var dev = document.getElementById(wifidevs[iw.id] + '-iw-devinfo');
+						if (dev)
+						{
+							if (is_assoc)
+								dev.innerHTML = String.format(
+									'<strong>Canal:</strong> %s (%s GHz) | ' +
+									'<strong>Bitrate:</strong> %s Mb/s',
+										iw.channel ? iw.channel : '?',
+										iw.frequency ? iw.frequency / 1000 : '?',
+										iw.bitrate ? iw.bitrate / 1000 : '?'
+								);
+							else
+								dev.innerHTML = '';
+						}
+
+						if (assoctable)
+						{
+							var assoclist = [ ];
+							for( var bssid in iw.assoclist )
+							{
+								assoclist.push(iw.assoclist[bssid]);
+								assoclist[assoclist.length-1].bssid = bssid;
+							}
+
+							assoclist.sort(function(a, b) { a.bssid < b.bssid });
+
+							for( var j = 0; j < assoclist.length; j++ )
+							{
+								var tr = assoctable.insertRow(-1);
+								    tr.className = 'cbi-section-table-row cbi-rowstyle-' + ((j % 2) + (i % 2));
+
+								var icon;
+								var q = (-1 * (assoclist[j].noise - assoclist[j].signal)) / 5;
+								if (q < 1)
+									icon = "../../luci-static/resources/icons/signal-0.png";
+								else if (q < 2)
+									icon = "../../luci-static/resources/icons/signal-0-25.png";
+								else if (q < 3)
+									icon = "../../luci-static/resources/icons/signal-25-50.png";
+								else if (q < 4)
+									icon = "../../luci-static/resources/icons/signal-50-75.png";
+								else
+									icon = "../../luci-static/resources/icons/signal-75-100.png";
+
+								tr.insertCell(-1).innerHTML = String.format(
+									'<img src="%s" title="Signal: %d dBm / Noise: %d dBm" />',
+									icon, assoclist[j].signal, assoclist[j].noise
+								);
+
+								tr.insertCell(-1).innerHTML = iw.ssid ? iw.ssid : '?';
+								tr.insertCell(-1).innerHTML = assoclist[j].bssid;
+
+								tr.insertCell(-1).innerHTML = arptable[assoclist[j].bssid]
+									? arptable[assoclist[j].bssid] : '?';
+
+								tr.insertCell(-1).innerHTML = String.format('%d dBm', assoclist[j].signal);
+								tr.insertCell(-1).innerHTML = String.format('%d dBm', assoclist[j].noise);
+							}
+						}
+					}
+
+					if (assoctable && assoctable.rows.length == 1)
+					{
+						var tr = assoctable.insertRow(-1);
+						    tr.className = 'cbi-section-table-row';
+
+						var td = tr.insertCell(-1);
+						    td.colSpan = 6;
+						    td.innerHTML = '<br /><em>No information available</em>';
+					}
+
+					for (var dev in devup)
+					{
+						var img = document.getElementById(dev + '-iw-upstate');
+						if (img)
+							img.src = '/luci-static/resources/icons/wifi_big' + (devup[dev] ? '' : '_disabled') + '.png';
+					}
+				}
+
+				window.setTimeout(update_status, 5000);
+			}
+		)
+	};
+
+	update_status();
+//]]></script>
+
+<h2><a id="content" name="content">Vue d&#39;ensemble</a></h2>
+
+<div class="cbi-map">
+
+	
+	<!-- device radio0 -->
+	<fieldset class="cbi-section">
+		<table class="cbi-section-table" style="margin:10px; empty-cells:hide">
+			<!-- physical device -->
+			<tr>
+				<td style="width:34px"><img src="../../luci-static/resources/icons/wifi_big_disabled.png" style="float:left; margin-right:10px" id="radio0-iw-upstate" /></td>
+				<td colspan="2" style="text-align:left">
+					<big><strong>Generic 802.11bgn Wireless Controller (radio0)</strong></big><br />
+					<span id="radio0-iw-devinfo"></span>
+				</td>
+				<td style="width:40px">
+					<a href="../wireless_join96a4.html?device=radio0"><img style="border:none" src="../../luci-static/resources/cbi/find.gif" alt="Find and join network" title="Find and join network" /></a>
+					<a href="radio0.html?device=radio0"><img style="border:none" src="../../luci-static/resources/cbi/add.gif" alt="Provide new network" title="Provide new network" /></a>
+				</td>
+			</tr>
+			<!-- /physical device -->
+
+			<!-- network list -->
+			
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td></td>
+					<td class="cbi-value-field" style="width:16px; padding:3px" id="radio0.network1-iw-signal">
+						<img src="../../luci-static/resources/icons/signal-none.png" title="Not associated" /><br />
+						<small>0%</small>
+					</td>
+					<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px" id="radio0.network1-iw-status">
+						<em>Collecting data...</em>
+					</td>
+					<td class="cbi-value-field" style="width:40px">
+						<a href="radio0-2.html"><img style="border:none" src="../../luci-static/resources/cbi/edit.gif" alt="Edit this network" title="Edit this network" /></a>
+						<a href="javascript:alert('Indisponible dans cette copie d\'interface');" onclick="return confirm('Really delete this wireless network? The deletion cannot be undone!\nYou might loose access to this router if you are connected via this network.')"><img style="border:none" src="../../luci-static/resources/cbi/remove.gif" alt="Delete this network" title="Delete this network" /></a>
+					</td>
+				</tr>
+				
+			
+			<!-- /network list -->
+		</table>
+	</fieldset>
+	<!-- /device radio0 -->
+	
+	<!-- device radio1 -->
+	<fieldset class="cbi-section">
+		<table class="cbi-section-table" style="margin:10px; empty-cells:hide">
+			<!-- physical device -->
+			<tr>
+				<td style="width:34px"><img src="../../luci-static/resources/icons/wifi_big_disabled.png" style="float:left; margin-right:10px" id="radio1-iw-upstate" /></td>
+				<td colspan="2" style="text-align:left">
+					<big><strong>Generic 802.11an Wireless Controller (radio1)</strong></big><br />
+					<span id="radio1-iw-devinfo"></span>
+				</td>
+				<td style="width:40px">
+					<a href="../wireless_joind571.html?device=radio1"><img style="border:none" src="../../luci-static/resources/cbi/find.gif" alt="Find and join network" title="Find and join network" /></a>
+					<a href="radio1.html?device=radio1"><img style="border:none" src="../../luci-static/resources/cbi/add.gif" alt="Provide new network" title="Provide new network" /></a>
+				</td>
+			</tr>
+			<!-- /physical device -->
+
+			<!-- network list -->
+			
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td></td>
+					<td class="cbi-value-field" style="width:16px; padding:3px" id="radio1.network1-iw-signal">
+						<img src="../../luci-static/resources/icons/signal-none.png" title="Not associated" /><br />
+						<small>0%</small>
+					</td>
+					<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px" id="radio1.network1-iw-status">
+						<em>Collecting data...</em>
+					</td>
+					<td class="cbi-value-field" style="width:40px">
+						<a href="radio1-2.html"><img style="border:none" src="../../luci-static/resources/cbi/edit.gif" alt="Edit this network" title="Edit this network" /></a>
+						<a href="javascript:alert('Indisponible dans cette copie d\'interface');" onclick="return confirm('Really delete this wireless network? The deletion cannot be undone!\nYou might loose access to this router if you are connected via this network.')"><img style="border:none" src="../../luci-static/resources/cbi/remove.gif" alt="Delete this network" title="Delete this network" /></a>
+					</td>
+				</tr>
+				
+			
+			<!-- /network list -->
+		</table>
+	</fieldset>
+	<!-- /device radio1 -->
+	
+
+
+	<h2><a id="content" name="content">Associated Stations</a></h2>
+
+	<fieldset class="cbi-section">
+		<table class="cbi-section-table" style="margin:10px; width:50%" id="iw-assoclist">
+			<tr class="cbi-section-table-titles">
+				<th class="cbi-section-table-cell"></th>
+				<th class="cbi-section-table-cell">SSID</th>
+				<th class="cbi-section-table-cell">MAC</th>
+				<th class="cbi-section-table-cell">Address</th>
+				<th class="cbi-section-table-cell">Signal</th>
+				<th class="cbi-section-table-cell">Noise</th>
+			</tr>
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" colspan="6">
+					<em>Collecting data...</em>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+</div>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/wireless/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

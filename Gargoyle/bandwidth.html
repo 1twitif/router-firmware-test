@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="bandwidth.js"></script>
+
+<link rel="stylesheet" type="text/css" href="bandwidth.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="bandwidth_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="bandwidth_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var ipToHostname = [];
+	var ipsWithHostname = [ "127.0.0.1","192.168.0.8","192.168.1.1" ];
+	ipToHostname[ "127.0.0.1" ] = "Gargoyle";
+	ipToHostname[ "192.168.0.8" ] = "Gargoyle";
+	ipToHostname[ "192.168.1.1" ] = "Gargoyle";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('qos_gargoyle', 'upload', '', "upload");
+	uciOriginal.set('qos_gargoyle', 'upload', 'default_class', "uclass_3");
+	uciOriginal.set('qos_gargoyle', 'download', '', "download");
+	uciOriginal.set('qos_gargoyle', 'download', 'default_class', "dclass_3");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'max_bandwidth', "200");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'srcport', "53");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'dstport', "53");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+
+<script>
+<!--
+var monitorNames = new Array();
+monitorNames.push("total1A-download-2-449");
+monitorNames.push("total1A-upload-2-449");
+monitorNames.push("total1B-download-minute-15");
+monitorNames.push("total1B-upload-minute-15");
+monitorNames.push("bdist1-download-minute-15");
+monitorNames.push("bdist1-upload-minute-15");
+monitorNames.push("total2A-download-minute-359");
+monitorNames.push("total2A-upload-minute-359");
+monitorNames.push("total2B-download-900-24");
+monitorNames.push("total2B-upload-900-24");
+monitorNames.push("bdist2-download-900-24");
+monitorNames.push("bdist2-upload-900-24");
+monitorNames.push("total3A-download-180-479");
+monitorNames.push("total3A-upload-180-479");
+monitorNames.push("total3B-download-hour-24");
+monitorNames.push("total3B-upload-hour-24");
+monitorNames.push("bdist3-download-hour-24");
+monitorNames.push("bdist3-upload-hour-24");
+monitorNames.push("total4A-download-7200-359");
+monitorNames.push("total4A-upload-7200-359");
+monitorNames.push("total4B-download-day-31");
+monitorNames.push("total4B-upload-day-31");
+monitorNames.push("bdist4-download-day-31");
+monitorNames.push("bdist4-upload-day-31");
+monitorNames.push("total5A-download-day-365");
+monitorNames.push("total5A-upload-day-365");
+monitorNames.push("total5B-download-month-12");
+monitorNames.push("total5B-upload-month-12");
+monitorNames.push("bdist5-download-month-12");
+monitorNames.push("bdist5-upload-month-12");
+var tzMinutes = 60;
+
+//-->
+</script>
+
+<form action="http://192.168.1.1/bandwidth.sh">
+	<fieldset>
+		<legend class="sectionheader">Bandwidth Graph Display Options</legend>
+		<div>
+			<label for="plot_time_frame" id="time_frame_label">Time Frame:</label>
+			<select id="plot_time_frame" onchange="resetPlots()">
+				<option value="1">15 Minutes</option>
+				<option value="2"> 6 Hours</option>
+				<option value="3">24 Hours</option>
+				<option value="4">30 Days</option>
+				<option value="5"> 1 Year</option>
+			</select>
+		</div>
+
+		<div id="control_column_container">
+			<div id="plot1_control_column">
+				<div><span id="plot1_title">Plot 1</span></div>
+				<div><select id="plot1_type" onchange="resetPlots()"><option value="total">Total Bandwidth</option><option value="hostname">Hostname</option><option value="ip">IP</option><option value="hostname">Hostname</option><option value="ip">IP</option></select></div>
+				<div><select id="plot1_id" onchange="resetPlots()"></select></div>
+
+			</div>
+			<div id="plot2_control_column">
+				<div><span id="plot2_title">Plot 2</span></div>
+				<div><select id="plot2_type" onchange="resetPlots()"><option value="none">None</option><option value="hostname">Hostname</option><option value="ip">IP</option><option value="hostname">Hostname</option><option value="ip">IP</option></select></div>
+				<div><select id="plot2_id" onchange="resetPlots()"></select></div>
+			</div>
+			<div id="plot3_control_column">
+				<div><span id="plot3_title">Plot 3</span></div>
+				<div><select id="plot3_type" onchange="resetPlots()"><option value="none">None</option><option value="hostname">Hostname</option><option value="ip">IP</option><option value="hostname">Hostname</option><option value="ip">IP</option></select></div>
+				<div><select id="plot3_id" onchange="resetPlots()"></select></div>
+			</div>
+		</div>
+		
+		<div>
+			<input id="use_high_res_15m" onclick="highResChanged()" type="checkbox">&nbsp;
+			<label id="use_high_res_15m_label" for="use_high_res_15m">Save High Resolution 15 Minute Timeframe Data For All Hosts</label>
+			<br>
+			<em>Not recommended for routers with &lt; 32MB of RAM</em>
+		</div>
+
+		<br>All bandwidth usage reported is via the WAN interface only.  
+		<br>Traffic between local hosts is not reported.
+	</fieldset>
+	
+	<fieldset id="bandwidth_graphs">
+		<legend class="sectionheader">Bandwidth Graphs</legend>
+		<span class="bandwidth_title_text"><strong>Download</strong> (<span onclick='expand("Download")' class="pseudo_link">expand</span>)</span>
+		<span class="bandwidth_title_text"><strong>Upload</strong> (<span onclick='expand("Upload")' class="pseudo_link">expand</span>)</span>
+		<br>
+		<embed id="download_plot" style="margin-left: 0px; margin-right: 5px; float: left; width: 240px; height: 180px;" src="bandwidth.svg" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/">	
+		<embed id="upload_plot" style="margin-left: 0px; margin-right: 5px; float: left; width: 240px; height: 180px;" src="bandwidth.svg" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/">
+		<br>	
+		<span class="bandwidth_title_text"><strong>Total</strong> (<span onclick='expand("Total")' class="pseudo_link">expand</span>)</span>
+		<br>
+		<embed id="total_plot" style="margin-left: 0px; width: 480px; height: 360px;" src="bandwidth.svg" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/">
+	</fieldset>
+	<fieldset id="total_bandwidth_use">
+		<legend class="sectionheader">Bandwidth Usage Table</legend>
+		<div>
+			<label for="table_time_frame" class="narrowleftcolumn" id="table_time_frame_label">Display Interval:</label>
+			<select id="table_time_frame" class="rightcolumn" onchange="resetPlots()">
+				<option value="1">Minutes</option>
+				<option value="2">Quarter Hours</option>
+				<option value="3">Hours</option>
+				<option value="4">Days</option>
+				<option value="5">Months</option>
+			</select>
+		</div>
+		<div>
+			<label for="table_type" class="narrowleftcolumn" id="total_type_label">Display Type:</label>
+			<select id="table_type" class="rightcolumn" onchange="resetPlots()">
+				<option value="total">Total Bandwidth</option>
+			<option value="hostname">Hostname</option><option value="ip">IP</option><option value="hostname">Hostname</option><option value="ip">IP</option></select>
+		</div>
+		<div id="table_id_container" style="display: none;">
+			<label for="table_id" class="narrowleftcolumn" id="total_id_label">Display Id:</label>
+			<select id="table_id" class="rightcolumn" onchange="resetPlots()"></select>
+		</div>
+		<div class="bottom_gap">
+			<label for="table_units" class="narrowleftcolumn" id="table_units_label">Table Units:</label>
+			<select id="table_units" class="rightcolumn" onchange="resetPlots()">
+				<option value="mixed">Auto (Mixed)</option>
+				<option value="KBytes">KBytes</option>
+				<option value="MBytes">MBytes</option>
+				<option value="GBytes">GBytes</option>
+				<option value="TBytes">TBytes</option>
+			</select>
+		</div>
+
+		<div id="bandwidth_table_container"></div>
+
+	</fieldset>
+
+	<fieldset id="download_bandwidth_data">
+		<legend class="sectionheader">Download Bandwidth Data</legend>
+		<div>
+			<span style="text-decoration: underline;">Data is comma separated:</span>
+			<br>
+			<em>[Direction],[Interval Length],[Intervals Saved],[IP],[Interval Start],[Interval End],[Bytes Used]</em>
+			<br>
+		</div>
+		<div>
+			<center><input id="download_data_button" class="big_button" value="Download Now" onclick='window.location="bandwidth.csv";' type="button"></center>
+		</div>
+	</fieldset>
+</form>
+
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	initializePlotsAndTable();
+//-->
+</script>
+
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_selected_divider_end1"></div>
+					<div class="nav_selected_end1">
+						<div class="nav_selected_container_end1">
+							<div class="selected_header">Status</div>
+							<div id="submenu_container">
+								<a indepth="true" href="index.html">Overview</a>
+								<div class="submenu_selected">Bandwidth Usage</div>
+								<a indepth="true" href="bandwidth_distribution.html">B/W Distribution</a>
+								<a indepth="true" href="webmon.html">Web Usage</a>
+								<a indepth="true" href="hosts.html">Connected Hosts</a>
+								<a indepth="true" href="conntrack.html">Connection List</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

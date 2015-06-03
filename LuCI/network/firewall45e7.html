@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/firewall?tab.firewall.cfg02f50e=general by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.32 0.15 0.04
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../uci/changes/index07d6.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fnetwork%2ffirewall">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network active">
+				<a href="index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-network">
+				<a href="network/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-wireless">
+				<a href="wireless/index.html">Wi-Fi</a>
+			</li>
+		
+			<li class="tabmenu-item-vlan">
+				<a href="vlan/index.html">Switch</a>
+			</li>
+		
+			<li class="tabmenu-item-dhcpleases">
+				<a href="dhcpleases/index.html">DHCP Leases</a>
+			</li>
+		
+			<li class="tabmenu-item-hosts">
+				<a href="hosts/index.html">Noms d&#39;hôtes</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="routes/index.html">Routes statiques</a>
+			</li>
+		
+			<li class="tabmenu-item-diagnostics">
+				<a href="diagnostics/index.html">Diagnostics</a>
+			</li>
+		
+			<li class="tabmenu-item-firewall active">
+				<a href="firewall/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-multiwan">
+				<a href="multiwan/index.html">Multi-WAN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-firewall">
+	<h2><a id="content" name="content">Pare-Feu</a></h2>
+	<div class="cbi-map-descr">Le pare-feu crée des zones sur les interfaces réseau pour contrôler le flux du trafic réseau.</div>
+<fieldset class="cbi-section" id="cbi-firewall-defaults">
+	
+	<div class="cbi-section-descr"></div>
+	
+
+
+		
+	<ul class="cbi-tabmenu">
+
+		<script type="text/javascript">cbi_c['container.firewall.cfg02f50e.general'] = 5;</script>
+		<li id="tab.firewall.cfg02f50e.general" class="cbi-tab">
+			<a onclick="this.blur(); return cbi_t_switch('firewall.cfg02f50e', 'general')" href="firewall45e7.html?tab.firewall.cfg02f50e=general">General Settings</a>
+			<input type="hidden" id="tab.firewall.cfg02f50e" name="tab.firewall.cfg02f50e" value="general" />
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.firewall.cfg02f50e.custom'] = 1;</script>
+		<li id="tab.firewall.cfg02f50e.custom" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('firewall.cfg02f50e', 'custom')" href="firewall69d6.html?tab.firewall.cfg02f50e=custom">Custom Rules</a>
+			
+		</li>
+	</ul>
+
+
+		<fieldset class="cbi-section-node" id="cbi-firewall-cfg02f50e">
+			
+
+
+	
+	<div class="cbi-tabcontainer" id="container.firewall.cfg02f50e.general">
+		
+		<div class="cbi-value" id="cbi-firewall-cfg02f50e-syn_flood"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e.syn_flood">Activer la protection contre le SYN-flood</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg02f50e.syn_flood" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg02f50e.syn_flood" name="cbid.firewall.cfg02f50e.syn_flood" value="1" checked="checked" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-firewall-cfg02f50e-drop_invalid"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e.drop_invalid">Ignorer les paquets invalides</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg02f50e.drop_invalid" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg02f50e.drop_invalid" name="cbid.firewall.cfg02f50e.drop_invalid" value="1" checked="checked" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-firewall-cfg02f50e-input"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e.input">Entrée</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg02f50e.input" name="cbid.firewall.cfg02f50e.input" size="1">
+	<option id="cbi-firewall-cfg02f50e-input-REJECT" value="REJECT">rejeter</option><option id="cbi-firewall-cfg02f50e-input-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg02f50e-input-ACCEPT" value="ACCEPT" selected="selected">accepter</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-firewall-cfg02f50e-output"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e.output">Sortie</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg02f50e.output" name="cbid.firewall.cfg02f50e.output" size="1">
+	<option id="cbi-firewall-cfg02f50e-output-REJECT" value="REJECT">rejeter</option><option id="cbi-firewall-cfg02f50e-output-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg02f50e-output-ACCEPT" value="ACCEPT" selected="selected">accepter</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-firewall-cfg02f50e-forward"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e.forward">Transfert</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg02f50e.forward" name="cbid.firewall.cfg02f50e.forward" size="1">
+	<option id="cbi-firewall-cfg02f50e-forward-REJECT" value="REJECT" selected="selected">rejeter</option><option id="cbi-firewall-cfg02f50e-forward-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg02f50e-forward-ACCEPT" value="ACCEPT">accepter</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('firewall.cfg02f50e', 'general')</script>
+
+	<div class="cbi-tabcontainer" id="container.firewall.cfg02f50e.custom" style="display:none">
+		
+		<div class="cbi-value" id="cbi-firewall-cfg02f50e-_custom"><label class="cbi-value-title" for="cbid.firewall.cfg02f50e._custom">Custom Rules (/etc/firewall.user)</label>
+		<div class="cbi-value-field">
+
+	<textarea class="cbi-input-textarea"  style="width: 100%" onchange="cbi_d_update(this.id)" name="cbid.firewall.cfg02f50e._custom" id="cbid.firewall.cfg02f50e._custom" rows="20"># This file is interpreted as shell script.
+# Put your custom iptables rules here, they will
+# be executed with each firewall (re-)start.
+
+</textarea>
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('firewall.cfg02f50e', 'custom')</script>
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br />
+
+	
+
+	
+</fieldset>
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-firewall-zone">
+	<legend>Zones</legend>
+<div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Zone ⇒ Forwardings</th><th class="cbi-section-table-cell">Entrée</th><th class="cbi-section-table-cell">Sortie</th><th class="cbi-section-table-cell">Transfert</th><th class="cbi-section-table-cell">Masquerading</th><th class="cbi-section-table-cell">MSS clamping</th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-firewall-cfg04e8f0">
+				
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-_info">
+
+
+
+<div style="padding:0.5em">
+	<label style="background-color:#90f090; padding:0.4em">
+		<strong>lan:</strong>
+		
+			&nbsp;<span style="background-color:#FFFFFF; border:1px solid #CCCCCC; padding:2px">lan:
+				<img title="Ethernet Switch: &#34;eth0.1&#34;" style="width:16px; height:16px; vertical-align:middle" src="../luci-static/resources/icons/switch.png" />
+			
+				<img title="Créer un réseau: Master &#34;OpenWrt&#34;" style="width:16px; height:16px; vertical-align:middle" src="../luci-static/resources/icons/wifi_disabled.png" />
+			
+				<img title="Créer un réseau: Master &#34;OpenWrt&#34;" style="width:16px; height:16px; vertical-align:middle" src="../luci-static/resources/icons/wifi_disabled.png" />
+			
+			
+			</span>
+		
+		
+	</label>
+	&nbsp;&rArr;&nbsp;
+	
+		<label style="background-color:#f09090; padding:0.4em">
+			<strong>wan</strong>
+		</label>&nbsp;
+	
+	
+</div>
+
+
+</div>
+<div id="cbip-firewall-cfg04e8f0-_info"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-input">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg04e8f0.input" name="cbid.firewall.cfg04e8f0.input" size="1">
+	<option id="cbi-firewall-cfg04e8f0-input-REJECT" value="REJECT">rejeter</option><option id="cbi-firewall-cfg04e8f0-input-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg04e8f0-input-ACCEPT" value="ACCEPT" selected="selected">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg04e8f0-input"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-output">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg04e8f0.output" name="cbid.firewall.cfg04e8f0.output" size="1">
+	<option id="cbi-firewall-cfg04e8f0-output-REJECT" value="REJECT">rejeter</option><option id="cbi-firewall-cfg04e8f0-output-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg04e8f0-output-ACCEPT" value="ACCEPT" selected="selected">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg04e8f0-output"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-forward">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg04e8f0.forward" name="cbid.firewall.cfg04e8f0.forward" size="1">
+	<option id="cbi-firewall-cfg04e8f0-forward-REJECT" value="REJECT" selected="selected">rejeter</option><option id="cbi-firewall-cfg04e8f0-forward-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg04e8f0-forward-ACCEPT" value="ACCEPT">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg04e8f0-forward"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-masq">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg04e8f0.masq" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg04e8f0.masq" name="cbid.firewall.cfg04e8f0.masq" value="1" />
+</div>
+<div id="cbip-firewall-cfg04e8f0-masq"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg04e8f0-mtu_fix">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg04e8f0.mtu_fix" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg04e8f0.mtu_fix" name="cbid.firewall.cfg04e8f0.mtu_fix" value="1" />
+</div>
+<div id="cbip-firewall-cfg04e8f0-mtu_fix"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px"><a href="firewall/zones/cfg04e8f0.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.firewall.cfg04e8f0" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-firewall-cfg062fd8">
+				
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-_info">
+
+
+
+<div style="padding:0.5em">
+	<label style="background-color:#f09090; padding:0.4em">
+		<strong>wan:</strong>
+		
+			&nbsp;<span style="background-color:#FFFFFF; border:1px solid #CCCCCC; padding:2px">wan:
+				<img title="Ethernet Adapter: &#34;eth1&#34;" style="width:16px; height:16px; vertical-align:middle" src="../luci-static/resources/icons/ethernet.png" />
+			
+			
+			</span>
+		
+		
+	</label>
+	&nbsp;&rArr;&nbsp;
+	
+	
+		<label style="border:1px dashed #AAAAAA; color:#AAAAAA; padding:0.3em">
+			<strong><small><em>REJECT</em></small></strong>
+		</label>
+	
+</div>
+
+
+</div>
+<div id="cbip-firewall-cfg062fd8-_info"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-input">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg062fd8.input" name="cbid.firewall.cfg062fd8.input" size="1">
+	<option id="cbi-firewall-cfg062fd8-input-REJECT" value="REJECT" selected="selected">rejeter</option><option id="cbi-firewall-cfg062fd8-input-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg062fd8-input-ACCEPT" value="ACCEPT">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg062fd8-input"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-output">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg062fd8.output" name="cbid.firewall.cfg062fd8.output" size="1">
+	<option id="cbi-firewall-cfg062fd8-output-REJECT" value="REJECT">rejeter</option><option id="cbi-firewall-cfg062fd8-output-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg062fd8-output-ACCEPT" value="ACCEPT" selected="selected">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg062fd8-output"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-forward">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.firewall.cfg062fd8.forward" name="cbid.firewall.cfg062fd8.forward" size="1">
+	<option id="cbi-firewall-cfg062fd8-forward-REJECT" value="REJECT" selected="selected">rejeter</option><option id="cbi-firewall-cfg062fd8-forward-DROP" value="DROP">ignorer</option><option id="cbi-firewall-cfg062fd8-forward-ACCEPT" value="ACCEPT">accepter</option>
+	</select>
+
+</div>
+<div id="cbip-firewall-cfg062fd8-forward"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-masq">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg062fd8.masq" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg062fd8.masq" name="cbid.firewall.cfg062fd8.masq" value="1" checked="checked" />
+</div>
+<div id="cbip-firewall-cfg062fd8-masq"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg062fd8-mtu_fix">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.firewall.cfg062fd8.mtu_fix" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.firewall.cfg062fd8.mtu_fix" name="cbid.firewall.cfg062fd8.mtu_fix" value="1" checked="checked" />
+</div>
+<div id="cbip-firewall-cfg062fd8-mtu_fix"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px"><a href="firewall/zones/cfg062fd8.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.firewall.cfg062fd8" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.firewall.zone" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-firewall-redirect">
+	<legend>Redirections</legend>
+<input type="hidden" id="cbi.sts.firewall.redirect" name="cbi.sts.firewall.redirect" value="" /><div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Nom</th><th class="cbi-section-table-cell">Protocole</th><th class="cbi-section-table-cell">Source</th><th class="cbi-section-table-cell">Via</th><th class="cbi-section-table-cell">Destination</th><th class="cbi-section-table-cell">Action</th><th class="cbi-section-table-cell">Sort</th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row">
+				<td colspan="7"><em><br />Cette section ne contient pas encore de valeur</em></td>
+			</tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.firewall.redirect" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-firewall-rule">
+	<legend>Règles</legend>
+<input type="hidden" id="cbi.sts.firewall.rule" name="cbi.sts.firewall.rule" value="" /><div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Nom</th><th class="cbi-section-table-cell">Family</th><th class="cbi-section-table-cell">Protocole</th><th class="cbi-section-table-cell">Source</th><th class="cbi-section-table-cell">Destination</th><th class="cbi-section-table-cell">Action</th><th class="cbi-section-table-cell">Sort</th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-firewall-cfg0a9ba6">
+				
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-_name">
+
+
+-
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6._name" value="-" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-_name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-family">
+
+
+IPv4 only
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6.family" value="IPv4 only" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-family"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-proto">
+
+
+UDP
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6.proto" value="UDP" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-proto"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-src">
+
+
+wan:0.0.0.0/0:*
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6.src" value="wan:0.0.0.0/0:*" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-src"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-dest">
+
+
+Equipement:0.0.0.0/0:68
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6.dest" value="Equipement:0.0.0.0/0:68" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-dest"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0a9ba6-target">
+
+
+ACCEPT
+
+<input type="hidden" id="cbid.firewall.cfg0a9ba6.target" value="ACCEPT" />
+</div>
+<div id="cbip-firewall-cfg0a9ba6-target"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+						<a href="#" onclick="return cbi_row_swap(this, true,  'cbi.sts.firewall.rule')" title="Move up"><img src="../luci-static/resources/cbi/up.gif" alt="Move up" /></a>
+						<a href="#" onclick="return cbi_row_swap(this, false, 'cbi.sts.firewall.rule')" title="Move down"><img src="../luci-static/resources/cbi/down.gif" alt="Move down" /></a>
+					</td><td class="cbi-section-table-cell" style="width:50px"><a href="firewall/rule/cfg0a9ba6.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.firewall.cfg0a9ba6" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-firewall-cfg0c0a5e">
+				
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-_name">
+
+
+-
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e._name" value="-" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-_name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-family">
+
+
+IPv4 and IPv6
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e.family" value="IPv4 and IPv6" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-family"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-proto">
+
+
+ICMP (echo-request)
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e.proto" value="ICMP (echo-request)" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-proto"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-src">
+
+
+wan:0.0.0.0/0:*
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e.src" value="wan:0.0.0.0/0:*" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-src"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-dest">
+
+
+Equipement:0.0.0.0/0:*
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e.dest" value="Equipement:0.0.0.0/0:*" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-dest"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-firewall-cfg0c0a5e-target">
+
+
+ACCEPT
+
+<input type="hidden" id="cbid.firewall.cfg0c0a5e.target" value="ACCEPT" />
+</div>
+<div id="cbip-firewall-cfg0c0a5e-target"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+						<a href="#" onclick="return cbi_row_swap(this, true,  'cbi.sts.firewall.rule')" title="Move up"><img src="../luci-static/resources/cbi/up.gif" alt="Move up" /></a>
+						<a href="#" onclick="return cbi_row_swap(this, false, 'cbi.sts.firewall.rule')" title="Move down"><img src="../luci-static/resources/cbi/down.gif" alt="Move down" /></a>
+					</td><td class="cbi-section-table-cell" style="width:50px"><a href="firewall/rule/cfg0c0a5e.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.firewall.cfg0c0a5e" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.firewall.rule" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/firewall?tab.firewall.cfg02f50e=general by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

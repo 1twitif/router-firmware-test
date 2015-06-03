@@ -1,0 +1,3670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/processes/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Processus - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.14 0.10 0.03
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system active">
+				<a href="../index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-packages">
+				<a href="../packages/index.html">Logiciels</a>
+			</li>
+		
+			<li class="tabmenu-item-passwd">
+				<a href="../passwd/index.html">Mot de passe administrateur</a>
+			</li>
+		
+			<li class="tabmenu-item-sshkeys">
+				<a href="../sshkeys/index.html">Clés SSH </a>
+			</li>
+		
+			<li class="tabmenu-item-processes active">
+				<a href="index.html">Processus</a>
+			</li>
+		
+			<li class="tabmenu-item-leds">
+				<a href="../leds/index.html">Configuration des LED s</a>
+			</li>
+		
+			<li class="tabmenu-item-backup">
+				<a href="../backup/index.html">Sauvegarder / Restaurer</a>
+			</li>
+		
+			<li class="tabmenu-item-upgrade">
+				<a href="../upgrade/index.html">Flash Firmware</a>
+			</li>
+		
+			<li class="tabmenu-item-reboot">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Redémarrage</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" action="javascript:alert('Indisponible dans cette copie d\'interface');">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+	</div>
+
+	<div class="cbi-map" id="cbi-processes">
+		<h2><a id="content" name="content">Processus</a></h2>
+		<div class="cbi-map-descr">Cette liste donne une vue d'ensemble des processus en exécution et leur statut.</div>
+		<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-table-table">
+	
+<div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">PID</th><th class="cbi-section-table-cell">Propriétaire</th><th class="cbi-section-table-cell">Commande</th><th class="cbi-section-table-cell">Utilisation CPU (%)</th><th class="cbi-section-table-cell">Utilisation Mémoire (%)</th><th class="cbi-section-table-cell">Signal (HUP)</th><th class="cbi-section-table-cell">Terminer</th><th class="cbi-section-table-cell">Tuer</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-1">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1-PID">
+
+
+1
+
+<input type="hidden" id="cbid.table.1.PID" value="1" />
+</div>
+<div id="cbip-table-1-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1.USER" value="root" />
+</div>
+<div id="cbip-table-1-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-COMMAND">
+
+
+init
+
+<input type="hidden" id="cbid.table.1.COMMAND" value="init" />
+</div>
+<div id="cbip-table-1-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1._hup" id="cbid.table.1._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1._term" id="cbid.table.1._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1._kill" id="cbid.table.1._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-2">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-2-PID">
+
+
+2
+
+<input type="hidden" id="cbid.table.2.PID" value="2" />
+</div>
+<div id="cbip-table-2-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.2.USER" value="root" />
+</div>
+<div id="cbip-table-2-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-COMMAND">
+
+
+[kthreadd]
+
+<input type="hidden" id="cbid.table.2.COMMAND" value="[kthreadd]" />
+</div>
+<div id="cbip-table-2-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.2.%CPU" value="0%" />
+</div>
+<div id="cbip-table-2-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.2.%MEM" value="0%" />
+</div>
+<div id="cbip-table-2-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.2._hup" id="cbid.table.2._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-2-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.2._term" id="cbid.table.2._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-2-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-2-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.2._kill" id="cbid.table.2._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-2-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-3">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-3-PID">
+
+
+3
+
+<input type="hidden" id="cbid.table.3.PID" value="3" />
+</div>
+<div id="cbip-table-3-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.3.USER" value="root" />
+</div>
+<div id="cbip-table-3-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-COMMAND">
+
+
+[ksoftirqd/0]
+
+<input type="hidden" id="cbid.table.3.COMMAND" value="[ksoftirqd/0]" />
+</div>
+<div id="cbip-table-3-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.3.%CPU" value="0%" />
+</div>
+<div id="cbip-table-3-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.3.%MEM" value="0%" />
+</div>
+<div id="cbip-table-3-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.3._hup" id="cbid.table.3._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-3-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.3._term" id="cbid.table.3._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-3-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-3-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.3._kill" id="cbid.table.3._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-3-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-4">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-4-PID">
+
+
+4
+
+<input type="hidden" id="cbid.table.4.PID" value="4" />
+</div>
+<div id="cbip-table-4-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.4.USER" value="root" />
+</div>
+<div id="cbip-table-4-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-COMMAND">
+
+
+[events/0]
+
+<input type="hidden" id="cbid.table.4.COMMAND" value="[events/0]" />
+</div>
+<div id="cbip-table-4-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.4.%CPU" value="0%" />
+</div>
+<div id="cbip-table-4-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.4.%MEM" value="0%" />
+</div>
+<div id="cbip-table-4-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.4._hup" id="cbid.table.4._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-4-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.4._term" id="cbid.table.4._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-4-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.4._kill" id="cbid.table.4._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-4-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-5">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-5-PID">
+
+
+5
+
+<input type="hidden" id="cbid.table.5.PID" value="5" />
+</div>
+<div id="cbip-table-5-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.5.USER" value="root" />
+</div>
+<div id="cbip-table-5-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-COMMAND">
+
+
+[khelper]
+
+<input type="hidden" id="cbid.table.5.COMMAND" value="[khelper]" />
+</div>
+<div id="cbip-table-5-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.5.%CPU" value="0%" />
+</div>
+<div id="cbip-table-5-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.5.%MEM" value="0%" />
+</div>
+<div id="cbip-table-5-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.5._hup" id="cbid.table.5._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-5-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.5._term" id="cbid.table.5._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-5-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-5-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.5._kill" id="cbid.table.5._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-5-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-8">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-8-PID">
+
+
+8
+
+<input type="hidden" id="cbid.table.8.PID" value="8" />
+</div>
+<div id="cbip-table-8-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.8.USER" value="root" />
+</div>
+<div id="cbip-table-8-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-COMMAND">
+
+
+[async/mgr]
+
+<input type="hidden" id="cbid.table.8.COMMAND" value="[async/mgr]" />
+</div>
+<div id="cbip-table-8-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.8.%CPU" value="0%" />
+</div>
+<div id="cbip-table-8-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.8.%MEM" value="0%" />
+</div>
+<div id="cbip-table-8-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.8._hup" id="cbid.table.8._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-8-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.8._term" id="cbid.table.8._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-8-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-8-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.8._kill" id="cbid.table.8._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-8-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-40">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-40-PID">
+
+
+40
+
+<input type="hidden" id="cbid.table.40.PID" value="40" />
+</div>
+<div id="cbip-table-40-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.40.USER" value="root" />
+</div>
+<div id="cbip-table-40-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-COMMAND">
+
+
+[sync_supers]
+
+<input type="hidden" id="cbid.table.40.COMMAND" value="[sync_supers]" />
+</div>
+<div id="cbip-table-40-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.40.%CPU" value="0%" />
+</div>
+<div id="cbip-table-40-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.40.%MEM" value="0%" />
+</div>
+<div id="cbip-table-40-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.40._hup" id="cbid.table.40._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-40-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.40._term" id="cbid.table.40._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-40-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.40._kill" id="cbid.table.40._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-40-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-42">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-42-PID">
+
+
+42
+
+<input type="hidden" id="cbid.table.42.PID" value="42" />
+</div>
+<div id="cbip-table-42-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.42.USER" value="root" />
+</div>
+<div id="cbip-table-42-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-COMMAND">
+
+
+[bdi-default]
+
+<input type="hidden" id="cbid.table.42.COMMAND" value="[bdi-default]" />
+</div>
+<div id="cbip-table-42-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.42.%CPU" value="0%" />
+</div>
+<div id="cbip-table-42-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.42.%MEM" value="0%" />
+</div>
+<div id="cbip-table-42-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.42._hup" id="cbid.table.42._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-42-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.42._term" id="cbid.table.42._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-42-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-42-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.42._kill" id="cbid.table.42._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-42-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-44">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-44-PID">
+
+
+44
+
+<input type="hidden" id="cbid.table.44.PID" value="44" />
+</div>
+<div id="cbip-table-44-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.44.USER" value="root" />
+</div>
+<div id="cbip-table-44-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-COMMAND">
+
+
+[kblockd/0]
+
+<input type="hidden" id="cbid.table.44.COMMAND" value="[kblockd/0]" />
+</div>
+<div id="cbip-table-44-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.44.%CPU" value="0%" />
+</div>
+<div id="cbip-table-44-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.44.%MEM" value="0%" />
+</div>
+<div id="cbip-table-44-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.44._hup" id="cbid.table.44._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-44-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.44._term" id="cbid.table.44._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-44-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-44-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.44._kill" id="cbid.table.44._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-44-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-74">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-74-PID">
+
+
+74
+
+<input type="hidden" id="cbid.table.74.PID" value="74" />
+</div>
+<div id="cbip-table-74-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.74.USER" value="root" />
+</div>
+<div id="cbip-table-74-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-COMMAND">
+
+
+[kswapd0]
+
+<input type="hidden" id="cbid.table.74.COMMAND" value="[kswapd0]" />
+</div>
+<div id="cbip-table-74-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.74.%CPU" value="0%" />
+</div>
+<div id="cbip-table-74-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.74.%MEM" value="0%" />
+</div>
+<div id="cbip-table-74-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.74._hup" id="cbid.table.74._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-74-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.74._term" id="cbid.table.74._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-74-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-74-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.74._kill" id="cbid.table.74._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-74-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-75">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-75-PID">
+
+
+75
+
+<input type="hidden" id="cbid.table.75.PID" value="75" />
+</div>
+<div id="cbip-table-75-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.75.USER" value="root" />
+</div>
+<div id="cbip-table-75-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-COMMAND">
+
+
+[aio/0]
+
+<input type="hidden" id="cbid.table.75.COMMAND" value="[aio/0]" />
+</div>
+<div id="cbip-table-75-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.75.%CPU" value="0%" />
+</div>
+<div id="cbip-table-75-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.75.%MEM" value="0%" />
+</div>
+<div id="cbip-table-75-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.75._hup" id="cbid.table.75._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-75-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.75._term" id="cbid.table.75._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-75-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-75-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.75._kill" id="cbid.table.75._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-75-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-76">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-76-PID">
+
+
+76
+
+<input type="hidden" id="cbid.table.76.PID" value="76" />
+</div>
+<div id="cbip-table-76-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.76.USER" value="root" />
+</div>
+<div id="cbip-table-76-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-COMMAND">
+
+
+[crypto/0]
+
+<input type="hidden" id="cbid.table.76.COMMAND" value="[crypto/0]" />
+</div>
+<div id="cbip-table-76-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.76.%CPU" value="0%" />
+</div>
+<div id="cbip-table-76-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.76.%MEM" value="0%" />
+</div>
+<div id="cbip-table-76-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.76._hup" id="cbid.table.76._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-76-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.76._term" id="cbid.table.76._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-76-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-76-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.76._kill" id="cbid.table.76._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-76-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-88">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-88-PID">
+
+
+88
+
+<input type="hidden" id="cbid.table.88.PID" value="88" />
+</div>
+<div id="cbip-table-88-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.88.USER" value="root" />
+</div>
+<div id="cbip-table-88-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-COMMAND">
+
+
+[ar71xx-spi]
+
+<input type="hidden" id="cbid.table.88.COMMAND" value="[ar71xx-spi]" />
+</div>
+<div id="cbip-table-88-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.88.%CPU" value="0%" />
+</div>
+<div id="cbip-table-88-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.88.%MEM" value="0%" />
+</div>
+<div id="cbip-table-88-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.88._hup" id="cbid.table.88._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-88-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.88._term" id="cbid.table.88._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-88-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-88-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.88._kill" id="cbid.table.88._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-88-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-95">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-95-PID">
+
+
+95
+
+<input type="hidden" id="cbid.table.95.PID" value="95" />
+</div>
+<div id="cbip-table-95-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.95.USER" value="root" />
+</div>
+<div id="cbip-table-95-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-COMMAND">
+
+
+[mtdblockd]
+
+<input type="hidden" id="cbid.table.95.COMMAND" value="[mtdblockd]" />
+</div>
+<div id="cbip-table-95-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.95.%CPU" value="0%" />
+</div>
+<div id="cbip-table-95-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.95.%MEM" value="0%" />
+</div>
+<div id="cbip-table-95-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.95._hup" id="cbid.table.95._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-95-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.95._term" id="cbid.table.95._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-95-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.95._kill" id="cbid.table.95._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-95-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-246">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-246-PID">
+
+
+246
+
+<input type="hidden" id="cbid.table.246.PID" value="246" />
+</div>
+<div id="cbip-table-246-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.246.USER" value="root" />
+</div>
+<div id="cbip-table-246-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-COMMAND">
+
+
+[ipolldevd]
+
+<input type="hidden" id="cbid.table.246.COMMAND" value="[ipolldevd]" />
+</div>
+<div id="cbip-table-246-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.246.%CPU" value="0%" />
+</div>
+<div id="cbip-table-246-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.246.%MEM" value="0%" />
+</div>
+<div id="cbip-table-246-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.246._hup" id="cbid.table.246._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-246-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.246._term" id="cbid.table.246._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-246-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-246-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.246._kill" id="cbid.table.246._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-246-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-307">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-307-PID">
+
+
+307
+
+<input type="hidden" id="cbid.table.307.PID" value="307" />
+</div>
+<div id="cbip-table-307-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.307.USER" value="root" />
+</div>
+<div id="cbip-table-307-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-COMMAND">
+
+
+init
+
+<input type="hidden" id="cbid.table.307.COMMAND" value="init" />
+</div>
+<div id="cbip-table-307-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.307.%CPU" value="0%" />
+</div>
+<div id="cbip-table-307-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.307.%MEM" value="2%" />
+</div>
+<div id="cbip-table-307-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.307._hup" id="cbid.table.307._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-307-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.307._term" id="cbid.table.307._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-307-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-307-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.307._kill" id="cbid.table.307._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-307-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-391">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-391-PID">
+
+
+391
+
+<input type="hidden" id="cbid.table.391.PID" value="391" />
+</div>
+<div id="cbip-table-391-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.391.USER" value="root" />
+</div>
+<div id="cbip-table-391-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-COMMAND">
+
+
+syslogd -C16
+
+<input type="hidden" id="cbid.table.391.COMMAND" value="syslogd -C16" />
+</div>
+<div id="cbip-table-391-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.391.%CPU" value="0%" />
+</div>
+<div id="cbip-table-391-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.391.%MEM" value="2%" />
+</div>
+<div id="cbip-table-391-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.391._hup" id="cbid.table.391._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-391-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.391._term" id="cbid.table.391._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-391-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-391-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.391._kill" id="cbid.table.391._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-391-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-393">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-393-PID">
+
+
+393
+
+<input type="hidden" id="cbid.table.393.PID" value="393" />
+</div>
+<div id="cbip-table-393-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.393.USER" value="root" />
+</div>
+<div id="cbip-table-393-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-COMMAND">
+
+
+klogd
+
+<input type="hidden" id="cbid.table.393.COMMAND" value="klogd" />
+</div>
+<div id="cbip-table-393-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.393.%CPU" value="0%" />
+</div>
+<div id="cbip-table-393-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.393.%MEM" value="2%" />
+</div>
+<div id="cbip-table-393-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.393._hup" id="cbid.table.393._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-393-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.393._term" id="cbid.table.393._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-393-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-393-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.393._kill" id="cbid.table.393._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-393-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-407">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-407-PID">
+
+
+407
+
+<input type="hidden" id="cbid.table.407.PID" value="407" />
+</div>
+<div id="cbip-table-407-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.407.USER" value="root" />
+</div>
+<div id="cbip-table-407-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-COMMAND">
+
+
+/sbin/hotplug2 --override --persisten
+
+<input type="hidden" id="cbid.table.407.COMMAND" value="/sbin/hotplug2 --override --persisten" />
+</div>
+<div id="cbip-table-407-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.407.%CPU" value="0%" />
+</div>
+<div id="cbip-table-407-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-%MEM">
+
+
+1%
+
+<input type="hidden" id="cbid.table.407.%MEM" value="1%" />
+</div>
+<div id="cbip-table-407-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.407._hup" id="cbid.table.407._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-407-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.407._term" id="cbid.table.407._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-407-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-407-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.407._kill" id="cbid.table.407._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-407-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-567">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-567-PID">
+
+
+567
+
+<input type="hidden" id="cbid.table.567.PID" value="567" />
+</div>
+<div id="cbip-table-567-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.567.USER" value="root" />
+</div>
+<div id="cbip-table-567-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-COMMAND">
+
+
+[cfg80211]
+
+<input type="hidden" id="cbid.table.567.COMMAND" value="[cfg80211]" />
+</div>
+<div id="cbip-table-567-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.567.%CPU" value="0%" />
+</div>
+<div id="cbip-table-567-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.567.%MEM" value="0%" />
+</div>
+<div id="cbip-table-567-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.567._hup" id="cbid.table.567._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-567-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.567._term" id="cbid.table.567._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-567-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-567-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.567._kill" id="cbid.table.567._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-567-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-600">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-600-PID">
+
+
+600
+
+<input type="hidden" id="cbid.table.600.PID" value="600" />
+</div>
+<div id="cbip-table-600-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.600.USER" value="root" />
+</div>
+<div id="cbip-table-600-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-COMMAND">
+
+
+[khubd]
+
+<input type="hidden" id="cbid.table.600.COMMAND" value="[khubd]" />
+</div>
+<div id="cbip-table-600-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.600.%CPU" value="0%" />
+</div>
+<div id="cbip-table-600-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.600.%MEM" value="0%" />
+</div>
+<div id="cbip-table-600-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.600._hup" id="cbid.table.600._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-600-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.600._term" id="cbid.table.600._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-600-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-600-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.600._kill" id="cbid.table.600._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-600-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-666">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-666-PID">
+
+
+666
+
+<input type="hidden" id="cbid.table.666.PID" value="666" />
+</div>
+<div id="cbip-table-666-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.666.USER" value="root" />
+</div>
+<div id="cbip-table-666-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-COMMAND">
+
+
+[phy0]
+
+<input type="hidden" id="cbid.table.666.COMMAND" value="[phy0]" />
+</div>
+<div id="cbip-table-666-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.666.%CPU" value="0%" />
+</div>
+<div id="cbip-table-666-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.666.%MEM" value="0%" />
+</div>
+<div id="cbip-table-666-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.666._hup" id="cbid.table.666._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-666-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.666._term" id="cbid.table.666._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-666-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-666-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.666._kill" id="cbid.table.666._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-666-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-673">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-673-PID">
+
+
+673
+
+<input type="hidden" id="cbid.table.673.PID" value="673" />
+</div>
+<div id="cbip-table-673-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.673.USER" value="root" />
+</div>
+<div id="cbip-table-673-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-COMMAND">
+
+
+[phy1]
+
+<input type="hidden" id="cbid.table.673.COMMAND" value="[phy1]" />
+</div>
+<div id="cbip-table-673-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.673.%CPU" value="0%" />
+</div>
+<div id="cbip-table-673-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.673.%MEM" value="0%" />
+</div>
+<div id="cbip-table-673-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.673._hup" id="cbid.table.673._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-673-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.673._term" id="cbid.table.673._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-673-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-673-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.673._kill" id="cbid.table.673._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-673-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-1100">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1100-PID">
+
+
+1100
+
+<input type="hidden" id="cbid.table.1100.PID" value="1100" />
+</div>
+<div id="cbip-table-1100-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1100.USER" value="root" />
+</div>
+<div id="cbip-table-1100-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-COMMAND">
+
+
+telnetd -l /bin/login.sh
+
+<input type="hidden" id="cbid.table.1100.COMMAND" value="telnetd -l /bin/login.sh" />
+</div>
+<div id="cbip-table-1100-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1100.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1100-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1100.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1100-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1100._hup" id="cbid.table.1100._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1100-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1100._term" id="cbid.table.1100._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1100-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1100-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1100._kill" id="cbid.table.1100._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1100-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-1130">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1130-PID">
+
+
+1130
+
+<input type="hidden" id="cbid.table.1130.PID" value="1130" />
+</div>
+<div id="cbip-table-1130-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-USER">
+
+
+nobody
+
+<input type="hidden" id="cbid.table.1130.USER" value="nobody" />
+</div>
+<div id="cbip-table-1130-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-COMMAND">
+
+
+/usr/sbin/dnsmasq -K -D -y -Z -b -E -
+
+<input type="hidden" id="cbid.table.1130.COMMAND" value="/usr/sbin/dnsmasq -K -D -y -Z -b -E -" />
+</div>
+<div id="cbip-table-1130-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1130.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1130-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-%MEM">
+
+
+1%
+
+<input type="hidden" id="cbid.table.1130.%MEM" value="1%" />
+</div>
+<div id="cbip-table-1130-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1130._hup" id="cbid.table.1130._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1130-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1130._term" id="cbid.table.1130._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1130-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1130-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1130._kill" id="cbid.table.1130._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1130-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-1158">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1158-PID">
+
+
+1158
+
+<input type="hidden" id="cbid.table.1158.PID" value="1158" />
+</div>
+<div id="cbip-table-1158-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1158.USER" value="root" />
+</div>
+<div id="cbip-table-1158-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-COMMAND">
+
+
+udhcpc -t 0 -i eth1 -b -p /var/run/dh
+
+<input type="hidden" id="cbid.table.1158.COMMAND" value="udhcpc -t 0 -i eth1 -b -p /var/run/dh" />
+</div>
+<div id="cbip-table-1158-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1158.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1158-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1158.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1158-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1158._hup" id="cbid.table.1158._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1158-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1158._term" id="cbid.table.1158._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1158-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1158-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1158._kill" id="cbid.table.1158._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1158-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-1159">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1159-PID">
+
+
+1159
+
+<input type="hidden" id="cbid.table.1159.PID" value="1159" />
+</div>
+<div id="cbip-table-1159-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1159.USER" value="root" />
+</div>
+<div id="cbip-table-1159-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-COMMAND">
+
+
+[jffs2_gcd_mtd4]
+
+<input type="hidden" id="cbid.table.1159.COMMAND" value="[jffs2_gcd_mtd4]" />
+</div>
+<div id="cbip-table-1159-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1159.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1159-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-%MEM">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1159.%MEM" value="0%" />
+</div>
+<div id="cbip-table-1159-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1159._hup" id="cbid.table.1159._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1159-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1159._term" id="cbid.table.1159._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1159-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1159-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1159._kill" id="cbid.table.1159._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1159-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-1194">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1194-PID">
+
+
+1194
+
+<input type="hidden" id="cbid.table.1194.PID" value="1194" />
+</div>
+<div id="cbip-table-1194-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1194.USER" value="root" />
+</div>
+<div id="cbip-table-1194-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-COMMAND">
+
+
+watchdog -t 5 /dev/watchdog
+
+<input type="hidden" id="cbid.table.1194.COMMAND" value="watchdog -t 5 /dev/watchdog" />
+</div>
+<div id="cbip-table-1194-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1194.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1194-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1194.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1194-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1194._hup" id="cbid.table.1194._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1194-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1194._term" id="cbid.table.1194._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1194-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1194-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1194._kill" id="cbid.table.1194._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1194-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-1204">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1204-PID">
+
+
+1204
+
+<input type="hidden" id="cbid.table.1204.PID" value="1204" />
+</div>
+<div id="cbip-table-1204-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1204.USER" value="root" />
+</div>
+<div id="cbip-table-1204-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-COMMAND">
+
+
+/usr/sbin/dropbear -P /var/run/dropbe
+
+<input type="hidden" id="cbid.table.1204.COMMAND" value="/usr/sbin/dropbear -P /var/run/dropbe" />
+</div>
+<div id="cbip-table-1204-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1204.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1204-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1204.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1204-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1204._hup" id="cbid.table.1204._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1204-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1204._term" id="cbid.table.1204._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1204-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1204-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1204._kill" id="cbid.table.1204._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1204-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-1821">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-1821-PID">
+
+
+1821
+
+<input type="hidden" id="cbid.table.1821.PID" value="1821" />
+</div>
+<div id="cbip-table-1821-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.1821.USER" value="root" />
+</div>
+<div id="cbip-table-1821-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-COMMAND">
+
+
+/usr/sbin/uhttpd -f -h /www -r OpenWr
+
+<input type="hidden" id="cbid.table.1821.COMMAND" value="/usr/sbin/uhttpd -f -h /www -r OpenWr" />
+</div>
+<div id="cbip-table-1821-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.1821.%CPU" value="0%" />
+</div>
+<div id="cbip-table-1821-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.1821.%MEM" value="2%" />
+</div>
+<div id="cbip-table-1821-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.1821._hup" id="cbid.table.1821._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-1821-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.1821._term" id="cbid.table.1821._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-1821-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-1821-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.1821._kill" id="cbid.table.1821._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-1821-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-4051">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-4051-PID">
+
+
+4051
+
+<input type="hidden" id="cbid.table.4051.PID" value="4051" />
+</div>
+<div id="cbip-table-4051-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.4051.USER" value="root" />
+</div>
+<div id="cbip-table-4051-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-COMMAND">
+
+
+/usr/bin/lua /www/cgi-bin/luci
+
+<input type="hidden" id="cbid.table.4051.COMMAND" value="/usr/bin/lua /www/cgi-bin/luci" />
+</div>
+<div id="cbip-table-4051-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.4051.%CPU" value="0%" />
+</div>
+<div id="cbip-table-4051-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-%MEM">
+
+
+5%
+
+<input type="hidden" id="cbid.table.4051.%MEM" value="5%" />
+</div>
+<div id="cbip-table-4051-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.4051._hup" id="cbid.table.4051._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-4051-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.4051._term" id="cbid.table.4051._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-4051-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4051-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.4051._kill" id="cbid.table.4051._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-4051-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-4066">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-4066-PID">
+
+
+4066
+
+<input type="hidden" id="cbid.table.4066.PID" value="4066" />
+</div>
+<div id="cbip-table-4066-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.4066.USER" value="root" />
+</div>
+<div id="cbip-table-4066-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-COMMAND">
+
+
+sh -c top -bn1
+
+<input type="hidden" id="cbid.table.4066.COMMAND" value="sh -c top -bn1" />
+</div>
+<div id="cbip-table-4066-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-%CPU">
+
+
+0%
+
+<input type="hidden" id="cbid.table.4066.%CPU" value="0%" />
+</div>
+<div id="cbip-table-4066-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.4066.%MEM" value="2%" />
+</div>
+<div id="cbip-table-4066-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.4066._hup" id="cbid.table.4066._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-4066-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.4066._term" id="cbid.table.4066._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-4066-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4066-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.4066._kill" id="cbid.table.4066._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-4066-_kill"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-4067">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-4067-PID">
+
+
+4067
+
+<input type="hidden" id="cbid.table.4067.PID" value="4067" />
+</div>
+<div id="cbip-table-4067-PID"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-USER">
+
+
+root
+
+<input type="hidden" id="cbid.table.4067.USER" value="root" />
+</div>
+<div id="cbip-table-4067-USER"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-COMMAND">
+
+
+top -bn1
+
+<input type="hidden" id="cbid.table.4067.COMMAND" value="top -bn1" />
+</div>
+<div id="cbip-table-4067-COMMAND"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-%CPU">
+
+
+9%
+
+<input type="hidden" id="cbid.table.4067.%CPU" value="9%" />
+</div>
+<div id="cbip-table-4067-%CPU"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-%MEM">
+
+
+2%
+
+<input type="hidden" id="cbid.table.4067.%MEM" value="2%" />
+</div>
+<div id="cbip-table-4067-%MEM"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-_hup">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.4067._hup" id="cbid.table.4067._hup" value="Signal (HUP)" />
+	
+</div>
+<div id="cbip-table-4067-_hup"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-_term">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.4067._term" id="cbid.table.4067._term" value="Terminer" />
+	
+</div>
+<div id="cbip-table-4067-_term"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-4067-_kill">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.4067._kill" id="cbid.table.4067._kill" value="Tuer" />
+	
+</div>
+<div id="cbip-table-4067-_kill"></div>
+</td>
+
+
+
+</tr></table>
+
+		
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+		<br />
+	</div>
+	
+
+	<div>
+
+
+
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div>
+</form>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/processes/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="connlimits.js"></script>
+
+<link rel="stylesheet" type="text/css" href="connlimits.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="connlimits_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="connlimits_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+var maxConnections = 4096;
+var tcpTimeout = 600;
+var udpTimeout = 180;
+
+</script>
+
+
+<fieldset>
+	<legend class="sectionheader">Connection Limits</legend>
+	<div>
+		<label class="narrowleftcolumn" for="max_connections" id="max_connections_label">Max Connections:</label>
+		<input value="4096" class="rightcolumn" onkeyup="proofreadNumericRange(this,1,16384)" id="max_connections" size="10" maxlength="5" type="text">
+		<em>(max 16384)</em>
+	</div>
+	<div>
+		<label class="narrowleftcolumn" for="tcp_timeout" id="tcp_timeout_label">TCP Timeout:</label>
+		<input value="600" class="rightcolumn" onkeyup="proofreadNumericRange(this,1,3600)" id="tcp_timeout" size="10" maxlength="4" type="text">
+		<em>seconds (max 3600)</em>
+	</div>
+	<div>
+		<label class="narrowleftcolumn" for="udp_timeout" id="udp_timeout_label">UDP Timeout:</label>
+		<input value="180" class="rightcolumn" onkeyup="proofreadNumericRange(this,1,3600)" id="udp_timeout" size="10" maxlength="4" type="text">
+		<em>seconds (max 3600)</em>
+	</div>
+</fieldset>
+<div id="bottom_button_container">
+	<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+	<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+</div>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Firewall</div>
+							<div id="submenu_container">
+								<a indepth="true" href="port_forwarding.html">Port Forwarding</a>
+								<div class="submenu_selected">Connection Limits</div>
+								<a indepth="true" href="restriction.html">Restrictions</a>
+								<a indepth="true" href="quotas.html">Quotas</a>
+								<a indepth="true" href="qos_upload.html">QoS (Upload)</a>
+								<a indepth="true" href="qos_download.html">QoS (Download)</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/dhcpleases/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - DHCP Leases - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.26 0.13 0.04
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../../uci/changes/indexcb3f.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fnetwork%2fdhcpleases">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network active">
+				<a href="../index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-network">
+				<a href="../network/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-wireless">
+				<a href="../wireless/index.html">Wi-Fi</a>
+			</li>
+		
+			<li class="tabmenu-item-vlan">
+				<a href="../vlan/index.html">Switch</a>
+			</li>
+		
+			<li class="tabmenu-item-dhcpleases active">
+				<a href="index.html">DHCP Leases</a>
+			</li>
+		
+			<li class="tabmenu-item-hosts">
+				<a href="../hosts/index.html">Noms d&#39;hôtes</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Routes statiques</a>
+			</li>
+		
+			<li class="tabmenu-item-diagnostics">
+				<a href="../diagnostics/index.html">Diagnostics</a>
+			</li>
+		
+			<li class="tabmenu-item-firewall">
+				<a href="../firewall/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-multiwan">
+				<a href="../multiwan/index.html">Multi-WAN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-dhcp">
+	<h2><a id="content" name="content">DHCP Leases</a></h2>
+	<div class="cbi-map-descr">Static leases are used to assign fixed IP addresses and symbolic hostnames to DHCP clients. They are also required for non-dynamic interface configurations where only hosts with a corresponding lease are served.</div>
+<script type="text/javascript">//<![CDATA[
+	var stxhr = new XHR();
+	var update_status = function() {
+		stxhr.get('/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/dhcplease_status', null,
+			function(x, st)
+			{
+				var tb = document.getElementById('lease_status_table');
+				if (st && tb)
+				{
+					/* clear all rows */
+					while( tb.rows.length > 1 )
+						tb.deleteRow(1);
+
+					for( var i = 0; i < st.length; i++ )
+					{
+						var timestr;
+
+						if (st[i].expires <= 0)
+						{
+							timestr = '<em>expired</em>';
+						}
+						else
+						{
+							timestr = String.format('%t', st[i].expires);
+						}
+
+						var tr = tb.insertRow(-1);
+							tr.className = 'cbi-section-table-row cbi-rowstyle-' + ((i % 2) + 1);
+
+						tr.insertCell(-1).innerHTML = st[i].hostname ? st[i].hostname : '?';
+						tr.insertCell(-1).innerHTML = st[i].ipaddr;
+						tr.insertCell(-1).innerHTML = st[i].macaddr;
+						tr.insertCell(-1).innerHTML = timestr;
+					}
+
+					if( tb.rows.length == 1 )
+					{
+						var tr = tb.insertRow(-1);
+							tr.className = 'cbi-section-table-row';
+
+						var td = tr.insertCell(-1);
+							td.colSpan = 4;
+							td.innerHTML = '<em><br />There are no active leases.</em>';
+					}
+				}
+
+				window.setTimeout(update_status, 5000);
+			}
+		)
+	};
+
+	update_status();
+//]]></script>
+
+<fieldset class="cbi-section">
+	<legend>Baux actifs</legend>
+	<table class="cbi-section-table" id="lease_status_table">
+		<tr class="cbi-section-table-titles">
+			<th class="cbi-section-table-cell">Nom d&#39;hôte</th>
+			<th class="cbi-section-table-cell">IPv4-Address</th>
+			<th class="cbi-section-table-cell">MAC-Address</th>
+			<th class="cbi-section-table-cell">Durée de validité</th>
+		</tr>
+		<tr class="cbi-section-table-row">
+			<td colspan="4"><em><br />Collecting data...</em></td>
+		</tr>
+	</table>
+</fieldset>
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-dhcp-host">
+	<legend>Baux Statiques</legend>
+<div class="cbi-section-descr">Use the <em>Add</em> Button to add a new lease entry. The <em>MAC-Address</em> indentifies the host, the <em>IPv4-Address</em> specifies to the fixed address to use and the <em>Hostname</em> is assigned as symbolic name to the requesting host.</div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Nom d'hôte</th><th class="cbi-section-table-cell">Adresse <abbr title="Media Access Control">MAC</abbr></th><th class="cbi-section-table-cell">Adresse <abbr title="Internet Protocol Version 4">IPv4</abbr></th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row">
+				<td colspan="4"><em><br />Cette section ne contient pas encore de valeur</em></td>
+			</tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.dhcp.host" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/dhcpleases/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

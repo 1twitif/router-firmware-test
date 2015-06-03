@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="usb_storage.js"></script>
+
+<link rel="stylesheet" type="text/css" href="usb_storage.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="usb_storage_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="usb_storage_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+	uciOriginal.set('nfsd', 'cfg0225b3', '', "nfsshare");
+	uciOriginal.set('nfsd', 'cfg0225b3', 'read_only', "1");
+	uciOriginal.set('nfsd', 'cfg0225b3', 'sync', "1");
+	uciOriginal.set('nfsd', 'cfg0225b3', 'insecure', "1");
+	uciOriginal.set('nfsd', 'cfg0225b3', 'subtree_check', "0");
+	uciOriginal.set('nfsd', 'cfg0225b3', 'allowed_hosts', "*");
+	uciOriginal.set('samba', 'cfg024de2', '', "samba");
+	uciOriginal.set('samba', 'cfg024de2', 'workgroup', "Mshome");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+var driveSizes = [];
+var storageDrives = [];
+var physicalDrives = [];
+
+//-->
+</script>
+
+
+
+<fieldset style="display: none;" id="shared_disks">
+	<legend class="sectionheader">Shared Disks</legend>
+	
+	<div id="cifs_workgroup_container">
+		<label id="cifs_workgroup_label" class="leftcolumn" for="cifs_workgroup">CIFS Workgroup:</label>
+		<input value="" id="cifs_workgroup" class="rightcolumn" size="30" type="text">
+	</div>
+
+	
+	<div id="cifs_policy_container">
+		<label id="cifs_policy_label" class="leftcolumn">CIFS Access Policy:</label>
+		<select class="rightcolumn" id="cifs_policy" onchange="setPolicyVisibility()">
+			<option value="share">Allow Anonymous Access</option>
+			<option value="user">Require User &amp; Password</option>
+		</select>
+	</div>
+	<div class="rightcolumnonly" id="cifs_user_container">
+		<label id="cifs_user_label" for="cifs_user" style="float: left; width: 100px;">User:</label>
+		<input value="" id="cifs_user" type="text">
+	</div>
+	<div class="rightcolumnonly" style="margin-bottom: 20px;" id="cifs_pass_container">
+		<label id="cifs_pass_label" for="cifs_pass" style="float: left; width: 100px;">Password:</label>
+		<input value="" id="cifs_pass" type="text">
+	</div>
+	<div id="nfs_policy_container">
+		<label id="nfs_policy_label" class="leftcolumn">NFS Access Policy:</label>
+		<select class="rightcolumn" id="nfs_policy" onchange="setPolicyVisibility()">
+			<option value="share">Allow Anonymous Access</option>
+			<option value="ip">Allow Only The Following IPs</option>
+		</select>
+	</div>
+
+	<div id="nfs_ip_container">
+		<div class="rightcolumnonly" id="nfs_ip_table_container"></div>
+		<div class="rightcolumnonly">
+			<input value="" id="nfs_ip" size="30" onkeyup="proofreadIp(this)" type="text">
+			<input class="default_button" id="add_nfs_ip" value="Add" onclick='addAddressesToTable(document,"nfs_ip","nfs_ip_table_container","nfs_ip_table",false, 2, true, 250)' type="button">
+		</div>
+		<div class="rightcolumnonly">
+			<em>Specify an IP or Subnet</em>
+		</div>
+	</div>
+
+	<div id="sharing_add_heading_container">
+		<span class="nocolumn" style="text-decoration: underline;">Add Shared Disk:</span>
+	</div>
+	<div id="sharing_add_controls_container" class="indent">
+		<div id="share_disk_container">
+	<label class="leftcolumn" id="share_disk_label" for="share_disk">Disk:</label>
+	<select class="rightcolumn" id="share_disk"></select>
+	<span class="rightcolumn" id="share_disk_text"></span>
+</div>
+<div id="select_share_type_container">
+	<label class="leftcolumn" id="share_type_label" for="share_type">Share Type:</label>
+	<select class="rightcolumn" id="share_type" onchange="setNfsPath(this.ownerDocument)">
+		<option value="samba">CIFS</option>
+		<option value="nfs">NFS</option>
+		<option value="samba+nfs">CIFS+NFS</option>
+	</select>
+	<br>
+</div>
+<div id="share_access_container">
+	<label class="leftcolumn" id="share_access_label" for="share_access">Access Type:</label>
+	<select class="rightcolumn" id="share_access">
+		<option value="ro">Read Only</option>
+		<option value="rw">Read/Write</option>
+	</select>
+</div>
+<div id="share_name_container">
+	<label class="leftcolumn" id="share_name_label" for="share_name">Name:</label>
+	<input value="" class="rightcolumn" id="share_name" onkeyup="setNfsPath(this.ownerDocument)" type="text">
+</div>
+<div id="nfs_path_container">
+	<label class="leftcolumn" id="nfs_path_label" for="nfs_path">NFS Path:</label>
+	<span class="rightcolumn" id="nfs_path"></span>
+</div>
+
+		<div>
+			<input id="add_share_button" class="default_button" value="Add Shared Disk" onclick="addNewShare()" type="button">
+		</div>
+	</div>
+	<div class="internal_divider"></div>
+	<div id="sharing_current_heading_container">
+		<span class="nocolumn" style="text-decoration: underline;">Currently Shared Disks:</span>
+	</div>
+	<div id="sharing_mount_table_container">
+	</div>
+</fieldset>
+
+<fieldset id="no_disks" style="display: block;">
+	<legend class="sectionheader">Shared Disks</legend>
+	No USB disks connected.
+</fieldset>
+
+<div style="display: none;" id="bottom_button_container">
+	<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+	<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+</div>
+
+
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">System</div>
+							<div id="submenu_container">
+								<a indepth="true" href="access.html">Router Access</a>
+								<a indepth="true" href="identification.html">Identification</a>
+								<a indepth="true" href="time.html">Time</a>
+								<div class="submenu_selected">USB Storage</div>
+								<a href="backup.html">Backup / Restore</a>
+								<a indepth="true" href="update.html">Update Firmware</a>
+								<a href="reboot.html">Reboot</a>
+								<a indepth="true" href="about.html">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/wireless_join?device=radio0 by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.25 0.12 0.04
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network active">
+				<a href="index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-network">
+				<a href="network/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-wireless">
+				<a href="wireless/index.html">Wi-Fi</a>
+			</li>
+		
+			<li class="tabmenu-item-vlan">
+				<a href="vlan/index.html">Switch</a>
+			</li>
+		
+			<li class="tabmenu-item-dhcpleases">
+				<a href="dhcpleases/index.html">DHCP Leases</a>
+			</li>
+		
+			<li class="tabmenu-item-hosts">
+				<a href="hosts/index.html">Noms d&#39;hôtes</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="routes/index.html">Routes statiques</a>
+			</li>
+		
+			<li class="tabmenu-item-diagnostics">
+				<a href="diagnostics/index.html">Diagnostics</a>
+			</li>
+		
+			<li class="tabmenu-item-firewall">
+				<a href="firewall/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-multiwan">
+				<a href="multiwan/index.html">Multi-WAN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+
+<h2><a id="content" name="content">Join Network: Wireless Scan</a></h2>
+
+<div class="cbi-map">
+	<fieldset class="cbi-section">
+		<table class="cbi-section-table" style="empty-cells:hide">
+			<!-- scan list -->
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -66 dB / Quality: 44/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>62%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Bbox-19DCD6</strong></big><br />
+					<strong>Channel:</strong> 1 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:21:86:49:A4:2D |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Bbox-19DCD6" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:21:86:49:A4:2D" />
+						<input type="hidden" name="channel" value="1" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -89 dB / Quality: 21/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>30%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>NEUF_6024</strong></big><br />
+					<strong>Channel:</strong> 1 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:17:33:BE:60:28 |
+					<strong>Encryption:</strong> WPA PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="NEUF_6024" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:17:33:BE:60:28" />
+						<input type="hidden" name="channel" value="1" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -89 dB / Quality: 21/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>30%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Bbox-E8C878</strong></big><br />
+					<strong>Channel:</strong> 1 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1F:9F:E7:40:8F |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Bbox-E8C878" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1F:9F:E7:40:8F" />
+						<input type="hidden" name="channel" value="1" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -72 dB / Quality: 38/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>54%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>NUMERICABLE-E43A</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> C0:3F:0E:D5:72:90 |
+					<strong>Encryption:</strong> WPA PSK (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="NUMERICABLE-E43A" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="C0:3F:0E:D5:72:90" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -77 dB / Quality: 33/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>47%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Bbox-58E5DA</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1F:9F:EF:EF:FD |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Bbox-58E5DA" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1F:9F:EF:EF:FD" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -75 dB / Quality: 35/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>50%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>NUMERICABLE-C1F7</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1A:2B:19:EE:C6 |
+					<strong>Encryption:</strong> WPA PSK (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="NUMERICABLE-C1F7" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1A:2B:19:EE:C6" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -69 dB / Quality: 41/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>58%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>open-network</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:C0:49:53:18:B8 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="open-network" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:C0:49:53:18:B8" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -82 dB / Quality: 28/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>40%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>NUMERICABLE-27F0</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1A:2B:3B:E8:E3 |
+					<strong>Encryption:</strong> WPA PSK (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="NUMERICABLE-27F0" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1A:2B:3B:E8:E3" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -87 dB / Quality: 23/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>32%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Livebox-2ad9</strong></big><br />
+					<strong>Channel:</strong> 6 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1D:6A:64:68:99 |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Livebox-2ad9" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1D:6A:64:68:99" />
+						<input type="hidden" name="channel" value="6" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -59 dB / Quality: 51/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>72%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong><em>hidden</em></strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> E2:7C:CD:FC:C1:75 |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="E2:7C:CD:FC:C1:75" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CCMP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -60 dB / Quality: 50/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>71%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong><em>hidden</em></strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 96:5C:A3:85:A3:AC |
+					<strong>Encryption:</strong> WPA2 PSK (CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="96:5C:A3:85:A3:AC" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="2" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="CCMP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -59 dB / Quality: 51/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>72%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>FreeWifi</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 96:5C:A3:85:A3:AE |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="FreeWifi" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="96:5C:A3:85:A3:AE" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -59 dB / Quality: 51/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>72%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>freephonie</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 96:5C:A3:85:A3:AF |
+					<strong>Encryption:</strong> WPA 802.1X (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="freephonie" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="96:5C:A3:85:A3:AF" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="802.1X" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -65 dB / Quality: 45/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>64%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Livebox-7247</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:1D:6A:A7:02:0C |
+					<strong>Encryption:</strong> WPA PSK (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Livebox-7247" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:1D:6A:A7:02:0C" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -56 dB / Quality: 54/70">
+						<img src="../luci-static/resources/icons/signal-75-100.png" /><br />
+						<small>77%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>FreeWifi</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> E2:7C:CD:FC:C1:76 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="FreeWifi" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="E2:7C:CD:FC:C1:76" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -58 dB / Quality: 52/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>74%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>freephonie</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> E2:7C:CD:FC:C1:77 |
+					<strong>Encryption:</strong> WPA PSK/802.1X (TKIP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="freephonie" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="E2:7C:CD:FC:C1:77" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="802.1X" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -58 dB / Quality: 52/70">
+						<img src="../luci-static/resources/icons/signal-50-75.png" /><br />
+						<small>74%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong><em>hidden</em></strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 96:5C:A3:85:A3:AD |
+					<strong>Encryption:</strong> mixed WPA/WPA2 PSK (CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="96:5C:A3:85:A3:AD" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="3" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="CCMP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -74 dB / Quality: 36/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>51%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>Neuf WiFi</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:25:15:B9:FD:31 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="Neuf WiFi" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:25:15:B9:FD:31" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -72 dB / Quality: 38/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>54%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>SFR WiFi Public</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:25:15:B9:FD:32 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="SFR WiFi Public" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:25:15:B9:FD:32" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -73 dB / Quality: 37/70">
+						<img src="../luci-static/resources/icons/signal-25-50.png" /><br />
+						<small>52%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>NEUF_FD2C</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 00:25:15:B9:FD:30 |
+					<strong>Encryption:</strong> WPA PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="NEUF_FD2C" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="00:25:15:B9:FD:30" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -88 dB / Quality: 22/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>31%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>cejefree</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 9A:A2:63:D5:E9:64 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="cejefree" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="9A:A2:63:D5:E9:64" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="1" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-2">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -86 dB / Quality: 24/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>34%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>alexetarmelle</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> B2:5D:9E:21:9B:D4 |
+					<strong>Encryption:</strong> WPA PSK (TKIP, CCMP)
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="alexetarmelle" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="B2:5D:9E:21:9B:D4" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="1" />
+						<input type="hidden" name="wpa_suites" value="PSK" />
+						<input type="hidden" name="wpa_group" value="TKIP" />
+						<input type="hidden" name="wpa_group" value="CKIP" />
+						<input type="hidden" name="wpa_pairwise" value="TKIP" />
+						<input type="hidden" name="wpa_pairwise" value="CCMP" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<tr class="cbi-section-table-row cbi-rowstyle-1">
+				<td class="cbi-value-field" style="width:16px; padding:3px">
+					<abbr title="Signal: -89 dB / Quality: 21/70">
+						<img src="../luci-static/resources/icons/signal-0-25.png" /><br />
+						<small>30%</small>
+					</abbr>
+				</td>
+				<td class="cbi-value-field" style="vertical-align:middle; text-align:left; padding:3px">
+					<big><strong>FreeWifi</strong></big><br />
+					<strong>Channel:</strong> 11 |
+					<strong>Mode:</strong> Master |
+					<strong>BSSID:</strong> 9A:A2:63:D5:E9:66 |
+					<strong>Encryption:</strong> None
+				</td>
+				<td class="cbi-value-field" style="width:40px">
+					<form action="javascript:alert('Indisponible dans cette copie d\'interface');" method="post">
+						<input type="hidden" name="device" value="radio0" />
+						<input type="hidden" name="join" value="FreeWifi" />
+						<input type="hidden" name="mode" value="Master" />
+						<input type="hidden" name="bssid" value="9A:A2:63:D5:E9:66" />
+						<input type="hidden" name="channel" value="11" />
+						<input type="hidden" name="wep" value="0" />
+						
+						<input type="hidden" name="wpa_version" value="0" />
+						
+
+						<input type="hidden" name="clbridge" value="0" />
+
+						<input class="cbi-button-apply" type="submit" value="Réseau" />
+					</form>
+				</td>
+			</tr>
+			
+			<!-- /scan list -->
+		</table>
+	</fieldset>
+</div>
+<div class="cbi-page-actions right">
+	<form class="inline" action="javascript:alert('Indisponible dans cette copie d\'interface');" method="get">
+		<input class="cbi-button-reset" type="submit" value="Back to overview" />
+	</form>
+	<form class="inline" action="javascript:alert('Indisponible dans cette copie d\'interface');" method="get">
+		<input type="hidden" name="device" value="radio0" />
+		<input class="cbi-input-find" type="submit" value="Repeat scan" />
+	</form>
+</div>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/wireless_join?device=radio0 by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

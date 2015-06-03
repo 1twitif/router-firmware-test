@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="time.js"></script>
+
+<link rel="stylesheet" type="text/css" href="time.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="time_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="time_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('ntpclient', 'cfg02df36', '', "ntpserver");
+	uciOriginal.set('ntpclient', 'cfg02df36', 'hostname', "0.pool.ntp.org");
+	uciOriginal.set('ntpclient', 'cfg02df36', 'port', "123");
+	uciOriginal.set('ntpclient', 'cfg04d9b7', '', "ntpserver");
+	uciOriginal.set('ntpclient', 'cfg04d9b7', 'hostname', "1.pool.ntp.org");
+	uciOriginal.set('ntpclient', 'cfg04d9b7', 'port', "123");
+	uciOriginal.set('ntpclient', 'cfg06d438', '', "ntpserver");
+	uciOriginal.set('ntpclient', 'cfg06d438', 'hostname', "2.pool.ntp.org");
+	uciOriginal.set('ntpclient', 'cfg06d438', 'port', "123");
+	uciOriginal.set('ntpclient', 'cfg08fb6e', '', "ntpdrift");
+	uciOriginal.set('ntpclient', 'cfg08fb6e', 'freq', "0");
+	uciOriginal.set('ntpclient', 'cfg0a7444', '', "ntpclient");
+	uciOriginal.set('ntpclient', 'cfg0a7444', 'interval', "3600");
+	uciOriginal.set('system', 'cfg02b282', '', "system");
+	uciOriginal.set('system', 'cfg02b282', 'hostname', "Gargoyle");
+	uciOriginal.set('system', 'cfg02b282', 'timezone', "CET-1CEST,M3.5.0/2,M10.5.0/3");
+	uciOriginal.set('system', 'cfg04e10c', '', "rdate");
+	uciOriginal.set('system', 'cfg04e10c', 'server', "ac-ntp0.net.cmu.edu ptbtime1.ptb.de ac-ntp1.net.cmu.edu ntp.xs4all.nl ptbtime2.ptb.de cudns.cit.cornell.edu ptbtime3.ptb.de");
+	uciOriginal.set('system', 'wan_led', '', "led");
+	uciOriginal.set('system', 'wan_led', 'sysfs', "wndr3700:green:wan");
+	uciOriginal.set('system', 'wan_led', 'name', "WAN LED (green)");
+	uciOriginal.set('system', 'wan_led', 'default', "0");
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+<script>
+<!--
+var timezoneLines = new Array();
+timezoneLines.push("\"UTC-12:00 Kwajalein\"								\"UTC12\"					\"oceania\"");
+timezoneLines.push("\"UTC-11:00 Midway Island, Samoa\"						\"UTC11\"					\"oceania\"");
+timezoneLines.push("\"UTC-10:00 Hawaii\"								\"UTC10\"					\"us\"");
+timezoneLines.push("\"UTC-09:00 Alaska\"								\"NAST9NADT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-08:00 Pacific Time\"							\"PST8PDT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-07:00 Arizona\"								\"UTC7\"					\"us\"");
+timezoneLines.push("\"UTC-07:00 Mountain Time\"							\"MST7MDT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-06:00 Mexico\"								\"UTC6\"					\"north-america\"");
+timezoneLines.push("\"UTC-06:00 Central Time\"							\"CST6CDT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-05:00 Colombia, Panama\"							\"UTC5\"					\"south-america\"");
+timezoneLines.push("\"UTC-05:00 Eastern Time\"							\"EST5EDT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-04:00 Bolivia, Venezuela\"							\"UTC4\"					\"south-america\"");
+timezoneLines.push("\"UTC-04:00 Atlantic Time\"							\"AST4ADT,M3.2.0/2,M11.1.0/2\"		\"us\"");
+timezoneLines.push("\"UTC-04:00 Brazil West\"								\"BRWST4BRWDT,M10.3.0/0,M2.5.0/0\"	\"south-america\"");
+timezoneLines.push("\"UTC-03:30 Newfoundland\"							\"NST3:30NDT,M3.2.0/0:01,M11.1.0/0:01\"	\"north-america\"");
+timezoneLines.push("\"UTC-03:00 Greenland\"								\"WGST3WGDT,M3.5.6/22,M10.5.6/23\"	\"north-america\"");
+timezoneLines.push("\"UTC-03:00 Brazil East\"								\"BRST3BRDT,M10.3.0/0,M2.5.0/0\"		\"south-america\"");
+timezoneLines.push("\"UTC-03:00 Guyana\"								\"UTC3\"					\"south-america\"");
+timezoneLines.push("\"UTC-02:00 Mid-Atlantic\"							\"UTC2\"					\"north-america\"");
+timezoneLines.push("\"UTC-01:00 Azores\"								\"STD1DST,M3.5.0/2,M10.5.0/2\"		\"europe\"");
+timezoneLines.push("\"UTC+00:00 Gambia, Liberia, Morocco\"						\"UTC0\"					\"africa\"");
+timezoneLines.push("\"UTC+00:00 England\"								\"GMT0BST,M3.5.0/2,M10.5.0/2\"		\"europe\"");
+timezoneLines.push("\"UTC+01:00 Tunisia\"								\"UTC-1\"					\"africa\"");
+timezoneLines.push("\"UTC+01:00 France, Germany, Italy\"						\"CET-1CEST,M3.5.0/2,M10.5.0/3\"		\"europe\"");
+timezoneLines.push("\"UTC+02:00 South Africa\"							\"UTC-2\"					\"africa\"");
+timezoneLines.push("\"UTC+02:00 Greece, Ukraine, Romania, Turkey\"					\"STD-2DST,M3.5.0/2,M10.5.0/2\"		\"europe\"");
+timezoneLines.push("\"UTC+03:00 Iraq, Jordan, Kuwait\"						\"UTC-3\"					\"asia\"");
+timezoneLines.push("\"UTC+03:00 Finland\"								\"EET-2EEST-3,M3.5.0/3,M10.5.0/4\"	\"europe\"");
+timezoneLines.push("\"UTC+04:00 Armenia\"								\"UTC-4\"					\"europe\"");
+timezoneLines.push("\"UTC+05:00 Pakistan, Russia\"							\"UTC-5\"					\"asia\"");
+timezoneLines.push("\"UTC+05:30 Bombay, Calcutta, Madras, New Delhi\"					\"UTC-5:30\"				\"asia\"");
+timezoneLines.push("\"UTC+06:00 Bangladesh, Russia\"							\"UTC-6\"					\"asia\"");
+timezoneLines.push("\"UTC+07:00 Thailand, Russia\"							\"UTC-7\"					\"asia\"");
+timezoneLines.push("\"UTC+08:00 China, Hong Kong, Singapore, Taiwan, Russia\"				\"UTC-8\"					\"asia\"");
+timezoneLines.push("\"UTC+08:00 Australia, Western Australia\"					\"AWST-8\"				\"oceania\"");
+timezoneLines.push("\"UTC+08:45 Australia, Eucla, Eyre Highway\"					\"UTC-8:45\"				\"oceania\"");
+timezoneLines.push("\"UTC+09:00 Japan, Korea\"							\"UTC-9\"					\"asia\"");
+timezoneLines.push("\"UTC+09:30 Australia, Northern Territory\"					\"ACST-9:30\"				\"oceania\"");
+timezoneLines.push("\"UTC+09:30 Australia, South Australia\"						\"ACST-9:30ACDT,M10.1.0/2,M4.1.0/3\"	\"oceania\"");
+timezoneLines.push("\"UTC+10:00 Australia, Queensland\"						\"AEST-10\"				\"oceania\"");
+timezoneLines.push("\"UTC+10:00 Australia, New South Wales, Victoria, Tasmania\"			\"AEST-10AEDT-11,M10.1.0/2,M4.1.0/3\"	\"oceania\"");
+timezoneLines.push("\"UTC+10:00 Guam, Russia\"							\"UTC-10\"				\"oceania\"");
+timezoneLines.push("\"UTC+11:00 Solomon Islands\"							\"UTC-11\"				\"oceania\"");
+timezoneLines.push("\"UTC+12:00 Fiji\"								\"UTC-12\"				\"oceania\"");
+timezoneLines.push("\"UTC+12:00 New Zealand\"								\"NZST-12NZDT,M9.5.0/2,M4.1.0/3\"		\"oceania\"");
+var timezoneData = parseTimezones(timezoneLines);
+var currentTime = "02/23/11 11:13 CET";
+
+//-->
+</script>
+
+
+<form action="http://192.168.1.1/time.sh">
+	<fieldset>
+		<legend class="sectionheader">Time</legend>
+	
+		<div>
+			<label id="current_time_label" for="timezone">Current Date &amp; Time:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<span id="current_time">02/23/11 11:13 CET</span>
+		</div>
+				
+		<div class="internal_divider"></div>
+
+		<div>
+			<label class="nocolumn" id="timezone_label" for="timezone">Time Zone:</label>
+		</div>
+		<div class="indent">
+			<div><select class="nocolumn" id="timezone" onchange="timezoneChanged()"><option value="UTC12">UTC-12:00 Kwajalein</option><option value="UTC11">UTC-11:00 Midway Island, Samoa</option><option value="UTC10">UTC-10:00 Hawaii</option><option value="NAST9NADT,M3.2.0/2,M11.1.0/2">UTC-09:00 Alaska</option><option value="PST8PDT,M3.2.0/2,M11.1.0/2">UTC-08:00 Pacific Time</option><option value="UTC7">UTC-07:00 Arizona</option><option value="MST7MDT,M3.2.0/2,M11.1.0/2">UTC-07:00 Mountain Time</option><option value="UTC6">UTC-06:00 Mexico</option><option value="CST6CDT,M3.2.0/2,M11.1.0/2">UTC-06:00 Central Time</option><option value="UTC5">UTC-05:00 Colombia, Panama</option><option value="EST5EDT,M3.2.0/2,M11.1.0/2">UTC-05:00 Eastern Time</option><option value="UTC4">UTC-04:00 Bolivia, Venezuela</option><option value="AST4ADT,M3.2.0/2,M11.1.0/2">UTC-04:00 Atlantic Time</option><option value="BRWST4BRWDT,M10.3.0/0,M2.5.0/0">UTC-04:00 Brazil West</option><option value="NST3:30NDT,M3.2.0/0:01,M11.1.0/0:01">UTC-03:30 Newfoundland</option><option value="WGST3WGDT,M3.5.6/22,M10.5.6/23">UTC-03:00 Greenland</option><option value="BRST3BRDT,M10.3.0/0,M2.5.0/0">UTC-03:00 Brazil East</option><option value="UTC3">UTC-03:00 Guyana</option><option value="UTC2">UTC-02:00 Mid-Atlantic</option><option value="STD1DST,M3.5.0/2,M10.5.0/2">UTC-01:00 Azores</option><option value="UTC0">UTC+00:00 Gambia, Liberia, Morocco</option><option value="GMT0BST,M3.5.0/2,M10.5.0/2">UTC+00:00 England</option><option value="UTC-1">UTC+01:00 Tunisia</option><option value="CET-1CEST,M3.5.0/2,M10.5.0/3">UTC+01:00 France, Germany, Italy</option><option value="UTC-2">UTC+02:00 South Africa</option><option value="STD-2DST,M3.5.0/2,M10.5.0/2">UTC+02:00 Greece, Ukraine, Romania, Turkey</option><option value="UTC-3">UTC+03:00 Iraq, Jordan, Kuwait</option><option value="EET-2EEST-3,M3.5.0/3,M10.5.0/4">UTC+03:00 Finland</option><option value="UTC-4">UTC+04:00 Armenia</option><option value="UTC-5">UTC+05:00 Pakistan, Russia</option><option value="UTC-5:30">UTC+05:30 Bombay, Calcutta, Madras, New Delhi</option><option value="UTC-6">UTC+06:00 Bangladesh, Russia</option><option value="UTC-7">UTC+07:00 Thailand, Russia</option><option value="UTC-8">UTC+08:00 China, Hong Kong, Singapore, Taiwan, Russia</option><option value="AWST-8">UTC+08:00 Australia, Western Australia</option><option value="UTC-8:45">UTC+08:45 Australia, Eucla, Eyre Highway</option><option value="UTC-9">UTC+09:00 Japan, Korea</option><option value="ACST-9:30">UTC+09:30 Australia, Northern Territory</option><option value="ACST-9:30ACDT,M10.1.0/2,M4.1.0/3">UTC+09:30 Australia, South Australia</option><option value="AEST-10">UTC+10:00 Australia, Queensland</option><option value="AEST-10AEDT-11,M10.1.0/2,M4.1.0/3">UTC+10:00 Australia, New South Wales, Victoria, Tasmania</option><option value="UTC-10">UTC+10:00 Guam, Russia</option><option value="UTC-11">UTC+11:00 Solomon Islands</option><option value="UTC-12">UTC+12:00 Fiji</option><option value="NZST-12NZDT,M9.5.0/2,M4.1.0/3">UTC+12:00 New Zealand</option></select></div>
+		</div>
+		
+		<div>
+			<label class="nocolumn" id="timezone_label" for="timezone">Date Format:</label>
+		</div>
+		<div class="indent">
+			<div>
+				<select class="nocolumn" id="date_format">
+					<option value="usa">mm/dd/yy</option>
+					<option value="australia">dd/mm/yy</option>
+					<option value="iso">yyyy/mm/dd</option>
+				</select>
+			</div>
+		</div>
+
+		<div>
+			<label class="nocolumn" id="timezone_label" for="timezone">Update Frequency:</label>
+		</div>
+		<div class="indent">
+			<div>
+				<select class="nocolumn" id="update_frequency">
+					<option value="3600">Every Hour</option>
+					<option value="7200">Every 2 Hours</option>
+					<option value="14400">Every 4 Hours</option>
+					<option value="28800">Every 8 Hours</option>
+					<option value="43200">Every 12 Hours</option>
+					<option value="86400">Every 24 Hours</option>
+				</select>
+			</div>
+		</div>
+
+
+		
+		<div>
+			<label class="leftcolumn" id="region_label" for="region">NTP Servers:</label>
+			<div class="indent">
+				<div>
+					<select class="leftcolumn" id="region" onchange="updateServerList()">
+						<option value="us">United States</option>
+						<option value="north-america">North America</option>
+						<option value="south-america">South America</option>
+						<option value="europe">Europe</option>
+						<option value="africa">Africa</option>
+						<option value="asia">Asia</option>
+						<option value="oceania">Oceania</option>
+						<option value="custom">Custom</option>
+					</select>
+				</div>
+				<div class="indent">
+					<div><input value="0.pool.ntp.org" style="color: rgb(0, 0, 0);" class="" id="server1" size="35" type="text"></div>
+					<div><input value="1.pool.ntp.org" style="color: rgb(0, 0, 0);" class="" id="server2" size="35" type="text"></div>
+					<div><input value="2.pool.ntp.org" style="color: rgb(0, 0, 0);" class="" id="server3" size="35" type="text"></div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">System</div>
+							<div id="submenu_container">
+								<a indepth="true" href="access.html">Router Access</a>
+								<a indepth="true" href="identification.html">Identification</a>
+								<div class="submenu_selected">Time</div>
+								<a indepth="true" href="usb_storage.html">USB Storage</a>
+								<a href="backup.html">Backup / Restore</a>
+								<a indepth="true" href="update.html">Update Firmware</a>
+								<a href="reboot.html">Reboot</a>
+								<a indepth="true" href="about.html">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

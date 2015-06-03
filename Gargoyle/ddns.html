@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="ddns.js"></script>
+
+<link rel="stylesheet" type="text/css" href="ddns.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="ddns_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="ddns_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+providerData = new Array();
+providerData.push("service	dyndns.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@members.dyndns.org/nic/update?hostname=[[DOMAIN]]&myip=[[IP]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/^(good|nochg)/");
+providerData.push("");
+providerData.push("service no-ip.com");
+providerData.push("	url_template			https://dynupdate.no-ip.com/ducupdate.php?username=[[USERNAME]]&pass=[[PASSWORD]]&h[]=[[DOMAIN]]&ip=[[IP]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/:[01]/");
+providerData.push("");
+providerData.push("service	changeip.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@nic.changeip.com/nic/update?u=[[USERNAME]]&p=[[PASSWORD]]&cmd=update&hostname=[[DOMAIN]]&ip=[[IP]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/Successful Update/");
+providerData.push("");
+providerData.push("service	zonedit.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@dynamic.zoneedit.com/auth/dynamic.html?zones=[[DOMAIN]]&dnsto=[[IP]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Zone,Username,Password");
+providerData.push("	success_regexp			/(Update succeeded|Duplicate updates|No records need updating)/");
+providerData.push("");
+providerData.push("service opendns.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@updates.opendns.com/nic/update?hostname=");
+providerData.push("	required_variables		username password");
+providerData.push("	required_variable_names		Username,Password");
+providerData.push("	success_regexp			/^(good|nochg)/");
+providerData.push("");
+providerData.push("service dnsomatic.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@updates.dnsomatic.com/nic/update?hostname=all.dnsomatic.com&myip=[[IP]]&wildcard=[[WILDCARD_ON_OFF]]&mx=[[MX]]&backmx=NOCHG");
+providerData.push("	required_variables		username password");
+providerData.push("	required_variable_names		Username,Password");
+providerData.push("	optional_variables		mx wildcard");
+providerData.push("	optional_variable_names		MX,Wildcard");
+providerData.push("	optional_variable_defaults	NOCHG -");
+providerData.push("	boolean_variables		wildcard");
+providerData.push("	meta_variables			wildcard_on_off");
+providerData.push("	wildcard_on_off			if [ '[[WILDCARD]]' = '-' ] ; then echo 'NOCHG' ; else if [ '[[WILDCARD]]' = '0' ] ; then echo 'OFF' ; else echo 'ON' ; fi ; fi ;");
+providerData.push("	success_regexp			/^(good|nochg)/");
+providerData.push("");
+providerData.push("service tzo.com");
+providerData.push("	url_template			https://rh.tzo.com/webclient/tzoperl.html?TZOName=[[DOMAIN]]&Email=[[EMAIL]]&TZOKey=[[KEY]]&CType=3&IPAddress=[[IP]]&B1=Sign+On+to+TZO+DDNS+Servers");
+providerData.push("	required_variables		domain email key");
+providerData.push("	required_variable_names		Domain Name,Email,Key");
+providerData.push("	success_regexp			/^TZO/	");
+providerData.push("");
+providerData.push("service freedns.afraid.org");
+providerData.push("	url_template			[[META_URL]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,User Name,Password");
+providerData.push("	success_regexp			/(^Updated|has not changed.)/");
+providerData.push("	meta_variables			meta_url");
+providerData.push("	meta_variables_to_cache		meta_url");
+providerData.push("	meta_url			ewget -O -  'https://freedns.afraid.org/api/?action=getdyndns&sha='$(printf '[[USERNAME]]|[[PASSWORD]]' | sha1sum | awk ' { print $1 }') 2>/dev/null | grep '[[DOMAIN]]' | sed 's/^.*|//g'");
+providerData.push("	unescaped_variables		meta_url");
+providerData.push("");
+providerData.push("service regfish.de");
+providerData.push("	url_template			https://dyndns.regfish.de/?fqdn=[[DOMAIN_WITH_DOT]]&ipv4=[[IP]]&token=[[TOKEN]]");
+providerData.push("	required_variables		domain token");
+providerData.push("	required_variable_names		Domain Name,Token");
+providerData.push("	success_regexp			/^success/");
+providerData.push("	meta_variables			domain_with_dot");
+providerData.push("	meta_variables_to_cache		domain_with_dot");
+providerData.push("	domain_with_dot			echo '[[DOMAIN]].' | sed -e  's/\.\.$/./g'");
+providerData.push("");
+providerData.push("service easydns.com");
+providerData.push("	url_template			https://[[USERNAME]]:[[PASSWORD]]@members.easydns.com/dyn/dyndns.php?hostname=[[DOMAIN]]&myip=[[IP]][[MX_PARAM]][[WILDCARD_PARAM]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	optional_variables		mx wildcard");
+providerData.push("	optional_variable_names		MX,Wildcard");
+providerData.push("	optional_variable_defaults	- 0");
+providerData.push("	boolean_variables		wildcard");
+providerData.push("	meta_variables			mx_param wildcard_param");
+providerData.push("	mx_param			if [ '[[MX]]' != '-' ] ; then echo '&mx=[[MX]]' ; fi	");
+providerData.push("	wildcard_param			if [ '[[WILDCARD]]' == '1' ] ; then echo '&wildcard=ON' ; else echo '&wildcard=OFF' fi	");
+providerData.push("	success_regexp			/NOERROR/");
+providerData.push("");
+providerData.push("service namecheap.com");
+providerData.push("	url_template			https://dynamicdns.park-your-domain.com/update?host=[[HOST_PART]]&domain=[[DOMAIN_PART]]&password=[[PASSWORD]]&ip=[[IP]]");
+providerData.push("	required_variables		domain password");
+providerData.push("	required_variable_names		Domain Name,Password");
+providerData.push("	meta_variables			host_part domain_part");
+providerData.push("	host_part			echo '[[DOMAIN]]' | sed -e 's/.*$//g'");
+providerData.push("	domain_part			echo '[[DOMAIN]]' | grep -o '\..*$' | sed -e 's/^\.//g'");
+providerData.push("	meta_variables_to_cache		host_part domain_part");
+providerData.push("	success_regexp			/ErrCount.0..ErrCount/");
+providerData.push("");
+providerData.push("service enom.com");
+providerData.push("	url_template			https://dynamic.name-services.com/interface.asp?Command=SetDNSHost&HostName=[[HOST_PART]]&Zone=[[DOMAIN_PART]]&Address=[[IP]]&DomainPassword=[[PASSWORD]]");
+providerData.push("	required_variables		domain password");
+providerData.push("	required_variable_names		Domain Name,Password");
+providerData.push("	meta_variables			host_part domain_part");
+providerData.push("	host_part			echo '[[DOMAIN]]' | sed -e 's/.*$//g'");
+providerData.push("	domain_part			echo '[[DOMAIN]]' | grep -o '\..*$' | sed -e 's/^\.//g'");
+providerData.push("	meta_variables_to_cache		host_part domain_part");
+providerData.push("	success_regexp			/ErrCount=0/");
+providerData.push("");
+providerData.push("service dnsexit.com");
+providerData.push("	url_template			https://www.dnsexit.com/RemoteUpdate.sv?login=[[USERNAME]]&password=[[PASSWORD]]&host=[[DOMAIN]]&myip=[[IP]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/^0=Success/");
+providerData.push("");
+providerData.push("");
+providerData.push("service dyns.cx");
+providerData.push("	url_template			http://www.dyns.net/postscript011.php?username=[[USERNAME]]&password=[[PASSWORD]]&host=[[DOMAIN]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/200/");
+providerData.push("");
+providerData.push("service everydns.net");
+providerData.push("	url_template			http://[[USERNAME]]:[[PASSWORD]@dyn.everydns.net/index.php?ver=0.1&ip=[[IP]]&domain=[[DOMAIN]]");
+providerData.push("	required_variables		domain username password");
+providerData.push("	required_variable_names		Domain Name,Username,Password");
+providerData.push("	success_regexp			/Exit.* 0/");
+providerData.push("");
+updateTimes = new Array();
+
+//-->
+</script>
+
+<form action="http://192.168.1.1/ddns.sh">
+	<fieldset>
+		<legend class="sectionheader">Dynamic DNS Services</legend>
+	
+		<span id="add_ddns_label"><p>Add Dynamic DNS Service:</p></span>	
+		
+		<div>
+			<div class="indent">
+				<label class="leftcolumn" for="ddns_provider" id="ddns_provider_label">Service Provider:</label>
+				<select class="rightcolumn" id="ddns_provider" onchange="setProvider()"><option value="dyndns.com">dyndns.com</option><option value="no-ip.com">no-ip.com</option><option value="changeip.com">changeip.com</option><option value="zonedit.com">zonedit.com</option><option value="opendns.com">opendns.com</option><option value="dnsomatic.com">dnsomatic.com</option><option value="tzo.com">tzo.com</option><option value="freedns.afraid.org">freedns.afraid.org</option><option value="regfish.de">regfish.de</option><option value="easydns.com">easydns.com</option><option value="namecheap.com">namecheap.com</option><option value="enom.com">enom.com</option><option value="dnsexit.com">dnsexit.com</option><option value="dyns.cx">dyns.cx</option><option value="everydns.net">everydns.net</option></select>
+			</div>
+		</div>
+
+		<div class="indent" id="ddns_variable_container"><div><label id="domain_label" class="leftcolumn">Domain Name:</label><input id="domain" class="rightcolumn" type="text"></div><div><label id="username_label" class="leftcolumn">Username:</label><input id="username" class="rightcolumn" type="text"></div><div><label id="password_label" class="leftcolumn">Password:</label><input id="password" class="rightcolumn" type="text"></div></div>
+
+
+		<div>
+			<div class="indent">
+				<label class="leftcolumn" for="ddns_check" id="ddns_check_label">Check Interval:</label>
+				<input value="15" class="rightcolumn" id="ddns_check" size="8" onkeyup="proofreadNumeric(this)" type="text">
+				<em>minutes</em>
+			</div>
+			<div class="indent">
+				<label class="leftcolumn" for="ddns_force" id="ddns_force_label">Force Update Interval:</label>
+				<input value="3" class="rightcolumn" id="ddns_force" size="8" onkeyup="proofreadNumeric(this)" type="text">
+				<em>days</em>
+			</div>
+			
+			<div class="indent">
+				<input id="add_service_button" class="default_button" value="Add DDNS Service" onclick="addDdnsService()" type="button">
+			</div>
+			
+			<div class="indent">
+				<span style="display: inline;" id="ddns_1_txt">
+					<p>
+					<em>Check Interval</em> specifies how often the router will check whether your current IP matches the one currently associated with your
+					domain name.  This check is performed without connecting to your dynamic DNS service provider, which means that this will not cause 
+					problems with providers that ban users who connect too frequently (e.g. dyndns.com).  However, a network connection is established 
+					to perform this check, so this value should not be too low.  A check interval between 10 and 20 minutes is usually appropriate.
+					</p>
+
+					<p>
+					<em>Force Update Interval</em> specifies how often the router will connect to your dynamic DNS service provider and update their records,
+					even if your IP has not changed.  Service providers will ban users who update too frequently, but may close accounts of users who do
+					not update for over a month.  It is recommended that this parameter be set between 3 and 7 days.
+					</p>
+				</span>
+				<a onclick='setDescriptionVisibility("ddns_1")' id="ddns_1_ref" href="#ddns_1">Hide Text</a>
+			</div>
+		</div>
+	
+	
+	
+		<div id="internal_divider1" class="internal_divider"></div>
+	
+
+
+		<span id="add_ddns_label"><p>Dynamic DNS Services:</p></span>	
+
+		<div id="ddns_table_container"><table style="display: none;" id="ddns_table"><tbody><tr class="header_row"><th>Domain</th><th>Last Update</th><th>Enabled</th><th></th><th></th><th></th></tr></tbody></table></div>
+		
+	</fieldset>
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+
+
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Connection</div>
+							<div id="submenu_container">
+								<a indepth="true" href="basic.html">Basic</a>
+								<a indepth="true" href="dhcp.html">DHCP</a>
+								<div class="submenu_selected">Dynamic DNS</div>
+								<a indepth="true" href="routing.html">Routing</a>
+								<a indepth="true" href="wol.html">Wake on LAN</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

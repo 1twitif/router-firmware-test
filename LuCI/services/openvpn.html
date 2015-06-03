@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - OpenVPN - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.40 0.19 0.06
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../uci/changes/index1fdb.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fservices%2fopenvpn">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init">
+				<a href="init/index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq">
+				<a href="dnsmasq/index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn active">
+				<a href="openvpn/index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-openvpn">
+	<h2><a id="content" name="content">OpenVPN</a></h2>
+	
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-openvpn-openvpn">
+	<legend>OpenVPN instances</legend>
+<div class="cbi-section-descr">Below is a list of configured OpenVPN instances and their current state</div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th>&#160;</th><th class="cbi-section-table-cell">Activé</th><th class="cbi-section-table-cell">Started</th><th class="cbi-section-table-cell">Start/Stop</th><th class="cbi-section-table-cell">Port</th><th class="cbi-section-table-cell">Protocole</th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-openvpn-custom_config">
+				<th><h3>custom_config</h3></th>
+<td class="cbi-value-field">
+<div id="cbi-openvpn-custom_config-enable">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.enable" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.enable" name="cbid.openvpn.custom_config.enable" value="1" />
+</div>
+<div id="cbip-openvpn-custom_config-enable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-custom_config-_active">
+
+
+no
+
+<input type="hidden" id="cbid.openvpn.custom_config._active" value="no" />
+</div>
+<div id="cbip-openvpn-custom_config-_active"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-custom_config-start">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.openvpn.custom_config.start" id="cbid.openvpn.custom_config.start" value="start" />
+	
+</div>
+<div id="cbip-openvpn-custom_config-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-custom_config-port">
+
+
+1194
+
+<input type="hidden" id="cbid.openvpn.custom_config.port" value="1194" />
+</div>
+<div id="cbip-openvpn-custom_config-port"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-custom_config-proto">
+
+
+udp
+
+<input type="hidden" id="cbid.openvpn.custom_config.proto" value="udp" />
+</div>
+<div id="cbip-openvpn-custom_config-proto"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px"><a href="openvpn/basic/custom_config.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.openvpn.custom_config" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-openvpn-sample_server">
+				<th><h3>sample_server</h3></th>
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_server-enable">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_server.enable" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_server.enable" name="cbid.openvpn.sample_server.enable" value="1" />
+</div>
+<div id="cbip-openvpn-sample_server-enable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_server-_active">
+
+
+no
+
+<input type="hidden" id="cbid.openvpn.sample_server._active" value="no" />
+</div>
+<div id="cbip-openvpn-sample_server-_active"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_server-start">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.openvpn.sample_server.start" id="cbid.openvpn.sample_server.start" value="start" />
+	
+</div>
+<div id="cbip-openvpn-sample_server-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_server-port">
+
+
+1194
+
+<input type="hidden" id="cbid.openvpn.sample_server.port" value="1194" />
+</div>
+<div id="cbip-openvpn-sample_server-port"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_server-proto">
+
+
+udp
+
+<input type="hidden" id="cbid.openvpn.sample_server.proto" value="udp" />
+</div>
+<div id="cbip-openvpn-sample_server-proto"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px"><a href="openvpn/basic/sample_server.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.openvpn.sample_server" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-openvpn-sample_client">
+				<th><h3>sample_client</h3></th>
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_client-enable">
+
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.enable" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.enable" name="cbid.openvpn.sample_client.enable" value="1" />
+</div>
+<div id="cbip-openvpn-sample_client-enable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_client-_active">
+
+
+no
+
+<input type="hidden" id="cbid.openvpn.sample_client._active" value="no" />
+</div>
+<div id="cbip-openvpn-sample_client-_active"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_client-start">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.openvpn.sample_client.start" id="cbid.openvpn.sample_client.start" value="start" />
+	
+</div>
+<div id="cbip-openvpn-sample_client-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_client-port">
+
+
+1194
+
+<input type="hidden" id="cbid.openvpn.sample_client.port" value="1194" />
+</div>
+<div id="cbip-openvpn-sample_client-port"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-openvpn-sample_client-proto">
+
+
+udp
+
+<input type="hidden" id="cbid.openvpn.sample_client.proto" value="udp" />
+</div>
+<div id="cbip-openvpn-sample_client-proto"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px"><a href="openvpn/basic/sample_client.html" title="Editer"><img style="border: none" src="../luci-static/resources/cbi/edit.gif" alt="Editer" /></a>
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.openvpn.sample_client" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr></table>
+
+		
+<div class="cbi-section-create">
+	
+	<input type="text" class="cbi-section-create-name" name="cbi.cts.openvpn.openvpn" />
+	<select class="cbi-section-create-name" name="cbi.cts.openvpn.openvpn.select">
+		<option value="client_tap_bridge">Client configuration for an ethernet bridge VPN</option>
+	
+		<option value="client_tun">Client configuration for a routed multi-client VPN</option>
+	
+		<option value="client_tun_ptp">Simple client configuration for a routed point-to-point VPN</option>
+	
+		<option value="server_tap_bridge">Server configuration for an ethernet bridge VPN</option>
+	
+		<option value="server_tun">Server configuration for a routed multi-client VPN</option>
+	
+		<option value="server_tun_ptp">Simple server configuration for a routed point-to-point VPN</option>
+	</select>
+	<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" title="Ajouter" />
+	
+</div>
+
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:22:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

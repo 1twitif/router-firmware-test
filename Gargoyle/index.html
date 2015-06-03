@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="overview.js"></script>
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="index_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="index_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var wirelessIf = "wlan0";
+	var uciWireless = "radio0";
+	var currentWirelessMac = "30:46:9A:0B:88:35";
+	var defaultLanIf = "eth0";
+	var currentLanIf = "br-lan";
+	var currentLanMac = "30:46:9A:0B:88:35";
+	var currentLanIp = "192.168.1.1";
+	var currentLanMask = "255.255.255.0";
+	var defaultWanIf = "eth1";
+	var defaultWanMac = "30:46:9A:0B:88:36";
+	var currentWanIf = "eth1";
+	var currentWanMac = "30:46:9A:0B:88:36";
+	var currentWanIp = "192.168.0.8";
+	var currentWanMask = "255.255.255.0";
+	var currentWanGateway = "192.168.0.1";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+	uciOriginal.set('wireless', 'radio0', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio0', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio0', 'channel', "11");
+	uciOriginal.set('wireless', 'radio0', 'macaddr', "30:46:9a:0b:88:35");
+	uciOriginal.set('wireless', 'radio0', 'hwmode', "11ng");
+	uciOriginal.set('wireless', 'radio0', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio0', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio0', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg035040', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg035040', 'device', "radio0");
+	uciOriginal.set('wireless', 'cfg035040', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg035040', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg035040', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg035040', 'encryption', "none");
+	uciOriginal.set('wireless', 'radio1', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio1', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio1', 'channel', "36");
+	uciOriginal.set('wireless', 'radio1', 'macaddr', "30:46:9a:0b:88:37");
+	uciOriginal.set('wireless', 'radio1', 'hwmode', "11na");
+	uciOriginal.set('wireless', 'radio1', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio1', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio1', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg062561', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg062561', 'device', "radio1");
+	uciOriginal.set('wireless', 'cfg062561', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg062561', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg062561', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg062561', 'encryption', "none");
+	uciOriginal.set('qos_gargoyle', 'upload', '', "upload");
+	uciOriginal.set('qos_gargoyle', 'upload', 'default_class', "uclass_3");
+	uciOriginal.set('qos_gargoyle', 'download', '', "download");
+	uciOriginal.set('qos_gargoyle', 'download', 'default_class', "dclass_3");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'max_bandwidth', "200");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'srcport', "53");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'dstport', "53");
+	uciOriginal.set('system', 'cfg02b282', '', "system");
+	uciOriginal.set('system', 'cfg02b282', 'hostname', "Gargoyle");
+	uciOriginal.set('system', 'cfg02b282', 'timezone', "CET-1CEST,M3.5.0/2,M10.5.0/3");
+	uciOriginal.set('system', 'cfg04e10c', '', "rdate");
+	uciOriginal.set('system', 'cfg04e10c', 'server', "ac-ntp0.net.cmu.edu ptbtime1.ptb.de ac-ntp1.net.cmu.edu ntp.xs4all.nl ptbtime2.ptb.de cudns.cit.cornell.edu ptbtime3.ptb.de");
+	uciOriginal.set('system', 'wan_led', '', "led");
+	uciOriginal.set('system', 'wan_led', 'sysfs', "wndr3700:green:wan");
+	uciOriginal.set('system', 'wan_led', 'name', "WAN LED (green)");
+	uciOriginal.set('system', 'wan_led', 'default', "0");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+uptime = "3718.09 3626.27";
+var qosEnabled = false;
+var gargoyleVersion="1.3.10"
+var currentTime = "02/23/11 11:12 CET";
+var totalMemory=62000;
+var freeMemory=28512;
+var loadAvg="0.00 / 0.00 / 0.00";
+var curConn="7";
+var maxConn="4096";
+var wanDns="192.168.0.1";
+
+//-->
+</script>
+
+<fieldset>
+	<legend class="sectionheader">Status</legend>
+
+	<div id="device_container">	
+		<div>
+			<span class="leftcolumn">Device Name:</span><span id="device_name" class="rightcolumn">Gargoyle</span>
+		</div>
+		<div>
+			<span class="leftcolumn">Gargoyle Version:</span><span id="gargoyle_version" class="rightcolumn">1.3.10</span>
+		</div>
+		<div>
+			<span class="leftcolumn">Device Configuration:</span><span id="device_config" class="rightcolumn">Gateway</span>
+		</div>
+		<div>
+			<span class="leftcolumn">Memory Usage:</span><span id="memory" class="rightcolumn">32.7MB / 60.5MB (54%)</span>
+		</div>
+		<div>
+			<span class="leftcolumn">Connections:</span><span id="connections" class="rightcolumn">7/4096</span>
+		</div>
+ 		<div>
+ 			<span class="leftcolumn">CPU Load Averages:</span><span id="load_avg" class="rightcolumn">0.00 / 0.00 / 0.00</span><span>&nbsp;&nbsp;(1/5/15 minutes)
+ 		</span></div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+	<div id="time_container">
+		<div>
+			<span class="leftcolumn">Uptime:</span><span id="uptime" class="rightcolumn">0 days, 1 hours, 1 minutes</span>
+		</div>
+		<div>
+			<span class="leftcolumn">Current Date &amp; Time:</span><span id="current_time" class="rightcolumn">02/23/11 11:12 CET</span>
+		</div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+	<div style="display: none;" id="bridge_container">
+		<div>
+			<span class="leftcolumn">Bridge IP Address:</span><span id="bridge_ip" class="rightcolumn"></span>
+		</div>
+		<div>
+			<span class="leftcolumn">Bridge Netmask:</span><span id="bridge_mask" class="rightcolumn"></span>
+		</div>
+		<div>
+			<span class="leftcolumn">Bridge MAC Address:</span><span id="bridge_mac" class="rightcolumn"></span>
+		</div>
+		<div>
+			<span class="leftcolumn">LAN Gateway IP:</span><span id="bridge_gateway" class="rightcolumn"></span>
+		</div>
+		<div>
+			<span class="leftcolumn">Connected Via:</span><span id="bridge_mode" class="rightcolumn"></span>
+		</div>
+		<div>
+			<span class="leftcolumn">Bridge SSID:</span><span id="bridge_ssid" class="rightcolumn"></span>
+		</div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+	<div id="lan_container">
+		<div>
+			<span class="leftcolumn">LAN IP Address:</span><span id="lan_ip" class="rightcolumn">192.168.1.1</span>
+		</div>
+		<div>
+			<span class="leftcolumn">LAN Netmask:</span><span id="lan_mask" class="rightcolumn">255.255.255.0</span>
+		</div>
+		<div>
+			<span class="leftcolumn">LAN MAC Address:</span><span id="lan_mac" class="rightcolumn">30:46:9A:0B:88:35</span>
+		</div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+	<div id="wan_container">
+		<div>
+			<span class="leftcolumn">WAN IP Address:</span><span id="wan_ip" class="rightcolumn">192.168.0.8</span>
+		</div>
+		<div>
+			<span class="leftcolumn">WAN Netmask:</span><span id="wan_mask" class="rightcolumn">255.255.255.0</span>
+		</div>
+		<div>
+			<span class="leftcolumn">WAN MAC Address:</span><span id="wan_mac" class="rightcolumn">30:46:9A:0B:88:36</span>
+		</div>
+		<div>
+			<span class="leftcolumn">WAN Gateway IP:</span><span id="wan_gateway" class="rightcolumn">192.168.0.1</span>
+		</div>
+		<div id="wan_dns_container">
+			<span class="leftcolumn">WAN DNS Server(s):</span><span id="wan_dns" class="rightcolumn">192.168.0.1</span>
+		</div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+	<div id="wifi_container">
+		<div>
+			<span class="leftcolumn">Wireless Mode:</span><span id="wireless_mode" class="rightcolumn">Disabled</span>
+		</div>
+		<div style="display: none;" id="wireless_mac_div">
+			<span class="leftcolumn">Wireless MAC Address:</span><span id="wireless_mac" class="rightcolumn"></span>
+		</div>
+		<div style="display: none;" id="wireless_apssid_div">
+			<span class="leftcolumn" id="wireless_apssid_label">Access Point SSID:</span><span id="wireless_apssid" class="rightcolumn"></span>
+		</div>
+		<div style="display: none;" id="wireless_otherssid_div">
+			<span class="leftcolumn" id="wireless_otherssid_label">SSID Joined By Client:</span><span id="wireless_otherssid" class="rightcolumn"></span>
+		</div>
+		<div class="internal_divider"></div>
+	</div>
+
+
+
+	
+	<div id="services_container">
+		<div>
+			<span class="leftcolumn">QoS Upload:</span><span id="qos_upload" class="rightcolumn">Disabled</span>
+		</div>
+		<div>
+			<span class="leftcolumn">QoS Download:</span><span id="qos_download" class="rightcolumn">Disabled</span>
+		</div>
+	</div>
+
+</fieldset>
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_selected_divider_end1"></div>
+					<div class="nav_selected_end1">
+						<div class="nav_selected_container_end1">
+							<div class="selected_header">Status</div>
+							<div id="submenu_container">
+								<div class="submenu_selected">Overview</div>
+								<a indepth="true" href="bandwidth.html">Bandwidth Usage</a>
+								<a indepth="true" href="bandwidth_distribution.html">B/W Distribution</a>
+								<a indepth="true" href="webmon.html">Web Usage</a>
+								<a indepth="true" href="hosts.html">Connected Hosts</a>
+								<a indepth="true" href="conntrack.html">Connection List</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

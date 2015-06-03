@@ -1,0 +1,1064 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="basic.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+
+<link rel="stylesheet" type="text/css" href="basic.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="basic_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="basic_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var wirelessIf = "wlan0";
+	var uciWireless = "radio0";
+	var currentWirelessMac = "30:46:9A:0B:88:35";
+	var defaultLanIf = "eth0";
+	var currentLanIf = "br-lan";
+	var currentLanMac = "30:46:9A:0B:88:35";
+	var currentLanIp = "192.168.1.1";
+	var currentLanMask = "255.255.255.0";
+	var defaultWanIf = "eth1";
+	var defaultWanMac = "30:46:9A:0B:88:36";
+	var currentWanIf = "eth1";
+	var currentWanMac = "30:46:9A:0B:88:36";
+	var currentWanIp = "192.168.0.8";
+	var currentWanMask = "255.255.255.0";
+	var currentWanGateway = "192.168.0.1";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+	uciOriginal.set('wireless', 'radio0', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio0', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio0', 'channel', "11");
+	uciOriginal.set('wireless', 'radio0', 'macaddr', "30:46:9a:0b:88:35");
+	uciOriginal.set('wireless', 'radio0', 'hwmode', "11ng");
+	uciOriginal.set('wireless', 'radio0', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio0', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio0', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg035040', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg035040', 'device', "radio0");
+	uciOriginal.set('wireless', 'cfg035040', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg035040', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg035040', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg035040', 'encryption', "none");
+	uciOriginal.set('wireless', 'radio1', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio1', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio1', 'channel', "36");
+	uciOriginal.set('wireless', 'radio1', 'macaddr', "30:46:9a:0b:88:37");
+	uciOriginal.set('wireless', 'radio1', 'hwmode', "11na");
+	uciOriginal.set('wireless', 'radio1', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio1', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio1', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg062561', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg062561', 'device', "radio1");
+	uciOriginal.set('wireless', 'cfg062561', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg062561', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg062561', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg062561', 'encryption', "none");
+	uciOriginal.set('dhcp', 'cfg024c78', '', "dnsmasq");
+	uciOriginal.set('dhcp', 'cfg024c78', 'domainneeded', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'boguspriv', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'filterwin2k', "0");
+	uciOriginal.set('dhcp', 'cfg024c78', 'localise_queries', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'rebind_protection', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'rebind_localhost', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'local', "/lan/");
+	uciOriginal.set('dhcp', 'cfg024c78', 'domain', "lan");
+	uciOriginal.set('dhcp', 'cfg024c78', 'expandhosts', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'nonegcache', "0");
+	uciOriginal.set('dhcp', 'cfg024c78', 'authoritative', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'readethers', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'leasefile', "/tmp/dhcp.leases");
+	uciOriginal.set('dhcp', 'cfg024c78', 'resolvfile', "/tmp/resolv.conf.auto");
+	uciOriginal.set('dhcp', 'lan', '', "dhcp");
+	uciOriginal.set('dhcp', 'lan', 'interface', "lan");
+	uciOriginal.set('dhcp', 'lan', 'start', "100");
+	uciOriginal.set('dhcp', 'lan', 'limit', "150");
+	uciOriginal.set('dhcp', 'lan', 'leasetime', "12h");
+	uciOriginal.set('dhcp', 'wan', '', "dhcp");
+	uciOriginal.set('dhcp', 'wan', 'interface', "wan");
+	uciOriginal.set('dhcp', 'wan', 'ignore', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', '', "defaults");
+	uciOriginal.set('firewall', 'cfg02f50e', 'syn_flood', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg04e8f0', '', "zone");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'name', "lan");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', '', "zone");
+	uciOriginal.set('firewall', 'cfg062fd8', 'name', "wan");
+	uciOriginal.set('firewall', 'cfg062fd8', 'input', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'masq', "1");
+	uciOriginal.set('firewall', 'cfg062fd8', 'mtu_fix', "1");
+	uciOriginal.set('firewall', 'cfg087a91', '', "forwarding");
+	uciOriginal.set('firewall', 'cfg087a91', 'src', "lan");
+	uciOriginal.set('firewall', 'cfg087a91', 'dest', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', '', "rule");
+	uciOriginal.set('firewall', 'cfg0a0261', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', 'proto', "udp");
+	uciOriginal.set('firewall', 'cfg0a0261', 'dest_port', "68");
+	uciOriginal.set('firewall', 'cfg0a0261', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0c0a5e', '', "rule");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'proto', "icmp");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'icmp_type', "echo-request");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0e2df3', '', "include");
+	uciOriginal.set('firewall', 'cfg0e2df3', 'path', "/etc/firewall.user");
+	uciOriginal.set('firewall', 'cfg10536b', '', "include");
+	uciOriginal.set('firewall', 'cfg10536b', 'path', "/usr/lib/gargoyle_firewall_util/gargoyle_additions.firewall");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+var isBcm94704 = false;
+var allLanMacs = [];
+allLanMacs.push("30:46:9a:0b:88:35");
+var wifiDevG=uciWireless;
+var wifiDevA="";
+var wirelessDriver="mac80211";
+var mac80211Channels = [];
+var nextCh=[];
+var wifiN = true ;
+var dualBandWireless=true;
+nextCh = [];
+var wifiDevG="radio0";
+nextCh.push(parseInt("01", 10)+"");
+nextCh.push(parseInt("02", 10)+"");
+nextCh.push(parseInt("03", 10)+"");
+nextCh.push(parseInt("04", 10)+"");
+nextCh.push(parseInt("05", 10)+"");
+nextCh.push(parseInt("06", 10)+"");
+nextCh.push(parseInt("07", 10)+"");
+nextCh.push(parseInt("08", 10)+"");
+nextCh.push(parseInt("09", 10)+"");
+nextCh.push(parseInt("10", 10)+"");
+nextCh.push(parseInt("11", 10)+"");
+mac80211Channels["G"] = nextCh ;
+nextCh = [];
+var wifiDevA="radio1";
+nextCh.push(parseInt("36", 10)+"");
+nextCh.push(parseInt("40", 10)+"");
+nextCh.push(parseInt("44", 10)+"");
+nextCh.push(parseInt("48", 10)+"");
+nextCh.push(parseInt("52", 10)+"");
+nextCh.push(parseInt("56", 10)+"");
+nextCh.push(parseInt("60", 10)+"");
+nextCh.push(parseInt("64", 10)+"");
+nextCh.push(parseInt("100", 10)+"");
+nextCh.push(parseInt("104", 10)+"");
+nextCh.push(parseInt("108", 10)+"");
+nextCh.push(parseInt("112", 10)+"");
+nextCh.push(parseInt("116", 10)+"");
+nextCh.push(parseInt("132", 10)+"");
+nextCh.push(parseInt("136", 10)+"");
+nextCh.push(parseInt("140", 10)+"");
+nextCh.push(parseInt("149", 10)+"");
+nextCh.push(parseInt("153", 10)+"");
+nextCh.push(parseInt("157", 10)+"");
+nextCh.push(parseInt("161", 10)+"");
+nextCh.push(parseInt("165", 10)+"");
+mac80211Channels["A"] = nextCh ;
+var currentDateSeconds = "1298455975";
+var uptime = "3769";
+var leaseStartUptime = "15";
+var leaseStart = "15";
+var leaseLifetime = "86400";
+var timezoneOffset = "+0100";
+var timezoneName = "CET";
+
+timezoneOffset = timezoneOffset.replace(/^\-0/g, "-");
+timezoneOffset = timezoneOffset.replace(/^\+?0/g, "");
+var timezoneOffset = (parseInt(timezoneOffset)/100)*60*60;
+var policyOption="";
+if(wirelessDriver == "broadcom" || wirelessDriver == "mac80211")
+{
+	policyOption="macfilter";
+}
+else
+{
+	policyOption="macpolicy";
+}
+
+var txPowerMax= wirelessDriver == "broadcom" ? 31 : (wirelessDriver == "mac80211" ? 20 : 18);
+
+//not perfect, but it this will do for now since only mac80211 drivers are ath9k and b43
+var isb43 = wirelessDriver == "mac80211" && (!wifiN) ? true : false ; 
+
+//-->
+</script>
+
+
+<form action="http://192.168.1.1/basic.sh">
+	<fieldset id="config_fieldset">
+		<legend class="sectionheader">Device Configuration</legend>
+		<label class="leftcolumn" style="text-decoration: underline;">Configure Device As:</label>
+		<div class="indent">
+			<input checked="checked" id="global_gateway" name="global_configuration" value="gateway" onclick="setBridgeVisibility()" type="radio">Gateway (Default)
+			<br>
+			<input id="global_bridge" name="global_configuration" value="bridge" onclick="setBridgeVisibility()" type="radio">Wireless Bridge/Repeater
+		</div>
+	</fieldset>
+	
+	<fieldset style="display: none;" id="bridge_fieldset">
+		<legend class="sectionheader">Wireless Bridge/Repeater</legend>
+		<div id="bridge_ip_container">
+			<label class="leftcolumn" for="bridge_ip" id="bridge_ip_label">Bridge IP:</label>
+			<input value="192.168.1.1" class="rightcolumn" name="bridge_ip" id="bridge_ip" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+			<em>(must be in AP subnet)</em>
+		</div>
+		<div id="bridge_mask_container">
+			<label class="leftcolumn" for="bridge_mask" id="bridge_mask_label">Subnet Mask:</label>
+			<input value="255.255.255.0" class="rightcolumn" name="bridge_mask" id="bridge_mask" onkeyup="proofreadMask(this)" size="20" maxlength="15" type="text">
+			<em>(same as AP mask)</em>
+
+		</div>
+		<div id="bridge_gateway_container">
+			<label class="leftcolumn" for="bridge_gateway" id="bridge_gateway_label">AP/Gateway IP:</label>
+			<input value="" class="rightcolumn" name="bridge_gateway" id="bridge_gateway" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+		</div>
+
+		<div style="display: block;" id="bridge_wan_port_to_lan_container">
+			<label class="leftcolumn" for="bridge_wan_port_to_lan" id="bridge_wan_port_to_lan_label">Wan Ethernet Port:</label>
+			<select class="rightcolumn" id="bridge_wan_port_to_lan" onchange="setBridgeVisibility()">
+				<option value="disable">Disable</option>
+				<option value="bridge">Bridge To LAN</option>
+			</select>
+		</div>
+		
+		<div id="bridge_dns_container">
+			<span class="leftcolumn">
+				<label id="bridge_use_dns_label" for="bridge_use_dns">Custom DNS:</label>
+			</span>
+			<span class="rightcolumn">
+				<input id="bridge_use_dns" onclick="setDnsEnabled(this)" type="checkbox">&nbsp;&nbsp; 
+				<input value="" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" id="add_bridge_dns" onkeyup="proofreadIp(this)" size="20" maxlength="17" type="text">
+				<input disabled="disabled" class="default_button_disabled" id="add_bridge_dns_button" value="Add" onclick='addDns("bridge")' type="button">
+			</span>
+			<div class="rightcolumnonly"><div style="display: none;" id="bridge_dns_table_container"><table style="display: none;" id="bridge_dns_table"><tbody><tr class="header_row"><th></th><th></th></tr></tbody></table></div></div>
+		</div>
+
+		<div class="internal_divider"></div>
+		
+		<div id="bridge_mode_container">
+			<select class="nocolumn" id="bridge_mode" onchange="setBridgeVisibility()">
+				<option value="client_bridge">Connect Via Client Bridge</option>
+				<option value="wds">Connect Via WDS</option>
+			</select>
+		</div>
+		<div class="indent">
+
+			<div id="bridge_repeater_container">
+				<label class="leftcolumn" for="bridge_repeater" id="bridge_repeater_label">Repeater:</label>
+				<select class="rightcolumn" id="bridge_repeater" onchange="setBridgeVisibility()">
+					<option value="enabled">Repeater Enabled</option>
+					<option value="disabled">Repeater Disabled</option>
+				</select>
+			</div>
+
+			<div id="bridge_hwmode_container">
+				<label class="leftcolumn" for="bridge_hwmode" id="bridge_hwmode_label">Operation Mode:</label>
+				<span class="rightcolumn">
+					<select id="bridge_hwmode" onchange="setHwMode(this)">
+						
+						
+						
+						
+					<option value="dual">Dual Band</option><option value="11ng">N+G+B</option><option value="11g">G+B</option><option value="11b">B</option></select>
+				</span>
+			</div>
+			<div style="display: block;" id="bridge_channel_width_container">
+				<label class="leftcolumn" for="bridge_channel_width" id="bridge_channel_width_label">Channel Width:</label>
+				<span class="rightcolumn">
+				<select id="bridge_channel_width" onchange="setChannelWidth(this)">
+						<option value="HT20">20MHz</option>
+						<option value="HT40+">40MHz</option>
+					</select>
+				</span>
+			</div>
+
+			<div id="bridge_txpower_container">
+				<label class="leftcolumn" for="bridge_txpower_max" id="bridge_txpower_label">Transmit Power:</label>
+				<span class="rightcolumn">
+					<select id="bridge_max_txpower" onchange='setTransmitPower("bridge_max_txpower","bridge_txpower")'>
+						<option value="max">Max</option>
+						<option value="custom">Custom</option>
+					</select>
+					&nbsp;
+					<input value="20" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" id="bridge_txpower" onkeyup="proofreadNumericRange(this,0,txPowerMax)" size="10" type="text">
+					<em><span style="color: gray;" id="bridge_dbm">(0 - 20dBm)</span></em>
+				</span>
+			</div>
+			<div id="bridge_list_ssid_container">
+				<label class="leftcolumn" for="bridge_list_ssid" id="bridge_list_ssid_label">SSID to Join:</label>
+				<span class="rightcolumn">
+					<select id="bridge_list_ssid" style="width: 180px; max-width: 180px;" onchange="setSsidVisibility(this.id)"><option value="custom">Other</option></select>
+					<input class="default_button" id="bridge_rescan_button" value="Re-Scan" onclick='scanWifi("bridge_custom_ssid")' type="button">
+				</span>
+			</div>
+			<div id="bridge_custom_ssid_container">
+				<input value="" class="rightcolumnonly" id="bridge_custom_ssid" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+			</div>
+			<div id="bridge_ssid_container">
+				<label class="leftcolumn" for="bridge_ssid" id="bridge_ssid_label">SSID to Join:</label>
+				<span class="rightcolumn">
+					<input value="Gargoyle" style="float: left;" id="bridge_ssid" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+					<input style="float: left;" class="default_button" id="bridge_scan_button" value="Scan" onclick='scanWifi("bridge_ssid")' type="button">
+				</span>
+			</div>
+			<div id="bridge_broadcast_ssid_container">
+				<label class="leftcolumn" for="bridge_broadcast_ssid" id="bridge_broadcast_ssid_label">SSID to Broadcast:</label>
+				<input value="" class="rightcolumn" id="bridge_broadcast_ssid" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+			</div>
+
+
+
+			<div id="bridge_channel_container">
+				<label class="leftcolumn" for="bridge_channel" id="bridge_channel_label">Wireless Channel:</label>
+					<select class="rightcolumn" id="bridge_channel" onchange="setChannel(this)">
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option></select>
+			</div>
+			<div id="bridge_fixed_channel_container">
+				<label class="leftcolumn" for="bridge_fixed_channel" id="bridge_fixed_channel_label">Wireless Channel:</label>
+				<span class="rightcolumn" id="bridge_fixed_channel">&nbsp;</span>
+			</div>
+
+
+			<div id="bridge_encryption_container">
+				<label class="leftcolumn" for="bridge_encryption" id="bridge_encryption_label">Encryption:</label>
+				<select class="rightcolumn" id="bridge_encryption" onchange="setBridgeVisibility()">
+					<option value="none">None</option>
+					<option value="psk2">WPA2 PSK</option>
+					<option value="psk">WPA PSK</option>
+					<option value="wep">WEP</option>
+				</select>
+			</div>
+			<div id="bridge_fixed_encryption_container">
+				<label class="leftcolumn" for="bridge_fixed_encryption" id="bridge_fixed_encryption_label">Encryption:</label>
+				<span class="rightcolumn" id="bridge_fixed_encryption">&nbsp;</span>
+			</div>
+
+
+			<div id="bridge_pass_container">
+				<label class="leftcolumn" for="bridge_pass" id="bridge_pass_label">Password:</label>
+				<input id="bridge_pass" size="20" onkeyup="proofreadLengthRange(this,8,999)" type="password"><br>
+			</div>
+			<div id="bridge_wep_container">
+				<div style="display: block;">
+					<label class="leftcolumn" for="bridge_wep" id="bridge_wep_label">WEP Hex Key:</label>
+					<input value="" id="bridge_wep" size="30" maxlength="26" onkeyup="proofreadWep(this)" type="text">
+				</div>
+			</div>
+
+			<div id="bridge_wifi_mac_container">
+				<label class="leftcolumn" id="bridge_wifi_mac_label">MAC Of <em>This</em> Device:</label>
+				<span class="rightcolumn" id="bridge_wifi_mac">30:46:9A:0B:88:35</span>
+			</div>	
+			<div id="bridge_wds_container">
+				<label class="leftcolumn" for="bridge_wds_label" id="bridge_wds_label"><em>Other</em> WDS MAC Addresses:</label>
+				<span class="rightcolumn">
+					<input value="" id="add_bridge_wds_mac" onkeyup="proofreadMac(this)" size="20" maxlength="17" type="text">
+					<input class="default_button" id="add_bridge_wds_mac_button" value="Add" onclick='addMacToWds("bridge")' type="button">
+				</span>
+				<div class="rightcolumnonly"><div id="bridge_wds_mac_table_container"><table style="display: none;" id="bridge_wds_mac_table"><tbody><tr class="header_row"><th></th><th></th></tr></tbody></table></div></div>
+			</div>
+
+		</div>
+	</fieldset>
+
+	<fieldset style="display: block;" id="wan_fieldset">
+		<legend class="sectionheader">Internet / WAN</legend>
+
+		<div id="wan_protocol_container">
+			<label class="leftcolumn" for="wan_protocol">Connect Via:</label>
+			<select class="rightcolumn" id="wan_protocol" onchange="setGlobalVisibility()">
+				<option value="dhcp_wired">DHCP (Wired)</option>
+				<option value="pppoe_wired">PPPoE (Wired)</option>
+				<option value="static_wired">Static IP (Wired)</option>
+				<option value="dhcp_wireless">DHCP (Wireless)</option>
+				<option value="static_wireless">Static IP (Wireless)</option>
+				<option value="none">Disabled</option>
+			</select>
+		</div>
+		
+		<div style="display: block;" id="wan_dhcp_ip_container">
+			<label class="leftcolumn">Current IP:</label>
+			<span class="rightcolumn" id="dhcp_ip">192.168.0.8</span>
+		</div>
+		<div style="display: block;" id="wan_dhcp_expires_container">
+			<label class="leftcolumn">Current Lease Expires:</label>
+			<span class="rightcolumn">
+				<span id="dhcp_expires">02/24/11 09:10 CET</span>
+			</span>
+			
+			<div class="rightcolumnonly" style="margin-bottom: 15px;">
+				<input id="dhcp_renew_button" value="Renew Lease Now" class="default_button" onclick="renewDhcpLease()" type="button">
+			</div>
+			
+		</div>
+
+		<div style="display: none;" id="wan_pppoe_user_container">
+			<label class="leftcolumn" for="wan_pppoe_user" id="wan_pppoe_user_label">User Name:</label>
+			<input value="" style="color: red;" class="rightcolumn" id="wan_pppoe_user" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+		</div>
+		<div style="display: none;" id="wan_pppoe_pass_container">
+			<label class="leftcolumn" for="wan_pppoe_pass" id="wan_pppoe_pass_label">Password:</label>
+			<input style="color: red;" class="rightcolumn" id="wan_pppoe_pass" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="password">
+		</div>
+		<div style="display: none;" id="wan_pppoe_reconnect_mode_container">
+			<label class="leftcolumn" for="wan_pppoe_reconnect_mode">Reconnect Mode:</label>
+			<select class="rightcolumn" id="wan_pppoe_reconnect_mode" onchange="setWanVisibility()">
+				<option value="demand">Connect On Demand</option>
+				<option value="keepalive">Keep Alive</option>
+			</select>
+		</div>
+		<div style="display: none;" id="wan_pppoe_max_idle_container">
+			<label class="leftcolumn" for="wan_pppoe_max_idle" id="wan_pppoe_max_idle_label">Max Idle Time:</label>
+			<div class="rightcolumn">
+				<input value="5" style="color: black;" class="rightcolumn" id="wan_pppoe_max_idle" onkeyup="proofreadNumeric(this)" size="20" maxlength="4" type="text">
+				<em>(minutes)</em>
+			</div>
+		</div>
+
+		<div style="display: none;" id="wan_pppoe_reconnect_pings_container">
+			<label class="leftcolumn" for="wan_pppoe_reconnect_pings" id="wan_pppoe_reconnect_pings_label">Failed Pings Before Reconnect:</label>
+			<div class="rightcolumn">
+				<input value="3" style="color: black;" id="wan_pppoe_reconnect_pings" onkeyup="proofreadNumeric(this)" size="20" maxlength="4" type="text">
+			</div>
+		</div>
+
+		<div style="display: none;" id="wan_pppoe_interval_container">
+			<label class="leftcolumn" for="wan_pppoe_interval" id="wan_pppoe_interval_label">Ping Interval:</label>
+			<div class="rightcolumn">
+				<input value="5" style="color: black;" id="wan_pppoe_interval" onkeyup="proofreadNumeric(this)" size="20" maxlength="4" type="text">
+				<em>(seconds)</em>
+			</div>
+		</div>
+	
+		
+		<div style="display: none;" id="wan_static_ip_container">
+			<label class="leftcolumn" for="wan_static_ip" id="wan_static_ip_label">Static IP:</label>
+			<input value="10.1.1.10" style="color: black;" class="rightcolumn" name="wan_static_ip" id="wan_static_ip" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+		</div>
+		<div style="display: none;" id="wan_static_mask_container">
+			<label class="leftcolumn" for="wan_static_mask" id="wan_static_ip_label">Subnet Mask:</label>
+			<input value="255.255.255.0" style="color: black;" class="rightcolumn" name="wan_static_mask" id="wan_static_mask" onkeyup="proofreadMask(this)" size="20" maxlength="15" type="text">
+		</div>
+		<div style="display: none;" id="wan_static_gateway_container">
+			<label class="leftcolumn" for="wan_static_gateway" id="wan_static_gateway_label">Gateway:</label>
+			<input value="127.0.0.1" style="color: black;" class="rightcolumn" name="wan_static_gateway" id="wan_static_gateway" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+		</div>
+
+
+		<div style="display: none;" id="wan_via_single_port_container">
+			<span class="leftcolumn">
+				<label id="wan_via_single_port_label" for="wan_via_single_port">Ethernet Port Connects to:</label>
+			</span>
+			<span class="rightcolumn">
+				<select id="wan_via_single_port" onchange="setGlobalVisibility()">
+					<option value="lan">LAN</option>
+					<option value="wan">WAN</option>
+				</select>
+			</span>
+		</div>
+		<div style="display: none;" id="wan_port_to_lan_container">
+			<label class="leftcolumn" for="wan_port_to_lan" id="wan_port_to_lan_label">Wan Ethernet Port:</label>
+			<select class="rightcolumn" id="wan_port_to_lan">
+				<option value="disable">Disable</option>
+				<option value="bridge">Bridge To LAN</option>
+			</select>
+		</div>
+		
+		<div style="display: block;" id="wan_mac_container">
+			<span class="leftcolumn">
+				<label for="wan_mac" id="wan_mac_label">Use Custom MAC Address:</label>
+			</span>
+			<span class="rightcolumn">
+				<input id="wan_use_mac" onclick='enableAssociatedField(this, "wan_mac", defaultWanMac)' type="checkbox">&nbsp;&nbsp;
+				<input value="30:46:9A:0B:88:36" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" name="wan_mac" id="wan_mac" onkeyup="proofreadMac(this)" size="20" maxlength="17" type="text">
+			</span>
+		</div>
+		<div style="display: block;" id="wan_mtu_container">
+			<span class="leftcolumn">
+				<label for="wan_mtu" id="wan_mtu_label">Use Custom MTU:</label>
+			</span>
+			<span class="rightcolumn">
+				<input id="wan_use_mtu" onclick='enableAssociatedField(this, "wan_mtu", 1500)' type="checkbox">&nbsp;&nbsp;
+				<input value="1500" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" name="wan_mtu" id="wan_mtu" onkeyup="proofreadNumeric(this)" size="20" maxlength="4" type="text"> 
+			</span>
+		</div>
+	
+	</fieldset>
+	
+	<fieldset style="display: block;" id="lan_fieldset">
+		<legend class="sectionheader">Local Network / LAN</legend>
+	
+		<div id="lan_ip_container">
+			<label class="leftcolumn" for="lan_ip" id="lan_ip_label">Router IP:</label>
+			<input value="192.168.1.1" style="color: black;" class="rightcolumn" name="lan_ip" id="lan_ip" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+		</div>
+		<div id="lan_mask_container">
+			<label class="leftcolumn" for="lan_mask" id="lan_mask_label">Subnet Mask:</label>
+			<input value="255.255.255.0" style="color: black;" class="rightcolumn" name="lan_mask" id="lan_mask" onkeyup="proofreadMask(this)" size="20" maxlength="15" type="text">
+		</div>
+		<div style="display: none;" id="lan_gateway_container">
+			<label class="leftcolumn" for="lan_gateway" id="lan_gateway_label">Gateway:</label>
+			<input value="192.168.1.1" style="color: black;" class="rightcolumn" name="lan_gateway" id="lan_gateway" onkeyup="proofreadIp(this)" size="20" maxlength="15" type="text">
+		</div>
+
+		<div id="lan_force_dns_container">
+			<label class="leftcolumn" id="lan_force_dns_label" for="lan_force_dns">Allow Alternate DNS:</label>
+			<select class="rightcolumn" id="lan_force_dns">
+				<option value="allow">Allow Clients To Use Alternate DNS Servers</option>
+				<option value="force">Force Clients To Use Router DNS Servers</option>
+			</select>
+
+		</div>
+
+		<div id="lan_dns_container">
+			<span class="leftcolumn">
+				<label id="lan_use_dns_label" for="lan_use_dns">Custom DNS Servers:</label>
+			</span>
+			<span class="rightcolumn">
+				<input id="lan_use_dns" onclick="setDnsEnabled(this)" type="checkbox">&nbsp;&nbsp;
+				<input value="" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" id="add_lan_dns" onkeyup="proofreadIp(this)" size="20" maxlength="17" type="text">
+				<input disabled="disabled" class="default_button_disabled" id="add_lan_dns_button" value="Add" onclick='addDns("lan")' type="button">
+			</span>
+			<div class="rightcolumnonly"><div style="display: none;" id="lan_dns_table_container"><table style="display: none;" id="lan_dns_table"><tbody><tr class="header_row"><th></th><th></th></tr></tbody></table></div></div>
+		</div>
+
+
+	</fieldset>
+
+	<fieldset style="display: block;" id="wifi_fieldset">
+		
+		<legend class="sectionheader">Wireless</legend>
+
+		<div id="wifi_mode_container">
+			<label class="leftcolumn" for="wifi_mode" id="wifi_mode_label">Wireless Mode:</label>
+			<select class="rightcolumn" id="wifi_mode" onchange="setWifiVisibility()">
+				
+				
+				
+				
+				
+				
+			<option value="ap">Access Point (AP)</option><option value="ap+wds">AP+WDS</option><option value="adhoc">Ad Hoc</option><option value="disabled">Disabled</option></select>
+		</div>
+
+		<div style="display: none;" id="wifi_hwmode_container">
+			<label class="leftcolumn" for="wifi_hwmode" id="wifi_hwmode_label">Operation Mode:</label>
+			<span class="rightcolumn">
+				<select id="wifi_hwmode" onchange="setHwMode(this)">
+					
+					
+					
+					
+				<option value="dual">Dual Band</option><option value="11ng">N+G+B</option><option value="11g">G+B</option><option value="11b">B</option></select>
+			</span>
+		</div>
+
+
+		<div style="display: none;" id="wifi_channel_width_container">
+			<label class="leftcolumn" for="wifi_channel_width" id="wifi_channel_width_label">Channel Width:</label>
+			<span class="rightcolumn">
+				<select id="wifi_channel_width" onchange="setChannelWidth(this)">
+					<option value="HT20">20MHz</option>
+					<option value="HT40+">40MHz</option>
+				</select>
+			</span>
+		</div>
+
+		<div style="display: none;" id="wifi_txpower_container">
+			<label class="leftcolumn" for="wifi_txpower_max" id="wifi_txpower_label">Transmit Power:</label>
+			<span class="rightcolumn">
+				<select id="wifi_max_txpower" onchange='setTransmitPower("wifi_max_txpower","wifi_txpower")'>
+					<option value="max">Max</option>
+					<option value="custom">Custom</option>
+				</select>
+				&nbsp;
+				<input value="20" class="text_disabled" style="color: rgb(170, 170, 170);" disabled="disabled" id="wifi_txpower" onkeyup="proofreadNumericRange(this,0,txPowerMax)" size="10" type="text">
+				<em><span style="color: gray;" id="wifi_dbm">(0 - 20dBm)</span></em>
+			</span>
+		</div>
+		
+
+
+		<div style="display: none;" id="mac_enabled_container">
+			<label class="leftcolumn" for="mac_filter_enabled">Wireless MAC Filter:</label>
+			<select class="rightcolumn" id="mac_filter_enabled" onchange="setWifiVisibility()">
+				<option value="disabled">Disabled</option>
+				<option value="enabled">Enabled</option>
+			</select>
+		</div>
+		<div style="display: none;" id="mac_filter_container">
+			<div class="rightcolumnonly">
+				<em>MAC filtering applies to all wireless interfaces, 
+				including those in client mode.  In client mode you must be sure
+				to allow the MAC address of the AP to which you are connected.</em>
+			</div>
+			<div>
+				<label class="leftcolumn" for="mac_filter_policy">MAC Filter Policy:</label>
+				<select class="rightcolumn" id="mac_filter_policy">
+					<option value="allow">Allow Only MACs Listed Below</option>
+					<option value="deny">Deny Only MACs Listed Below</option>
+				</select>
+			</div>
+			<div class="rightcolumnonly">
+				<div>	
+					<input value="" id="add_mac" class="rightcolumn" onkeyup="proofreadMac(this)" size="20" maxlength="17" type="text">
+					<input class="default_button" id="add_mac_button" value="Add" onclick="addMacToFilter()" type="button">
+				</div>
+			</div>
+			<div class="rightcolumnonly"><div id="mac_table_container"><table style="display: none;" id="mac_table"><tbody><tr class="header_row"><th></th><th></th></tr></tbody></table></div></div>
+		</div>
+		
+		<div style="display: none;" id="internal_divider1" class="internal_divider"></div>
+
+
+		<div style="display: none;" id="wifi_list_ssid2_container">
+			<label class="leftcolumn" for="wifi_list_ssid2" id="wifi_list_ssid2_label">SSID to Join:</label>
+			<span class="rightcolumn">
+				<select id="wifi_list_ssid2" style="width: 180px; max-width: 180px;" onchange="setSsidVisibility(this.id)"><option value="custom">Other</option></select>
+				<input class="default_button" id="wifi_rescan_button" value="Re-Scan" onclick='scanWifi("wifi_custom_ssid2")' type="button">
+			</span>
+		</div>
+		<div style="display: none;" id="wifi_custom_ssid2_container">
+			<input value="" class="rightcolumnonly" id="wifi_custom_ssid2" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+		</div>
+		<div style="display: none;" id="wifi_ssid2_container">
+			<label class="leftcolumn" for="wifi_ssid2" id="wifi_ssid2_label">SSID to Join:</label>
+			<span class="rightcolumn">
+				<input value="OpenWrt" style="float: left; color: black;" id="wifi_ssid2" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text">
+				<input style="float: left; display: none;" class="default_button" id="wifi_scan_button" value="Scan" onclick='scanWifi("wifi_ssid2")' type="button">
+			</span>
+		</div>
+		<div style="display: none;" id="wifi_channel2_container" class="indent">
+			<label class="leftcolumn" for="wifi_channel2" id="wifi_channel2_label">Wireless Channel:</label>
+			<select class="rightcolumn" id="wifi_channel2" onchange="setChannel(this)">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option></select>
+		</div>
+		<div style="display: none;" id="wifi_fixed_channel2_container" class="indent">
+			<label class="leftcolumn" for="wifi_fixed_channel2" id="wifi_fixed_channel2_label">Wireless Channel:</label>
+			<span class="rightcolumn" id="wifi_fixed_channel2">&nbsp;</span>
+		</div>
+
+		<div style="display: none;" id="wifi_encryption2_container" class="indent">
+			<label class="leftcolumn" for="wifi_encryption2" id="wifi_encryption2_label">Encryption:</label>
+			<select class="rightcolumn" id="wifi_encryption2" onchange="setWifiVisibility()">
+				<option value="none">None</option>
+				<option value="psk2">WPA2 PSK</option>
+				<option value="psk">WPA PSK</option>
+				<option value="wep">WEP</option>
+			</select>
+		</div>
+		<div style="display: none;" id="wifi_fixed_encryption2_container" class="indent">
+			<label class="leftcolumn" for="wifi_fixed_encryption2" id="wifi_fixed_encryption2_label">Encryption:</label>
+			<span class="rightcolumn" id="wifi_fixed_encryption2">&nbsp;</span>
+		</div>
+		<div style="display: none;" id="wifi_pass2_container" class="indent">
+			<label class="leftcolumn" for="wifi_pass2" id="wifi_pass2_label">Password:</label>
+			<input style="color: red;" id="wifi_pass2" size="20" onkeyup="proofreadLengthRange(this,8,999)" type="password"><br>
+		</div>
+		<div style="display: none;" id="wifi_wep2_container" class="indent">
+			<div style="display: block;">
+				<label class="leftcolumn" for="wifi_wep2" id="wifi_wep2_label">WEP Hex Key:</label>
+				<input value="" style="color: red;" id="wifi_wep2" size="30" maxlength="26" onkeyup="proofreadWep(this)" type="text">
+			</div>
+		</div>
+
+		
+		<div style="display: none;" id="internal_divider2" class="internal_divider"></div>
+
+
+		<div style="display: none;" id="wifi_ssid1_container">
+			<label class="leftcolumn" for="wifi_ssid1" id="wifi_ssid1_label">Access Point SSID:</label>
+			<input value="OpenWrt" style="color: black;" id="wifi_ssid1" size="20" onkeyup="proofreadLengthRange(this,1,999)" type="text"><br>
+		</div>
+
+		<div style="display: none;" id="wifi_channel1_container" class="indent">
+			<label class="leftcolumn" for="wifi_channel1" id="wifi_channel1_label">Wireless Channel:</label>
+			<select class="rightcolumn" id="wifi_channel1" onchange="setChannel(this)">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option></select>
+		</div>
+		<div style="display: none;" id="wifi_fixed_channel1_container" class="indent">
+			<label class="leftcolumn" for="wifi_fixed_channel1" id="wifi_fixed_channel1_label">Wireless Channel:</label>
+			<span class="rightcolumn" id="wifi_fixed_channel1">&nbsp;</span>
+		</div>
+
+		<div style="display: none;" id="wifi_channel1a_container" class="indent">
+			<label class="leftcolumn" for="wifi_channel1a" id="wifi_channel1_label">Wireless Channel (5GHz):</label>
+			<select class="rightcolumn" id="wifi_channel1a"><option value="36">36</option><option value="40">40</option><option value="44">44</option><option value="48">48</option><option value="52">52</option><option value="56">56</option><option value="60">60</option><option value="64">64</option><option value="100">100</option><option value="104">104</option><option value="108">108</option><option value="112">112</option><option value="116">116</option><option value="132">132</option><option value="136">136</option><option value="140">140</option><option value="149">149</option><option value="153">153</option><option value="157">157</option><option value="161">161</option><option value="165">165</option></select>
+		</div>
+
+
+
+		<div style="display: none;" id="wifi_encryption1_container" class="indent">
+			<label class="leftcolumn" for="wifi_encryption1" id="wifi_encryption1_label">Encryption:</label>
+			<select class="rightcolumn" id="wifi_encryption1" onchange="setWifiVisibility()">
+				<option value="none">None</option>
+				<option value="psk2">WPA2 PSK</option>
+				<option value="psk">WPA PSK</option>
+				<option value="wep">WEP</option>
+				<option value="wpa">WPA RADIUS</option>
+				<option value="wpa2">WPA2 RADIUS</option>
+			</select>
+		</div>
+
+		<div style="display: none;" id="wifi_pass1_container" class="indent">
+			<label class="leftcolumn" for="wifi_pass1" id="wifi_pass1_label">Password:</label>
+			<input style="color: red;" id="wifi_pass1" size="20" onkeyup="proofreadLengthRange(this,8,999)" type="password"><br>
+		</div>
+		<div style="display: none;" id="wifi_wep1_container" class="indent">
+			<div style="display: block;">
+				<label class="leftcolumn" for="wifi_wep1" id="wifi_wep1_label">WEP Hex Key:</label>
+				<input value="" style="color: red;" id="wifi_wep1" size="30" maxlength="26" onkeyup="proofreadWep(this)" type="text">
+			</div>
+			<div>
+				<input class="rightcolumnonly" value="Random 40/64 Bit WEP Key" id="wep1gen40" onclick='setToWepKey("wifi_wep1",10)' type="button">
+			</div>
+			<div>
+				<input class="rightcolumnonly" value="Random 104/128 Bit WEP Key" id="wep1gen104" onclick='setToWepKey("wifi_wep1",26)' type="button">
+			</div>
+		</div>
+
+
+		<div style="display: none;" id="wifi_server1_container" class="indent">
+			<label class="leftcolumn" for="wifi_server1" id="wifi_server1_label">RADIUS Server IP:</label>
+			<input value="" style="color: red;" id="wifi_server1" size="20" onkeyup="proofreadIP(this)" type="text"><br>
+		</div>
+		<div style="display: none;" id="wifi_port1_container" class="indent">
+			<label class="leftcolumn" for="wifi_port1" id="wifi_port1_label">RADIUS Server Port:</label>
+			<input value="" style="color: red;" id="wifi_port1" size="20" maxlength="5" onkeyup="proofreadNumeric(this)" type="text"><br>
+		</div>
+
+		<div style="display: none;" id="wifi_hidden_container" class="indent">
+			<label class="leftcolumn" id="wifi_hidden_label" for="wifi_hidden">Broadcast SSID:</label>
+			<select class="rightcolumn" id="wifi_hidden">
+				<option value="disabled">Disabled</option>
+				<option value="enabled">Enabled</option>
+			</select>
+		</div>
+		<div style="display: none;" id="wifi_isolate_container" class="indent">
+			<label class="leftcolumn" id="wifi_isolate_label" for="wifi_isolate">Wireless Client Isolation:</label>
+			<select class="rightcolumn" id="wifi_isolate">
+				<option value="disabled">Disabled</option>
+				<option value="enabled">Enabled</option>
+			</select>
+		</div>
+		<div style="display: none;" id="wifi_mac_container" class="indent">
+			<label class="leftcolumn" id="wifi_mac_label">MAC Of <em>This</em> Device:</label>
+			<span class="rightcolumn" id="wifi_mac">30:46:9A:0B:88:35</span>
+		</div>	
+		<div style="display: none;" id="wifi_wds_container" class="indent">
+			<label class="leftcolumn" for="wifi_wds_label" id="wifi_wds_label"><em>Other</em> WDS MAC Addresses:</label>
+			<span class="rightcolumn">
+				<input value="" id="add_wifi_wds_mac" onkeyup="proofreadMac(this)" size="20" maxlength="17" type="text">
+				<input class="default_button" id="add_wifi_wds_mac_button" value="Add" onclick='addMacToWds("wifi")' type="button">
+			</span>
+			<div class="rightcolumnonly"><div id="wifi_wds_mac_table_container"><table style="display: none;" id="wifi_wds_mac_table"><tbody><tr class="header_row"><th></th><th></th></tr></tbody></table></div></div>
+		</div>
+	
+
+	
+	</fieldset>
+
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+	<iframe src="basic_3.html" id="reboot_test" onload="reloadPage()" style="display: none;"></iframe>
+</form>
+
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Connection</div>
+							<div id="submenu_container">
+								<div class="submenu_selected">Basic</div>
+								<a indepth="true" href="dhcp.html">DHCP</a>
+								<a indepth="true" href="ddns.html">Dynamic DNS</a>
+								<a indepth="true" href="routing.html">Routing</a>
+								<a indepth="true" href="wol.html">Wake on LAN</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

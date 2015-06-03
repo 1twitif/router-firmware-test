@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="routing.js"></script>
+
+<link rel="stylesheet" type="text/css" href="routing.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="routing_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="routing_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+	uciOriginal.set('wireless', 'radio0', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio0', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio0', 'channel', "11");
+	uciOriginal.set('wireless', 'radio0', 'macaddr', "30:46:9a:0b:88:35");
+	uciOriginal.set('wireless', 'radio0', 'hwmode', "11ng");
+	uciOriginal.set('wireless', 'radio0', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio0', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio0', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg035040', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg035040', 'device', "radio0");
+	uciOriginal.set('wireless', 'cfg035040', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg035040', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg035040', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg035040', 'encryption', "none");
+	uciOriginal.set('wireless', 'radio1', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio1', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio1', 'channel', "36");
+	uciOriginal.set('wireless', 'radio1', 'macaddr', "30:46:9a:0b:88:37");
+	uciOriginal.set('wireless', 'radio1', 'hwmode', "11na");
+	uciOriginal.set('wireless', 'radio1', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio1', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio1', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg062561', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg062561', 'device', "radio1");
+	uciOriginal.set('wireless', 'cfg062561', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg062561', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg062561', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg062561', 'encryption', "none");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+var lanIface="br-lan";
+var wanIface="eth1";
+var routingData = new Array();
+routingData.push("Kernel IP routing table");
+routingData.push("Destination     Gateway         Genmask         Flags Metric Ref    Use Iface");
+routingData.push("192.168.1.0     *               255.255.255.0   U     0      0        0 br-lan");
+routingData.push("192.168.0.0     *               255.255.255.0   U     0      0        0 eth1");
+routingData.push("default         192.168.0.1     0.0.0.0         UG    0      0        0 eth1");
+var wirelessDriver="";
+
+
+
+//-->
+</script>
+
+
+<form action="http://192.168.1.1/routing.sh">
+	<fieldset>
+		<legend class="sectionheader">Active Routes</legend>
+		<div id="active_route_table_container"><table style="display: block;" id="active_route_table"><tbody><tr class="header_row"><th>Destination</th><th>Interface(Network)</th><th>Gateway</th><th>Metric</th></tr><tr class="odd"><td class="active_route_table_column_1">192.168.1.0/255.255.255.0</td><td class="active_route_table_column_2">br-lan (LAN)</td><td class="active_route_table_column_3">*</td><td class="active_route_table_column_4">0</td></tr><tr class="even"><td class="active_route_table_column_1">192.168.0.0/255.255.255.0</td><td class="active_route_table_column_2">eth1 (WAN)</td><td class="active_route_table_column_3">*</td><td class="active_route_table_column_4">0</td></tr><tr class="odd"><td class="active_route_table_column_1">default</td><td class="active_route_table_column_2">eth1 (WAN)</td><td class="active_route_table_column_3">192.168.0.1</td><td class="active_route_table_column_4">0</td></tr></tbody></table></div>
+	</fieldset>
+
+	<fieldset>
+		<legend class="sectionheader">Static Routes</legend>
+
+		<div id="static_route_add_heading_container">
+			<label class="nocolumn" id="staticroute_add_heading_label" style="text-decoration: underline;">Add Static Route:</label>
+		</div>
+		<div class="bottom_gap">
+			<div id="static_route_add_container">
+								<table>
+					<tbody><tr class="table_row_add_header">
+						<th><label id="add_dest_label" for="add_host">Destination/Mask</label></th>
+						<th><label id="add_iface_label" for="add_mac">Network</label></th>
+						<th><label id="add_gateway_label" for="add_ip">Gateway</label></th>
+						<th></th>
+					</tr>
+					<tr class="table_row_add">
+						<td><input value="" id="add_dest" size="26" onkeyup="proofreadIpRange(this)" maxlength="35" type="text"></td>
+						<td><select id="add_iface"><option value="wan">WAN</option><option value="lan">LAN</option></select></td>
+						<td><input value="" id="add_gateway" size="20" onkeyup="proofreadIp(this)" maxlength="15" type="text"></td>
+						<td><input id="add_button" value="Add" class="default_button" onclick="addStaticRoute()" type="button"></td>
+					</tr>	
+				</tbody></table>
+
+			</div>
+		</div>
+		
+		<div id="static_route_table_heading_container">
+			<span class="nocolumn">Current Static Routes:</span>
+		</div>
+		<div class="indent">
+			<div id="static_route_table_container" class="bottom_gap"><table style="display: none;" id="static_route_table"><tbody><tr class="header_row"><th>Destination</th><th>Interface</th><th>Gateway</th><th></th><th></th></tr></tbody></table></div>
+		</div>
+	</fieldset>
+
+	<div id="firefox3_bug_correct" style="display: none;">
+		<input value="firefox3_bug" type="text">
+	</div>
+
+
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+<iframe src="routing_3.html" id="reboot_test" onload="reloadPage()" style="display: none;"></iframe>
+
+
+
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+
+
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Connection</div>
+							<div id="submenu_container">
+								<a indepth="true" href="basic.html">Basic</a>
+								<a indepth="true" href="dhcp.html">DHCP</a>
+								<a indepth="true" href="ddns.html">Dynamic DNS</a>
+								<div class="submenu_selected">Routing</div>
+								<a indepth="true" href="wol.html">Wake on LAN</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

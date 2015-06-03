@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/init/startup/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Local Startup - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.40 0.19 0.06
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../../../uci/changes/index7410.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fservices%2finit%2fstartup">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="../../index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init active">
+				<a href="../index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="../../dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq">
+				<a href="../../dnsmasq/index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="../../crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn">
+				<a href="../../openvpn/index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu3">
+	<ul class="tabmenu l3">
+		
+			<li class="tabmenu-item-startup active">
+				<a href="index.html">Local Startup</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" action="javascript:alert('Indisponible dans cette copie d\'interface');">
+	<div>
+		<script type="text/javascript" src="../../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+	</div>
+
+	<div class="cbi-map" id="cbi-rc">
+		<h2><a id="content" name="content">Local Startup</a></h2>
+		<div class="cbi-map-descr">This is the content of /etc/rc.local. Insert your own commands here (in front of 'exit 0') to execute them at the end of the boot process.</div>
+		<fieldset class="cbi-section">
+			
+			<div class="cbi-section-node" id="cbi-rc-0x4a2750">
+				<div class="cbi-value" id="cbi-rc-1-rcs">
+
+	<textarea class="cbi-input-textarea"  style="width: 100%" onchange="cbi_d_update(this.id)" name="cbid.rc.1.rcs" id="cbid.rc.1.rcs" rows="20"># Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+exit 0
+</textarea>
+
+</div>
+
+
+
+
+
+
+			</div>
+			<br />
+		</fieldset>
+
+		<br />
+	</div>
+	
+
+	<div>
+
+
+	<input class="cbi-button-save" type="submit" value="Soumettre" />
+
+
+	<input class="cbi-button-reset" type="reset" value="Remise à zéro" />
+
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div>
+</form>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/init/startup/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

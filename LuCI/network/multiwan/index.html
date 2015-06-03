@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/multiwan/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Multi-WAN - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.38 0.16 0.05
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../../uci/changes/index81dc.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fnetwork%2fmultiwan">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network active">
+				<a href="../index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-network">
+				<a href="../network/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-wireless">
+				<a href="../wireless/index.html">Wi-Fi</a>
+			</li>
+		
+			<li class="tabmenu-item-vlan">
+				<a href="../vlan/index.html">Switch</a>
+			</li>
+		
+			<li class="tabmenu-item-dhcpleases">
+				<a href="../dhcpleases/index.html">DHCP Leases</a>
+			</li>
+		
+			<li class="tabmenu-item-hosts">
+				<a href="../hosts/index.html">Noms d&#39;hôtes</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Routes statiques</a>
+			</li>
+		
+			<li class="tabmenu-item-diagnostics">
+				<a href="../diagnostics/index.html">Diagnostics</a>
+			</li>
+		
+			<li class="tabmenu-item-firewall">
+				<a href="../firewall/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-multiwan active">
+				<a href="index.html">Multi-WAN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-multiwan">
+	<h2><a id="content" name="content">Multi-WAN</a></h2>
+	<div class="cbi-map-descr">Multi-WAN allows for the use of multiple uplinks for load balancing and failover.</div>
+
+	<fieldset class="cbi-section" id="cbi-multiwan-config">
+		
+		
+		
+		
+		<div class="cbi-section-node" id="cbi-multiwan-config">
+			
+
+
+	<div class="cbi-value" id="cbi-multiwan-config-enabled"><label class="cbi-value-title" for="cbid.multiwan.config.enabled">Enable</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.multiwan.config.enabled" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.multiwan.config.enabled" name="cbid.multiwan.config.enabled" value="1" />
+
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+		<br />
+	</fieldset>
+
+<!-- /nsection -->
+<fieldset class="cbi-section" id="cbi-multiwan-interface">
+	<legend>WAN Interfaces</legend>
+	<div class="cbi-section-descr">Health Monitor detects and corrects network changes and failed connections.</div>
+	<div class="cbi-section-remove right">
+				<input type="submit" name="cbi.rts.multiwan.wan" onclick="this.form.cbi_state='del-section'; return true" value="Effacer" />
+			</div>
+<h3>WAN</h3>
+
+		
+
+		<fieldset class="cbi-section-node" id="cbi-multiwan-wan">
+			
+
+
+	<div class="cbi-value" id="cbi-multiwan-wan-weight"><label class="cbi-value-title" for="cbid.multiwan.wan.weight">Load Balancer Distribution</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.weight" name="cbid.multiwan.wan.weight" size="1">
+	<option id="cbi-multiwan-wan-weight-10" value="10" selected="selected">10</option><option id="cbi-multiwan-wan-weight-9" value="9">9</option><option id="cbi-multiwan-wan-weight-8" value="8">8</option><option id="cbi-multiwan-wan-weight-7" value="7">7</option><option id="cbi-multiwan-wan-weight-6" value="6">6</option><option id="cbi-multiwan-wan-weight-5" value="5">5</option><option id="cbi-multiwan-wan-weight-4" value="4">4</option><option id="cbi-multiwan-wan-weight-3" value="3">3</option><option id="cbi-multiwan-wan-weight-2" value="2">2</option><option id="cbi-multiwan-wan-weight-1" value="1">1</option><option id="cbi-multiwan-wan-weight-disable" value="disable">None</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-health_interval"><label class="cbi-value-title" for="cbid.multiwan.wan.health_interval">Health Monitor Interval</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.health_interval" name="cbid.multiwan.wan.health_interval" size="1">
+	<option id="cbi-multiwan-wan-health_interval-disable" value="disable">Disable</option><option id="cbi-multiwan-wan-health_interval-5" value="5">5 sec.</option><option id="cbi-multiwan-wan-health_interval-10" value="10" selected="selected">10 sec.</option><option id="cbi-multiwan-wan-health_interval-20" value="20">20 sec.</option><option id="cbi-multiwan-wan-health_interval-30" value="30">30 sec.</option><option id="cbi-multiwan-wan-health_interval-60" value="60">60 sec.</option><option id="cbi-multiwan-wan-health_interval-120" value="120">120 sec.</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-icmp_hosts"><label class="cbi-value-title" for="cbid.multiwan.wan.icmp_hosts">Health Monitor ICMP Host(s)</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.wan.icmp_hosts" id="cbid.multiwan.wan.icmp_hosts" value="dns" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.wan.icmp_hosts', {"disable":"Disable","dns":"DNS Server(s)","gateway":"WAN Gateway"}, '-- Choisir --', '-- autre --');
+		
+	</script>
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-timeout"><label class="cbi-value-title" for="cbid.multiwan.wan.timeout">Health Monitor ICMP Timeout</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.timeout" name="cbid.multiwan.wan.timeout" size="1">
+	<option id="cbi-multiwan-wan-timeout-1" value="1">1 sec.</option><option id="cbi-multiwan-wan-timeout-2" value="2">2 sec.</option><option id="cbi-multiwan-wan-timeout-3" value="3" selected="selected">3 sec.</option><option id="cbi-multiwan-wan-timeout-4" value="4">4 sec.</option><option id="cbi-multiwan-wan-timeout-5" value="5">5 sec.</option><option id="cbi-multiwan-wan-timeout-10" value="10">10 sec.</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-health_fail_retries"><label class="cbi-value-title" for="cbid.multiwan.wan.health_fail_retries">Attempts Before WAN Failover</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.health_fail_retries" name="cbid.multiwan.wan.health_fail_retries" size="1">
+	<option id="cbi-multiwan-wan-health_fail_retries-1" value="1">1</option><option id="cbi-multiwan-wan-health_fail_retries-3" value="3" selected="selected">3</option><option id="cbi-multiwan-wan-health_fail_retries-5" value="5">5</option><option id="cbi-multiwan-wan-health_fail_retries-10" value="10">10</option><option id="cbi-multiwan-wan-health_fail_retries-15" value="15">15</option><option id="cbi-multiwan-wan-health_fail_retries-20" value="20">20</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-health_recovery_retries"><label class="cbi-value-title" for="cbid.multiwan.wan.health_recovery_retries">Attempts Before WAN Recovery</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.health_recovery_retries" name="cbid.multiwan.wan.health_recovery_retries" size="1">
+	<option id="cbi-multiwan-wan-health_recovery_retries-1" value="1">1</option><option id="cbi-multiwan-wan-health_recovery_retries-3" value="3">3</option><option id="cbi-multiwan-wan-health_recovery_retries-5" value="5" selected="selected">5</option><option id="cbi-multiwan-wan-health_recovery_retries-10" value="10">10</option><option id="cbi-multiwan-wan-health_recovery_retries-15" value="15">15</option><option id="cbi-multiwan-wan-health_recovery_retries-20" value="20">20</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-failover_to"><label class="cbi-value-title" for="cbid.multiwan.wan.failover_to"><a title="Aller à la page de configuration correspondante" class="cbi-title-ref" href="../network.html">Failover Traffic Destination</a></label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan.failover_to" name="cbid.multiwan.wan.failover_to" size="1">
+	<option id="cbi-multiwan-wan-failover_to-disable" value="disable">None</option><option id="cbi-multiwan-wan-failover_to-lan" value="lan">lan</option><option id="cbi-multiwan-wan-failover_to-wan" value="wan">wan</option><option id="cbi-multiwan-wan-failover_to-fastbalancer" value="fastbalancer">Load Balancer(Performance)</option><option id="cbi-multiwan-wan-failover_to-balancer" value="balancer">Load Balancer(Compatibility)</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan-dns"><label class="cbi-value-title" for="cbid.multiwan.wan.dns">DNS Server(s)</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.wan.dns" id="cbid.multiwan.wan.dns" value="auto" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.wan.dns', {"auto":"Auto"}, '', '-- autre --');
+		
+	</script>
+	
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br /><div class="cbi-section-remove right">
+				<input type="submit" name="cbi.rts.multiwan.wan2" onclick="this.form.cbi_state='del-section'; return true" value="Effacer" />
+			</div>
+<h3>WAN2</h3>
+
+		
+
+		<fieldset class="cbi-section-node" id="cbi-multiwan-wan2">
+			
+
+
+	<div class="cbi-value" id="cbi-multiwan-wan2-weight"><label class="cbi-value-title" for="cbid.multiwan.wan2.weight">Load Balancer Distribution</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.weight" name="cbid.multiwan.wan2.weight" size="1">
+	<option id="cbi-multiwan-wan2-weight-10" value="10" selected="selected">10</option><option id="cbi-multiwan-wan2-weight-9" value="9">9</option><option id="cbi-multiwan-wan2-weight-8" value="8">8</option><option id="cbi-multiwan-wan2-weight-7" value="7">7</option><option id="cbi-multiwan-wan2-weight-6" value="6">6</option><option id="cbi-multiwan-wan2-weight-5" value="5">5</option><option id="cbi-multiwan-wan2-weight-4" value="4">4</option><option id="cbi-multiwan-wan2-weight-3" value="3">3</option><option id="cbi-multiwan-wan2-weight-2" value="2">2</option><option id="cbi-multiwan-wan2-weight-1" value="1">1</option><option id="cbi-multiwan-wan2-weight-disable" value="disable">None</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-health_interval"><label class="cbi-value-title" for="cbid.multiwan.wan2.health_interval">Health Monitor Interval</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.health_interval" name="cbid.multiwan.wan2.health_interval" size="1">
+	<option id="cbi-multiwan-wan2-health_interval-disable" value="disable">Disable</option><option id="cbi-multiwan-wan2-health_interval-5" value="5">5 sec.</option><option id="cbi-multiwan-wan2-health_interval-10" value="10" selected="selected">10 sec.</option><option id="cbi-multiwan-wan2-health_interval-20" value="20">20 sec.</option><option id="cbi-multiwan-wan2-health_interval-30" value="30">30 sec.</option><option id="cbi-multiwan-wan2-health_interval-60" value="60">60 sec.</option><option id="cbi-multiwan-wan2-health_interval-120" value="120">120 sec.</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-icmp_hosts"><label class="cbi-value-title" for="cbid.multiwan.wan2.icmp_hosts">Health Monitor ICMP Host(s)</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.wan2.icmp_hosts" id="cbid.multiwan.wan2.icmp_hosts" value="gateway" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.wan2.icmp_hosts', {"disable":"Disable","dns":"DNS Server(s)","gateway":"WAN Gateway"}, '-- Choisir --', '-- autre --');
+		
+	</script>
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-timeout"><label class="cbi-value-title" for="cbid.multiwan.wan2.timeout">Health Monitor ICMP Timeout</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.timeout" name="cbid.multiwan.wan2.timeout" size="1">
+	<option id="cbi-multiwan-wan2-timeout-1" value="1">1 sec.</option><option id="cbi-multiwan-wan2-timeout-2" value="2">2 sec.</option><option id="cbi-multiwan-wan2-timeout-3" value="3" selected="selected">3 sec.</option><option id="cbi-multiwan-wan2-timeout-4" value="4">4 sec.</option><option id="cbi-multiwan-wan2-timeout-5" value="5">5 sec.</option><option id="cbi-multiwan-wan2-timeout-10" value="10">10 sec.</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-health_fail_retries"><label class="cbi-value-title" for="cbid.multiwan.wan2.health_fail_retries">Attempts Before WAN Failover</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.health_fail_retries" name="cbid.multiwan.wan2.health_fail_retries" size="1">
+	<option id="cbi-multiwan-wan2-health_fail_retries-1" value="1">1</option><option id="cbi-multiwan-wan2-health_fail_retries-3" value="3" selected="selected">3</option><option id="cbi-multiwan-wan2-health_fail_retries-5" value="5">5</option><option id="cbi-multiwan-wan2-health_fail_retries-10" value="10">10</option><option id="cbi-multiwan-wan2-health_fail_retries-15" value="15">15</option><option id="cbi-multiwan-wan2-health_fail_retries-20" value="20">20</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-health_recovery_retries"><label class="cbi-value-title" for="cbid.multiwan.wan2.health_recovery_retries">Attempts Before WAN Recovery</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.health_recovery_retries" name="cbid.multiwan.wan2.health_recovery_retries" size="1">
+	<option id="cbi-multiwan-wan2-health_recovery_retries-1" value="1">1</option><option id="cbi-multiwan-wan2-health_recovery_retries-3" value="3">3</option><option id="cbi-multiwan-wan2-health_recovery_retries-5" value="5" selected="selected">5</option><option id="cbi-multiwan-wan2-health_recovery_retries-10" value="10">10</option><option id="cbi-multiwan-wan2-health_recovery_retries-15" value="15">15</option><option id="cbi-multiwan-wan2-health_recovery_retries-20" value="20">20</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-failover_to"><label class="cbi-value-title" for="cbid.multiwan.wan2.failover_to"><a title="Aller à la page de configuration correspondante" class="cbi-title-ref" href="../network.html">Failover Traffic Destination</a></label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.wan2.failover_to" name="cbid.multiwan.wan2.failover_to" size="1">
+	<option id="cbi-multiwan-wan2-failover_to-disable" value="disable">None</option><option id="cbi-multiwan-wan2-failover_to-lan" value="lan">lan</option><option id="cbi-multiwan-wan2-failover_to-wan" value="wan">wan</option><option id="cbi-multiwan-wan2-failover_to-fastbalancer" value="fastbalancer">Load Balancer(Performance)</option><option id="cbi-multiwan-wan2-failover_to-balancer" value="balancer" selected="selected">Load Balancer(Compatibility)</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-multiwan-wan2-dns"><label class="cbi-value-title" for="cbid.multiwan.wan2.dns">DNS Server(s)</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.wan2.dns" id="cbid.multiwan.wan2.dns" value="208.67.222.222 208.67.220.220" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.wan2.dns', {"auto":"Auto"}, '', '-- autre --');
+		
+	</script>
+	
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br />
+
+	
+
+	<div class="cbi-section-create">
+			
+				<input type="text" class="cbi-section-create-name" id="cbi.cts.multiwan.interface" name="cbi.cts.multiwan.interface" />
+				<script type="text/javascript">cbi_validate_field('cbi.cts.multiwan.interface', true, 'uciname');</script>
+				<input type="submit" class="cbi-button cbi-button-add" onclick="this.form.cbi_state='add-section'; return true" value="Ajouter" />
+				
+
+		</div>
+
+</fieldset>
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-multiwan-mwanfw">
+	<legend>Multi-WAN Traffic Rules</legend>
+<div class="cbi-section-descr">Configure rules for directing outbound traffic through specified WAN Uplinks.</div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Source Address</th><th class="cbi-section-table-cell">Destination Address</th><th class="cbi-section-table-cell">Protocole</th><th class="cbi-section-table-cell">Ports</th><th class="cbi-section-table-cell"><a title="Aller à la page de configuration correspondante" class="cbi-title-ref" href="../network.html">WAN Uplink</a></th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row" id="cbi-multiwan-cfg050c61">
+				
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg050c61-src">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg050c61.src" id="cbid.multiwan.cfg050c61.src" value="192.168.1.0/24" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg050c61.src', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg050c61-src"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg050c61-dst">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg050c61.dst" id="cbid.multiwan.cfg050c61.dst" value="ftp.netlab7.com" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg050c61.dst', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg050c61-dst"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg050c61-proto">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg050c61.proto" id="cbid.multiwan.cfg050c61.proto" value="tcp" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg050c61.proto', {"":"all","tcp":"TCP","udp":"UDP","icmp":"ICMP"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg050c61-proto"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg050c61-ports">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg050c61.ports" id="cbid.multiwan.cfg050c61.ports" value="21" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg050c61.ports', {"":"all"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg050c61-ports"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg050c61-wanrule">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.cfg050c61.wanrule" name="cbid.multiwan.cfg050c61.wanrule" size="1">
+	<option id="cbi-multiwan-cfg050c61-wanrule-lan" value="lan">lan</option><option id="cbi-multiwan-cfg050c61-wanrule-wan" value="wan">wan</option><option id="cbi-multiwan-cfg050c61-wanrule-fastbalancer" value="fastbalancer">Load Balancer(Performance)</option><option id="cbi-multiwan-cfg050c61-wanrule-balancer" value="balancer">Load Balancer(Compatibility)</option>
+	</select>
+
+</div>
+<div id="cbip-multiwan-cfg050c61-wanrule"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.multiwan.cfg050c61" alt="Effacer" title="Effacer" src="../../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-multiwan-cfg071098">
+				
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg071098-src">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg071098.src" id="cbid.multiwan.cfg071098.src" value="192.168.0.3" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg071098.src', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg071098-src"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg071098-dst">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg071098.dst" id="cbid.multiwan.cfg071098.dst" value="" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg071098.dst', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg071098-dst"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg071098-proto">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg071098.proto" id="cbid.multiwan.cfg071098.proto" value="icmp" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg071098.proto', {"":"all","tcp":"TCP","udp":"UDP","icmp":"ICMP"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg071098-proto"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg071098-ports">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg071098.ports" id="cbid.multiwan.cfg071098.ports" value="" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg071098.ports', {"":"all"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg071098-ports"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg071098-wanrule">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.cfg071098.wanrule" name="cbid.multiwan.cfg071098.wanrule" size="1">
+	<option id="cbi-multiwan-cfg071098-wanrule-lan" value="lan">lan</option><option id="cbi-multiwan-cfg071098-wanrule-wan" value="wan">wan</option><option id="cbi-multiwan-cfg071098-wanrule-fastbalancer" value="fastbalancer">Load Balancer(Performance)</option><option id="cbi-multiwan-cfg071098-wanrule-balancer" value="balancer" selected="selected">Load Balancer(Compatibility)</option>
+	</select>
+
+</div>
+<div id="cbip-multiwan-cfg071098-wanrule"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.multiwan.cfg071098" alt="Effacer" title="Effacer" src="../../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-multiwan-cfg09bd53">
+				
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg09bd53-src">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg09bd53.src" id="cbid.multiwan.cfg09bd53.src" value="" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg09bd53.src', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg09bd53-src"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg09bd53-dst">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg09bd53.dst" id="cbid.multiwan.cfg09bd53.dst" value="www.whatismyip.com" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg09bd53.dst', {"":"all","192.168.0.1":"192.168.0.1","192.168.1.238":"192.168.1.238"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg09bd53-dst"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg09bd53-proto">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg09bd53.proto" id="cbid.multiwan.cfg09bd53.proto" value="" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg09bd53.proto', {"":"all","tcp":"TCP","udp":"UDP","icmp":"ICMP"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg09bd53-proto"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg09bd53-ports">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.multiwan.cfg09bd53.ports" id="cbid.multiwan.cfg09bd53.ports" value="" />
+	
+	<script type="text/javascript">
+		cbi_combobox_init('cbid.multiwan.cfg09bd53.ports', {"":"all"}, '', '-- autre --');
+		
+	</script>
+	</div>
+<div id="cbip-multiwan-cfg09bd53-ports"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-multiwan-cfg09bd53-wanrule">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.cfg09bd53.wanrule" name="cbid.multiwan.cfg09bd53.wanrule" size="1">
+	<option id="cbi-multiwan-cfg09bd53-wanrule-lan" value="lan">lan</option><option id="cbi-multiwan-cfg09bd53-wanrule-wan" value="wan">wan</option><option id="cbi-multiwan-cfg09bd53-wanrule-fastbalancer" value="fastbalancer" selected="selected">Load Balancer(Performance)</option><option id="cbi-multiwan-cfg09bd53-wanrule-balancer" value="balancer">Load Balancer(Compatibility)</option>
+	</select>
+
+</div>
+<div id="cbip-multiwan-cfg09bd53-wanrule"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.multiwan.cfg09bd53" alt="Effacer" title="Effacer" src="../../luci-static/resources/cbi/remove.gif" /></td></tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.multiwan.mwanfw" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+	<fieldset class="cbi-section" id="cbi-multiwan-config">
+		
+		
+		
+		
+		<div class="cbi-section-node" id="cbi-multiwan-config">
+			
+
+
+	<div class="cbi-value" id="cbi-multiwan-config-default_route"><label class="cbi-value-title" for="cbid.multiwan.config.default_route"><a title="Aller à la page de configuration correspondante" class="cbi-title-ref" href="../network.html">Default Route</a></label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.multiwan.config.default_route" name="cbid.multiwan.config.default_route" size="1">
+	<option id="cbi-multiwan-config-default_route-lan" value="lan">lan</option><option id="cbi-multiwan-config-default_route-wan" value="wan">wan</option><option id="cbi-multiwan-config-default_route-fastbalancer" value="fastbalancer">Load Balancer(Performance)</option><option id="cbi-multiwan-config-default_route-balancer" value="balancer" selected="selected">Load Balancer(Compatibility)</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+		<br />
+	</fieldset>
+
+<!-- /nsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/network/multiwan/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

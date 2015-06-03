@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/bandwidth/br-lan by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Realtime Traffic - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.18 0.08 0.02
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status active">
+				<a href="../index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-interfaces">
+				<a href="../interfaces/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-iptables">
+				<a href="../iptables/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-conntrack">
+				<a href="../conntrack/index.html">Connexions Actives</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Route</a>
+			</li>
+		
+			<li class="tabmenu-item-syslog">
+				<a href="../syslog/index.html">Journal système</a>
+			</li>
+		
+			<li class="tabmenu-item-dmesg">
+				<a href="../dmesg/index.html">Journal du noyau</a>
+			</li>
+		
+			<li class="tabmenu-item-load">
+				<a href="../load/index.html">Realtime Load</a>
+			</li>
+		
+			<li class="tabmenu-item-bandwidth active">
+				<a href="index.html">Realtime Traffic</a>
+			</li>
+		
+			<li class="tabmenu-item-connections">
+				<a href="../connections/index.html">Realtime Connections</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+
+<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+<script type="text/javascript">//<![CDATA[
+	var bwxhr = new XHR();
+
+	var G;
+	var TIME = 0;
+	var RXB  = 1;
+	var RXP  = 2;
+	var TXB  = 3;
+	var TXP  = 4;
+
+	var width  = 760;
+	var height = 300;
+	var step   = 5;
+
+	var data_wanted = Math.floor(width / step);
+	var data_fill   = 0;
+	var data_stamp  = 0;
+
+	var data_rx = [ ];
+	var data_tx = [ ];
+
+	var line_rx;
+	var line_tx;
+
+	var label_25;
+	var label_50;
+	var label_75;
+
+	var label_rx_cur;
+	var label_rx_avg;
+	var label_rx_peak;
+
+	var label_tx_cur;
+	var label_tx_avg;
+	var label_tx_peak;
+
+	var label_scale;
+
+
+	function bandwidth_label(bytes, br)
+	{
+		var uby = 'KByte';
+		var kby = (bytes / 1024);
+
+		if (kby >= 1024)
+		{
+			uby = 'MByte';
+			kby = kby / 1024;
+		}
+
+		var ubi = 'KBit';
+		var kbi = (bytes * 8 / 1024);
+
+		if (kbi >= 1024)
+		{
+			ubi = 'MBit';
+			kbi = kbi / 1024;
+		}
+
+		return String.format("%f %s/s%s(%f %s/s)",
+			kbi.toFixed(2), ubi,
+			br ? '<br />' : ' ',
+			kby.toFixed(2), uby
+		);
+	}
+
+	function update_graph()
+	{
+		bwxhr.get('/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/bandwidth_status/br-lan', null,
+			function(x, data)
+			{
+				var data_max   = 0;
+				var data_scale = 0;
+
+				var data_rx_avg = 0;
+				var data_tx_avg = 0;
+
+				var data_rx_peak = 0;
+				var data_tx_peak = 0;
+
+				for (var i = data_stamp ? 0 : 1; i < data.length; i++)
+				{
+					/* skip overlapping entries */
+					if (data[i][TIME] <= data_stamp)
+						continue;
+
+					/* normalize difference against time interval */
+					var time_delta = data[i][TIME] - data[i-1][TIME];
+					if (time_delta)
+					{
+						data_rx.push((data[i][RXB] - data[i-1][RXB]) / time_delta);
+						data_tx.push((data[i][TXB] - data[i-1][TXB]) / time_delta);
+					}
+				}
+
+				/* cut off outdated entries */
+				data_rx = data_rx.slice(data_rx.length - data_wanted, data_rx.length);
+				data_tx = data_tx.slice(data_tx.length - data_wanted, data_tx.length);
+
+				/* find peak */
+				for (var i = 0; i < data_rx.length; i++)
+				{
+					data_max = Math.max(data_max, data_rx[i]);
+					data_max = Math.max(data_max, data_tx[i]);
+
+					data_rx_peak = Math.max(data_rx_peak, data_rx[i]);
+					data_tx_peak = Math.max(data_tx_peak, data_tx[i]);
+
+					if (i > 0)
+					{
+						data_rx_avg = (data_rx_avg + data_rx[i]) / 2;
+						data_tx_avg = (data_tx_avg + data_tx[i]) / 2;
+					}
+					else
+					{
+						data_rx_avg = data_rx[i];
+						data_tx_avg = data_tx[i];
+					}
+				}
+
+				/* remember current timestamp, calculate horizontal scale */
+				data_stamp = data[data.length-1][TIME];
+				data_scale = height / (data_max * 1.1);
+
+
+				/* plot data */
+				var pt_rx = '0,' + height;
+				var pt_tx = '0,' + height;
+
+				var y_rx = 0;
+				var y_tx = 0;
+
+				for (var i = 0; i < data_rx.length; i++)
+				{
+					var x = i * step;
+
+					y_rx = height - Math.floor(data_rx[i] * data_scale);
+					y_tx = height - Math.floor(data_tx[i] * data_scale);
+
+					pt_rx += ' ' + x + ',' + y_rx;
+					pt_tx += ' ' + x + ',' + y_tx;
+				}
+
+				pt_rx += ' ' + width + ',' + y_rx + ' ' + width + ',' + height;
+				pt_tx += ' ' + width + ',' + y_tx + ' ' + width + ',' + height;
+
+
+				line_rx.setAttribute('points', pt_rx);
+				line_tx.setAttribute('points', pt_tx);
+
+				label_25.firstChild.data = bandwidth_label(1.1 * 0.25 * data_max);
+				label_50.firstChild.data = bandwidth_label(1.1 * 0.50 * data_max);
+				label_75.firstChild.data = bandwidth_label(1.1 * 0.75 * data_max);
+
+				label_rx_cur.innerHTML = bandwidth_label(data_rx[data_rx.length-1], true);
+				label_tx_cur.innerHTML = bandwidth_label(data_tx[data_tx.length-1], true);
+
+				label_rx_avg.innerHTML = bandwidth_label(data_rx_avg, true);
+				label_tx_avg.innerHTML = bandwidth_label(data_tx_avg, true);
+
+				label_rx_peak.innerHTML = bandwidth_label(data_rx_peak, true);
+				label_tx_peak.innerHTML = bandwidth_label(data_tx_peak, true);
+
+				/* reset timer */
+				window.setTimeout(update_graph, 1000);
+			}
+		)
+	}
+
+	/* wait for SVG */
+	window.setTimeout(
+		function() {
+			var svg = document.getElementById('bwsvg');
+
+			try {
+				G = svg.getSVGDocument
+					? svg.getSVGDocument() : svg.contentDocument;
+			}
+			catch(e) {
+				G = document.embeds['bwsvg'].getSVGDocument();
+			}
+
+			if (!G)
+			{
+				window.setTimeout(arguments.callee, 1000);
+			}
+			else
+			{
+				/* find sizes */
+				width       = svg.offsetWidth  - 2;
+				height      = svg.offsetHeight - 2;
+				data_wanted = Math.ceil(width / step);
+
+				/* prefill datasets */
+				for (var i = 0; i < data_wanted; i++)
+				{
+					data_rx[i] = 0;
+					data_tx[i] = 0;
+				}
+
+				/* find svg elements */
+				line_rx = G.getElementById('rx');
+				line_tx = G.getElementById('tx');
+
+				label_25 = G.getElementById('label_25');
+				label_50 = G.getElementById('label_50');
+				label_75 = G.getElementById('label_75');
+
+				label_rx_cur  = document.getElementById('rx_bw_cur');
+				label_rx_avg  = document.getElementById('rx_bw_avg');
+				label_rx_peak = document.getElementById('rx_bw_peak');
+
+				label_tx_cur  = document.getElementById('tx_bw_cur');
+				label_tx_avg  = document.getElementById('tx_bw_avg');
+				label_tx_peak = document.getElementById('tx_bw_peak');
+
+				label_scale   = document.getElementById('scale');
+
+
+				/* plot horizontal time interval lines */
+				for (var i = step * 60; i < width; i += step * 60)
+				{
+					var line = G.createElementNS('http://www.w3.org/2000/svg', 'line');
+						line.setAttribute('x1', i);
+						line.setAttribute('y1', 0);
+						line.setAttribute('x2', i);
+						line.setAttribute('y2', '100%');
+						line.setAttribute('style', 'stroke:black;stroke-width:0.1');
+
+					var text = G.createElementNS('http://www.w3.org/2000/svg', 'text');
+						text.setAttribute('x', i + 5);
+						text.setAttribute('y', 15);
+						text.setAttribute('style', 'fill:#999999; font-size:9pt');
+						text.appendChild(G.createTextNode(Math.round(i / step / 60) + 'm'));
+
+					label_25.parentNode.appendChild(line);
+					label_25.parentNode.appendChild(text);
+				}
+
+				label_scale.innerHTML = String.format('(%d minute window, %d second interval)', data_wanted / 60, 1);
+
+				/* render datasets, start update interval */
+				update_graph();
+			}
+		}, 1000
+	);
+//]]></script>
+
+<h2><a id="content" name="content">Realtime Traffic</a></h2>
+
+<ul class="cbi-tabmenu">
+	
+		<li class="cbi-tab"><a href="br-lan.html">br-lan</a></li>
+	
+		<li class="cbi-tab-disabled"><a href="eth0.html">eth0</a></li>
+	
+		<li class="cbi-tab-disabled"><a href="eth0-2.html">eth0.1</a></li>
+	
+		<li class="cbi-tab-disabled"><a href="eth1.html">eth1</a></li>
+	
+		<li class="cbi-tab-disabled"><a href="wlan0.html">wlan0</a></li>
+	
+		<li class="cbi-tab-disabled"><a href="wlan1.html">wlan1</a></li>
+	
+</ul>
+
+<embed id="bwsvg" style="width:100%; height:300px; border:1px solid #000000; background-color:#FFFFFF" src="javascript:alert('Indisponible dans cette copie d\'interface');" />
+<div style="text-align:right"><small id="scale">-</small></div>
+<br />
+
+<table style="width:100%; table-layout:fixed" cellspacing="5">
+	<tr>
+		<td style="text-align:right; vertical-align:top"><strong style="border-bottom:2px solid blue">Inbound:</strong></td>
+		<td id="rx_bw_cur">0 kbit/s<br />(0 KB/s)</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Average:</strong></td>
+		<td id="rx_bw_avg">0 kbit/s<br />(0 KB/s)</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Peak:</strong></td>
+		<td id="rx_bw_peak">0 kbit/s<br />(0 KB/s)</td>
+	</tr>
+	<tr>
+		<td style="text-align:right; vertical-align:top"><strong style="border-bottom:2px solid green">Outbound:</strong></td>
+		<td id="tx_bw_cur">0 kbit/s<br />(0 KB/s)</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Average:</strong></td>
+		<td id="tx_bw_avg">0 kbit/s<br />(0 KB/s)</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Peak:</strong></td>
+		<td id="tx_bw_peak">0 kbit/s<br />(0 KB/s)</td>
+	</tr>
+</table>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/bandwidth/br-lan by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

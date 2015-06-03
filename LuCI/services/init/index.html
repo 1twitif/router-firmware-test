@@ -1,0 +1,1848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/init/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Scripts d&#39;initialisation - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.13 0.09 0.03
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="../index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init active">
+				<a href="index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="../dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq">
+				<a href="../dnsmasq/index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="../crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn">
+				<a href="../openvpn/index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu3">
+	<ul class="tabmenu l3">
+		
+			<li class="tabmenu-item-startup">
+				<a href="startup/index.html">Local Startup</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" action="javascript:alert('Indisponible dans cette copie d\'interface');">
+	<div>
+		<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+	</div>
+
+	<div class="cbi-map" id="cbi-initmgr">
+		<h2><a id="content" name="content">Scripts d'initialisation</a></h2>
+		<div class="cbi-map-descr">Vous pouvez ici activer ou désactiver les scripts d'initialisation installés. Les changements seront pris en compte après un redémarrage.<br/><strong>Attention: Si vous désactivez des scripts essentiels comme "réseau", votre équipement pourrait ne plus être accessible&nbsp;!</strong></div>
+		<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-table-table">
+	
+<div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Priorité de démarrage</th><th class="cbi-section-table-cell">Script d'initialisation</th><th class="cbi-section-table-cell">Activer/Désactiver</th><th class="cbi-section-table-cell">Démarrer</th><th class="cbi-section-table-cell">Redémarrer</th><th class="cbi-section-table-cell">Arrêter</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-00.rcS">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-index">
+
+
+0
+
+<input type="hidden" id="cbid.table.00.rcS.index" value="0" />
+</div>
+<div id="cbip-table-00.rcS-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-name">
+
+
+rcS
+
+<input type="hidden" id="cbid.table.00.rcS.name" value="rcS" />
+</div>
+<div id="cbip-table-00.rcS-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.00.rcS.endisable" id="cbid.table.00.rcS.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-00.rcS-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.00.rcS.start" id="cbid.table.00.rcS.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-00.rcS-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.00.rcS.restart" id="cbid.table.00.rcS.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-00.rcS-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.rcS-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.00.rcS.stop" id="cbid.table.00.rcS.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-00.rcS-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-00.umount">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-index">
+
+
+0
+
+<input type="hidden" id="cbid.table.00.umount.index" value="0" />
+</div>
+<div id="cbip-table-00.umount-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-name">
+
+
+umount
+
+<input type="hidden" id="cbid.table.00.umount.name" value="umount" />
+</div>
+<div id="cbip-table-00.umount-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-endisable">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.00.umount.endisable" id="cbid.table.00.umount.endisable" value="Désactivé" />
+	
+</div>
+<div id="cbip-table-00.umount-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.00.umount.start" id="cbid.table.00.umount.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-00.umount-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.00.umount.restart" id="cbid.table.00.umount.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-00.umount-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-00.umount-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.00.umount.stop" id="cbid.table.00.umount.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-00.umount-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-05.defconfig">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-index">
+
+
+5
+
+<input type="hidden" id="cbid.table.05.defconfig.index" value="5" />
+</div>
+<div id="cbip-table-05.defconfig-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-name">
+
+
+defconfig
+
+<input type="hidden" id="cbid.table.05.defconfig.name" value="defconfig" />
+</div>
+<div id="cbip-table-05.defconfig-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.05.defconfig.endisable" id="cbid.table.05.defconfig.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-05.defconfig-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.05.defconfig.start" id="cbid.table.05.defconfig.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-05.defconfig-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.05.defconfig.restart" id="cbid.table.05.defconfig.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-05.defconfig-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.defconfig-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.05.defconfig.stop" id="cbid.table.05.defconfig.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-05.defconfig-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-05.luci_fixtime">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-index">
+
+
+5
+
+<input type="hidden" id="cbid.table.05.luci_fixtime.index" value="5" />
+</div>
+<div id="cbip-table-05.luci_fixtime-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-name">
+
+
+luci_fixtime
+
+<input type="hidden" id="cbid.table.05.luci_fixtime.name" value="luci_fixtime" />
+</div>
+<div id="cbip-table-05.luci_fixtime-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.05.luci_fixtime.endisable" id="cbid.table.05.luci_fixtime.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-05.luci_fixtime-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.05.luci_fixtime.start" id="cbid.table.05.luci_fixtime.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-05.luci_fixtime-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.05.luci_fixtime.restart" id="cbid.table.05.luci_fixtime.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-05.luci_fixtime-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-05.luci_fixtime-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.05.luci_fixtime.stop" id="cbid.table.05.luci_fixtime.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-05.luci_fixtime-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-10.boot">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-index">
+
+
+10
+
+<input type="hidden" id="cbid.table.10.boot.index" value="10" />
+</div>
+<div id="cbip-table-10.boot-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-name">
+
+
+boot
+
+<input type="hidden" id="cbid.table.10.boot.name" value="boot" />
+</div>
+<div id="cbip-table-10.boot-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.10.boot.endisable" id="cbid.table.10.boot.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-10.boot-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.10.boot.start" id="cbid.table.10.boot.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-10.boot-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.10.boot.restart" id="cbid.table.10.boot.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-10.boot-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-10.boot-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.10.boot.stop" id="cbid.table.10.boot.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-10.boot-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-39.usb">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-index">
+
+
+39
+
+<input type="hidden" id="cbid.table.39.usb.index" value="39" />
+</div>
+<div id="cbip-table-39.usb-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-name">
+
+
+usb
+
+<input type="hidden" id="cbid.table.39.usb.name" value="usb" />
+</div>
+<div id="cbip-table-39.usb-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.39.usb.endisable" id="cbid.table.39.usb.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-39.usb-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.39.usb.start" id="cbid.table.39.usb.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-39.usb-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.39.usb.restart" id="cbid.table.39.usb.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-39.usb-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-39.usb-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.39.usb.stop" id="cbid.table.39.usb.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-39.usb-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-40.network">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-index">
+
+
+40
+
+<input type="hidden" id="cbid.table.40.network.index" value="40" />
+</div>
+<div id="cbip-table-40.network-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-name">
+
+
+network
+
+<input type="hidden" id="cbid.table.40.network.name" value="network" />
+</div>
+<div id="cbip-table-40.network-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.40.network.endisable" id="cbid.table.40.network.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-40.network-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.40.network.start" id="cbid.table.40.network.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-40.network-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.40.network.restart" id="cbid.table.40.network.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-40.network-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-40.network-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.40.network.stop" id="cbid.table.40.network.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-40.network-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-45.firewall">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-index">
+
+
+45
+
+<input type="hidden" id="cbid.table.45.firewall.index" value="45" />
+</div>
+<div id="cbip-table-45.firewall-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-name">
+
+
+firewall
+
+<input type="hidden" id="cbid.table.45.firewall.name" value="firewall" />
+</div>
+<div id="cbip-table-45.firewall-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.45.firewall.endisable" id="cbid.table.45.firewall.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-45.firewall-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.45.firewall.start" id="cbid.table.45.firewall.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-45.firewall-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.45.firewall.restart" id="cbid.table.45.firewall.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-45.firewall-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-45.firewall-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.45.firewall.stop" id="cbid.table.45.firewall.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-45.firewall-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-50.cron">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-index">
+
+
+50
+
+<input type="hidden" id="cbid.table.50.cron.index" value="50" />
+</div>
+<div id="cbip-table-50.cron-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-name">
+
+
+cron
+
+<input type="hidden" id="cbid.table.50.cron.name" value="cron" />
+</div>
+<div id="cbip-table-50.cron-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.50.cron.endisable" id="cbid.table.50.cron.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-50.cron-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.50.cron.start" id="cbid.table.50.cron.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-50.cron-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.50.cron.restart" id="cbid.table.50.cron.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-50.cron-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.cron-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.50.cron.stop" id="cbid.table.50.cron.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-50.cron-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-50.dropbear">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-index">
+
+
+50
+
+<input type="hidden" id="cbid.table.50.dropbear.index" value="50" />
+</div>
+<div id="cbip-table-50.dropbear-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-name">
+
+
+dropbear
+
+<input type="hidden" id="cbid.table.50.dropbear.name" value="dropbear" />
+</div>
+<div id="cbip-table-50.dropbear-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.50.dropbear.endisable" id="cbid.table.50.dropbear.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-50.dropbear-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.50.dropbear.start" id="cbid.table.50.dropbear.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-50.dropbear-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.50.dropbear.restart" id="cbid.table.50.dropbear.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-50.dropbear-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.dropbear-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.50.dropbear.stop" id="cbid.table.50.dropbear.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-50.dropbear-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-50.telnet">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-index">
+
+
+50
+
+<input type="hidden" id="cbid.table.50.telnet.index" value="50" />
+</div>
+<div id="cbip-table-50.telnet-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-name">
+
+
+telnet
+
+<input type="hidden" id="cbid.table.50.telnet.name" value="telnet" />
+</div>
+<div id="cbip-table-50.telnet-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.50.telnet.endisable" id="cbid.table.50.telnet.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-50.telnet-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.50.telnet.start" id="cbid.table.50.telnet.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-50.telnet-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.50.telnet.restart" id="cbid.table.50.telnet.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-50.telnet-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.telnet-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.50.telnet.stop" id="cbid.table.50.telnet.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-50.telnet-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-50.uhttpd">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-index">
+
+
+50
+
+<input type="hidden" id="cbid.table.50.uhttpd.index" value="50" />
+</div>
+<div id="cbip-table-50.uhttpd-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-name">
+
+
+uhttpd
+
+<input type="hidden" id="cbid.table.50.uhttpd.name" value="uhttpd" />
+</div>
+<div id="cbip-table-50.uhttpd-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-endisable">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.50.uhttpd.endisable" id="cbid.table.50.uhttpd.endisable" value="Désactivé" />
+	
+</div>
+<div id="cbip-table-50.uhttpd-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.50.uhttpd.start" id="cbid.table.50.uhttpd.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-50.uhttpd-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.50.uhttpd.restart" id="cbid.table.50.uhttpd.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-50.uhttpd-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-50.uhttpd-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.50.uhttpd.stop" id="cbid.table.50.uhttpd.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-50.uhttpd-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-59.luci_dhcp_migrate">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-index">
+
+
+59
+
+<input type="hidden" id="cbid.table.59.luci_dhcp_migrate.index" value="59" />
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-name">
+
+
+luci_dhcp_migrate
+
+<input type="hidden" id="cbid.table.59.luci_dhcp_migrate.name" value="luci_dhcp_migrate" />
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.59.luci_dhcp_migrate.endisable" id="cbid.table.59.luci_dhcp_migrate.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.59.luci_dhcp_migrate.start" id="cbid.table.59.luci_dhcp_migrate.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.59.luci_dhcp_migrate.restart" id="cbid.table.59.luci_dhcp_migrate.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-59.luci_dhcp_migrate-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.59.luci_dhcp_migrate.stop" id="cbid.table.59.luci_dhcp_migrate.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-59.luci_dhcp_migrate-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-60.dnsmasq">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-index">
+
+
+60
+
+<input type="hidden" id="cbid.table.60.dnsmasq.index" value="60" />
+</div>
+<div id="cbip-table-60.dnsmasq-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-name">
+
+
+dnsmasq
+
+<input type="hidden" id="cbid.table.60.dnsmasq.name" value="dnsmasq" />
+</div>
+<div id="cbip-table-60.dnsmasq-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.60.dnsmasq.endisable" id="cbid.table.60.dnsmasq.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-60.dnsmasq-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.60.dnsmasq.start" id="cbid.table.60.dnsmasq.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-60.dnsmasq-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.60.dnsmasq.restart" id="cbid.table.60.dnsmasq.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-60.dnsmasq-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-60.dnsmasq-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.60.dnsmasq.stop" id="cbid.table.60.dnsmasq.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-60.dnsmasq-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-95.done">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-index">
+
+
+95
+
+<input type="hidden" id="cbid.table.95.done.index" value="95" />
+</div>
+<div id="cbip-table-95.done-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-name">
+
+
+done
+
+<input type="hidden" id="cbid.table.95.done.name" value="done" />
+</div>
+<div id="cbip-table-95.done-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.95.done.endisable" id="cbid.table.95.done.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-95.done-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.95.done.start" id="cbid.table.95.done.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-95.done-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.95.done.restart" id="cbid.table.95.done.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-95.done-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.done-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.95.done.stop" id="cbid.table.95.done.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-95.done-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-95.luci_bwc">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-index">
+
+
+95
+
+<input type="hidden" id="cbid.table.95.luci_bwc.index" value="95" />
+</div>
+<div id="cbip-table-95.luci_bwc-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-name">
+
+
+luci_bwc
+
+<input type="hidden" id="cbid.table.95.luci_bwc.name" value="luci_bwc" />
+</div>
+<div id="cbip-table-95.luci_bwc-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.95.luci_bwc.endisable" id="cbid.table.95.luci_bwc.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-95.luci_bwc-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.95.luci_bwc.start" id="cbid.table.95.luci_bwc.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-95.luci_bwc-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.95.luci_bwc.restart" id="cbid.table.95.luci_bwc.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-95.luci_bwc-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.luci_bwc-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.95.luci_bwc.stop" id="cbid.table.95.luci_bwc.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-95.luci_bwc-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-95.openvpn">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-index">
+
+
+95
+
+<input type="hidden" id="cbid.table.95.openvpn.index" value="95" />
+</div>
+<div id="cbip-table-95.openvpn-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-name">
+
+
+openvpn
+
+<input type="hidden" id="cbid.table.95.openvpn.name" value="openvpn" />
+</div>
+<div id="cbip-table-95.openvpn-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-endisable">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.95.openvpn.endisable" id="cbid.table.95.openvpn.endisable" value="Désactivé" />
+	
+</div>
+<div id="cbip-table-95.openvpn-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.95.openvpn.start" id="cbid.table.95.openvpn.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-95.openvpn-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.95.openvpn.restart" id="cbid.table.95.openvpn.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-95.openvpn-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-95.openvpn-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.95.openvpn.stop" id="cbid.table.95.openvpn.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-95.openvpn-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-96.led">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-index">
+
+
+96
+
+<input type="hidden" id="cbid.table.96.led.index" value="96" />
+</div>
+<div id="cbip-table-96.led-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-name">
+
+
+led
+
+<input type="hidden" id="cbid.table.96.led.name" value="led" />
+</div>
+<div id="cbip-table-96.led-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.96.led.endisable" id="cbid.table.96.led.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-96.led-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.96.led.start" id="cbid.table.96.led.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-96.led-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.96.led.restart" id="cbid.table.96.led.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-96.led-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-96.led-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.96.led.stop" id="cbid.table.96.led.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-96.led-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-97.watchdog">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-index">
+
+
+97
+
+<input type="hidden" id="cbid.table.97.watchdog.index" value="97" />
+</div>
+<div id="cbip-table-97.watchdog-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-name">
+
+
+watchdog
+
+<input type="hidden" id="cbid.table.97.watchdog.name" value="watchdog" />
+</div>
+<div id="cbip-table-97.watchdog-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.97.watchdog.endisable" id="cbid.table.97.watchdog.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-97.watchdog-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.97.watchdog.start" id="cbid.table.97.watchdog.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-97.watchdog-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.97.watchdog.restart" id="cbid.table.97.watchdog.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-97.watchdog-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-97.watchdog-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.97.watchdog.stop" id="cbid.table.97.watchdog.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-97.watchdog-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-2" id="cbi-table-99.multiwan">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-index">
+
+
+99
+
+<input type="hidden" id="cbid.table.99.multiwan.index" value="99" />
+</div>
+<div id="cbip-table-99.multiwan-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-name">
+
+
+multiwan
+
+<input type="hidden" id="cbid.table.99.multiwan.name" value="multiwan" />
+</div>
+<div id="cbip-table-99.multiwan-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-endisable">
+
+
+	
+		<input class="cbi-input-reset" type="submit" name="cbid.table.99.multiwan.endisable" id="cbid.table.99.multiwan.endisable" value="Désactivé" />
+	
+</div>
+<div id="cbip-table-99.multiwan-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.99.multiwan.start" id="cbid.table.99.multiwan.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-99.multiwan-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.99.multiwan.restart" id="cbid.table.99.multiwan.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-99.multiwan-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.multiwan-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.99.multiwan.stop" id="cbid.table.99.multiwan.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-99.multiwan-stop"></div>
+</td>
+
+
+
+</tr><tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-99.sysctl">
+				
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-index">
+
+
+99
+
+<input type="hidden" id="cbid.table.99.sysctl.index" value="99" />
+</div>
+<div id="cbip-table-99.sysctl-index"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-name">
+
+
+sysctl
+
+<input type="hidden" id="cbid.table.99.sysctl.name" value="sysctl" />
+</div>
+<div id="cbip-table-99.sysctl-name"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-endisable">
+
+
+	
+		<input class="cbi-input-save" type="submit" name="cbid.table.99.sysctl.endisable" id="cbid.table.99.sysctl.endisable" value="Activé" />
+	
+</div>
+<div id="cbip-table-99.sysctl-endisable"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-start">
+
+
+	
+		<input class="cbi-input-apply" type="submit" name="cbid.table.99.sysctl.start" id="cbid.table.99.sysctl.start" value="Démarrer" />
+	
+</div>
+<div id="cbip-table-99.sysctl-start"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-restart">
+
+
+	
+		<input class="cbi-input-reload" type="submit" name="cbid.table.99.sysctl.restart" id="cbid.table.99.sysctl.restart" value="Redémarrer" />
+	
+</div>
+<div id="cbip-table-99.sysctl-restart"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-table-99.sysctl-stop">
+
+
+	
+		<input class="cbi-input-remove" type="submit" name="cbid.table.99.sysctl.stop" id="cbid.table.99.sysctl.stop" value="Arrêter" />
+	
+</div>
+<div id="cbip-table-99.sysctl-stop"></div>
+</td>
+
+
+
+</tr></table>
+
+		
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+		<br />
+	</div>
+	
+
+	<div>
+
+
+
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div>
+</form>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/init/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

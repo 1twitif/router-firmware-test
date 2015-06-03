@@ -1,0 +1,71 @@
+/* ::::: http://192.168.1.1/themes/default/common.css ::::: */
+
+html { background: url('slant_background.jpg') repeat scroll center top transparent; padding: 0px; margin: 0px; border: 0px none; }
+body { font-family: verdana,arial,sans-serif; font-size: 85%; line-height: 1.3em; padding: 0px; margin: 0px; border: 0px none; height: 100%; }
+#darken { top: 0px; width: 100%; height: 100%; overflow: hidden; display: none; background: none repeat scroll 0% 0% rgb(0, 0, 0); position: absolute; z-index: 2000; opacity: 0.75; }
+#wait_msg { display: none; background: url('wait_msg_back.gif') no-repeat scroll center center transparent; z-index: 3000; position: fixed; width: 300px; height: 150px; }
+#wait_icon { left: 135px; top: 80px; position: absolute; display: block; }
+#wait_txt { left: 10px; top: 20px; width: 280px; position: relative; display: block; text-align: center; font-size: 18px; font-weight: bold; padding-bottom: 20px; }
+.select_free { display: none; position: absolute; top: 0pt; left: 0pt; z-index: -1; width: 2000px; height: 3500px; }
+#outer_logo { position: absolute; display: block; top: 0px; left: 0px; width: 210px; height: 160px; background: url('slant_background.jpg') repeat scroll center top transparent; z-index: 700; }
+#inner_logo { position: absolute; padding-top: 0px; margin-top: 0px; top: 0px; left: 10px; width: 200px; height: 135px; background: url('top-gradient-logo.gif') no-repeat scroll center top transparent; z-index: 800; }
+#garg_title { position: absolute; display: block; top: 3px; left: 15px; font-family: verdana,arial,sans-serif; font-size: 18px; z-index: 900; color: rgb(33, 22, 121); }
+#garg_desc { position: absolute; display: block; left: 35px; top: 25px; font-family: verdana,arial,sans-serif; font-style: italic; font-size: 9px; z-index: 900; color: rgb(33, 22, 121); }
+#garg_host { position: absolute; display: block; left: 15px; bottom: 10px; font-family: verdana,arial,sans-serif; font-size: 10px; z-index: 900; color: rgb(33, 22, 121); }
+#outer_container { display: block; position: absolute; top: 0px; left: 10px; width: 800px; z-index: 200; margin: 0px; border: 0px none; padding-bottom: 30px; background: url('nav_unselected.png') repeat-y scroll left center transparent; }
+#outer_footer { display: block; background: url('nav_unselected.png') repeat scroll center center transparent; position: absolute; width: 200px; top: 0px; left: 10px; bottom: 0px; height: 100%; font-size: 14pt; z-index: 100; }
+#nav_external_container { position: absolute; display: block; top: 160px; left: 0px; width: 200px; bottom: 0px; }
+#nav_top { position: absolute; background: url('nav_top_external.gif') no-repeat scroll left top transparent; top: 0px; left: 0px; height: 22px; width: 200px; z-index: 500; }
+#nav_internal_container1 { position: absolute; background: url('nav_unselected.png') repeat scroll center center transparent; top: 8px; width: 200px; bottom: 0px; z-index: 250; }
+#nav_internal_container2 { background: url('nav_unselected.png') repeat scroll center center transparent; position: relative; width: 200px; top: 0px; left: 0px; font-family: verdana,arial,sans-serif; font-size: 18px; z-index: 300; }
+#nav_internal_container2 a { display: block; padding-left: 12px; color: rgb(33, 22, 121); text-decoration: none; padding-top: 12px; padding-bottom: 12px; }
+#nav_internal_container2 a:visited { color: rgb(33, 22, 121); }
+#nav_internal_container2 a:hover { color: rgb(255, 255, 255); text-decoration: none; cursor: pointer; font-weight: bolder; }
+.nav_unselected_divider_end1 { background: url('nav_top_unselected_internal.png') no-repeat scroll center top transparent; position: absolute; width: 200px; height: 10px; left: 0px; z-index: 400; }
+.nav_unselected_end1 { top: 0px; margin: 0px; position: relative; display: block; left: 8px; width: 184px; z-index: 0; }
+.nav_unselected { position: relative; display: block; left: 8px; width: 184px; height: 40px; margin: 0px; padding: 0px; }
+.nav_selected { background: url('nav_selected.gif') repeat scroll 0% 0% transparent; display: block; position: relative; width: 184px; left: 8px; }
+.nav_selected_container { width: 184px; top: 0px; }
+.selected_header { padding-left: 12px; font-weight: bolder; text-decoration: underline; color: rgb(0, 0, 0); }
+#submenu_container { padding-top: 5px; padding-bottom: 15px; padding-left: 25px; font-size: 9pt; }
+.submenu_selected { color: rgb(0, 0, 0); padding-left: 15px; background: url('black_carat.png') no-repeat scroll left center transparent; }
+#submenu_container a { display: block; padding-top: 0px; padding-bottom: 0px; padding-left: 15px; }
+#submenu_container a:hover { display: block; background: url('blue_carat.png') no-repeat scroll left center transparent; padding-left: 15px; color: rgb(33, 22, 121); }
+.nav_selected_divider1 { background: url('nav_selected_divider_1.gif') no-repeat scroll center top transparent; position: relative; width: 184px; height: 8px; left: 8px; overflow: hidden; }
+.nav_selected_divider2 { background: url('nav_selected_divider_2.png') no-repeat scroll center top transparent; position: relative; width: 184px; height: 1px; left: 8px; margin: 0px; padding: 0px; overflow: hidden; }
+.nav_unselected_divider { background: url('nav_unselected_divider.png') no-repeat scroll center top transparent; position: relative; width: 184px; height: 4px; left: 8px; overflow: hidden; }
+.nav_unselected_divider_end2 { background: url('nav_unselected_divider.png') no-repeat scroll center top transparent; position: relative; width: 184px; height: 4px; left: 8px; overflow: hidden; }
+#main_external_container { display: block; position: relative; top: 30px; left: 230px; width: 570px; }
+#main_top { position: absolute; top: 0px; left: 0px; height: 22px; width: 570px; background: url('main_top.gif') no-repeat scroll center bottom transparent; }
+#main_bottom { position: relative; bottom: 0px; left: 0px; height: 50px; width: 570px; background: url('main_bottom.gif') no-repeat scroll center top transparent; }
+#main_internal_container { position: relative; display: block; margin-bottom: 22px; top: 22px; width: 542px; padding-left: 14px; padding-right: 14px; background: url('main_internal.gif') repeat scroll center center transparent; }
+/* ::::: http://192.168.1.1/themes/default/internal.css ::::: */
+
+input, input * { outline: medium none ! important; }
+button::-moz-focus-outer, *::-moz-focus-inner { border: medium none ! important; }
+a { color: rgb(33, 22, 121); }
+a:visited { color: rgb(164, 0, 179); }
+a:active { outline: medium none; }
+a:focus { outline: medium none; }
+legend { font-family: verdana,arial,sans-serif; font-size: 18px; font-weight: bold; color: rgb(136, 138, 184); }
+fieldset { width: 500px; margin: 10px; padding: 10px; border: 1px solid rgb(136, 138, 184); font-family: verdana,arial,sans-serif; font-size: 10px; }
+fieldset div { display: block; margin-top: 5px; margin-bottom: 5px; clear: left; }
+fieldset input { font-family: verdana,arial,sans-serif; font-size: 10px; }
+fieldset select { font-family: verdana,arial,sans-serif; font-size: 10px; }
+fieldset label { font-family: verdana,arial,sans-serif; font-size: 10px; }
+.rightcolumn { display: inline; }
+.narrowleftcolumn { display: block; float: left; width: 125px; margin-left: 5px; margin-right: 5px; }
+.widerightcolumnonly { display: block; margin-left: 135px; }
+.middlecolumn { display: block; float: left; width: 110px; margin-right: 10px; margin-bottom: 5px; }
+.indent { display: block; margin-left: 25px; }
+.internal_divider { display: block; height: 3px; width: 175px; margin-bottom: 20px; margin-top: 20px; margin-left: 5px; border-width: 1px 0px 0px; border-style: solid; border-color: rgb(136, 138, 184); }
+table { border-spacing: 0px; border-collapse: collapse; }
+th { padding-left: 5px; padding-right: 5px; text-align: center; font-weight: normal; font-style: italic; }
+input.default_button { text-align: center; background: url('default_button_gradient_normal.png') repeat-x scroll center top transparent; border-width: 1px; border-style: solid; border-color: rgb(255, 255, 255) rgb(115, 117, 130) rgb(115, 117, 130) rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 5px; cursor: pointer; }
+input.default_button:hover { background: url('default_button_gradient_pressed.png') repeat-x scroll center top transparent; color: rgb(85, 85, 85); border-width: 1px; border-style: solid; border-color: rgb(115, 117, 130) rgb(255, 255, 255) rgb(255, 255, 255) rgb(115, 117, 130); margin: 5px; }
+input.default_button:active { background: url('default_button_gradient_pressed.png') repeat-x scroll center top transparent; color: rgb(85, 85, 85); border-width: 1px; border-style: solid; border-color: rgb(115, 117, 130) rgb(255, 255, 255) rgb(255, 255, 255) rgb(115, 117, 130); margin: 5px; }
+#bottom_button_container { margin-top: 10px; margin-left: 10px; }
+#update_container { margin-top: 10px; margin-left: 10px; display: none; }
+input.bottom_button { width: 187px; height: 45px; background: url('big_button_normal.png') no-repeat scroll center top transparent; border: medium none; cursor: pointer; font-weight: bold; font-size: 16px; color: rgb(51, 51, 51); }
+input.bottom_button:hover { width: 187px; height: 45px; background: url('big_button_highlighted.png') no-repeat scroll center top transparent; border: medium none; cursor: pointer; font-weight: bold; font-size: 16px; color: rgb(0, 0, 0); }
+input.bottom_button:active { width: 187px; height: 45px; background: url('big_button_pressed.png') no-repeat scroll center top transparent; border: medium none; cursor: pointer; font-weight: bold; font-size: 16px; color: rgb(85, 85, 85); }

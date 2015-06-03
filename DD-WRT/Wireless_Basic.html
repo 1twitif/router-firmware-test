@@ -1,0 +1,1245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	
+<!-- Mirrored from 192.168.1.1/Wireless_Basic.asp by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Feb 2011 11:39:19 GMT -->
+<head>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+		<script type="text/javascript" src="common.js"></script>
+		<script type="text/javascript" src="lang_pack/english.js"></script>
+		<script type="text/javascript" src="lang_pack/language.js"></script>
+		<link type="text/css" rel="stylesheet" href="style/elegant/style.css" />
+		<!--[if IE]><link type="text/css" rel="stylesheet" href="style/elegant/style_ie.css" /><![endif]-->
+		<script type="text/javascript" src="js/prototype.js"></script>
+		<script type="text/javascript" src="js/effects.js"></script>
+		<script type="text/javascript" src="js/window.js"></script>
+		<script type="text/javascript" src="js/window_effects.js"></script>
+		<link type="text/css" rel="stylesheet" href="style/pwc/default.css" />
+		<link type="text/css" rel="stylesheet" href="style/pwc/ddwrt.css" />
+		<title>DD-WRT (build 14896) - Wireless</title>
+
+<script type="text/javascript">
+//<![CDATA[
+var wl0_channel = '';
+var wl0_nctrlsb = 'lower';
+var wl0_nbw = '20';
+var wl0_phytype = 'g';
+var wl0_40m_disable = '';
+var wl1_channel = '';
+var wl1_nctrlsb = 'lower';
+var wl1_nbw = '20';
+var wl1_phytype = '';
+var wl1_40m_disable = '';
+function create_wchannel0_auto(F) {
+F.wl0_wchannel.length = 1;
+
+F.wl0_wchannel[0] = new Option(share.auto);
+F.wl0_wchannel[0].value = "0";
+}
+function create_wchannel1_auto(F) {
+F.wl1_wchannel.length = 1;
+
+F.wl1_wchannel[0] = new Option(share.auto);
+F.wl1_wchannel[0].value = "0";
+}
+function create_wchannel0(F) {
+var max_channel = '14';
+var wch;
+if(wl0_nctrlsb == "lower") {
+wch = parseInt(F.wl0_channel.value)+2;
+}
+else {
+wch = parseInt(F.wl0_channel.value)-2;
+}
+F.wl0_wchannel.length = parseInt(max_channel)-4;
+for(ch=3 ; ch<=(parseInt(max_channel)-2) ; ch++){
+F.wl0_wchannel[ch-3] = new Option(ch);
+F.wl0_wchannel[ch-3].value = ch;
+}
+if(wch < 3 || wch > max_channel-2 || wch == "0")
+F.wl0_wchannel[0].selected = true;
+else
+F.wl0_wchannel[wch-3].selected = true;	
+}
+function create_wchannel1(F) {
+var max_channel = '14';
+var wch;
+if(wl1_nctrlsb == "lower") {
+wch = parseInt(F.wl1_channel.value)+2;
+}
+else {
+wch = parseInt(F.wl1_channel.value)-2;
+}
+F.wl1_wchannel.length = parseInt(max_channel)-4;
+for(ch=3 ; ch<=(parseInt(max_channel)-2) ; ch++){
+F.wl1_wchannel[ch-3] = new Option(ch);
+F.wl1_wchannel[ch-3].value = ch;
+}
+if(wch < 3 || wch > max_channel-2 || wch == "0")
+F.wl1_wchannel[0].selected = true;
+else
+F.wl1_wchannel[wch-3].selected = true;	
+}
+function InitBW0(num,F) {
+if(wl0_channel == "0") {
+if(F.wl0_wchannel) choose_enable(F.wl0_wchannel);
+choose_enable(F.wl0_schannel);
+if(F.wl0_wchannel) create_wchannel0_auto(F)
+
+}
+else
+SelBW0(num,F);
+}
+function InitBW1(num,F) {
+if(wl1_channel == "0") {
+if(F.wl1_wchannel) choose_enable(F.wl1_wchannel);
+choose_enable(F.wl1_schannel);
+if(F.wl1_wchannel) create_wchannel1_auto(F)
+
+}
+else
+SelBW1(num,F);
+}
+function SelBW0(num,F) {
+if (num == 0) {	
+if(F.wl0_wchannel)
+choose_enable(F.wl0_wchannel);
+
+choose_enable(F.wl0_channel);
+if(F.wl0_wchannel)
+create_wchannel0_auto(F);
+}
+else if (num == 10 || num == 20) {
+if(F.wl0_wchannel)
+choose_disable(F.wl0_wchannel);
+
+choose_enable(F.wl0_schannel);
+if(F.wl0_wchannel)
+create_wchannel0(F);
+}
+else {
+if(F.wl0_wchannel)
+choose_enable(F.wl0_wchannel);
+
+choose_enable(F.wl0_schannel);
+if(F.wl0_wchannel)
+create_wchannel0(F);
+}
+}
+function SelBW1(num,F) {
+if (num == 0) {	
+if(F.wl1_wchannel)
+choose_enable(F.wl1_wchannel);
+
+choose_enable(F.wl1_channel);
+if(F.wl1_wchannel)
+create_wchannel1_auto(F);
+}
+else if (num == 10 || num == 20) {
+if(F.wl1_wchannel)
+choose_disable(F.wl1_wchannel);
+
+choose_enable(F.wl1_schannel);
+if(F.wl1_wchannel)
+create_wchannel1(F);
+}
+else {
+if(F.wl1_wchannel)
+choose_enable(F.wl1_wchannel);
+
+choose_enable(F.wl1_schannel);
+if(F.wl1_wchannel)
+create_wchannel1(F);
+}
+}
+function vifs_add_submit(F,I) {
+F.iface.value = I;
+F.submit_type.value = "add_vifs";
+F.submit();
+}
+function vifs_remove_submit(F,I) {
+F.iface.value = I;
+F.submit_type.value = "remove_vifs";
+F.submit();
+}
+function toggle_layer(checkbox, label) {
+if(checkbox.checked) {
+show_layer_ext(this,label,true);
+} else {
+show_layer_ext(this,label,false);
+}
+}
+function submitcheck(F) {
+if(F.wl0_ssid)
+if(F.wl0_ssid.value == ""){
+alert(errmsg.err50);
+F.wl0_ssid.focus();
+return false;
+}
+if(F.wl1_ssid)
+if(F.wl1_ssid.value == ""){
+alert(errmsg.err50);
+F.wl1_ssid.focus();
+return false;
+}
+if(F.wl0_nbw)
+{
+if(F.wl0_nbw.value == 0) { 
+F.wl0_channel.value = 0;
+}
+else if(F.wl0_nbw.value == 10) { 
+F.wl0_nctrlsb.value = "none";
+F.wl0_nbw.value = 10;
+}
+else if(F.wl0_nbw.value == 20) { 
+F.wl0_nctrlsb.value = "none";
+F.wl0_nbw.value = 20;
+}
+else { 
+if(F.wl0_channel.selectedIndex == 0) {
+F.wl0_nctrlsb.value = "lower";
+}
+else {
+F.wl0_nctrlsb.value = "upper";
+}
+F.wl0_nbw.value = 40;
+}
+}
+if(F.wl1_nbw)
+{
+if(F.wl1_nbw.value == 0) { 
+F.wl1_channel.value = 0;
+}
+else if(F.wl1_nbw.value == 10) { 
+F.wl1_nctrlsb.value = "none";
+F.wl1_nbw.value = 10;
+}
+else if(F.wl1_nbw.value == 20) { 
+F.wl1_nctrlsb.value = "none";
+F.wl1_nbw.value = 20;
+}
+else { 
+if(F.wl1_channel.selectedIndex == 0) {
+F.wl1_nctrlsb.value = "lower";
+}
+else {
+F.wl1_nctrlsb.value = "upper";
+}
+F.wl1_nbw.value = 40;
+}
+}
+F.submit_type.value = "save";
+F.save_button.value = sbutton.saving;
+return true;
+}
+function to_submit(F)
+{if (submitcheck(F))
+apply(F);
+}
+function to_apply(F)
+{if (submitcheck(F))
+applytake(F);
+}
+var update;
+addEvent(window, "load", function() {
+var wl0_mode = "ap";
+if (wl0_mode=="ap" || wl0_mode=="infra")
+{
+if (wl0_phytype == 'n')
+InitBW0('20' ,document.wireless);
+}
+var wl1_mode = "";
+if (wl1_mode=="ap" || wl1_mode=="infra")
+{
+if (wl1_phytype == 'n')
+InitBW1('20' ,document.wireless);
+}
+
+update = new StatusbarUpdate();
+update.start();
+
+});
+addEvent(window, "unload", function() {
+update.stop();
+});
+//]]>
+</script>
+</head>
+<body class="gui">
+
+<div id="wrapper">
+<div id="content">
+<div id="header">
+<div id="logo">
+<h1>DD-WRT Control Panel</h1>
+</div>
+<div id="menu">
+ <div id="menuMain">
+  <ul id="menuMainList">
+   <li><a href="index-2.html"><strong><script type="text/javascript">Capture(bmenu.setup)</script></strong></a></li>
+   <li class="current"><span><strong><script type="text/javascript">Capture(bmenu.wireless)</script></strong></span>
+    <div id="menuSub">
+     <ul id="menuSubList">
+      <li><span><strong><script type="text/javascript">Capture(bmenu.wirelessBasic)</script></strong></span></li>
+      <li><a href="SuperChannel.html"><strong><script type="text/javascript">Capture(bmenu.wirelessSuperchannel)</script></strong></a></li>
+      <li><a href="WL_WPATable.html"><strong><script type="text/javascript">Capture(bmenu.wirelessSecurity)</script></strong></a></li>
+      <li><a href="Wireless_MAC.html"><strong><script type="text/javascript">Capture(bmenu.wirelessMac)</script></strong></a></li>
+      <li><a href="Wireless_WDS-ath0.html"><strong><script type="text/javascript">Capture(bmenu.wirelessWds0)</script></strong></a></li>
+      <li><a href="Wireless_WDS-ath1.html"><strong><script type="text/javascript">Capture(bmenu.wirelessWds1)</script></strong></a></li>
+     </ul>
+    </div>
+    </li>
+   <li><a href="Services.html"><strong><script type="text/javascript">Capture(bmenu.services)</script></strong></a></li>
+   <li><a href="Firewall.html"><strong><script type="text/javascript">Capture(bmenu.security)</script></strong></a></li>
+   <li><a href="Filters.html"><strong><script type="text/javascript">Capture(bmenu.accrestriction)</script></strong></a></li>
+   <li><a href="ForwardSpec.html"><strong><script type="text/javascript">Capture(bmenu.applications)</script></strong></a></li>
+   <li><a href="Management.html"><strong><script type="text/javascript">Capture(bmenu.admin)</script></strong></a></li>
+   <li><a href="Status_Router.html"><strong><script type="text/javascript">Capture(bmenu.statu)</script></strong></a></li>
+  </ul>
+ </div>
+</div>
+
+</div>
+<div id="main">
+<div id="contents">
+<form name="wireless" action="http://admin:sdf@192.168.1.1/apply.cgi" method="post">
+	<input type="hidden" name="submit_button" value="Wireless_Basic" />
+	<input type="hidden" name="action" value="Apply" />
+	<input type="hidden" name="change_action" value="gozila_cgi" />
+	<input type="hidden" name="submit_type" value="save" />
+	<input type="hidden" name="wl0_nctrlsb" />
+	<input type="hidden" name="wl1_nctrlsb" />
+	<input type="hidden" name="iface" />
+	
+	<h2><script type="text/javascript">Capture(wl_basic.h2_v24)</script> ath0</h2>
+<fieldset>
+<legend><script type="text/javascript">Capture(share.pintrface)</script> ath0 - SSID [dd-wrt] HWAddr [00:46:9A:0B:88:35]</legend>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.label)</script></div><select name="ath0_mode" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"ap\" selected=\"selected\" >" + wl_basic.ap + "</option>");
+document.write("<option value=\"sta\"  >" + wl_basic.client + "</option>");
+document.write("<option value=\"wet\"  >" + wl_basic.clientBridge + "</option>");
+document.write("<option value=\"infra\"  >" + wl_basic.adhoc + "</option>");
+document.write("<option value=\"wdssta\"  >" + wl_basic.wdssta + "</option>");
+document.write("<option value=\"wdsap\"  >" + wl_basic.wdsap + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label2)</script></div><select name="ath0_net_mode">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"disabled\" >" + share.disabled + "</option>");
+document.write("<option value=\"mixed\" selected=\"selected\">" + wl_basic.mixed + "</option>");
+document.write("<option value=\"b-only\" >" + wl_basic.b + "</option>");
+document.write("<option value=\"g-only\" >" + wl_basic.g + "</option>");
+document.write("<option value=\"bg-mixed\" >" + wl_basic.bg + "</option>");
+document.write("<option value=\"ng-only\" >" + wl_basic.ng + "</option>");
+document.write("<option value=\"n2-only\" >" + wl_basic.n2 + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.channel_width)</script></div><select name="ath0_channelbw" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"20\" selected=\"selected\" >" + share.full + "</option>");
+document.write("<option value=\"10\"  >" + share.half + "</option>");
+document.write("<option value=\"5\"  >" + share.quarter + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label4)</script></div>
+<select name="ath0_channel" onfocus="check_action(this,0)"><script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\">" + share.auto + "</option>");
+document.write("<option value=\"2412\" >1 - 2412 MHz</option>");
+document.write("<option value=\"2417\" >2 - 2417 MHz</option>");
+document.write("<option value=\"2422\" >3 - 2422 MHz</option>");
+document.write("<option value=\"2427\" >4 - 2427 MHz</option>");
+document.write("<option value=\"2432\" >5 - 2432 MHz</option>");
+document.write("<option value=\"2437\" >6 - 2437 MHz</option>");
+document.write("<option value=\"2442\" >7 - 2442 MHz</option>");
+document.write("<option value=\"2447\" >8 - 2447 MHz</option>");
+document.write("<option value=\"2452\" >9 - 2452 MHz</option>");
+document.write("<option value=\"2457\" >10 - 2457 MHz</option>");
+document.write("<option value=\"2462\" >11 - 2462 MHz</option>");
+//]]>
+</script></select></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label3)</script></div><input name="ath0_ssid" size="20" maxlength="32" onblur="valid_name(this,wl_basic.label3)" value="dd-wrt" /></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label5)</script></div>
+<input class="spaceradio" type="radio" value="0" name="ath0_closed" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" name="ath0_closed" ><script type="text/javascript">Capture(share.disable)</script></input>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.legend)</script></div>
+<input type="checkbox" name="ath0_wl_advanced" onclick="toggle_layer(this,'ath0_wl_advanced_layer')"></div>
+<div id="ath0_wl_advanced_layer" style="display: none;">
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.regdom)</script></div>
+<select name="ath0_regdomain">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"ALBANIA\"  >ALBANIA</option>");
+document.write("<option value=\"ALGERIA\"  >ALGERIA</option>");
+document.write("<option value=\"ARGENTINA\"  >ARGENTINA</option>");
+document.write("<option value=\"ARMENIA\"  >ARMENIA</option>");
+document.write("<option value=\"ARUBA\"  >ARUBA</option>");
+document.write("<option value=\"AUSTRALIA\"  >AUSTRALIA</option>");
+document.write("<option value=\"AUSTRIA\"  >AUSTRIA</option>");
+document.write("<option value=\"AZERBAIJAN\"  >AZERBAIJAN</option>");
+document.write("<option value=\"BANGLADESH\"  >BANGLADESH</option>");
+document.write("<option value=\"BARBADOS\"  >BARBADOS</option>");
+document.write("<option value=\"BAHRAIN\"  >BAHRAIN</option>");
+document.write("<option value=\"BELARUS\"  >BELARUS</option>");
+document.write("<option value=\"BELGIUM\"  >BELGIUM</option>");
+document.write("<option value=\"BELIZE\"  >BELIZE</option>");
+document.write("<option value=\"BOLVIA\"  >BOLVIA</option>");
+document.write("<option value=\"BRAZIL\"  >BRAZIL</option>");
+document.write("<option value=\"BRUNEI_DARUSSALAM\"  >BRUNEI_DARUSSALAM</option>");
+document.write("<option value=\"BULGARIA\"  >BULGARIA</option>");
+document.write("<option value=\"CAMBODIA\"  >CAMBODIA</option>");
+document.write("<option value=\"CANADA\"  >CANADA</option>");
+document.write("<option value=\"CHILE\"  >CHILE</option>");
+document.write("<option value=\"CHINA\"  >CHINA</option>");
+document.write("<option value=\"COLOMBIA\"  >COLOMBIA</option>");
+document.write("<option value=\"COSTA_RICA\"  >COSTA_RICA</option>");
+document.write("<option value=\"CROATIA\"  >CROATIA</option>");
+document.write("<option value=\"CYPRUS\"  >CYPRUS</option>");
+document.write("<option value=\"CZECH_REPUBLIC\"  >CZECH_REPUBLIC</option>");
+document.write("<option value=\"DENMARK\"  >DENMARK</option>");
+document.write("<option value=\"DOMINICAN_REPUBLIC\"  >DOMINICAN_REPUBLIC</option>");
+document.write("<option value=\"ECUADOR\"  >ECUADOR</option>");
+document.write("<option value=\"EGYPT\"  >EGYPT</option>");
+document.write("<option value=\"EL_SALVADOR\"  >EL_SALVADOR</option>");
+document.write("<option value=\"ESTONIA\"  >ESTONIA</option>");
+document.write("<option value=\"FINLAND\"  >FINLAND</option>");
+document.write("<option value=\"FRANCE\"  >FRANCE</option>");
+document.write("<option value=\"FRANCE_RES\"  >FRANCE_RES</option>");
+document.write("<option value=\"GEORGIA\"  >GEORGIA</option>");
+document.write("<option value=\"GERMANY\"  >GERMANY</option>");
+document.write("<option value=\"GERMANY_BFWA\"  >GERMANY_BFWA</option>");
+document.write("<option value=\"GREECE\"  >GREECE</option>");
+document.write("<option value=\"GREENLAND\"  >GREENLAND</option>");
+document.write("<option value=\"GRENADA\"  >GRENADA</option>");
+document.write("<option value=\"GUAM\"  >GUAM</option>");
+document.write("<option value=\"GUATEMALA\"  >GUATEMALA</option>");
+document.write("<option value=\"HAITI\"  >HAITI</option>");
+document.write("<option value=\"HONDURAS\"  >HONDURAS</option>");
+document.write("<option value=\"HONG_KONG\"  >HONG_KONG</option>");
+document.write("<option value=\"HUNGARY\"  >HUNGARY</option>");
+document.write("<option value=\"ICELAND\"  >ICELAND</option>");
+document.write("<option value=\"INDIA\"  >INDIA</option>");
+document.write("<option value=\"INDONESIA\"  >INDONESIA</option>");
+document.write("<option value=\"IRAN\"  >IRAN</option>");
+document.write("<option value=\"IRELAND\"  >IRELAND</option>");
+document.write("<option value=\"ISRAEL\"  >ISRAEL</option>");
+document.write("<option value=\"ITALY\"  >ITALY</option>");
+document.write("<option value=\"JAPAN\"  >JAPAN</option>");
+document.write("<option value=\"JORDAN\"  >JORDAN</option>");
+document.write("<option value=\"KAZAKHSTAN\"  >KAZAKHSTAN</option>");
+document.write("<option value=\"KENYA\"  >KENYA</option>");
+document.write("<option value=\"KOREA_REPUBLIC\"  >KOREA_REPUBLIC</option>");
+document.write("<option value=\"KUWAIT\"  >KUWAIT</option>");
+document.write("<option value=\"LATVIA\"  >LATVIA</option>");
+document.write("<option value=\"LEBANON\"  >LEBANON</option>");
+document.write("<option value=\"LIECHTENSTEIN\"  >LIECHTENSTEIN</option>");
+document.write("<option value=\"LITHUANIA\"  >LITHUANIA</option>");
+document.write("<option value=\"LUXEMBOURG\"  >LUXEMBOURG</option>");
+document.write("<option value=\"MACAU\"  >MACAU</option>");
+document.write("<option value=\"MACEDONIA\"  >MACEDONIA</option>");
+document.write("<option value=\"MALAYSIA\"  >MALAYSIA</option>");
+document.write("<option value=\"MALTA\"  >MALTA</option>");
+document.write("<option value=\"MEXICO\"  >MEXICO</option>");
+document.write("<option value=\"MONACO\"  >MONACO</option>");
+document.write("<option value=\"MOROCCO\"  >MOROCCO</option>");
+document.write("<option value=\"NEPAL\"  >NEPAL</option>");
+document.write("<option value=\"NETHERLANDS\"  >NETHERLANDS</option>");
+document.write("<option value=\"NEW_ZEALAND\"  >NEW_ZEALAND</option>");
+document.write("<option value=\"NORTH_KOREA\"  >NORTH_KOREA</option>");
+document.write("<option value=\"NORWAY\"  >NORWAY</option>");
+document.write("<option value=\"NORWAY_BFWA\"  >NORWAY_BFWA</option>");
+document.write("<option value=\"OMAN\"  >OMAN</option>");
+document.write("<option value=\"PAKISTAN\"  >PAKISTAN</option>");
+document.write("<option value=\"PAPUA_NEW_GUINEA\"  >PAPUA_NEW_GUINEA</option>");
+document.write("<option value=\"PANAMA\"  >PANAMA</option>");
+document.write("<option value=\"PERU\"  >PERU</option>");
+document.write("<option value=\"PHILIPPINES\"  >PHILIPPINES</option>");
+document.write("<option value=\"POLAND\"  >POLAND</option>");
+document.write("<option value=\"PORTUGAL\"  >PORTUGAL</option>");
+document.write("<option value=\"PUERTO_RICO\"  >PUERTO_RICO</option>");
+document.write("<option value=\"QATAR\"  >QATAR</option>");
+document.write("<option value=\"ROMANIA\"  >ROMANIA</option>");
+document.write("<option value=\"RUSSIA\"  >RUSSIA</option>");
+document.write("<option value=\"SAUDI_ARABIA\"  >SAUDI_ARABIA</option>");
+document.write("<option value=\"SINGAPORE\"  >SINGAPORE</option>");
+document.write("<option value=\"SLOVAK_REPUBLIC\"  >SLOVAK_REPUBLIC</option>");
+document.write("<option value=\"SLOVENIA\"  >SLOVENIA</option>");
+document.write("<option value=\"SOUTH_AFRICA\"  >SOUTH_AFRICA</option>");
+document.write("<option value=\"SPAIN\"  >SPAIN</option>");
+document.write("<option value=\"SWEDEN\"  >SWEDEN</option>");
+document.write("<option value=\"SWITZERLAND\"  >SWITZERLAND</option>");
+document.write("<option value=\"SYRIA\"  >SYRIA</option>");
+document.write("<option value=\"TAIWAN\"  >TAIWAN</option>");
+document.write("<option value=\"THAILAND\"  >THAILAND</option>");
+document.write("<option value=\"TRINIDAD&TOBAGO\"  >TRINIDAD&TOBAGO</option>");
+document.write("<option value=\"TUNISIA\"  >TUNISIA</option>");
+document.write("<option value=\"TURKEY\"  >TURKEY</option>");
+document.write("<option value=\"UKRAINE\"  >UKRAINE</option>");
+document.write("<option value=\"UNITED_ARAB_EMIRATES\"  >UNITED_ARAB_EMIRATES</option>");
+document.write("<option value=\"UNITED_KINGDOM\"  >UNITED_KINGDOM</option>");
+document.write("<option value=\"UNITED_KINGDOM_BFWA\"  >UNITED_KINGDOM_BFWA</option>");
+document.write("<option value=\"UNITED_STATES\" selected=\"selected\" >UNITED_STATES</option>");
+document.write("<option value=\"UNITED_STATES_(PUBLIC_SAFETY)\"  >UNITED_STATES_(PUBLIC_SAFETY)</option>");
+document.write("<option value=\"URUGUAY\"  >URUGUAY</option>");
+document.write("<option value=\"UZBEKISTAN\"  >UZBEKISTAN</option>");
+document.write("<option value=\"VENEZUELA\"  >VENEZUELA</option>");
+document.write("<option value=\"VIET_NAM\"  >VIET_NAM</option>");
+document.write("<option value=\"YEMEN\"  >YEMEN</option>");
+document.write("<option value=\"ZIMBABWE\"  >ZIMBABWE</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.TXpower)</script></div><input class="num" name="ath0_txpwrdbm" size="6" maxlength="3" value="20" /> dBm
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.AntGain)</script></div><input class="num" name="ath0_antgain" size="6" maxlength="3" value="0" /> dBi
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.protmode)</script></div><select name="ath0_protmode">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"None\" selected=\"selected\" >None</option>");
+document.write("<option value=\"CTS\"  >CTS</option>");
+document.write("<option value=\"RTS/CTS\"  >RTS/CTS</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rts)</script></div>
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath0_idrts', true);" name="ath0_rts" ><script type="text/javascript">Capture(share.enable)</script></input>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath0_idrts', false);" name="ath0_rts" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div id="ath0_idrts">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rtsvalue)</script></div>
+<input class="num" maxlength="4" size="4" onblur="valid_range(this,1,2346,share.ip)" name="ath0_rtsvalue" value="2346" /></div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath0_rts"), "ath0_idrts", false);
+//]]>
+</script>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label23)</script></div>
+<select name="ath0_minrate">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\" >" + share.auto + "</option>");
+//]]>
+</script>
+<option value="1"  >1 Mbps</option>
+<option value="2"  >2 Mbps</option>
+<option value="3"  >5.5 Mbps</option>
+<option value="4"  >6 Mbps</option>
+<option value="5"  >9 Mbps</option>
+<option value="6"  >11 Mbps</option>
+<option value="7"  >12 Mbps</option>
+<option value="8"  >18 Mbps</option>
+<option value="9"  >24 Mbps</option>
+<option value="10"  >36 Mbps</option>
+<option value="11"  >48 Mbps</option>
+<option value="12"  >54 Mbps</option>
+</select>
+<span class="default">
+<script type="text/javascript">
+//<![CDATA[
+document.write("(" + share.deflt + ": " + share.auto + ")");
+//]]
+</script></span></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label21)</script></div>
+<select name="ath0_maxrate">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\" >" + share.auto + "</option>");
+//]]>
+</script>
+<option value="1"  >1 Mbps</option>
+<option value="2"  >2 Mbps</option>
+<option value="3"  >5.5 Mbps</option>
+<option value="4"  >6 Mbps</option>
+<option value="5"  >9 Mbps</option>
+<option value="6"  >11 Mbps</option>
+<option value="7"  >12 Mbps</option>
+<option value="8"  >18 Mbps</option>
+<option value="9"  >24 Mbps</option>
+<option value="10"  >36 Mbps</option>
+<option value="11"  >48 Mbps</option>
+<option value="12"  >54 Mbps</option>
+</select>
+<span class="default">
+<script type="text/javascript">
+//<![CDATA[
+document.write("(" + share.deflt + ": " + share.auto + ")");
+//]]
+</script></span></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.preamble)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_preamble" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_preamble" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.outband)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_outdoor" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_outdoor" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.txchainmask)</script></div><select name="ath0_txantenna" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"1\"  >1</option>");
+document.write("<option value=\"3\" selected=\"selected\" >1+2</option>");
+document.write("<option value=\"5\"  >1+3</option>");
+document.write("<option value=\"7\"  >1+2+3</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.rxchainmask)</script></div><select name="ath0_rxantenna" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"1\"  >1</option>");
+document.write("<option value=\"3\" selected=\"selected\" >1+2</option>");
+document.write("<option value=\"5\"  >1+3</option>");
+document.write("<option value=\"7\"  >1+2+3</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label11)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_ap_isolate" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_ap_isolate" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.radar)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_doth" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_doth" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.scanlist)</script></div>
+<input name="ath0_scanlist" size="32" maxlength="512" value="default" />
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label6)</script></div>
+<input class="num" name="ath0_distance" size="8" maxlength="8" onblur="valid_range(this,0,99999999,wl_basic.label6)" value="2000" />
+<span class="default"><script type="text/javascript">
+//<![CDATA[
+ document.write("(" + share.deflt + ": 2000 " + share.meters + ")");
+//]]>
+</script></span>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label10)</script></div>
+<input class="num" name="ath0_maxassoc" size="4" maxlength="4" onblur="valid_range(this,0,256,wl_basic.label6)" value="256" />
+<span class="default"><script type="text/javascript">
+//<![CDATA[
+ document.write("(" + share.deflt + ": 256 " + status_wireless.legend3 + ")");
+//]]>
+</script></span>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.mtikie)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_mtikie" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_mtikie" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.network)</script></div>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath0_idnetvifs', true);" name="ath0_bridged" ><script type="text/javascript">Capture(wl_basic.unbridged)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath0_idnetvifs', false);" name="ath0_bridged" checked="checked"><script type="text/javascript">Capture(wl_basic.bridged)</script></input>
+</div>
+<div id="ath0_idnetvifs">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.multicast)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_multicast" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_multicast" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.masquerade)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath0_nat" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath0_nat" ><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.ip)</script></div>
+<input type="hidden" name="ath0_ipaddr" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,1,223,share.ip)" name="ath0_ipaddr_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath0_ipaddr_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath0_ipaddr_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath0_ipaddr_3" value="0" />
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.subnet)</script></div>
+<input type="hidden" name="ath0_netmask" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath0_netmask_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath0_netmask_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath0_netmask_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath0_netmask_3" value="0" />.</div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath0_bridged"), "ath0_idnetvifs", false);
+//]]>
+</script>
+</div>
+</fieldset>
+<br />
+<h2><script type="text/javascript">Capture(wl_basic.h2_vi)</script></h2>
+<div class="center">
+<script type="text/javascript">
+//<![CDATA[
+ document.write("<input class=\"button\" type=\"button\" value=\"" + sbutton.add + "\" onclick=\"vifs_add_submit(this.form,'ath0')\" />");
+//]]>
+</script>
+</div><br />
+<h2><script type="text/javascript">Capture(wl_basic.h2_v24)</script> ath1</h2>
+<fieldset>
+<legend><script type="text/javascript">Capture(share.pintrface)</script> ath1 - SSID [dd-wrt] HWAddr [30:46:9A:0B:88:37]</legend>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.label)</script></div><select name="ath1_mode" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"ap\" selected=\"selected\" >" + wl_basic.ap + "</option>");
+document.write("<option value=\"sta\"  >" + wl_basic.client + "</option>");
+document.write("<option value=\"wet\"  >" + wl_basic.clientBridge + "</option>");
+document.write("<option value=\"infra\"  >" + wl_basic.adhoc + "</option>");
+document.write("<option value=\"wdssta\"  >" + wl_basic.wdssta + "</option>");
+document.write("<option value=\"wdsap\"  >" + wl_basic.wdsap + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label2)</script></div><select name="ath1_net_mode">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"disabled\" >" + share.disabled + "</option>");
+document.write("<option value=\"mixed\" selected=\"selected\">" + wl_basic.mixed + "</option>");
+document.write("<option value=\"a-only\" >" + wl_basic.a + "</option>");
+document.write("<option value=\"na-only\" >" + wl_basic.na + "</option>");
+document.write("<option value=\"n5-only\" >" + wl_basic.n5 + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.channel_width)</script></div><select name="ath1_channelbw" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"20\" selected=\"selected\" >" + share.full + "</option>");
+document.write("<option value=\"10\"  >" + share.half + "</option>");
+document.write("<option value=\"5\"  >" + share.quarter + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label4)</script></div>
+<select name="ath1_channel" onfocus="check_action(this,0)"><script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\">" + share.auto + "</option>");
+document.write("<option value=\"5180\" >36 - 5180 MHz</option>");
+document.write("<option value=\"5200\" >40 - 5200 MHz</option>");
+document.write("<option value=\"5220\" >44 - 5220 MHz</option>");
+document.write("<option value=\"5240\" >48 - 5240 MHz</option>");
+document.write("<option value=\"5260\" >52 - 5260 MHz</option>");
+document.write("<option value=\"5280\" >56 - 5280 MHz</option>");
+document.write("<option value=\"5300\" >60 - 5300 MHz</option>");
+document.write("<option value=\"5320\" >64 - 5320 MHz</option>");
+//]]>
+</script></select></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label3)</script></div><input name="ath1_ssid" size="20" maxlength="32" onblur="valid_name(this,wl_basic.label3)" value="dd-wrt" /></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label5)</script></div>
+<input class="spaceradio" type="radio" value="0" name="ath1_closed" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" name="ath1_closed" ><script type="text/javascript">Capture(share.disable)</script></input>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.legend)</script></div>
+<input type="checkbox" name="ath1_wl_advanced" onclick="toggle_layer(this,'ath1_wl_advanced_layer')"></div>
+<div id="ath1_wl_advanced_layer" style="display: none;">
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_basic.regdom)</script></div>
+<select name="ath1_regdomain">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"ALBANIA\"  >ALBANIA</option>");
+document.write("<option value=\"ALGERIA\"  >ALGERIA</option>");
+document.write("<option value=\"ARGENTINA\"  >ARGENTINA</option>");
+document.write("<option value=\"ARMENIA\"  >ARMENIA</option>");
+document.write("<option value=\"ARUBA\"  >ARUBA</option>");
+document.write("<option value=\"AUSTRALIA\"  >AUSTRALIA</option>");
+document.write("<option value=\"AUSTRIA\"  >AUSTRIA</option>");
+document.write("<option value=\"AZERBAIJAN\"  >AZERBAIJAN</option>");
+document.write("<option value=\"BANGLADESH\"  >BANGLADESH</option>");
+document.write("<option value=\"BARBADOS\"  >BARBADOS</option>");
+document.write("<option value=\"BAHRAIN\"  >BAHRAIN</option>");
+document.write("<option value=\"BELARUS\"  >BELARUS</option>");
+document.write("<option value=\"BELGIUM\"  >BELGIUM</option>");
+document.write("<option value=\"BELIZE\"  >BELIZE</option>");
+document.write("<option value=\"BOLVIA\"  >BOLVIA</option>");
+document.write("<option value=\"BRAZIL\"  >BRAZIL</option>");
+document.write("<option value=\"BRUNEI_DARUSSALAM\"  >BRUNEI_DARUSSALAM</option>");
+document.write("<option value=\"BULGARIA\"  >BULGARIA</option>");
+document.write("<option value=\"CAMBODIA\"  >CAMBODIA</option>");
+document.write("<option value=\"CANADA\"  >CANADA</option>");
+document.write("<option value=\"CHILE\"  >CHILE</option>");
+document.write("<option value=\"CHINA\"  >CHINA</option>");
+document.write("<option value=\"COLOMBIA\"  >COLOMBIA</option>");
+document.write("<option value=\"COSTA_RICA\"  >COSTA_RICA</option>");
+document.write("<option value=\"CROATIA\"  >CROATIA</option>");
+document.write("<option value=\"CYPRUS\"  >CYPRUS</option>");
+document.write("<option value=\"CZECH_REPUBLIC\"  >CZECH_REPUBLIC</option>");
+document.write("<option value=\"DENMARK\"  >DENMARK</option>");
+document.write("<option value=\"DOMINICAN_REPUBLIC\"  >DOMINICAN_REPUBLIC</option>");
+document.write("<option value=\"ECUADOR\"  >ECUADOR</option>");
+document.write("<option value=\"EGYPT\"  >EGYPT</option>");
+document.write("<option value=\"EL_SALVADOR\"  >EL_SALVADOR</option>");
+document.write("<option value=\"ESTONIA\"  >ESTONIA</option>");
+document.write("<option value=\"FINLAND\"  >FINLAND</option>");
+document.write("<option value=\"FRANCE\"  >FRANCE</option>");
+document.write("<option value=\"FRANCE_RES\"  >FRANCE_RES</option>");
+document.write("<option value=\"GEORGIA\"  >GEORGIA</option>");
+document.write("<option value=\"GERMANY\"  >GERMANY</option>");
+document.write("<option value=\"GERMANY_BFWA\"  >GERMANY_BFWA</option>");
+document.write("<option value=\"GREECE\"  >GREECE</option>");
+document.write("<option value=\"GREENLAND\"  >GREENLAND</option>");
+document.write("<option value=\"GRENADA\"  >GRENADA</option>");
+document.write("<option value=\"GUAM\"  >GUAM</option>");
+document.write("<option value=\"GUATEMALA\"  >GUATEMALA</option>");
+document.write("<option value=\"HAITI\"  >HAITI</option>");
+document.write("<option value=\"HONDURAS\"  >HONDURAS</option>");
+document.write("<option value=\"HONG_KONG\"  >HONG_KONG</option>");
+document.write("<option value=\"HUNGARY\"  >HUNGARY</option>");
+document.write("<option value=\"ICELAND\"  >ICELAND</option>");
+document.write("<option value=\"INDIA\"  >INDIA</option>");
+document.write("<option value=\"INDONESIA\"  >INDONESIA</option>");
+document.write("<option value=\"IRAN\"  >IRAN</option>");
+document.write("<option value=\"IRELAND\"  >IRELAND</option>");
+document.write("<option value=\"ISRAEL\"  >ISRAEL</option>");
+document.write("<option value=\"ITALY\"  >ITALY</option>");
+document.write("<option value=\"JAPAN\"  >JAPAN</option>");
+document.write("<option value=\"JORDAN\"  >JORDAN</option>");
+document.write("<option value=\"KAZAKHSTAN\"  >KAZAKHSTAN</option>");
+document.write("<option value=\"KENYA\"  >KENYA</option>");
+document.write("<option value=\"KOREA_REPUBLIC\"  >KOREA_REPUBLIC</option>");
+document.write("<option value=\"KUWAIT\"  >KUWAIT</option>");
+document.write("<option value=\"LATVIA\"  >LATVIA</option>");
+document.write("<option value=\"LEBANON\"  >LEBANON</option>");
+document.write("<option value=\"LIECHTENSTEIN\"  >LIECHTENSTEIN</option>");
+document.write("<option value=\"LITHUANIA\"  >LITHUANIA</option>");
+document.write("<option value=\"LUXEMBOURG\"  >LUXEMBOURG</option>");
+document.write("<option value=\"MACAU\"  >MACAU</option>");
+document.write("<option value=\"MACEDONIA\"  >MACEDONIA</option>");
+document.write("<option value=\"MALAYSIA\"  >MALAYSIA</option>");
+document.write("<option value=\"MALTA\"  >MALTA</option>");
+document.write("<option value=\"MEXICO\"  >MEXICO</option>");
+document.write("<option value=\"MONACO\"  >MONACO</option>");
+document.write("<option value=\"MOROCCO\"  >MOROCCO</option>");
+document.write("<option value=\"NEPAL\"  >NEPAL</option>");
+document.write("<option value=\"NETHERLANDS\"  >NETHERLANDS</option>");
+document.write("<option value=\"NEW_ZEALAND\"  >NEW_ZEALAND</option>");
+document.write("<option value=\"NORTH_KOREA\"  >NORTH_KOREA</option>");
+document.write("<option value=\"NORWAY\"  >NORWAY</option>");
+document.write("<option value=\"NORWAY_BFWA\"  >NORWAY_BFWA</option>");
+document.write("<option value=\"OMAN\"  >OMAN</option>");
+document.write("<option value=\"PAKISTAN\"  >PAKISTAN</option>");
+document.write("<option value=\"PAPUA_NEW_GUINEA\"  >PAPUA_NEW_GUINEA</option>");
+document.write("<option value=\"PANAMA\"  >PANAMA</option>");
+document.write("<option value=\"PERU\"  >PERU</option>");
+document.write("<option value=\"PHILIPPINES\"  >PHILIPPINES</option>");
+document.write("<option value=\"POLAND\"  >POLAND</option>");
+document.write("<option value=\"PORTUGAL\"  >PORTUGAL</option>");
+document.write("<option value=\"PUERTO_RICO\"  >PUERTO_RICO</option>");
+document.write("<option value=\"QATAR\"  >QATAR</option>");
+document.write("<option value=\"ROMANIA\"  >ROMANIA</option>");
+document.write("<option value=\"RUSSIA\"  >RUSSIA</option>");
+document.write("<option value=\"SAUDI_ARABIA\"  >SAUDI_ARABIA</option>");
+document.write("<option value=\"SINGAPORE\"  >SINGAPORE</option>");
+document.write("<option value=\"SLOVAK_REPUBLIC\"  >SLOVAK_REPUBLIC</option>");
+document.write("<option value=\"SLOVENIA\"  >SLOVENIA</option>");
+document.write("<option value=\"SOUTH_AFRICA\"  >SOUTH_AFRICA</option>");
+document.write("<option value=\"SPAIN\"  >SPAIN</option>");
+document.write("<option value=\"SWEDEN\"  >SWEDEN</option>");
+document.write("<option value=\"SWITZERLAND\"  >SWITZERLAND</option>");
+document.write("<option value=\"SYRIA\"  >SYRIA</option>");
+document.write("<option value=\"TAIWAN\"  >TAIWAN</option>");
+document.write("<option value=\"THAILAND\"  >THAILAND</option>");
+document.write("<option value=\"TRINIDAD&TOBAGO\"  >TRINIDAD&TOBAGO</option>");
+document.write("<option value=\"TUNISIA\"  >TUNISIA</option>");
+document.write("<option value=\"TURKEY\"  >TURKEY</option>");
+document.write("<option value=\"UKRAINE\"  >UKRAINE</option>");
+document.write("<option value=\"UNITED_ARAB_EMIRATES\"  >UNITED_ARAB_EMIRATES</option>");
+document.write("<option value=\"UNITED_KINGDOM\"  >UNITED_KINGDOM</option>");
+document.write("<option value=\"UNITED_KINGDOM_BFWA\"  >UNITED_KINGDOM_BFWA</option>");
+document.write("<option value=\"UNITED_STATES\" selected=\"selected\" >UNITED_STATES</option>");
+document.write("<option value=\"UNITED_STATES_(PUBLIC_SAFETY)\"  >UNITED_STATES_(PUBLIC_SAFETY)</option>");
+document.write("<option value=\"URUGUAY\"  >URUGUAY</option>");
+document.write("<option value=\"UZBEKISTAN\"  >UZBEKISTAN</option>");
+document.write("<option value=\"VENEZUELA\"  >VENEZUELA</option>");
+document.write("<option value=\"VIET_NAM\"  >VIET_NAM</option>");
+document.write("<option value=\"YEMEN\"  >YEMEN</option>");
+document.write("<option value=\"ZIMBABWE\"  >ZIMBABWE</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.TXpower)</script></div><input class="num" name="ath1_txpwrdbm" size="6" maxlength="3" value="20" /> dBm
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.AntGain)</script></div><input class="num" name="ath1_antgain" size="6" maxlength="3" value="0" /> dBi
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.protmode)</script></div><select name="ath1_protmode">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"None\" selected=\"selected\" >None</option>");
+document.write("<option value=\"CTS\"  >CTS</option>");
+document.write("<option value=\"RTS/CTS\"  >RTS/CTS</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rts)</script></div>
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath1_idrts', true);" name="ath1_rts" ><script type="text/javascript">Capture(share.enable)</script></input>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath1_idrts', false);" name="ath1_rts" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div id="ath1_idrts">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rtsvalue)</script></div>
+<input class="num" maxlength="4" size="4" onblur="valid_range(this,1,2346,share.ip)" name="ath1_rtsvalue" value="2346" /></div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath1_rts"), "ath1_idrts", false);
+//]]>
+</script>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label23)</script></div>
+<select name="ath1_minrate">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\" >" + share.auto + "</option>");
+//]]>
+</script>
+<option value="1"  >1 Mbps</option>
+<option value="2"  >2 Mbps</option>
+<option value="3"  >5.5 Mbps</option>
+<option value="4"  >6 Mbps</option>
+<option value="5"  >9 Mbps</option>
+<option value="6"  >11 Mbps</option>
+<option value="7"  >12 Mbps</option>
+<option value="8"  >18 Mbps</option>
+<option value="9"  >24 Mbps</option>
+<option value="10"  >36 Mbps</option>
+<option value="11"  >48 Mbps</option>
+<option value="12"  >54 Mbps</option>
+</select>
+<span class="default">
+<script type="text/javascript">
+//<![CDATA[
+document.write("(" + share.deflt + ": " + share.auto + ")");
+//]]
+</script></span></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label21)</script></div>
+<select name="ath1_maxrate">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"0\" selected=\"selected\" >" + share.auto + "</option>");
+//]]>
+</script>
+<option value="1"  >1 Mbps</option>
+<option value="2"  >2 Mbps</option>
+<option value="3"  >5.5 Mbps</option>
+<option value="4"  >6 Mbps</option>
+<option value="5"  >9 Mbps</option>
+<option value="6"  >11 Mbps</option>
+<option value="7"  >12 Mbps</option>
+<option value="8"  >18 Mbps</option>
+<option value="9"  >24 Mbps</option>
+<option value="10"  >36 Mbps</option>
+<option value="11"  >48 Mbps</option>
+<option value="12"  >54 Mbps</option>
+</select>
+<span class="default">
+<script type="text/javascript">
+//<![CDATA[
+document.write("(" + share.deflt + ": " + share.auto + ")");
+//]]
+</script></span></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.preamble)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_preamble" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_preamble" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.outband)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_outdoor" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_outdoor" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.txchainmask)</script></div><select name="ath1_txantenna" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"1\"  >1</option>");
+document.write("<option value=\"3\" selected=\"selected\" >1+2</option>");
+document.write("<option value=\"5\"  >1+3</option>");
+document.write("<option value=\"7\"  >1+2+3</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.rxchainmask)</script></div><select name="ath1_rxantenna" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"1\"  >1</option>");
+document.write("<option value=\"3\" selected=\"selected\" >1+2</option>");
+document.write("<option value=\"5\"  >1+3</option>");
+document.write("<option value=\"7\"  >1+2+3</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label11)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_ap_isolate" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_ap_isolate" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.radar)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_doth" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_doth" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.scanlist)</script></div>
+<input name="ath1_scanlist" size="32" maxlength="512" value="default" />
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label6)</script></div>
+<input class="num" name="ath1_distance" size="8" maxlength="8" onblur="valid_range(this,0,99999999,wl_basic.label6)" value="2000" />
+<span class="default"><script type="text/javascript">
+//<![CDATA[
+ document.write("(" + share.deflt + ": 2000 " + share.meters + ")");
+//]]>
+</script></span>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label10)</script></div>
+<input class="num" name="ath1_maxassoc" size="4" maxlength="4" onblur="valid_range(this,0,256,wl_basic.label6)" value="256" />
+<span class="default"><script type="text/javascript">
+//<![CDATA[
+ document.write("(" + share.deflt + ": 256 " + status_wireless.legend3 + ")");
+//]]>
+</script></span>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.mtikie)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_mtikie" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_mtikie" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.network)</script></div>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath1_idnetvifs', true);" name="ath1_bridged" ><script type="text/javascript">Capture(wl_basic.unbridged)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath1_idnetvifs', false);" name="ath1_bridged" checked="checked"><script type="text/javascript">Capture(wl_basic.bridged)</script></input>
+</div>
+<div id="ath1_idnetvifs">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.multicast)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_multicast" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_multicast" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.masquerade)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1_nat" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1_nat" ><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.ip)</script></div>
+<input type="hidden" name="ath1_ipaddr" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,1,223,share.ip)" name="ath1_ipaddr_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1_ipaddr_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1_ipaddr_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1_ipaddr_3" value="0" />
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.subnet)</script></div>
+<input type="hidden" name="ath1_netmask" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1_netmask_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1_netmask_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1_netmask_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1_netmask_3" value="0" />.</div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath1_bridged"), "ath1_idnetvifs", false);
+//]]>
+</script>
+</div>
+</fieldset>
+<br />
+<h2><script type="text/javascript">Capture(wl_basic.h2_vi)</script></h2>
+<fieldset><legend><script type="text/javascript">Capture(share.vintrface)</script> ath1.1 SSID [dd-wrt_vap]</legend>
+<div class="setting">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label)</script></div><select name="ath1.1_mode" >
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"ap\" selected=\"selected\" >" + wl_basic.ap + "</option>");
+document.write("<option value=\"wdsap\"  >" + wl_basic.wdsap + "</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="label"><script type="text/javascript">Capture(wl_basic.label3)</script></div>
+<input name="ath1.1_ssid" size="20" maxlength="32" onblur="valid_name(this,wl_basic.label3)" value="dd-wrt_vap" /></div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.label5)</script></div><input class="spaceradio" type="radio" value="0" name="ath1.1_closed" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" name="ath1.1_closed" ><script type="text/javascript">Capture(share.disable)</script></input>
+</div>
+<div class="setting"><div class="label"><script type="text/javascript">Capture(wl_adv.legend)</script></div>
+<input type="checkbox" name="ath1X1_wl_advanced" onclick="toggle_layer(this,'ath1X1_wl_advanced_layer')"></div>
+<div id="ath1X1_wl_advanced_layer" style="display: none;">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.protmode)</script></div><select name="ath1.1_protmode">
+<script type="text/javascript">
+//<![CDATA[
+document.write("<option value=\"None\" selected=\"selected\" >None</option>");
+document.write("<option value=\"CTS\"  >CTS</option>");
+document.write("<option value=\"RTS/CTS\"  >RTS/CTS</option>");
+//]]>
+</script>
+</select>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rts)</script></div>
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath1X1_idrts', true);" name="ath1.1_rts" ><script type="text/javascript">Capture(share.enable)</script></input>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath1X1_idrts', false);" name="ath1.1_rts" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div id="ath1X1_idrts">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.rtsvalue)</script></div>
+<input class="num" maxlength="4" size="4" onblur="valid_range(this,1,2346,share.ip)" name="ath1.1_rtsvalue" value="2346" /></div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath1.1_rts"), "ath1X1_idrts", false);
+//]]>
+</script>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label18)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1.1_wmm" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1.1_wmm" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label11)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1.1_ap_isolate" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1.1_ap_isolate" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_adv.label10)</script></div>
+<input class="num" name="ath1.1_maxassoc" size="4" maxlength="4" onblur="valid_range(this,0,256,wl_adv.label10)" value="256" />
+<span class="default"><script type="text/javascript">
+//<![CDATA[
+ document.write("(" + share.deflt + ": 256 " + share.user + ")");
+//]]>
+</script></span>
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.mtikie)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1.1_mtikie" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1.1_mtikie" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.network)</script></div>
+<input class="spaceradio" type="radio" value="0" onclick="show_layer_ext(this, 'ath1X1_idnetvifs', true);" name="ath1.1_bridged" ><script type="text/javascript">Capture(wl_basic.unbridged)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="1" onclick="show_layer_ext(this, 'ath1X1_idnetvifs', false);" name="ath1.1_bridged" checked="checked"><script type="text/javascript">Capture(wl_basic.bridged)</script></input>
+</div>
+<div id="ath1X1_idnetvifs">
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.multicast)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1.1_multicast" ><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1.1_multicast" checked="checked"><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(wl_basic.masquerade)</script></div>
+<input class="spaceradio" type="radio" value="1" name="ath1.1_nat" checked="checked"><script type="text/javascript">Capture(share.enable)</script></input>&nbsp;
+<input class="spaceradio" type="radio" value="0" name="ath1.1_nat" ><script type="text/javascript">Capture(share.disable)</script></input>&nbsp;
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.ip)</script></div>
+<input type="hidden" name="ath1.1_ipaddr" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,1,223,share.ip)" name="ath1.1_ipaddr_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1.1_ipaddr_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1.1_ipaddr_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.ip)" name="ath1.1_ipaddr_3" value="0" />
+</div>
+<div class="setting">
+<div class="label"><script type="text/javascript">Capture(share.subnet)</script></div>
+<input type="hidden" name="ath1.1_netmask" value="4" />
+<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1.1_netmask_0" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1.1_netmask_1" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1.1_netmask_2" value="0" />.<input class="num" maxlength="3" size="3" onblur="valid_range(this,0,255,share.subnet)" name="ath1.1_netmask_3" value="0" />.</div>
+</div>
+<script>
+//<![CDATA[
+ show_layer_ext(document.getElementsByName("ath1.1_bridged"), "ath1X1_idnetvifs", false);
+//]]>
+</script>
+</div>
+</fieldset><br />
+<div class="center">
+<script type="text/javascript">
+//<![CDATA[
+ document.write("<input class=\"button\" type=\"button\" value=\"" + sbutton.add + "\" onclick=\"vifs_add_submit(this.form,'ath1')\" />");
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+ document.write("<input class=\"button\" type=\"button\" value=\"" + sbutton.remove + "\" onclick=\"vifs_remove_submit(this.form,'ath1')\" />");
+//]]>
+</script>
+</div><br />
+
+
+	
+	<div class="submitFooter">
+		<script type="text/javascript">
+		//<![CDATA[
+		submitFooterButton(1,1);
+		//]]>
+		</script>
+	</div>
+</form>
+</div>
+</div>
+<div id="helpContainer">
+<div id="help">
+<div><h2><script type="text/javascript">Capture(share.help)</script></h2></div>
+<dl>
+<dt class="term"><script type="text/javascript">Capture(wl_basic.label2)</script>:</dt>
+<dd class="definition"><script type="text/javascript">Capture(hwl_basic.right2)</script></dd>
+
+<dt class="term"><script type="text/javascript">Capture(hwl_basic.right3)</script></dt>
+<dd class="definition"><script type="text/javascript">Capture(hwl_basic.right4)</script></dd>
+
+</dl><br />
+<a href="javascript:openHelpWindow('HWireless.html')"><script type="text/javascript">Capture(share.more)</script></a>
+</div>
+</div>
+<div id="floatKiller"></div>
+<div id="statusInfo">
+<div class="info"><script type="text/javascript">Capture(share.firmware)</script>:
+<script type="text/javascript">
+//<![CDATA[
+document.write("<a title=\"" + share.about + "\" href=\"javascript:openAboutWindow()\">DD-WRT v24-sp2 (08/07/10) std</a>");
+//]]>
+</script>
+</div>
+<div class="info"><script type="text/javascript">Capture(share.time)</script>:  <span id="uptime"> 01:32:49 up  1:33, load average: 0.00, 0.01, 0.00</span></div>
+<div class="info">WAN<span id="ipinfo">&nbsp;IP: 0.0.0.0</span></div>
+</div>
+</div>
+</div>
+</body>
+
+<!-- Mirrored from 192.168.1.1/Wireless_Basic.asp by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Feb 2011 11:39:22 GMT -->
+</html>

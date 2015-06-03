@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="usb_storage.js"></script>
+
+<link rel="stylesheet" type="text/css" href="usb_storage.css" media="all">
+</head><body>
+	<div id="darken"><iframe id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="backup.sh_fichiers/wait_icon.gif">
+		</div>
+		<iframe id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('network', 'loopback', '', "interface");
+	uciOriginal.set('network', 'loopback', 'ifname', "lo");
+	uciOriginal.set('network', 'loopback', 'proto', "static");
+	uciOriginal.set('network', 'loopback', 'ipaddr', "127.0.0.1");
+	uciOriginal.set('network', 'loopback', 'netmask', "255.0.0.0");
+	uciOriginal.set('network', 'lan', '', "interface");
+	uciOriginal.set('network', 'lan', 'ifname', "eth0");
+	uciOriginal.set('network', 'lan', 'type', "bridge");
+	uciOriginal.set('network', 'lan', 'proto', "static");
+	uciOriginal.set('network', 'lan', 'ipaddr', "192.168.1.1");
+	uciOriginal.set('network', 'lan', 'netmask', "255.255.255.0");
+	uciOriginal.set('network', 'wan', '', "interface");
+	uciOriginal.set('network', 'wan', 'ifname', "eth1");
+	uciOriginal.set('network', 'wan', 'proto', "dhcp");
+	uciOriginal.set('network', 'cfg05cf9e', '', "switch");
+	uciOriginal.set('network', 'cfg05cf9e', 'name', "rtl8366s");
+	uciOriginal.set('network', 'cfg05cf9e', 'reset', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'enable_vlan', "1");
+	uciOriginal.set('network', 'cfg05cf9e', 'blinkrate', "2");
+	uciOriginal.set('network', 'cfg076768', '', "switch_vlan");
+	uciOriginal.set('network', 'cfg076768', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg076768', 'vlan', "1");
+	uciOriginal.set('network', 'cfg076768', 'ports', "0 1 2 3 5");
+	uciOriginal.set('network', 'cfg092a6b', '', "switch_port");
+	uciOriginal.set('network', 'cfg092a6b', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg092a6b', 'port', "1");
+	uciOriginal.set('network', 'cfg092a6b', 'led', "9");
+	uciOriginal.set('network', 'cfg0b42e9', '', "switch_port");
+	uciOriginal.set('network', 'cfg0b42e9', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0b42e9', 'port', "2");
+	uciOriginal.set('network', 'cfg0b42e9', 'led', "6");
+	uciOriginal.set('network', 'cfg0d8c6c', '', "switch_port");
+	uciOriginal.set('network', 'cfg0d8c6c', 'device', "rtl8366s");
+	uciOriginal.set('network', 'cfg0d8c6c', 'port', "5");
+	uciOriginal.set('network', 'cfg0d8c6c', 'led', "6");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<fieldset id="backup_section">
+	<legend class="sectionheader">Backup Current Configuration</legend>
+	<div>
+		<span class="leftcolumn"><input id="backup_button" class="default_button" value="Get Backup Now" onclick="getBackup()" type="button"></span>
+	</div>
+</fieldset>
+
+<fieldset id="restore_section">
+	<legend class="sectionheader">Restore Old Configuration</legend>
+	<div>
+		<form id="restore_form" enctype="multipart/form-data" method="post" action="utility/do_restore.sh" target="do_restore">
+			<label class="leftcolumn">Select Old Configuration File:</label>
+			<input class="rightcolumn" id="restore_file" name="restore_file" type="file">
+			<input id="restore_hash" name="hash" value="" type="hidden">
+		</form>
+	</div>
+	<div>
+		<span class="leftcolumn"><input id="restore_button" class="default_button" value="Restore Configuration Now" onclick="doRestore()" type="button"></span>
+	</div>
+	<iframe id="do_restore" name="do_restore" src="backup.sh_fichiers/backup_002.htm" style="display: none;"></iframe> 
+
+
+</fieldset>
+
+<fieldset id="restore_original_section">
+	<legend class="sectionheader">Restore Default Configuration</legend>
+	<form id="restore_original_form" enctype="multipart/form-data" method="post" action="utility/do_restore_original.sh" target="do_restore_original">
+			<input id="restore_original_hash" name="hash" value="" type="hidden">
+	</form>
+	<div>
+		<span class="leftcolumn"><input id="restore_original_button" class="default_button" value="Restore Default Configuration Now" onclick="doDefaultRestore()" type="button"></span>
+	</div>
+	<iframe id="do_restore_original" name="do_restore_original" src="backup.sh_fichiers/backup_002.htm" style="display: none;"></iframe> 
+</fieldset>
+<iframe id="reboot_test" onload="reloadPage()" style="display: none;"></iframe>
+
+
+
+
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">System</div>
+							<div id="submenu_container">
+								<a indepth="true" href="access.html">Router Access</a>
+								<a indepth="true" href="identification.html">Identification</a>
+								<a indepth="true" href="time.html">Time</a>
+								<div class="submenu_selected">USB Storage</div>
+								<a href="backup.html">Backup / Restore</a>
+								<a indepth="true" href="update.html">Update Firmware</a>
+								<a href="reboot.html">Reboot</a>
+								<a indepth="true" href="about.html">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

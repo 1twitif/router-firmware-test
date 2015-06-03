@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/syslog/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Journal système - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.20 0.08 0.02
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status active">
+				<a href="../index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-interfaces">
+				<a href="../interfaces/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-iptables">
+				<a href="../iptables/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-conntrack">
+				<a href="../conntrack/index.html">Connexions Actives</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Route</a>
+			</li>
+		
+			<li class="tabmenu-item-syslog active">
+				<a href="index.html">Journal système</a>
+			</li>
+		
+			<li class="tabmenu-item-dmesg">
+				<a href="../dmesg/index.html">Journal du noyau</a>
+			</li>
+		
+			<li class="tabmenu-item-load">
+				<a href="../load/index.html">Realtime Load</a>
+			</li>
+		
+			<li class="tabmenu-item-bandwidth">
+				<a href="../bandwidth/index.html">Realtime Traffic</a>
+			</li>
+		
+			<li class="tabmenu-item-connections">
+				<a href="../connections/index.html">Realtime Connections</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<h2><a id="content" name="content">Journal système</a></h2>
+<div id="content_syslog">
+<textarea readonly="readonly" wrap="off" rows="176" id="syslog">Jan  1 00:00:09 OpenWrt syslog.info syslogd started: BusyBox v1.17.3
+Jan  1 00:00:09 OpenWrt kern.info kernel: 802.1Q VLAN Support v1.8 Ben Greear &#60;greearb@candelatech.com&#62;
+Jan  1 00:00:09 OpenWrt kern.info kernel: All bugs added by David S. Miller &#60;davem@redhat.com&#62;
+Jan  1 00:00:09 OpenWrt kern.warn kernel: VFS: Mounted root (squashfs filesystem) readonly on device 31:3.
+Jan  1 00:00:09 OpenWrt kern.info kernel: Freeing unused kernel memory: 152k freed
+Jan  1 00:00:09 OpenWrt kern.warn kernel: Please be patient, while OpenWrt loads ...
+Jan  1 00:00:09 OpenWrt kern.info kernel: input: gpio-buttons as /devices/platform/gpio-buttons/input/input0
+Jan  1 00:00:09 OpenWrt kern.info kernel: Button Hotplug driver version 0.4.1
+Jan  1 00:00:09 OpenWrt kern.debug kernel: ar71xx: pll_reg 0xb8050010: 0x11110000
+Jan  1 00:00:09 OpenWrt kern.info kernel: eth0: link up (1000Mbps/Full duplex)
+Jan  1 00:00:09 OpenWrt kern.info kernel: Registered led device: wndr3700:green:power
+Jan  1 00:00:09 OpenWrt kern.info kernel: Registered led device: wndr3700:orange:power
+Jan  1 00:00:09 OpenWrt kern.info kernel: Registered led device: wndr3700:green:wps
+Jan  1 00:00:09 OpenWrt kern.info kernel: Registered led device: wndr3700:orange:wps
+Jan  1 00:00:09 OpenWrt kern.info kernel: Registered led device: wndr3700:green:wan
+Jan  1 00:00:09 OpenWrt kern.info kernel: mini_fo: using base directory: /
+Jan  1 00:00:09 OpenWrt kern.info kernel: mini_fo: using storage directory: /tmp/root
+Jan  1 00:00:09 OpenWrt kern.info kernel: eth0: link down
+Jan  1 00:00:09 OpenWrt kern.debug kernel: ar71xx: pll_reg 0xb8050010: 0x11110000
+Jan  1 00:00:09 OpenWrt kern.info kernel: eth0: link up (1000Mbps/Full duplex)
+Jan  1 00:00:09 OpenWrt user.notice ifup: Enabling Router Solicitations on loopback (lo)
+Jan  1 00:00:09 OpenWrt user.notice rdate: No usable time server for loopback found
+Jan  1 00:00:09 OpenWrt user.info sysinit: udhcpc (v1.17.3) started
+Jan  1 00:00:09 OpenWrt kern.info kernel: device eth0.1 entered promiscuous mode
+Jan  1 00:00:09 OpenWrt kern.info kernel: device eth0 entered promiscuous mode
+Jan  1 00:00:09 OpenWrt kern.info kernel: br-lan: port 1(eth0.1) entering forwarding state
+Jan  1 00:00:10 OpenWrt kern.info kernel: Compat-wireless backport release: compat-wireless-2011-01-31-4-g86702b3
+Jan  1 00:00:10 OpenWrt kern.info kernel: Backport based on wireless-testing.git master-2011-02-07
+Jan  1 00:00:10 OpenWrt kern.info kernel: cfg80211: Calling CRDA to update world regulatory domain
+Jan  1 00:00:10 OpenWrt user.info sysinit: Sending discover...
+Jan  1 00:00:11 OpenWrt kern.info kernel: usbcore: registered new interface driver usbfs
+Jan  1 00:00:11 OpenWrt kern.info kernel: usbcore: registered new interface driver hub
+Jan  1 00:00:11 OpenWrt kern.info kernel: usbcore: registered new device driver usb
+Jan  1 00:00:11 OpenWrt user.notice ifup: Enabling Router Solicitations on lan (br-lan)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211: World regulatory domain updated:
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (2402000 KHz - 2472000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (2457000 KHz - 2482000 KHz @ 20000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (2474000 KHz - 2494000 KHz @ 20000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (5170000 KHz - 5250000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:11 OpenWrt kern.info kernel: cfg80211:     (5735000 KHz - 5835000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:12 OpenWrt user.notice rdate: No usable time server for lan found
+Jan  1 00:00:12 OpenWrt kern.warn kernel: PCI: Enabling device 0000:00:11.0 (0000 -&#62; 0002)
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: EEPROM regdomain: 0x0
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: EEPROM indicates default country code should be used
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: doing EEPROM country-&#62;regdmn map search
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: country maps to regdmn code: 0x3a
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: Country alpha2 being used: US
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: Regpair used: 0x3a
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ieee80211 phy0: Selected rate control algorithm &#39;minstrel_ht&#39;
+Jan  1 00:00:12 OpenWrt kern.info kernel: Registered led device: ath9k-phy0
+Jan  1 00:00:12 OpenWrt kern.info kernel: ieee80211 phy0: Atheros AR9280 Rev:2 mem=0xb0000000, irq=48
+Jan  1 00:00:12 OpenWrt kern.warn kernel: PCI: Enabling device 0000:00:12.0 (0000 -&#62; 0002)
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: EEPROM regdomain: 0x0
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: EEPROM indicates default country code should be used
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: doing EEPROM country-&#62;regdmn map search
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: country maps to regdmn code: 0x3a
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: Country alpha2 being used: US
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ath: Regpair used: 0x3a
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211: Calling CRDA for country: US
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ar71xx: pll_reg 0xb8050014: 0x1099
+Jan  1 00:00:12 OpenWrt kern.info kernel: eth1: link up (100Mbps/Full duplex)
+Jan  1 00:00:12 OpenWrt kern.debug kernel: ieee80211 phy1: Selected rate control algorithm &#39;minstrel_ht&#39;
+Jan  1 00:00:12 OpenWrt kern.info kernel: Registered led device: ath9k-phy1
+Jan  1 00:00:12 OpenWrt kern.info kernel: ieee80211 phy1: Atheros AR9280 Rev:2 mem=0xb0010000, irq=49
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211: Regulatory domain changed to country: US
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (2402000 KHz - 2472000 KHz @ 40000 KHz), (300 mBi, 2700 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (5170000 KHz - 5250000 KHz @ 40000 KHz), (300 mBi, 1700 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (5250000 KHz - 5330000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (5490000 KHz - 5600000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (5650000 KHz - 5710000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: cfg80211:     (5735000 KHz - 5835000 KHz @ 40000 KHz), (300 mBi, 3000 mBm)
+Jan  1 00:00:12 OpenWrt kern.info kernel: PPP generic driver version 2.4.2
+Jan  1 00:00:12 OpenWrt kern.info kernel: ip_tables: (C) 2000-2006 Netfilter Core Team
+Jan  1 00:00:13 OpenWrt kern.info kernel: NET: Registered protocol family 24
+Jan  1 00:00:13 OpenWrt kern.info kernel: ehci_hcd: USB 2.0 &#39;Enhanced&#39; Host Controller (EHCI) Driver
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ehci ar71xx-ehci: Atheros AR71xx built-in EHCI controller
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ehci ar71xx-ehci: new USB bus registered, assigned bus number 1
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ehci ar71xx-ehci: irq 3, io mem 0x1b000000
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ehci ar71xx-ehci: USB 2.0 started, EHCI 1.00
+Jan  1 00:00:13 OpenWrt kern.info kernel: usb usb1: configuration #1 chosen from 1 choice
+Jan  1 00:00:13 OpenWrt kern.info kernel: hub 1-0:1.0: USB hub found
+Jan  1 00:00:13 OpenWrt kern.info kernel: hub 1-0:1.0: 2 ports detected
+Jan  1 00:00:13 OpenWrt kern.warn kernel: nf_conntrack version 0.5.0 (969 buckets, 3876 max)
+Jan  1 00:00:13 OpenWrt kern.warn kernel: CONFIG_NF_CT_ACCT is deprecated and will be removed soon. Please use
+Jan  1 00:00:13 OpenWrt kern.warn kernel: nf_conntrack.acct=1 kernel parameter, acct=1 nf_conntrack module option or
+Jan  1 00:00:13 OpenWrt kern.warn kernel: sysctl net.netfilter.nf_conntrack_acct=1 to enable it.
+Jan  1 00:00:13 OpenWrt kern.info kernel: ohci_hcd: USB 1.1 &#39;Open&#39; Host Controller (OHCI) Driver
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ohci ar71xx-ohci: Atheros AR71xx built-in OHCI controller
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ohci ar71xx-ohci: new USB bus registered, assigned bus number 2
+Jan  1 00:00:13 OpenWrt kern.info kernel: ar71xx-ohci ar71xx-ohci: irq 14, io mem 0x1c000000
+Jan  1 00:00:13 OpenWrt kern.info kernel: usb usb2: configuration #1 chosen from 1 choice
+Jan  1 00:00:13 OpenWrt kern.info kernel: hub 2-0:1.0: USB hub found
+Jan  1 00:00:13 OpenWrt kern.info kernel: hub 2-0:1.0: 2 ports detected
+Jan  1 00:00:13 OpenWrt user.info sysinit: Sending discover...
+Jan  1 00:00:14 OpenWrt user.info sysinit: Sending select for 192.168.0.8...
+Jan  1 00:00:14 OpenWrt user.info sysinit: Lease of 192.168.0.8 obtained, lease time 86400
+Jan  1 00:00:14 OpenWrt user.info sysinit: udhcpc: ifconfig eth1 192.168.0.8 netmask 255.255.255.0 broadcast +
+Jan  1 00:00:14 OpenWrt user.info sysinit: udhcpc: setting default routers: 192.168.0.1
+Jan  1 00:00:14 OpenWrt user.info sysinit: udhcpc: setting dns servers: 192.168.0.1
+Jan  1 00:00:14 OpenWrt user.info sysinit: udhcpc: setting dns domain: 1000Feuilles.fr
+Jan  1 00:00:14 OpenWrt user.info sysinit: Loading defaults
+Jan  1 00:00:15 OpenWrt user.notice ifup: Allowing Router Advertisements on wan (eth1)
+Jan  1 00:00:15 OpenWrt user.info sysinit: Loading synflood protection
+Jan  1 00:00:15 OpenWrt user.info sysinit: Adding custom chains
+Jan  1 00:00:15 OpenWrt user.info sysinit: Loading zones
+Jan  1 00:00:16 OpenWrt user.info sysinit: Loading forwardings
+Jan  1 00:00:16 OpenWrt user.info sysinit: Loading redirects
+Jan  1 00:00:16 OpenWrt user.info sysinit: Loading rules
+Jan  1 00:00:16 OpenWrt user.info sysinit: Loading includes
+Jan  1 00:00:16 OpenWrt user.info sysinit: Optimizing conntrack
+Jan  1 00:00:16 OpenWrt user.info sysinit: Loading interfaces
+Jan  1 00:00:16 OpenWrt user.info firewall: adding lan (br-lan) to zone lan
+Jan  1 00:00:16 OpenWrt user.info firewall: adding wan (eth1) to zone wan
+Jan  1 00:00:17 OpenWrt user.notice dnsmasq: DNS rebinding protection is active, will discard upstream RFC1918 responses!
+Jan  1 00:00:17 OpenWrt user.notice dnsmasq: Allowing 127.0.0.0/8 responses
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: started, version 2.57 cachesize 150
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: compile time options: IPv6 GNU-getopt no-DBus no-I18N DHCP TFTP no-IDN
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCP, IP range 192.168.1.100 -- 192.168.1.249, lease time 12h
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: using local addresses only for domain lan
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: reading /tmp/resolv.conf.auto
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: using nameserver 192.168.0.1#53
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: using local addresses only for domain lan
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq[1130]: read /etc/hosts - 1 addresses
+Jan  1 00:00:20 OpenWrt daemon.info dnsmasq-dhcp[1130]: read /etc/ethers - 0 addresses
+Jan  1 00:00:21 OpenWrt kern.warn kernel: jffs2_scan_eraseblock(): End of filesystem marker found at 0x0
+Jan  1 00:00:21 OpenWrt kern.warn kernel: jffs2_build_filesystem(): unlocking the mtd device... done.
+Jan  1 00:00:25 OpenWrt user.notice rdate: Failed to sync with time-a.nist.gov
+Jan  1 00:00:35 OpenWrt user.notice rdate: Failed to sync with time-b.nist.gov
+Feb 23 14:51:21 OpenWrt user.notice rdate: Synced with ntp.xs4all.nl
+Feb 23 14:51:36 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPDISCOVER(br-lan) 90:e6:ba:4e:00:18 
+Feb 23 14:51:36 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPOFFER(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 14:51:36 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 14:51:36 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 14:51:43 OpenWrt kern.warn kernel: jffs2_build_filesystem(): erasing all blocks after the end marker... done.
+Feb 23 14:51:43 OpenWrt user.info sysinit: copying files ... done
+Feb 23 14:51:43 OpenWrt kern.info kernel: mini_fo: using base directory: /
+Feb 23 14:51:43 OpenWrt kern.info kernel: mini_fo: using storage directory: /overlay
+Feb 23 14:51:43 OpenWrt user.info sysinit: setting up led WAN LED (green)
+Feb 23 14:51:43 OpenWrt kern.debug kernel: ar71xx-wdt: enabling watchdog timer
+Feb 23 14:51:43 OpenWrt authpriv.info dropbear[1204]: Running in background
+Feb 23 14:54:22 OpenWrt kern.info kernel: tun: Universal TUN/TAP device driver, 1.6
+Feb 23 14:54:22 OpenWrt kern.info kernel: tun: (C) 1999-2004 Max Krasnyansky &#60;maxk@qualcomm.com&#62;
+Feb 23 14:54:22 OpenWrt kern.info kernel: xt_time: kernel timezone is -0000
+Feb 23 15:43:10 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 15:43:10 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 18:29:56 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 18:29:56 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 18:29:56 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 18:29:56 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 18:30:29 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 18:30:29 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 20:19:43 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 20:19:43 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 23 20:20:16 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 23 20:20:16 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:01:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPDISCOVER(br-lan) 90:e6:ba:4e:00:18 
+Feb 24 16:01:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPOFFER(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:01:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:01:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:02:55 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:02:55 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:05:43 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:05:43 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:11:05 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:11:05 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:14:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:14:34 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:34:10 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPREQUEST(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:34:10 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 16:36:14 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPINFORM(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 
+Feb 24 16:36:14 OpenWrt daemon.info dnsmasq-dhcp[1130]: DHCPACK(br-lan) 192.168.1.238 90:e6:ba:4e:00:18 Mickael-PC
+Feb 24 17:15:16 OpenWrt auth.info passwd: Password for root changed by root
+</textarea>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/syslog/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

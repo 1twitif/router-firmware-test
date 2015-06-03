@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/backup/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Sauvegarder / Restaurer - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.13 0.09 0.03
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system active">
+				<a href="../index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-system">
+				<a href="../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-packages">
+				<a href="../packages/index.html">Logiciels</a>
+			</li>
+		
+			<li class="tabmenu-item-passwd">
+				<a href="../passwd/index.html">Mot de passe administrateur</a>
+			</li>
+		
+			<li class="tabmenu-item-sshkeys">
+				<a href="../sshkeys/index.html">Clés SSH </a>
+			</li>
+		
+			<li class="tabmenu-item-processes">
+				<a href="../processes/index.html">Processus</a>
+			</li>
+		
+			<li class="tabmenu-item-leds">
+				<a href="../leds/index.html">Configuration des LED s</a>
+			</li>
+		
+			<li class="tabmenu-item-backup active">
+				<a href="index.html">Sauvegarder / Restaurer</a>
+			</li>
+		
+			<li class="tabmenu-item-upgrade">
+				<a href="../upgrade/index.html">Flash Firmware</a>
+			</li>
+		
+			<li class="tabmenu-item-reboot">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Redémarrage</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<h2><a id="content" name="content">Système</a></h2>
+<h3>Sauvegarder / Restaurer</h3>
+<p>Ici, vous pouvez sauvegarder et restaurer la configuration de votre routeur et, si possible, restaurer la configuration par défaut du routeur.</p>
+<br />
+<div>
+	<ul>
+	<li><a href="javascript:alert('Indisponible dans cette copie d\'interface');">Créer une archive de sauvegarde</a></li>
+	<li><a href="javascript:alert('Indisponible dans cette copie d\'interface');" onclick="return confirm('Etes-vous sûr de vouloir revenir à la configuration par défaut du firmware ?')">Revenir à la configuration par défaut du routeur</a></li>
+	</ul>
+</div>
+
+<br />
+
+<form method="post" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data">
+	<div class="left">Sauvegarder l&#39;archive:</div>
+	<div>
+		<input type="file" size="30" name="archive" />
+	</div>
+	<div>
+		<input type="submit" class="cbi-input-apply" value="Restaurer une sauvegarde" />
+	</div>
+</form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/backup/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:20:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

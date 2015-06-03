@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/conntrack/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Connexions Actives - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.20 0.08 0.02
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status active">
+				<a href="../index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-interfaces">
+				<a href="../interfaces/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-iptables">
+				<a href="../iptables/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-conntrack active">
+				<a href="index.html">Connexions Actives</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Route</a>
+			</li>
+		
+			<li class="tabmenu-item-syslog">
+				<a href="../syslog/index.html">Journal système</a>
+			</li>
+		
+			<li class="tabmenu-item-dmesg">
+				<a href="../dmesg/index.html">Journal du noyau</a>
+			</li>
+		
+			<li class="tabmenu-item-load">
+				<a href="../load/index.html">Realtime Load</a>
+			</li>
+		
+			<li class="tabmenu-item-bandwidth">
+				<a href="../bandwidth/index.html">Realtime Traffic</a>
+			</li>
+		
+			<li class="tabmenu-item-connections">
+				<a href="../connections/index.html">Realtime Connections</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+
+<div class="cbi-map" id="cbi-conntrack">
+	<h2><a id="content" name="content">Connexions Actives</a></h2>
+	<div class="cbi-map-descr">Cette page donne une vue d&#39;ensemble des connexions réseaux actuellement actives.</div>
+
+	<fieldset class="cbi-section" id="cbi-table-table">
+		<legend>ARP</legend>
+		<div class="cbi-section-node">
+			<table class="cbi-section-table">
+				<tr class="cbi-section-table-titles">
+					<th class="cbi-section-table-cell">Adresse <abbr title="Internet Protocol Version 4">IPv4</abbr></th>
+					<th class="cbi-section-table-cell">Adresse <abbr title="Media Access Control">MAC</abbr></th>
+					<th class="cbi-section-table-cell">Interface</th>
+				</tr>
+
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">192.168.0.11</td>
+					<td class="cbi-value-field">00:00:00:00:00:00</td>
+					<td class="cbi-value-field">eth1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">192.168.0.1</td>
+					<td class="cbi-value-field">c0:3f:0e:43:05:00</td>
+					<td class="cbi-value-field">eth1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">90:e6:ba:4e:00:18</td>
+					<td class="cbi-value-field">br-lan</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">192.168.0.16</td>
+					<td class="cbi-value-field">00:00:00:00:00:00</td>
+					<td class="cbi-value-field">eth1</td>
+				</tr>
+				
+			</table>
+		</div>
+	</fieldset>
+	<br />
+
+	<fieldset class="cbi-section" id="cbi-table-table">
+		<legend>Connexions Actives</legend>
+		<div class="cbi-section-node">
+			<table class="cbi-section-table">
+				<tr class="cbi-section-table-titles">
+					<th class="cbi-section-table-cell">Réseau</th>
+					<th class="cbi-section-table-cell">Protocole</th>
+					<th class="cbi-section-table-cell">Source</th>
+					<th class="cbi-section-table-cell">Destination</th>
+				</tr>
+
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">UDP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.255</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">UDP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.0.16</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">UDP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.0.11</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-2">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+				<tr class="cbi-section-table-row cbi-rowstyle-1">
+					<td class="cbi-value-field">IPV4</td>
+					<td class="cbi-value-field">TCP</td>
+					<td class="cbi-value-field">192.168.1.238</td>
+					<td class="cbi-value-field">192.168.1.1</td>
+				</tr>
+				
+			</table>
+		</div>
+	</fieldset>
+	<br />
+</div>
+	
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/conntrack/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+
+

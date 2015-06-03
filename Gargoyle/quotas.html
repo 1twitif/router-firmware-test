@@ -1,0 +1,603 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="quotas.js"></script>
+
+<link rel="stylesheet" type="text/css" href="quotas.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="quotas_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="quotas_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', '', "defaults");
+	uciOriginal.set('firewall', 'cfg02f50e', 'syn_flood', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg04e8f0', '', "zone");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'name', "lan");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', '', "zone");
+	uciOriginal.set('firewall', 'cfg062fd8', 'name', "wan");
+	uciOriginal.set('firewall', 'cfg062fd8', 'input', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'masq', "1");
+	uciOriginal.set('firewall', 'cfg062fd8', 'mtu_fix', "1");
+	uciOriginal.set('firewall', 'cfg087a91', '', "forwarding");
+	uciOriginal.set('firewall', 'cfg087a91', 'src', "lan");
+	uciOriginal.set('firewall', 'cfg087a91', 'dest', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', '', "rule");
+	uciOriginal.set('firewall', 'cfg0a0261', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', 'proto', "udp");
+	uciOriginal.set('firewall', 'cfg0a0261', 'dest_port', "68");
+	uciOriginal.set('firewall', 'cfg0a0261', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0c0a5e', '', "rule");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'proto', "icmp");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'icmp_type', "echo-request");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0e2df3', '', "include");
+	uciOriginal.set('firewall', 'cfg0e2df3', 'path', "/etc/firewall.user");
+	uciOriginal.set('firewall', 'cfg10536b', '', "include");
+	uciOriginal.set('firewall', 'cfg10536b', 'path', "/usr/lib/gargoyle_firewall_util/gargoyle_additions.firewall");
+	uciOriginal.set('qos_gargoyle', 'upload', '', "upload");
+	uciOriginal.set('qos_gargoyle', 'upload', 'default_class', "uclass_3");
+	uciOriginal.set('qos_gargoyle', 'download', '', "download");
+	uciOriginal.set('qos_gargoyle', 'download', 'default_class', "dclass_3");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_1', 'max_bandwidth', "200");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'dclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'dclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', '', "download_class");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'dclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'class', "dclass_4");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'download_rule_300', 'srcport', "80");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'download_rule_400', 'srcport', "443");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', '', "download_rule");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'class', "dclass_2");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'download_rule_500', 'srcport', "53");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'name', "Voip");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_1', 'min_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'name', "Fast");
+	uciOriginal.set('qos_gargoyle', 'uclass_2', 'percent_bandwidth', "80");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'name', "Slow");
+	uciOriginal.set('qos_gargoyle', 'uclass_3', 'percent_bandwidth', "1");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', '', "upload_class");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'name', "Normal");
+	uciOriginal.set('qos_gargoyle', 'uclass_4', 'percent_bandwidth', "18");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'test_order', "100");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_100', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'class', "uclass_4");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'test_order', "200");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_200', 'connbytes', "1");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'test_order', "300");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_300', 'dstport', "80");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'test_order', "400");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_400', 'dstport', "443");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', '', "upload_rule");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'class', "uclass_2");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'test_order', "500");
+	uciOriginal.set('qos_gargoyle', 'upload_rule_500', 'dstport', "53");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+
+<script>
+<!--
+var qosMarkList = [];
+var fullQosEnabled = false;
+var quotaIdList = [  ];
+var quotaIpLists = [];
+var quotaTimes    = new Array();
+var quotaUsed     = new Array();
+var quotaLimits   = new Array();
+var quotaPercents = new Array();
+
+	var uci = uciOriginal.clone();
+//-->
+</script>
+
+
+
+
+<form action="http://192.168.1.1/quotas.sh">
+	<fieldset>
+		<legend class="sectionheader">Bandwidth Quotas</legend>
+	
+		<span id="add_quota_label" style="text-decoration: underline;">Add New Quota:</span>	
+		
+		<div>
+
+			<div>
+	<span class="narrowleftcolumn">
+		<label id="applies_to_label" for="applies_to">Applies to:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="applies_to_type" onchange="setVisibility()">
+			<option value="all">Entire Local Network</option>
+			<option value="only">Only the following Host(s)</option>
+			<option value="others_individual">All Individual Hosts Without Explicit Quotas</option>
+			<option value="others_combined">All Hosts Without Explicit Quotas (Combined)</option>
+		</select>
+		<br>
+	</span>
+	<div style="display: none;" id="quota_ip_container">
+		<div id="quota_ip_table_container" class="widerightcolumnonly" style="padding-left: 5px; margin-top: 0px; margin-bottom: 0px;"></div>
+		<div class="widerightcolumnonly" style="padding: 0px; margin-top: 0px; margin-bottom: 0px;">
+			<input value="" id="add_ip" onkeyup="proofreadMultipleIps(this)" style="width: 250px;" type="text">
+			&nbsp;
+			<input class="default_button" id="add_ip_button" value="Add" onclick='addAddressesToTable(document,"add_ip","quota_ip_table_container","quota_ip_table",false,3,true,250)' type="button">
+		</div>
+		<div class="widerightcolumnonly" style="padding: 0px; margin-top: 0px; margin-bottom: 5px;"><em>Specify an IP or IP range</em></div>
+	</div>
+</div>
+
+<div>
+	<span class="narrowleftcolumn">
+		<label id="max_up_label" for="max_up">Max Upload:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="max_up_type" style="width: 125px;" onchange="setVisibility()">
+			<option value="unlimited">Unlimited</option>
+			<option value="limited">Limit to</option>
+		</select>&nbsp;
+		<span style="display: none;" id="max_up_container">
+			<input value="0" id="max_up" onkeyup="proofreadDecimal(this)" size="7" maxlength="15" type="text">
+			<select id="max_up_unit">
+				<option value="MB">MBytes</option>
+				<option value="GB">GBytes</option>
+				<option value="TB">TBytes</option>
+			</select>
+		</span>
+	</span>
+</div>
+<div>
+	<span class="narrowleftcolumn">
+		<label id="max_down_label" for="max_down">Max Download:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="max_down_type" style="width: 125px;" onchange="setVisibility()">
+			<option value="unlimited">Unlimited</option>
+			<option value="limited">Limit to</option>
+		</select>&nbsp;
+		<span style="display: none;" id="max_down_container">
+			<input value="0" id="max_down" onkeyup="proofreadDecimal(this)" size="7" maxlength="15" type="text">
+			<select id="max_down_unit">
+				<option value="MB">MBytes</option>
+				<option value="GB">GBytes</option>
+				<option value="TB">TBytes</option>
+			</select>
+
+		</span>
+	</span>
+</div>
+<div>
+	<span class="narrowleftcolumn">
+		<label id="max_combined_label" for="max_combined">Max Total Up+Down:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="max_combined_type" style="width: 125px;" onchange="setVisibility()">
+			<option value="unlimited">Unlimited</option>
+			<option value="limited">Limit to</option>
+		</select>&nbsp;
+		<span style="display: none;" id="max_combined_container">
+			<input value="0" id="max_combined" onkeyup="proofreadDecimal(this)" size="7" maxlength="15" type="text">
+			<select id="max_combined_unit">
+				<option value="MB">MBytes</option>
+				<option value="GB">GBytes</option>
+				<option value="TB">TBytes</option>
+			</select>
+
+		</span>
+	</span>
+</div>
+<div>
+	<span class="narrowleftcolumn">
+		<label id="quota_reset_label" for="quota_reset">Quota Resets:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="quota_reset" style="width: 125px;" onchange="setVisibility()">
+			<option value="hour">Every Hour</option>
+			<option value="day">Every Day</option>
+			<option value="week">Every Week</option>
+			<option value="month">Every Month</option>
+		</select>
+	</span>
+</div>
+
+<div style="display: none;" id="quota_day_container">
+	<span class="narrowleftcolumn">
+		<label id="quota_day_label" for="quota_day">Reset Day:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="quota_day" style="width: 125px;"></select>
+	</span>
+</div>
+
+<div style="display: block;" id="quota_hour_container">
+	<span class="narrowleftcolumn">
+		<label id="quota_hour_label" for="quota_hour">Reset Hour:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="quota_hour" style="width: 125px;">
+			<option value="0">12:00 AM</option>
+			<option value="3600">01:00 AM</option>
+			<option value="7200">02:00 AM</option>
+			<option value="10800">03:00 AM</option>
+			<option value="14400">04:00 AM</option>
+			<option value="18000">05:00 AM</option>
+			<option value="21600">06:00 AM</option>
+			<option value="25200">07:00 AM</option>
+			<option value="28800">08:00 AM</option>
+			<option value="32400">09:00 AM</option>
+			<option value="36000">10:00 AM</option>
+			<option value="39600">11:00 AM</option>
+			<option value="43200">12:00 PM</option>
+			<option value="46800">01:00 PM</option>
+			<option value="50400">02:00 PM</option>
+			<option value="54000">03:00 PM</option>
+			<option value="57600">04:00 PM</option>
+			<option value="61200">05:00 PM</option>
+			<option value="64800">06:00 PM</option>
+			<option value="68400">07:00 PM</option>
+			<option value="72000">08:00 PM</option>
+			<option value="75600">09:00 PM</option>
+			<option value="79200">10:00 PM</option>
+			<option value="82800">11:00 PM</option>
+		</select>
+	</span>
+</div>
+
+
+
+<div id="quota_active_container">
+	<span class="narrowleftcolumn">
+		<label id="quota_active_label" for="quota_active">Quota Is Active:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="quota_active" style="width: 125px;" onchange="setVisibility()">
+			<option value="always">Always</option>
+			<option value="only">Only</option>
+			<option value="except">All Times Except</option>
+		</select>
+		&nbsp;&nbsp;
+		<select style="display: none;" id="quota_active_type" onchange="setVisibility()">
+			<option value="hours">These Hours</option>
+			<option value="days">These Days</option>
+			<option value="days_and_hours">These Days &amp; Hours</option>
+			<option value="weekly_range">These Weekly Times
+		</option></select>
+	</span>
+</div>
+<div style="display: none;" id="quota_active_controls_container">
+	<span id="active_days_container" class="widerightcolumnonly" style="margin-top: 10px; margin-bottom: 10px; display: none;">
+		<input checked="checked" id="quota_sun" type="checkbox"><label for="quota_sun">Sun</label>
+		<input checked="checked" id="quota_mon" type="checkbox"><label for="quota_mon">Mon</label>
+		<input checked="checked" id="quota_tue" type="checkbox"><label for="quota_tue">Tue</label>
+		<input checked="checked" id="quota_wed" type="checkbox"><label for="quota_wed">Wed</label>
+		<input checked="checked" id="quota_thu" type="checkbox"><label for="quota_thu">Thu</label>
+		<input checked="checked" id="quota_fri" type="checkbox"><label for="quota_fri">Fri</label>
+		<input checked="checked" id="quota_sat" type="checkbox"><label for="quota_sat">Sat</label>
+	</span>	
+	<span style="display: none;" id="active_hours_container">
+		<input value="" class="widerightcolumnonly" id="active_hours" onkeyup="proofreadHours(this)" style="width: 250px; margin-bottom: 5px; margin-top: 5px;" type="text">
+		<span class="widerightcolumnonly" id="hours_example" style="margin-top: 0px; padding-top: 0px;"><em>e.g. 02:00-04:00,11:35-13:25</em></span>
+	</span>
+	<span style="display: none;" id="active_weekly_container">
+		<input value="" class="widerightcolumnonly" id="active_weekly" onkeyup="proofreadWeeklyRange(this)" style="width: 250px; margin-bottom: 5px; margin-top: 5px;" type="text">
+		<span class="widerightcolumnonly" id="weekly_example" style="margin-top: 0px; padding-top: 0px;"><em>e.g. Mon 00:30 - Thu 13:15, Fri 14:00 - Fri 15:00</em></span>
+	</span>
+</div>
+<div id="quota_exceeded_container">
+	<span class="narrowleftcolumn">                             
+		<label id="quota_exceeded_label" for="quota_active">When Exceeded:</label>
+	</span>
+	<span class="widerightcolumn">
+		<select id="quota_exceeded" onchange="setVisibility()">
+			<option value="hard_cutoff">Shut Down All Internet Access</option>
+			<option value="throttle">Throttle Bandwidth</option>
+		</select>
+	</span>
+</div>
+<div style="display: none;" id="quota_only_qos_container">
+	<span class="widerightcolumnonly" style="margin-top: 1px; margin-bottom: 1px;">
+		<label style="float: left; width: 100px;">Upload Limit: </label>
+		<input value="0" id="quota_qos_up" onkeyup="proofreadDecimal(this)" size="7" maxlength="15" type="text">
+		<select id="quota_qos_up_unit">
+			<option value="KBytes/s">KBytes/s</option>
+			<option value="MBytes/s">MBytes/s</option>
+		</select>
+	</span>
+	<span class="widerightcolumnonly" style="margin-top: 1px; margin-bottom: 1px;">
+		<label style="float: left; width: 100px;">Download Limit: </label>
+		<input value="0" id="quota_qos_down" onkeyup="proofreadDecimal(this)" size="7" maxlength="15" type="text">
+		<select id="quota_qos_down_unit">
+			<option value="KBytes/s">KBytes/s</option>
+			<option value="MBytes/s">MBytes/s</option>
+		</select>
+	</span>
+</div>
+<div style="display: none;" id="quota_full_qos_container">
+	<span class="widerightcolumnonly" style="margin-top: 1px; margin-bottom: 1px;">
+		<label style="float: left; width: 100px;">Upload Class: </label>
+		<select id="quota_full_qos_up_class"></select>
+	</span>
+	<span class="widerightcolumnonly" style="margin-top: 1px; margin-bottom: 1px;">
+		<label style="float: left; width: 100px;">Download Class: </label>
+		<select id="quota_full_qos_down_class"></select>
+	</span>
+</div>
+
+
+			<div>
+				<input id="add_quota_button" class="default_button" value="Add New Quota" onclick="addNewQuota()" type="button">
+			</div>	
+		</div>
+	
+	
+		<div id="internal_divider1" class="internal_divider"></div>
+	
+
+
+		<span id="active_quotas_label" style="text-decoration: underline;">Active Quotas:</span>	
+
+		<div id="quota_table_container"><table style="display: none;" id="quota_table"><tbody><tr class="header_row"><th>IP(s)</th><th>Active</th><th><span>Limits<br>(Total/Down/Up)</span></th><th>Enabled</th><th></th><th></th></tr></tbody></table></div>
+		
+	</fieldset>
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+
+
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Firewall</div>
+							<div id="submenu_container">
+								<a indepth="true" href="port_forwarding.html">Port Forwarding</a>
+								<a indepth="true" href="connlimits.html">Connection Limits</a>
+								<a indepth="true" href="restriction.html">Restrictions</a>
+								<div class="submenu_selected">Quotas</div>
+								<a indepth="true" href="qos_upload.html">QoS (Upload)</a>
+								<a indepth="true" href="qos_download.html">QoS (Download)</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

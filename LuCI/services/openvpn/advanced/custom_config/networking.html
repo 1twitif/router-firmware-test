@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn/advanced/custom_config/networking by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:23:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.37 0.24 0.09
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../../../../uci/changes/index2097.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fservices%2fopenvpn%2fadvanced%2fcustom_config%2fnetworking">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="../../../index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init">
+				<a href="../../../init/index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="../../../dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq">
+				<a href="../../../dnsmasq/index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="../../../crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn active">
+				<a href="../../index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-openvpn">
+	
+	
+<fieldset class="cbi-section">
+	<legend>
+		<a href="../../../openvpn.html">Vue d&#39;ensemble</a> &raquo;
+		Instance "custom_config"
+	</legend>
+
+	
+		<a href="../../basic/custom_config.html">« Switch to basic configuration</a>
+		<hr style="margin:0.5em 0" />
+		Configuration category:
+		
+			
+				<a href="service.html">service</a>
+			
+			|
+		
+			
+				<strong>networking</strong>
+			
+			|
+		
+			
+				<a href="vpn.html">vpn</a>
+			
+			|
+		
+			
+				<a href="cryptography.html">cryptography</a>
+			
+			
+		
+	
+</fieldset>
+
+	<fieldset class="cbi-section" id="cbi-openvpn-custom_config">
+		<legend>openvpn_networking</legend>
+		<div class="cbi-section-descr">openvpn_networking_desc</div>
+		
+		
+		<div class="cbi-section-node" id="cbi-openvpn-custom_config">
+			
+
+
+	<div class="cbi-value" id="cbi-openvpn-custom_config-float"><label class="cbi-value-title" for="cbid.openvpn.custom_config.float">openvpn_param_float</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.float" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.float" name="cbid.openvpn.custom_config.float" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_float_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-nobind"><label class="cbi-value-title" for="cbid.openvpn.custom_config.nobind">openvpn_param_nobind</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.nobind" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.nobind" name="cbid.openvpn.custom_config.nobind" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_nobind_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-tun_ipv6"><label class="cbi-value-title" for="cbid.openvpn.custom_config.tun_ipv6">openvpn_param_tun_ipv6</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.tun_ipv6" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.tun_ipv6" name="cbid.openvpn.custom_config.tun_ipv6" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_tun_ipv6_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-ifconfig_noexec"><label class="cbi-value-title" for="cbid.openvpn.custom_config.ifconfig_noexec">openvpn_param_ifconfig_noexec</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.ifconfig_noexec" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.ifconfig_noexec" name="cbid.openvpn.custom_config.ifconfig_noexec" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_ifconfig_noexec_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-ifconfig_nowarn"><label class="cbi-value-title" for="cbid.openvpn.custom_config.ifconfig_nowarn">openvpn_param_ifconfig_nowarn</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.ifconfig_nowarn" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.ifconfig_nowarn" name="cbid.openvpn.custom_config.ifconfig_nowarn" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_ifconfig_nowarn_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-route_noexec"><label class="cbi-value-title" for="cbid.openvpn.custom_config.route_noexec">openvpn_param_route_noexec</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.route_noexec" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.route_noexec" name="cbid.openvpn.custom_config.route_noexec" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_route_noexec_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-mtu_test"><label class="cbi-value-title" for="cbid.openvpn.custom_config.mtu_test">openvpn_param_mtu_test</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.mtu_test" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.mtu_test" name="cbid.openvpn.custom_config.mtu_test" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_mtu_test_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-comp_lzo"><label class="cbi-value-title" for="cbid.openvpn.custom_config.comp_lzo">openvpn_param_comp_lzo</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.comp_lzo" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.comp_lzo" name="cbid.openvpn.custom_config.comp_lzo" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_comp_lzo_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-comp_noadept"><label class="cbi-value-title" for="cbid.openvpn.custom_config.comp_noadept">openvpn_param_comp_noadept</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.comp_noadept" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.comp_noadept" name="cbid.openvpn.custom_config.comp_noadept" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_comp_noadept_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-ping_timer_rem"><label class="cbi-value-title" for="cbid.openvpn.custom_config.ping_timer_rem">openvpn_param_ping_timer_rem</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.ping_timer_rem" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.ping_timer_rem" name="cbid.openvpn.custom_config.ping_timer_rem" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_ping_timer_rem_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-persist_tun"><label class="cbi-value-title" for="cbid.openvpn.custom_config.persist_tun">openvpn_param_persist_tun</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.persist_tun" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.persist_tun" name="cbid.openvpn.custom_config.persist_tun" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_persist_tun_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-persist_key"><label class="cbi-value-title" for="cbid.openvpn.custom_config.persist_key">openvpn_param_persist_key</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.persist_key" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.persist_key" name="cbid.openvpn.custom_config.persist_key" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_persist_key_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-persist_local_ip"><label class="cbi-value-title" for="cbid.openvpn.custom_config.persist_local_ip">openvpn_param_persist_local_ip</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.persist_local_ip" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.persist_local_ip" name="cbid.openvpn.custom_config.persist_local_ip" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_persist_local_ip_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-persist_remote_ip"><label class="cbi-value-title" for="cbid.openvpn.custom_config.persist_remote_ip">openvpn_param_persist_remote_ip</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.persist_remote_ip" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.persist_remote_ip" name="cbid.openvpn.custom_config.persist_remote_ip" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_persist_remote_ip_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-management_query_passwords"><label class="cbi-value-title" for="cbid.openvpn.custom_config.management_query_passwords">openvpn_param_management_query_passwords</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.management_query_passwords" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.management_query_passwords" name="cbid.openvpn.custom_config.management_query_passwords" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_management_query_passwords_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-management_hold"><label class="cbi-value-title" for="cbid.openvpn.custom_config.management_hold">openvpn_param_management_hold</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.management_hold" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.management_hold" name="cbid.openvpn.custom_config.management_hold" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_management_hold_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-custom_config-management_log_cache"><label class="cbi-value-title" for="cbid.openvpn.custom_config.management_log_cache">openvpn_param_management_log_cache</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.custom_config.management_log_cache" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.custom_config.management_log_cache" name="cbid.openvpn.custom_config.management_log_cache" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_management_log_cache_desc
+			</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="cbi-optionals">
+		
+		<select id="cbi.opt.openvpn.custom_config" name="cbi.opt.openvpn.custom_config">
+			<option>-- Champ Supplémentaire --</option>
+			<option id="cbi-openvpn-custom_config-mode" value="mode">openvpn_param_mode</option><option id="cbi-openvpn-custom_config-local" value="local">openvpn_param_local</option><option id="cbi-openvpn-custom_config-port" value="port">openvpn_param_port</option><option id="cbi-openvpn-custom_config-lport" value="lport">openvpn_param_lport</option><option id="cbi-openvpn-custom_config-rport" value="rport">openvpn_param_rport</option><option id="cbi-openvpn-custom_config-dev" value="dev">openvpn_param_dev</option><option id="cbi-openvpn-custom_config-dev_type" value="dev_type">openvpn_param_dev_type</option><option id="cbi-openvpn-custom_config-dev_node" value="dev_node">openvpn_param_dev_node</option><option id="cbi-openvpn-custom_config-ifconfig" value="ifconfig">openvpn_param_ifconfig</option><option id="cbi-openvpn-custom_config-route" value="route">openvpn_param_route</option><option id="cbi-openvpn-custom_config-route_gateway" value="route_gateway">openvpn_param_route_gateway</option><option id="cbi-openvpn-custom_config-route_delay" value="route_delay">openvpn_param_route_delay</option><option id="cbi-openvpn-custom_config-mtu_disc" value="mtu_disc">openvpn_param_mtu_disc</option><option id="cbi-openvpn-custom_config-link_mtu" value="link_mtu">openvpn_param_link_mtu</option><option id="cbi-openvpn-custom_config-tun_mtu" value="tun_mtu">openvpn_param_tun_mtu</option><option id="cbi-openvpn-custom_config-tun_mtu_extra" value="tun_mtu_extra">openvpn_param_tun_mtu_extra</option><option id="cbi-openvpn-custom_config-fragment" value="fragment">openvpn_param_fragment</option><option id="cbi-openvpn-custom_config-mssfix" value="mssfix">openvpn_param_mssfix</option><option id="cbi-openvpn-custom_config-sndbuf" value="sndbuf">openvpn_param_sndbuf</option><option id="cbi-openvpn-custom_config-rcvbuf" value="rcvbuf">openvpn_param_rcvbuf</option><option id="cbi-openvpn-custom_config-txqueuelen" value="txqueuelen">openvpn_param_txqueuelen</option><option id="cbi-openvpn-custom_config-shaper" value="shaper">openvpn_param_shaper</option><option id="cbi-openvpn-custom_config-inactive" value="inactive">openvpn_param_inactive</option><option id="cbi-openvpn-custom_config-keepalive" value="keepalive">openvpn_param_keepalive</option><option id="cbi-openvpn-custom_config-ping" value="ping">openvpn_param_ping</option><option id="cbi-openvpn-custom_config-ping_exit" value="ping_exit">openvpn_param_ping_exit</option><option id="cbi-openvpn-custom_config-ping_restart" value="ping_restart">openvpn_param_ping_restart</option><option id="cbi-openvpn-custom_config-management" value="management">openvpn_param_management</option>
+		</select>
+		<script type="text/javascript">
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		</script>
+	
+		<input type="submit" class="cbi-button cbi-button-fieldadd" value="Ajouter" />
+	</div>
+
+
+		</div>
+		<br />
+	</fieldset>
+
+<!-- /nsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn/advanced/custom_config/networking by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:23:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

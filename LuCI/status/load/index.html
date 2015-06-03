@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/load/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Realtime Load - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.18 0.08 0.02
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status active">
+				<a href="../index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-interfaces">
+				<a href="../interfaces/index.html">Interfaces</a>
+			</li>
+		
+			<li class="tabmenu-item-iptables">
+				<a href="../iptables/index.html">Pare-Feu</a>
+			</li>
+		
+			<li class="tabmenu-item-conntrack">
+				<a href="../conntrack/index.html">Connexions Actives</a>
+			</li>
+		
+			<li class="tabmenu-item-routes">
+				<a href="../routes/index.html">Route</a>
+			</li>
+		
+			<li class="tabmenu-item-syslog">
+				<a href="../syslog/index.html">Journal système</a>
+			</li>
+		
+			<li class="tabmenu-item-dmesg">
+				<a href="../dmesg/index.html">Journal du noyau</a>
+			</li>
+		
+			<li class="tabmenu-item-load active">
+				<a href="index.html">Realtime Load</a>
+			</li>
+		
+			<li class="tabmenu-item-bandwidth">
+				<a href="../bandwidth/index.html">Realtime Traffic</a>
+			</li>
+		
+			<li class="tabmenu-item-connections">
+				<a href="../connections/index.html">Realtime Connections</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+
+<script type="text/javascript" src="../../luci-static/resources/cbi.js"></script>
+<script type="text/javascript">//<![CDATA[
+	var bwxhr = new XHR();
+
+	var G;
+	var TIME = 0;
+	var L01   = 1;
+	var L05   = 2;
+	var L15  = 3;
+
+	var width  = 760;
+	var height = 300;
+	var step   = 5;
+
+	var data_wanted = Math.floor(width / step);
+	var data_fill   = 0;
+	var data_stamp  = 0;
+
+	var data_01  = [ ];
+	var data_05  = [ ];
+	var data_15 = [ ];
+
+	var line_01;
+	var line_05;
+	var line_15;
+
+	var label_25;
+	var label_050;
+	var label_75;
+
+	var label_01_cur;
+	var label_01_avg;
+	var label_01_peak;
+
+	var label_05_cur;
+	var label_05_avg;
+	var label_05_peak;
+
+	var label_15_cur;
+	var label_15_avg;
+	var label_15_peak;
+
+	var label_scale;
+
+
+	function update_graph()
+	{
+		bwxhr.get('/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/load_status', null,
+			function(x, data)
+			{
+				var data_max   = 0;
+				var data_scale = 0;
+
+				var data_01_avg = 0;
+				var data_05_avg = 0;
+				var data_15_avg = 0;
+
+				var data_01_peak = 0;
+				var data_05_peak = 0;
+				var data_15_peak = 0;
+
+				for (var i = data_stamp ? 0 : 1; i < data.length; i++)
+				{
+					/* skip overlapping entries */
+					if (data[i][TIME] <= data_stamp)
+						continue;
+
+					data_01.push(data[i][L01]);
+					data_05.push(data[i][L05]);
+					data_15.push(data[i][L15]);
+				}
+
+				/* cut off outdated entries */
+				data_01 = data_01.slice(data_01.length - data_wanted, data_01.length);
+				data_05 = data_05.slice(data_05.length - data_wanted, data_05.length);
+				data_15 = data_15.slice(data_15.length - data_wanted, data_15.length);
+
+				/* find peak */
+				for (var i = 0; i < data_01.length; i++)
+				{
+					data_max = Math.max(data_max, data_01[i]);
+					data_max = Math.max(data_max, data_05[i]);
+					data_max = Math.max(data_max, data_15[i]);
+
+					data_01_peak = Math.max(data_01_peak, data_01[i]);
+					data_05_peak = Math.max(data_05_peak, data_05[i]);
+					data_15_peak = Math.max(data_15_peak, data_15[i]);
+
+					if (i > 0)
+					{
+						data_01_avg = (data_01_avg + data_01[i]) / 2;
+						data_05_avg = (data_05_avg + data_05[i]) / 2;
+						data_15_avg = (data_15_avg + data_15[i]) / 2;
+					}
+					else
+					{
+						data_01_avg = data_01[i];
+						data_05_avg = data_05[i];
+						data_15_avg = data_15[i];
+					}
+				}
+
+				/* remember current timestamp, calculate horizontal scale */
+				data_stamp = data[data.length-1][TIME];
+				data_scale = height / (data_max * 1.1);
+
+
+				/* plot data */
+				var pt_01 = '0,' + height;
+				var pt_05 = '0,' + height;
+				var pt_15 = '0,' + height;
+
+				var y_01 = 0;
+				var y_05 = 0;
+				var y_15 = 0;
+
+				for (var i = 0; i < data_01.length; i++)
+				{
+					var x = i * step;
+
+					y_01 = height - Math.floor(data_01[i] * data_scale);
+					y_05 = height - Math.floor(data_05[i] * data_scale);
+					y_15 = height - Math.floor(data_15[i] * data_scale);
+
+					pt_01 += ' ' + x + ',' + y_01;
+					pt_05 += ' ' + x + ',' + y_05;
+					pt_15 += ' ' + x + ',' + y_15;
+				}
+
+				pt_01 += ' ' + width + ',' + y_01 + ' ' + width + ',' + height;
+				pt_05 += ' ' + width + ',' + y_05 + ' ' + width + ',' + height;
+				pt_15 += ' ' + width + ',' + y_15 + ' ' + width + ',' + height;
+
+
+				line_01.setAttribute('points', pt_01);
+				line_05.setAttribute('points', pt_05);
+				line_15.setAttribute('points', pt_15);
+
+				label_25.firstChild.data = (1.1 * 0.25 * data_max / 100).toFixed(2);
+				label_50.firstChild.data = (1.1 * 0.50 * data_max / 100).toFixed(2);
+				label_75.firstChild.data = (1.1 * 0.75 * data_max / 100).toFixed(2);
+
+				label_01_cur.innerHTML = (data_01[data_01.length-1] / 100).toFixed(2);
+				label_05_cur.innerHTML = (data_05[data_05.length-1] / 100).toFixed(2);
+				label_15_cur.innerHTML = (data_01[data_15.length-1] / 100).toFixed(2);
+
+				label_01_avg.innerHTML = (data_01_avg / 100).toFixed(2);
+				label_05_avg.innerHTML = (data_05_avg / 100).toFixed(2);
+				label_15_avg.innerHTML = (data_15_avg / 100).toFixed(2);
+
+				label_01_peak.innerHTML = (data_01_peak / 100).toFixed(2);
+				label_05_peak.innerHTML = (data_05_peak / 100).toFixed(2);
+				label_15_peak.innerHTML = (data_15_peak / 100).toFixed(2);
+
+				/* reset timer */
+				window.setTimeout(update_graph, 1000);
+			}
+		)
+	}
+
+	/* wait for SVG */
+	window.setTimeout(
+		function() {
+			var svg = document.getElementById('bwsvg');
+
+			try {
+				G = svg.getSVGDocument
+					? svg.getSVGDocument() : svg.contentDocument;
+			}
+			catch(e) {
+				G = document.embeds['bwsvg'].getSVGDocument();
+			}
+
+			if (!G)
+			{
+				window.setTimeout(arguments.callee, 1000);
+			}
+			else
+			{
+				/* find sizes */
+				width       = svg.offsetWidth  - 2;
+				height      = svg.offsetHeight - 2;
+				data_wanted = Math.ceil(width / step);
+
+				/* prefill datasets */
+				for (var i = 0; i < data_wanted; i++)
+				{
+					data_01[i] = 0;
+					data_05[i] = 0;
+					data_15[i] = 0;
+				}
+
+				/* find svg elements */
+				line_01 = G.getElementById('load01');
+				line_05 = G.getElementById('load05');
+				line_15 = G.getElementById('load15');
+
+				label_25 = G.getElementById('label_25');
+				label_50 = G.getElementById('label_50');
+				label_75 = G.getElementById('label_75');
+
+				label_01_cur  = document.getElementById('lb_load01_cur');
+				label_01_avg  = document.getElementById('lb_load01_avg');
+				label_01_peak = document.getElementById('lb_load01_peak');
+
+				label_05_cur  = document.getElementById('lb_load05_cur');
+				label_05_avg  = document.getElementById('lb_load05_avg');
+				label_05_peak = document.getElementById('lb_load05_peak');
+
+				label_15_cur  = document.getElementById('lb_load15_cur');
+				label_15_avg  = document.getElementById('lb_load15_avg');
+				label_15_peak = document.getElementById('lb_load15_peak');
+
+				label_scale   = document.getElementById('scale');
+
+
+				/* plot horizontal time interval lines */
+				for (var i = step * 60; i < width; i += step * 60)
+				{
+					var line = G.createElementNS('http://www.w3.org/2000/svg', 'line');
+						line.setAttribute('x1', i);
+						line.setAttribute('y1', 0);
+						line.setAttribute('x2', i);
+						line.setAttribute('y2', '100%');
+						line.setAttribute('style', 'stroke:black;stroke-width:0.1');
+
+					var text = G.createElementNS('http://www.w3.org/2000/svg', 'text');
+						text.setAttribute('x', i + 5);
+						text.setAttribute('y', 15);
+						text.setAttribute('style', 'fill:#999999; font-size:9pt');
+						text.appendChild(G.createTextNode(Math.round(i / step / 60) + 'm'));
+
+					label_25.parentNode.appendChild(line);
+					label_25.parentNode.appendChild(text);
+				}
+
+				label_scale.innerHTML = String.format('(%d minute window, %d second interval)', data_wanted / 60, 1);
+
+				/* render datasets, start update interval */
+				update_graph();
+			}
+		}, 1000
+	);
+//]]></script>
+
+<h2><a id="content" name="content">Realtime Load</a></h2>
+
+<embed id="bwsvg" style="width:100%; height:300px; border:1px solid #000000; background-color:#FFFFFF" src="javascript:alert('Indisponible dans cette copie d\'interface');" />
+<div style="text-align:right"><small id="scale">-</small></div>
+<br />
+
+<table style="width:100%; table-layout:fixed" cellspacing="5">
+	<tr>
+		<td style="text-align:right; vertical-align:top"><strong style="border-bottom:2px solid #ff0000">1 Minute Load:</strong></td>
+		<td id="lb_load01_cur">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Average:</strong></td>
+		<td id="lb_load01_avg">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Peak:</strong></td>
+		<td id="lb_load01_peak">0</td>
+	</tr>
+	<tr>
+		<td style="text-align:right; vertical-align:top"><strong style="border-bottom:2px solid #ff6600">5 Minute Load:</strong></td>
+		<td id="lb_load05_cur">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Average:</strong></td>
+		<td id="lb_load05_avg">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Peak:</strong></td>
+		<td id="lb_load05_peak">0</td>
+	</tr>
+	<tr>
+		<td style="text-align:right; vertical-align:top"><strong style="border-bottom:2px solid #ffaa00">15 Minute Load:</strong></td>
+		<td id="lb_load15_cur">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Average:</strong></td>
+		<td id="lb_load15_avg">0</td>
+
+		<td style="text-align:right; vertical-align:top"><strong>Peak:</strong></td>
+		<td id="lb_load15_peak">0</td>
+	</tr>
+</table>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/status/load/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:18:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

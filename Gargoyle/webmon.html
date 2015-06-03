@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="webmon.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+
+<link rel="stylesheet" type="text/css" href="webmon.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="webmon_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="webmon_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var ipToHostname = [];
+	var ipsWithHostname = [ "127.0.0.1","192.168.0.8","192.168.1.1" ];
+	ipToHostname[ "127.0.0.1" ] = "Gargoyle";
+	ipToHostname[ "192.168.0.8" ] = "Gargoyle";
+	ipToHostname[ "192.168.1.1" ] = "Gargoyle";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('webmon_gargoyle', 'webmon', '', "webmon");
+	uciOriginal.set('webmon_gargoyle', 'webmon', 'domain_save_path', "/usr/data/webmon_domains.txt");
+	uciOriginal.set('webmon_gargoyle', 'webmon', 'search_save_path', "/usr/data/webmon_searches.txt");
+	uciOriginal.set('webmon_gargoyle', 'webmon', 'max_domains', "300");
+	uciOriginal.set('webmon_gargoyle', 'webmon', 'max_searches', "300");
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+
+<script>
+<!--
+var webmonEnabled=false;
+
+//-->
+</script>
+
+
+<form action="http://192.168.1.1/webmon.sh">
+	<fieldset>
+		<legend class="sectionheader">Web Monitor Preferences</legend>
+		<div>
+			<input id="webmon_enabled" onclick="setWebmonEnabled()" type="checkbox">
+			<label id="webmon_enabled_label" for="webmon_enabled">Enable Web Usage Monitor</label>
+		</div>
+		<div class="indent">
+			<div>
+				<label class="leftcolumn" for="num_domains" id="num_domains_label">Number of Sites to Save:</label>
+				<input value="300" style="color: rgb(170, 170, 170);" disabled="disabled" class="rightcolumn" id="num_domains" onkeyup="proofreadNumericRange(this,1,9999)" size="6" maxlength="4" type="text">
+			</div>
+			<div>
+				<label class="leftcolumn" for="num_searches" id="num_searches_label">Number of Searches to Save:</label>
+				<input value="300" style="color: rgb(170, 170, 170);" disabled="disabled" class="rightcolumn" id="num_searches" onkeyup="proofreadNumericRange(this,1,9999)" size="6" maxlength="4" type="text">
+			</div>
+			<div>
+				<select style="color: rgb(170, 170, 170);" disabled="disabled" id="include_exclude" onchange="setIncludeExclude()">
+					<option value="all">Monitor All Hosts</option>
+					<option value="include">Monitor Only Hosts Below</option>
+					<option value="exclude">Exclude Hosts Below From Monitoring</option>
+				</select>
+			</div>
+			<div style="display: none;" class="indent" id="add_ip_container">
+				<div>
+					<input value="" style="color: rgb(170, 170, 170);" disabled="disabled" id="add_ip" onkeyup="proofreadMultipleIps(this)" size="30" type="text">
+					<input disabled="disabled" class="default_button_disabled" id="add_ip_button" value="Add" onclick="addAddressesToTable(document, 'add_ip', 'ip_table_container', 'ip_table', false, 3, 1, 250)" type="button">
+					<br>
+					<em>Specify IP or IP Range</em>
+				</div>
+				<div id="ip_table_container"><table style="display: none;" id="ip_table"><tbody><tr class="disabled_header_row"><th></th><th></th></tr></tbody></table></div>
+			</div>
+		</div>
+
+		
+		<div class="internal_divider"></div>
+
+		<div id="bottom_button_container">
+			<input value="Save Changes" id="save_button" class="default_button" onclick="saveChanges()" type="button">
+			<input value="Reset" id="reset_button" class="default_button" onclick="resetData()" type="button">
+			<input value="Clear History" id="clear_history" class="default_button" onclick="clearHistory()" type="button">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="sectionheader">Recently Visited Sites</legend>
+		<div>
+			<select class="select_disabled" disabled="disabled" id="domain_host_display" onchange="updateMonitorTable()">
+				<option value="hostname">Display Hostnames</option>
+				<option value="ip">Display Host IPs</option>
+			</select>
+		</div>
+
+		<div id="webmon_domain_table_container"></div>
+	</fieldset>
+
+	<fieldset>
+		<legend class="sectionheader">Recent Web Searches</legend>
+		<div>
+			<select class="select_disabled" disabled="disabled" id="search_host_display" onchange="updateMonitorTable()">
+				<option value="hostname">Display Hostnames</option>
+				<option value="ip">Display Host IPs</option>
+			</select>
+		</div>
+
+		<div id="webmon_search_table_container"></div>
+	</fieldset>
+
+
+	<fieldset id="download_web_usage_data">
+		<legend class="sectionheader">Download Web Usage Data</legend>
+		<div>
+			<span style="text-decoration: underline;">Data is comma separated:</span>
+			<br>
+			<em>[Time of Last Visit],[Local IP],[Domain Visted/Search Request]</em>
+			<br>
+		</div>
+		<div>
+			<center>
+				<input disabled="disabled" id="download_domain_button" class="big_button_disabled" value="Visited Sites" onclick='window.location="webmon_domains.csv";' type="button">
+				&nbsp;&nbsp;
+				<input disabled="disabled" id="download_search_button" class="big_button_disabled" value="Search Requests" onclick='window.location="webmon_searches.csv";' type="button">
+			</center>
+		</div>
+	</fieldset>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_selected_divider_end1"></div>
+					<div class="nav_selected_end1">
+						<div class="nav_selected_container_end1">
+							<div class="selected_header">Status</div>
+							<div id="submenu_container">
+								<a indepth="true" href="index.html">Overview</a>
+								<a indepth="true" href="bandwidth.html">Bandwidth Usage</a>
+								<a indepth="true" href="bandwidth_distribution.html">B/W Distribution</a>
+								<div class="submenu_selected">Web Usage</div>
+								<a indepth="true" href="hosts.html">Connected Hosts</a>
+								<a indepth="true" href="conntrack.html">Connection List</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

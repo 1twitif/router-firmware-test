@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/system?tab.luci.main=custom by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - Système - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.22 0.09 0.02
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	<a href="#">Changements: 0</a>
+	</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system active">
+				<a href="index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services">
+				<a href="../services/index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-system active">
+				<a href="system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-packages">
+				<a href="packages/index.html">Logiciels</a>
+			</li>
+		
+			<li class="tabmenu-item-passwd">
+				<a href="passwd/index.html">Mot de passe administrateur</a>
+			</li>
+		
+			<li class="tabmenu-item-sshkeys">
+				<a href="sshkeys/index.html">Clés SSH </a>
+			</li>
+		
+			<li class="tabmenu-item-processes">
+				<a href="processes/index.html">Processus</a>
+			</li>
+		
+			<li class="tabmenu-item-leds">
+				<a href="leds/index.html">Configuration des LED s</a>
+			</li>
+		
+			<li class="tabmenu-item-backup">
+				<a href="backup/index.html">Sauvegarder / Restaurer</a>
+			</li>
+		
+			<li class="tabmenu-item-upgrade">
+				<a href="upgrade/index.html">Flash Firmware</a>
+			</li>
+		
+			<li class="tabmenu-item-reboot">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Redémarrage</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-system">
+	<h2><a id="content" name="content">Système</a></h2>
+	<div class="cbi-map-descr">Ici, vous pouvez configurer les aspects basiques de votre routeur comme son nom ou son fuseau horaire.</div>
+<fieldset class="cbi-section" id="cbi-system-system">
+	<legend>System Properties</legend>
+	<div class="cbi-section-descr"></div>
+	
+
+
+		
+	<ul class="cbi-tabmenu">
+
+		<script type="text/javascript">cbi_c['container.system.cfg024279.general'] = 9;</script>
+		<li id="tab.system.cfg024279.general" class="cbi-tab">
+			<a onclick="this.blur(); return cbi_t_switch('system.cfg024279', 'general')" href="system7641.html?tab.system.cfg024279=general">General Settings</a>
+			<input type="hidden" id="tab.system.cfg024279" name="tab.system.cfg024279" value="general" />
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.system.cfg024279.logging'] = 5;</script>
+		<li id="tab.system.cfg024279.logging" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('system.cfg024279', 'logging')" href="system2674.html?tab.system.cfg024279=logging">Logging</a>
+			
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.system.cfg024279.language'] = 2;</script>
+		<li id="tab.system.cfg024279.language" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('system.cfg024279', 'language')" href="systemd432.html?tab.system.cfg024279=language">Language and Style</a>
+			
+		</li>
+	</ul>
+
+
+		<fieldset class="cbi-section-node" id="cbi-system-cfg024279">
+			
+
+
+	
+	<div class="cbi-tabcontainer" id="container.system.cfg024279.logging" style="display:none">
+		
+		<div class="cbi-value" id="cbi-system-cfg024279-log_size"><label class="cbi-value-title" for="cbid.system.cfg024279.log_size">System log buffer size</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.cfg024279.log_size" id="cbid.system.cfg024279.log_size" value="" placeholder="16" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.system.cfg024279.log_size', true, 'uinteger');
+	</script>
+	<br />
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				kiB
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-log_ip"><label class="cbi-value-title" for="cbid.system.cfg024279.log_ip">External system log server</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.cfg024279.log_ip" id="cbid.system.cfg024279.log_ip" value="" placeholder="0.0.0.0" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.system.cfg024279.log_ip', true, 'ip4addr');
+	</script>
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-log_port"><label class="cbi-value-title" for="cbid.system.cfg024279.log_port">External system log server port</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.cfg024279.log_port" id="cbid.system.cfg024279.log_port" value="" placeholder="514" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.system.cfg024279.log_port', true, 'port');
+	</script>
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-conloglevel"><label class="cbi-value-title" for="cbid.system.cfg024279.conloglevel">Log output level</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.cfg024279.conloglevel" name="cbid.system.cfg024279.conloglevel" size="1">
+	<option id="cbi-system-cfg024279-conloglevel-7" value="7" selected="selected">Debug</option><option id="cbi-system-cfg024279-conloglevel-6" value="6">Info</option><option id="cbi-system-cfg024279-conloglevel-5" value="5">Notice</option><option id="cbi-system-cfg024279-conloglevel-4" value="4">Warning</option><option id="cbi-system-cfg024279-conloglevel-3" value="3">Erreur</option><option id="cbi-system-cfg024279-conloglevel-2" value="2">Critical</option><option id="cbi-system-cfg024279-conloglevel-1" value="1">Alert</option><option id="cbi-system-cfg024279-conloglevel-0" value="0">Emergency</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-cronloglevel"><label class="cbi-value-title" for="cbid.system.cfg024279.cronloglevel">Cron Log Level</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.cfg024279.cronloglevel" name="cbid.system.cfg024279.cronloglevel" size="1">
+	<option id="cbi-system-cfg024279-cronloglevel-5" value="5">Debug</option><option id="cbi-system-cfg024279-cronloglevel-8" value="8" selected="selected">Normal</option><option id="cbi-system-cfg024279-cronloglevel-9" value="9">Warning</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('system.cfg024279', 'logging')</script>
+
+	<div class="cbi-tabcontainer" id="container.system.cfg024279.general">
+		
+		<div class="cbi-value" id="cbi-system-cfg024279-_system"><label class="cbi-value-title" for="cbid.system.cfg024279._system">Système</label>
+		<div class="cbi-value-field">
+
+Atheros AR7161 rev 2
+
+<input type="hidden" id="cbid.system.cfg024279._system" value="Atheros AR7161 rev 2" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_cpu"><label class="cbi-value-title" for="cbid.system.cfg024279._cpu">Processeur</label>
+		<div class="cbi-value-field">
+
+NETGEAR WNDR3700
+
+<input type="hidden" id="cbid.system.cfg024279._cpu" value="NETGEAR WNDR3700" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_kernel"><label class="cbi-value-title" for="cbid.system.cfg024279._kernel">Kernel</label>
+		<div class="cbi-value-field">
+
+2.6.32.29
+
+
+<input type="hidden" id="cbid.system.cfg024279._kernel" value="2.6.32.29
+" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_la"><label class="cbi-value-title" for="cbid.system.cfg024279._la">Charger</label>
+		<div class="cbi-value-field">
+
+0.22, 0.09, 0.02
+
+<input type="hidden" id="cbid.system.cfg024279._la" value="0.22, 0.09, 0.02" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_memtotal"><label class="cbi-value-title" for="cbid.system.cfg024279._memtotal">Mémoire</label>
+		<div class="cbi-value-field">
+
+60.56 MB (19% mis en cache, 2% bufferisé, 54% libre)
+
+<input type="hidden" id="cbid.system.cfg024279._memtotal" value="60.56 MB (19% mis en cache, 2% bufferisé, 54% libre)" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_systime"><label class="cbi-value-title" for="cbid.system.cfg024279._systime">Heure Locale</label>
+		<div class="cbi-value-field">
+
+Thu Feb 24 17:18:39 2011
+
+<input type="hidden" id="cbid.system.cfg024279._systime" value="Thu Feb 24 17:18:39 2011" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_uptime"><label class="cbi-value-title" for="cbid.system.cfg024279._uptime">Uptime</label>
+		<div class="cbi-value-field">
+
+1d 02h 27min 55s
+
+<input type="hidden" id="cbid.system.cfg024279._uptime" value="1d 02h 27min 55s" />
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-hostname"><label class="cbi-value-title" for="cbid.system.cfg024279.hostname">Nom d'hôte</label>
+		<div class="cbi-value-field">
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.system.cfg024279.hostname" id="cbid.system.cfg024279.hostname" value="OpenWrt" />
+	
+	<script type="text/javascript">
+		
+		cbi_validate_field('cbid.system.cfg024279.hostname', true, 'hostname');
+	</script>
+	
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-zonename"><label class="cbi-value-title" for="cbid.system.cfg024279.zonename">Fuseau horaire</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.cfg024279.zonename" name="cbid.system.cfg024279.zonename" size="1">
+	<option id="cbi-system-cfg024279-zonename-UTC" value="UTC" selected="selected">UTC</option><option id="cbi-system-cfg024279-zonename-Africa/Abidjan" value="Africa/Abidjan">Africa/Abidjan</option><option id="cbi-system-cfg024279-zonename-Africa/Accra" value="Africa/Accra">Africa/Accra</option><option id="cbi-system-cfg024279-zonename-Africa/Addis Ababa" value="Africa/Addis Ababa">Africa/Addis Ababa</option><option id="cbi-system-cfg024279-zonename-Africa/Algiers" value="Africa/Algiers">Africa/Algiers</option><option id="cbi-system-cfg024279-zonename-Africa/Asmara" value="Africa/Asmara">Africa/Asmara</option><option id="cbi-system-cfg024279-zonename-Africa/Bamako" value="Africa/Bamako">Africa/Bamako</option><option id="cbi-system-cfg024279-zonename-Africa/Bangui" value="Africa/Bangui">Africa/Bangui</option><option id="cbi-system-cfg024279-zonename-Africa/Banjul" value="Africa/Banjul">Africa/Banjul</option><option id="cbi-system-cfg024279-zonename-Africa/Bissau" value="Africa/Bissau">Africa/Bissau</option><option id="cbi-system-cfg024279-zonename-Africa/Blantyre" value="Africa/Blantyre">Africa/Blantyre</option><option id="cbi-system-cfg024279-zonename-Africa/Brazzaville" value="Africa/Brazzaville">Africa/Brazzaville</option><option id="cbi-system-cfg024279-zonename-Africa/Bujumbura" value="Africa/Bujumbura">Africa/Bujumbura</option><option id="cbi-system-cfg024279-zonename-Africa/Casablanca" value="Africa/Casablanca">Africa/Casablanca</option><option id="cbi-system-cfg024279-zonename-Africa/Ceuta" value="Africa/Ceuta">Africa/Ceuta</option><option id="cbi-system-cfg024279-zonename-Africa/Conakry" value="Africa/Conakry">Africa/Conakry</option><option id="cbi-system-cfg024279-zonename-Africa/Dakar" value="Africa/Dakar">Africa/Dakar</option><option id="cbi-system-cfg024279-zonename-Africa/Dar es Salaam" value="Africa/Dar es Salaam">Africa/Dar es Salaam</option><option id="cbi-system-cfg024279-zonename-Africa/Djibouti" value="Africa/Djibouti">Africa/Djibouti</option><option id="cbi-system-cfg024279-zonename-Africa/Douala" value="Africa/Douala">Africa/Douala</option><option id="cbi-system-cfg024279-zonename-Africa/El Aaiun" value="Africa/El Aaiun">Africa/El Aaiun</option><option id="cbi-system-cfg024279-zonename-Africa/Freetown" value="Africa/Freetown">Africa/Freetown</option><option id="cbi-system-cfg024279-zonename-Africa/Gaborone" value="Africa/Gaborone">Africa/Gaborone</option><option id="cbi-system-cfg024279-zonename-Africa/Harare" value="Africa/Harare">Africa/Harare</option><option id="cbi-system-cfg024279-zonename-Africa/Johannesburg" value="Africa/Johannesburg">Africa/Johannesburg</option><option id="cbi-system-cfg024279-zonename-Africa/Kampala" value="Africa/Kampala">Africa/Kampala</option><option id="cbi-system-cfg024279-zonename-Africa/Khartoum" value="Africa/Khartoum">Africa/Khartoum</option><option id="cbi-system-cfg024279-zonename-Africa/Kigali" value="Africa/Kigali">Africa/Kigali</option><option id="cbi-system-cfg024279-zonename-Africa/Kinshasa" value="Africa/Kinshasa">Africa/Kinshasa</option><option id="cbi-system-cfg024279-zonename-Africa/Lagos" value="Africa/Lagos">Africa/Lagos</option><option id="cbi-system-cfg024279-zonename-Africa/Libreville" value="Africa/Libreville">Africa/Libreville</option><option id="cbi-system-cfg024279-zonename-Africa/Lome" value="Africa/Lome">Africa/Lome</option><option id="cbi-system-cfg024279-zonename-Africa/Luanda" value="Africa/Luanda">Africa/Luanda</option><option id="cbi-system-cfg024279-zonename-Africa/Lubumbashi" value="Africa/Lubumbashi">Africa/Lubumbashi</option><option id="cbi-system-cfg024279-zonename-Africa/Lusaka" value="Africa/Lusaka">Africa/Lusaka</option><option id="cbi-system-cfg024279-zonename-Africa/Malabo" value="Africa/Malabo">Africa/Malabo</option><option id="cbi-system-cfg024279-zonename-Africa/Maputo" value="Africa/Maputo">Africa/Maputo</option><option id="cbi-system-cfg024279-zonename-Africa/Maseru" value="Africa/Maseru">Africa/Maseru</option><option id="cbi-system-cfg024279-zonename-Africa/Mbabane" value="Africa/Mbabane">Africa/Mbabane</option><option id="cbi-system-cfg024279-zonename-Africa/Mogadishu" value="Africa/Mogadishu">Africa/Mogadishu</option><option id="cbi-system-cfg024279-zonename-Africa/Monrovia" value="Africa/Monrovia">Africa/Monrovia</option><option id="cbi-system-cfg024279-zonename-Africa/Nairobi" value="Africa/Nairobi">Africa/Nairobi</option><option id="cbi-system-cfg024279-zonename-Africa/Ndjamena" value="Africa/Ndjamena">Africa/Ndjamena</option><option id="cbi-system-cfg024279-zonename-Africa/Niamey" value="Africa/Niamey">Africa/Niamey</option><option id="cbi-system-cfg024279-zonename-Africa/Nouakchott" value="Africa/Nouakchott">Africa/Nouakchott</option><option id="cbi-system-cfg024279-zonename-Africa/Ouagadougou" value="Africa/Ouagadougou">Africa/Ouagadougou</option><option id="cbi-system-cfg024279-zonename-Africa/Porto-Novo" value="Africa/Porto-Novo">Africa/Porto-Novo</option><option id="cbi-system-cfg024279-zonename-Africa/Sao Tome" value="Africa/Sao Tome">Africa/Sao Tome</option><option id="cbi-system-cfg024279-zonename-Africa/Tripoli" value="Africa/Tripoli">Africa/Tripoli</option><option id="cbi-system-cfg024279-zonename-Africa/Tunis" value="Africa/Tunis">Africa/Tunis</option><option id="cbi-system-cfg024279-zonename-Africa/Windhoek" value="Africa/Windhoek">Africa/Windhoek</option><option id="cbi-system-cfg024279-zonename-America/Adak" value="America/Adak">America/Adak</option><option id="cbi-system-cfg024279-zonename-America/Anchorage" value="America/Anchorage">America/Anchorage</option><option id="cbi-system-cfg024279-zonename-America/Anguilla" value="America/Anguilla">America/Anguilla</option><option id="cbi-system-cfg024279-zonename-America/Antigua" value="America/Antigua">America/Antigua</option><option id="cbi-system-cfg024279-zonename-America/Araguaina" value="America/Araguaina">America/Araguaina</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Buenos Aires" value="America/Argentina/Buenos Aires">America/Argentina/Buenos Aires</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Catamarca" value="America/Argentina/Catamarca">America/Argentina/Catamarca</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Cordoba" value="America/Argentina/Cordoba">America/Argentina/Cordoba</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Jujuy" value="America/Argentina/Jujuy">America/Argentina/Jujuy</option><option id="cbi-system-cfg024279-zonename-America/Argentina/La Rioja" value="America/Argentina/La Rioja">America/Argentina/La Rioja</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Mendoza" value="America/Argentina/Mendoza">America/Argentina/Mendoza</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Rio Gallegos" value="America/Argentina/Rio Gallegos">America/Argentina/Rio Gallegos</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Salta" value="America/Argentina/Salta">America/Argentina/Salta</option><option id="cbi-system-cfg024279-zonename-America/Argentina/San Juan" value="America/Argentina/San Juan">America/Argentina/San Juan</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Tucuman" value="America/Argentina/Tucuman">America/Argentina/Tucuman</option><option id="cbi-system-cfg024279-zonename-America/Argentina/Ushuaia" value="America/Argentina/Ushuaia">America/Argentina/Ushuaia</option><option id="cbi-system-cfg024279-zonename-America/Aruba" value="America/Aruba">America/Aruba</option><option id="cbi-system-cfg024279-zonename-America/Asuncion" value="America/Asuncion">America/Asuncion</option><option id="cbi-system-cfg024279-zonename-America/Atikokan" value="America/Atikokan">America/Atikokan</option><option id="cbi-system-cfg024279-zonename-America/Bahia" value="America/Bahia">America/Bahia</option><option id="cbi-system-cfg024279-zonename-America/Barbados" value="America/Barbados">America/Barbados</option><option id="cbi-system-cfg024279-zonename-America/Belem" value="America/Belem">America/Belem</option><option id="cbi-system-cfg024279-zonename-America/Belize" value="America/Belize">America/Belize</option><option id="cbi-system-cfg024279-zonename-America/Blanc-Sablon" value="America/Blanc-Sablon">America/Blanc-Sablon</option><option id="cbi-system-cfg024279-zonename-America/Boa Vista" value="America/Boa Vista">America/Boa Vista</option><option id="cbi-system-cfg024279-zonename-America/Bogota" value="America/Bogota">America/Bogota</option><option id="cbi-system-cfg024279-zonename-America/Boise" value="America/Boise">America/Boise</option><option id="cbi-system-cfg024279-zonename-America/Cambridge Bay" value="America/Cambridge Bay">America/Cambridge Bay</option><option id="cbi-system-cfg024279-zonename-America/Campo Grande" value="America/Campo Grande">America/Campo Grande</option><option id="cbi-system-cfg024279-zonename-America/Cancun" value="America/Cancun">America/Cancun</option><option id="cbi-system-cfg024279-zonename-America/Caracas" value="America/Caracas">America/Caracas</option><option id="cbi-system-cfg024279-zonename-America/Cayenne" value="America/Cayenne">America/Cayenne</option><option id="cbi-system-cfg024279-zonename-America/Cayman" value="America/Cayman">America/Cayman</option><option id="cbi-system-cfg024279-zonename-America/Chicago" value="America/Chicago">America/Chicago</option><option id="cbi-system-cfg024279-zonename-America/Chihuahua" value="America/Chihuahua">America/Chihuahua</option><option id="cbi-system-cfg024279-zonename-America/Costa Rica" value="America/Costa Rica">America/Costa Rica</option><option id="cbi-system-cfg024279-zonename-America/Cuiaba" value="America/Cuiaba">America/Cuiaba</option><option id="cbi-system-cfg024279-zonename-America/Curacao" value="America/Curacao">America/Curacao</option><option id="cbi-system-cfg024279-zonename-America/Danmarkshavn" value="America/Danmarkshavn">America/Danmarkshavn</option><option id="cbi-system-cfg024279-zonename-America/Dawson" value="America/Dawson">America/Dawson</option><option id="cbi-system-cfg024279-zonename-America/Dawson Creek" value="America/Dawson Creek">America/Dawson Creek</option><option id="cbi-system-cfg024279-zonename-America/Denver" value="America/Denver">America/Denver</option><option id="cbi-system-cfg024279-zonename-America/Detroit" value="America/Detroit">America/Detroit</option><option id="cbi-system-cfg024279-zonename-America/Dominica" value="America/Dominica">America/Dominica</option><option id="cbi-system-cfg024279-zonename-America/Edmonton" value="America/Edmonton">America/Edmonton</option><option id="cbi-system-cfg024279-zonename-America/Eirunepe" value="America/Eirunepe">America/Eirunepe</option><option id="cbi-system-cfg024279-zonename-America/El Salvador" value="America/El Salvador">America/El Salvador</option><option id="cbi-system-cfg024279-zonename-America/Fortaleza" value="America/Fortaleza">America/Fortaleza</option><option id="cbi-system-cfg024279-zonename-America/Glace Bay" value="America/Glace Bay">America/Glace Bay</option><option id="cbi-system-cfg024279-zonename-America/Goose Bay" value="America/Goose Bay">America/Goose Bay</option><option id="cbi-system-cfg024279-zonename-America/Grand Turk" value="America/Grand Turk">America/Grand Turk</option><option id="cbi-system-cfg024279-zonename-America/Grenada" value="America/Grenada">America/Grenada</option><option id="cbi-system-cfg024279-zonename-America/Guadeloupe" value="America/Guadeloupe">America/Guadeloupe</option><option id="cbi-system-cfg024279-zonename-America/Guatemala" value="America/Guatemala">America/Guatemala</option><option id="cbi-system-cfg024279-zonename-America/Guayaquil" value="America/Guayaquil">America/Guayaquil</option><option id="cbi-system-cfg024279-zonename-America/Guyana" value="America/Guyana">America/Guyana</option><option id="cbi-system-cfg024279-zonename-America/Halifax" value="America/Halifax">America/Halifax</option><option id="cbi-system-cfg024279-zonename-America/Havana" value="America/Havana">America/Havana</option><option id="cbi-system-cfg024279-zonename-America/Hermosillo" value="America/Hermosillo">America/Hermosillo</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Indianapolis" value="America/Indiana/Indianapolis">America/Indiana/Indianapolis</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Knox" value="America/Indiana/Knox">America/Indiana/Knox</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Marengo" value="America/Indiana/Marengo">America/Indiana/Marengo</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Petersburg" value="America/Indiana/Petersburg">America/Indiana/Petersburg</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Tell City" value="America/Indiana/Tell City">America/Indiana/Tell City</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Vevay" value="America/Indiana/Vevay">America/Indiana/Vevay</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Vincennes" value="America/Indiana/Vincennes">America/Indiana/Vincennes</option><option id="cbi-system-cfg024279-zonename-America/Indiana/Winamac" value="America/Indiana/Winamac">America/Indiana/Winamac</option><option id="cbi-system-cfg024279-zonename-America/Inuvik" value="America/Inuvik">America/Inuvik</option><option id="cbi-system-cfg024279-zonename-America/Iqaluit" value="America/Iqaluit">America/Iqaluit</option><option id="cbi-system-cfg024279-zonename-America/Jamaica" value="America/Jamaica">America/Jamaica</option><option id="cbi-system-cfg024279-zonename-America/Juneau" value="America/Juneau">America/Juneau</option><option id="cbi-system-cfg024279-zonename-America/Kentucky/Louisville" value="America/Kentucky/Louisville">America/Kentucky/Louisville</option><option id="cbi-system-cfg024279-zonename-America/Kentucky/Monticello" value="America/Kentucky/Monticello">America/Kentucky/Monticello</option><option id="cbi-system-cfg024279-zonename-America/La Paz" value="America/La Paz">America/La Paz</option><option id="cbi-system-cfg024279-zonename-America/Lima" value="America/Lima">America/Lima</option><option id="cbi-system-cfg024279-zonename-America/Los Angeles" value="America/Los Angeles">America/Los Angeles</option><option id="cbi-system-cfg024279-zonename-America/Maceio" value="America/Maceio">America/Maceio</option><option id="cbi-system-cfg024279-zonename-America/Managua" value="America/Managua">America/Managua</option><option id="cbi-system-cfg024279-zonename-America/Manaus" value="America/Manaus">America/Manaus</option><option id="cbi-system-cfg024279-zonename-America/Marigot" value="America/Marigot">America/Marigot</option><option id="cbi-system-cfg024279-zonename-America/Martinique" value="America/Martinique">America/Martinique</option><option id="cbi-system-cfg024279-zonename-America/Matamoros" value="America/Matamoros">America/Matamoros</option><option id="cbi-system-cfg024279-zonename-America/Mazatlan" value="America/Mazatlan">America/Mazatlan</option><option id="cbi-system-cfg024279-zonename-America/Menominee" value="America/Menominee">America/Menominee</option><option id="cbi-system-cfg024279-zonename-America/Merida" value="America/Merida">America/Merida</option><option id="cbi-system-cfg024279-zonename-America/Mexico City" value="America/Mexico City">America/Mexico City</option><option id="cbi-system-cfg024279-zonename-America/Miquelon" value="America/Miquelon">America/Miquelon</option><option id="cbi-system-cfg024279-zonename-America/Moncton" value="America/Moncton">America/Moncton</option><option id="cbi-system-cfg024279-zonename-America/Monterrey" value="America/Monterrey">America/Monterrey</option><option id="cbi-system-cfg024279-zonename-America/Montevideo" value="America/Montevideo">America/Montevideo</option><option id="cbi-system-cfg024279-zonename-America/Montreal" value="America/Montreal">America/Montreal</option><option id="cbi-system-cfg024279-zonename-America/Montserrat" value="America/Montserrat">America/Montserrat</option><option id="cbi-system-cfg024279-zonename-America/Nassau" value="America/Nassau">America/Nassau</option><option id="cbi-system-cfg024279-zonename-America/New York" value="America/New York">America/New York</option><option id="cbi-system-cfg024279-zonename-America/Nipigon" value="America/Nipigon">America/Nipigon</option><option id="cbi-system-cfg024279-zonename-America/Nome" value="America/Nome">America/Nome</option><option id="cbi-system-cfg024279-zonename-America/Noronha" value="America/Noronha">America/Noronha</option><option id="cbi-system-cfg024279-zonename-America/North Dakota/Center" value="America/North Dakota/Center">America/North Dakota/Center</option><option id="cbi-system-cfg024279-zonename-America/North Dakota/New Salem" value="America/North Dakota/New Salem">America/North Dakota/New Salem</option><option id="cbi-system-cfg024279-zonename-America/Ojinaga" value="America/Ojinaga">America/Ojinaga</option><option id="cbi-system-cfg024279-zonename-America/Panama" value="America/Panama">America/Panama</option><option id="cbi-system-cfg024279-zonename-America/Pangnirtung" value="America/Pangnirtung">America/Pangnirtung</option><option id="cbi-system-cfg024279-zonename-America/Paramaribo" value="America/Paramaribo">America/Paramaribo</option><option id="cbi-system-cfg024279-zonename-America/Phoenix" value="America/Phoenix">America/Phoenix</option><option id="cbi-system-cfg024279-zonename-America/Port of Spain" value="America/Port of Spain">America/Port of Spain</option><option id="cbi-system-cfg024279-zonename-America/Port-au-Prince" value="America/Port-au-Prince">America/Port-au-Prince</option><option id="cbi-system-cfg024279-zonename-America/Porto Velho" value="America/Porto Velho">America/Porto Velho</option><option id="cbi-system-cfg024279-zonename-America/Puerto Rico" value="America/Puerto Rico">America/Puerto Rico</option><option id="cbi-system-cfg024279-zonename-America/Rainy River" value="America/Rainy River">America/Rainy River</option><option id="cbi-system-cfg024279-zonename-America/Rankin Inlet" value="America/Rankin Inlet">America/Rankin Inlet</option><option id="cbi-system-cfg024279-zonename-America/Recife" value="America/Recife">America/Recife</option><option id="cbi-system-cfg024279-zonename-America/Regina" value="America/Regina">America/Regina</option><option id="cbi-system-cfg024279-zonename-America/Rio Branco" value="America/Rio Branco">America/Rio Branco</option><option id="cbi-system-cfg024279-zonename-America/Santa Isabel" value="America/Santa Isabel">America/Santa Isabel</option><option id="cbi-system-cfg024279-zonename-America/Santarem" value="America/Santarem">America/Santarem</option><option id="cbi-system-cfg024279-zonename-America/Santo Domingo" value="America/Santo Domingo">America/Santo Domingo</option><option id="cbi-system-cfg024279-zonename-America/Sao Paulo" value="America/Sao Paulo">America/Sao Paulo</option><option id="cbi-system-cfg024279-zonename-America/Scoresbysund" value="America/Scoresbysund">America/Scoresbysund</option><option id="cbi-system-cfg024279-zonename-America/Shiprock" value="America/Shiprock">America/Shiprock</option><option id="cbi-system-cfg024279-zonename-America/St Barthelemy" value="America/St Barthelemy">America/St Barthelemy</option><option id="cbi-system-cfg024279-zonename-America/St Johns" value="America/St Johns">America/St Johns</option><option id="cbi-system-cfg024279-zonename-America/St Kitts" value="America/St Kitts">America/St Kitts</option><option id="cbi-system-cfg024279-zonename-America/St Lucia" value="America/St Lucia">America/St Lucia</option><option id="cbi-system-cfg024279-zonename-America/St Thomas" value="America/St Thomas">America/St Thomas</option><option id="cbi-system-cfg024279-zonename-America/St Vincent" value="America/St Vincent">America/St Vincent</option><option id="cbi-system-cfg024279-zonename-America/Swift Current" value="America/Swift Current">America/Swift Current</option><option id="cbi-system-cfg024279-zonename-America/Tegucigalpa" value="America/Tegucigalpa">America/Tegucigalpa</option><option id="cbi-system-cfg024279-zonename-America/Thule" value="America/Thule">America/Thule</option><option id="cbi-system-cfg024279-zonename-America/Thunder Bay" value="America/Thunder Bay">America/Thunder Bay</option><option id="cbi-system-cfg024279-zonename-America/Tijuana" value="America/Tijuana">America/Tijuana</option><option id="cbi-system-cfg024279-zonename-America/Toronto" value="America/Toronto">America/Toronto</option><option id="cbi-system-cfg024279-zonename-America/Tortola" value="America/Tortola">America/Tortola</option><option id="cbi-system-cfg024279-zonename-America/Vancouver" value="America/Vancouver">America/Vancouver</option><option id="cbi-system-cfg024279-zonename-America/Whitehorse" value="America/Whitehorse">America/Whitehorse</option><option id="cbi-system-cfg024279-zonename-America/Winnipeg" value="America/Winnipeg">America/Winnipeg</option><option id="cbi-system-cfg024279-zonename-America/Yakutat" value="America/Yakutat">America/Yakutat</option><option id="cbi-system-cfg024279-zonename-America/Yellowknife" value="America/Yellowknife">America/Yellowknife</option><option id="cbi-system-cfg024279-zonename-Antarctica/Casey" value="Antarctica/Casey">Antarctica/Casey</option><option id="cbi-system-cfg024279-zonename-Antarctica/Davis" value="Antarctica/Davis">Antarctica/Davis</option><option id="cbi-system-cfg024279-zonename-Antarctica/DumontDUrville" value="Antarctica/DumontDUrville">Antarctica/DumontDUrville</option><option id="cbi-system-cfg024279-zonename-Antarctica/Macquarie" value="Antarctica/Macquarie">Antarctica/Macquarie</option><option id="cbi-system-cfg024279-zonename-Antarctica/Mawson" value="Antarctica/Mawson">Antarctica/Mawson</option><option id="cbi-system-cfg024279-zonename-Antarctica/McMurdo" value="Antarctica/McMurdo">Antarctica/McMurdo</option><option id="cbi-system-cfg024279-zonename-Antarctica/Rothera" value="Antarctica/Rothera">Antarctica/Rothera</option><option id="cbi-system-cfg024279-zonename-Antarctica/South Pole" value="Antarctica/South Pole">Antarctica/South Pole</option><option id="cbi-system-cfg024279-zonename-Antarctica/Syowa" value="Antarctica/Syowa">Antarctica/Syowa</option><option id="cbi-system-cfg024279-zonename-Antarctica/Vostok" value="Antarctica/Vostok">Antarctica/Vostok</option><option id="cbi-system-cfg024279-zonename-Arctic/Longyearbyen" value="Arctic/Longyearbyen">Arctic/Longyearbyen</option><option id="cbi-system-cfg024279-zonename-Asia/Aden" value="Asia/Aden">Asia/Aden</option><option id="cbi-system-cfg024279-zonename-Asia/Almaty" value="Asia/Almaty">Asia/Almaty</option><option id="cbi-system-cfg024279-zonename-Asia/Anadyr" value="Asia/Anadyr">Asia/Anadyr</option><option id="cbi-system-cfg024279-zonename-Asia/Aqtau" value="Asia/Aqtau">Asia/Aqtau</option><option id="cbi-system-cfg024279-zonename-Asia/Aqtobe" value="Asia/Aqtobe">Asia/Aqtobe</option><option id="cbi-system-cfg024279-zonename-Asia/Ashgabat" value="Asia/Ashgabat">Asia/Ashgabat</option><option id="cbi-system-cfg024279-zonename-Asia/Baghdad" value="Asia/Baghdad">Asia/Baghdad</option><option id="cbi-system-cfg024279-zonename-Asia/Bahrain" value="Asia/Bahrain">Asia/Bahrain</option><option id="cbi-system-cfg024279-zonename-Asia/Baku" value="Asia/Baku">Asia/Baku</option><option id="cbi-system-cfg024279-zonename-Asia/Bangkok" value="Asia/Bangkok">Asia/Bangkok</option><option id="cbi-system-cfg024279-zonename-Asia/Beirut" value="Asia/Beirut">Asia/Beirut</option><option id="cbi-system-cfg024279-zonename-Asia/Bishkek" value="Asia/Bishkek">Asia/Bishkek</option><option id="cbi-system-cfg024279-zonename-Asia/Brunei" value="Asia/Brunei">Asia/Brunei</option><option id="cbi-system-cfg024279-zonename-Asia/Choibalsan" value="Asia/Choibalsan">Asia/Choibalsan</option><option id="cbi-system-cfg024279-zonename-Asia/Chongqing" value="Asia/Chongqing">Asia/Chongqing</option><option id="cbi-system-cfg024279-zonename-Asia/Colombo" value="Asia/Colombo">Asia/Colombo</option><option id="cbi-system-cfg024279-zonename-Asia/Damascus" value="Asia/Damascus">Asia/Damascus</option><option id="cbi-system-cfg024279-zonename-Asia/Dhaka" value="Asia/Dhaka">Asia/Dhaka</option><option id="cbi-system-cfg024279-zonename-Asia/Dili" value="Asia/Dili">Asia/Dili</option><option id="cbi-system-cfg024279-zonename-Asia/Dubai" value="Asia/Dubai">Asia/Dubai</option><option id="cbi-system-cfg024279-zonename-Asia/Dushanbe" value="Asia/Dushanbe">Asia/Dushanbe</option><option id="cbi-system-cfg024279-zonename-Asia/Gaza" value="Asia/Gaza">Asia/Gaza</option><option id="cbi-system-cfg024279-zonename-Asia/Harbin" value="Asia/Harbin">Asia/Harbin</option><option id="cbi-system-cfg024279-zonename-Asia/Ho Chi Minh" value="Asia/Ho Chi Minh">Asia/Ho Chi Minh</option><option id="cbi-system-cfg024279-zonename-Asia/Hong Kong" value="Asia/Hong Kong">Asia/Hong Kong</option><option id="cbi-system-cfg024279-zonename-Asia/Hovd" value="Asia/Hovd">Asia/Hovd</option><option id="cbi-system-cfg024279-zonename-Asia/Irkutsk" value="Asia/Irkutsk">Asia/Irkutsk</option><option id="cbi-system-cfg024279-zonename-Asia/Jakarta" value="Asia/Jakarta">Asia/Jakarta</option><option id="cbi-system-cfg024279-zonename-Asia/Jayapura" value="Asia/Jayapura">Asia/Jayapura</option><option id="cbi-system-cfg024279-zonename-Asia/Kabul" value="Asia/Kabul">Asia/Kabul</option><option id="cbi-system-cfg024279-zonename-Asia/Kamchatka" value="Asia/Kamchatka">Asia/Kamchatka</option><option id="cbi-system-cfg024279-zonename-Asia/Karachi" value="Asia/Karachi">Asia/Karachi</option><option id="cbi-system-cfg024279-zonename-Asia/Kashgar" value="Asia/Kashgar">Asia/Kashgar</option><option id="cbi-system-cfg024279-zonename-Asia/Kathmandu" value="Asia/Kathmandu">Asia/Kathmandu</option><option id="cbi-system-cfg024279-zonename-Asia/Kolkata" value="Asia/Kolkata">Asia/Kolkata</option><option id="cbi-system-cfg024279-zonename-Asia/Krasnoyarsk" value="Asia/Krasnoyarsk">Asia/Krasnoyarsk</option><option id="cbi-system-cfg024279-zonename-Asia/Kuala Lumpur" value="Asia/Kuala Lumpur">Asia/Kuala Lumpur</option><option id="cbi-system-cfg024279-zonename-Asia/Kuching" value="Asia/Kuching">Asia/Kuching</option><option id="cbi-system-cfg024279-zonename-Asia/Kuwait" value="Asia/Kuwait">Asia/Kuwait</option><option id="cbi-system-cfg024279-zonename-Asia/Macau" value="Asia/Macau">Asia/Macau</option><option id="cbi-system-cfg024279-zonename-Asia/Magadan" value="Asia/Magadan">Asia/Magadan</option><option id="cbi-system-cfg024279-zonename-Asia/Makassar" value="Asia/Makassar">Asia/Makassar</option><option id="cbi-system-cfg024279-zonename-Asia/Manila" value="Asia/Manila">Asia/Manila</option><option id="cbi-system-cfg024279-zonename-Asia/Muscat" value="Asia/Muscat">Asia/Muscat</option><option id="cbi-system-cfg024279-zonename-Asia/Nicosia" value="Asia/Nicosia">Asia/Nicosia</option><option id="cbi-system-cfg024279-zonename-Asia/Novokuznetsk" value="Asia/Novokuznetsk">Asia/Novokuznetsk</option><option id="cbi-system-cfg024279-zonename-Asia/Novosibirsk" value="Asia/Novosibirsk">Asia/Novosibirsk</option><option id="cbi-system-cfg024279-zonename-Asia/Omsk" value="Asia/Omsk">Asia/Omsk</option><option id="cbi-system-cfg024279-zonename-Asia/Oral" value="Asia/Oral">Asia/Oral</option><option id="cbi-system-cfg024279-zonename-Asia/Phnom Penh" value="Asia/Phnom Penh">Asia/Phnom Penh</option><option id="cbi-system-cfg024279-zonename-Asia/Pontianak" value="Asia/Pontianak">Asia/Pontianak</option><option id="cbi-system-cfg024279-zonename-Asia/Pyongyang" value="Asia/Pyongyang">Asia/Pyongyang</option><option id="cbi-system-cfg024279-zonename-Asia/Qatar" value="Asia/Qatar">Asia/Qatar</option><option id="cbi-system-cfg024279-zonename-Asia/Qyzylorda" value="Asia/Qyzylorda">Asia/Qyzylorda</option><option id="cbi-system-cfg024279-zonename-Asia/Rangoon" value="Asia/Rangoon">Asia/Rangoon</option><option id="cbi-system-cfg024279-zonename-Asia/Riyadh" value="Asia/Riyadh">Asia/Riyadh</option><option id="cbi-system-cfg024279-zonename-Asia/Sakhalin" value="Asia/Sakhalin">Asia/Sakhalin</option><option id="cbi-system-cfg024279-zonename-Asia/Samarkand" value="Asia/Samarkand">Asia/Samarkand</option><option id="cbi-system-cfg024279-zonename-Asia/Seoul" value="Asia/Seoul">Asia/Seoul</option><option id="cbi-system-cfg024279-zonename-Asia/Shanghai" value="Asia/Shanghai">Asia/Shanghai</option><option id="cbi-system-cfg024279-zonename-Asia/Singapore" value="Asia/Singapore">Asia/Singapore</option><option id="cbi-system-cfg024279-zonename-Asia/Taipei" value="Asia/Taipei">Asia/Taipei</option><option id="cbi-system-cfg024279-zonename-Asia/Tashkent" value="Asia/Tashkent">Asia/Tashkent</option><option id="cbi-system-cfg024279-zonename-Asia/Tbilisi" value="Asia/Tbilisi">Asia/Tbilisi</option><option id="cbi-system-cfg024279-zonename-Asia/Thimphu" value="Asia/Thimphu">Asia/Thimphu</option><option id="cbi-system-cfg024279-zonename-Asia/Tokyo" value="Asia/Tokyo">Asia/Tokyo</option><option id="cbi-system-cfg024279-zonename-Asia/Ulaanbaatar" value="Asia/Ulaanbaatar">Asia/Ulaanbaatar</option><option id="cbi-system-cfg024279-zonename-Asia/Urumqi" value="Asia/Urumqi">Asia/Urumqi</option><option id="cbi-system-cfg024279-zonename-Asia/Vientiane" value="Asia/Vientiane">Asia/Vientiane</option><option id="cbi-system-cfg024279-zonename-Asia/Vladivostok" value="Asia/Vladivostok">Asia/Vladivostok</option><option id="cbi-system-cfg024279-zonename-Asia/Yakutsk" value="Asia/Yakutsk">Asia/Yakutsk</option><option id="cbi-system-cfg024279-zonename-Asia/Yekaterinburg" value="Asia/Yekaterinburg">Asia/Yekaterinburg</option><option id="cbi-system-cfg024279-zonename-Asia/Yerevan" value="Asia/Yerevan">Asia/Yerevan</option><option id="cbi-system-cfg024279-zonename-Atlantic/Azores" value="Atlantic/Azores">Atlantic/Azores</option><option id="cbi-system-cfg024279-zonename-Atlantic/Bermuda" value="Atlantic/Bermuda">Atlantic/Bermuda</option><option id="cbi-system-cfg024279-zonename-Atlantic/Canary" value="Atlantic/Canary">Atlantic/Canary</option><option id="cbi-system-cfg024279-zonename-Atlantic/Cape Verde" value="Atlantic/Cape Verde">Atlantic/Cape Verde</option><option id="cbi-system-cfg024279-zonename-Atlantic/Faroe" value="Atlantic/Faroe">Atlantic/Faroe</option><option id="cbi-system-cfg024279-zonename-Atlantic/Madeira" value="Atlantic/Madeira">Atlantic/Madeira</option><option id="cbi-system-cfg024279-zonename-Atlantic/Reykjavik" value="Atlantic/Reykjavik">Atlantic/Reykjavik</option><option id="cbi-system-cfg024279-zonename-Atlantic/South Georgia" value="Atlantic/South Georgia">Atlantic/South Georgia</option><option id="cbi-system-cfg024279-zonename-Atlantic/St Helena" value="Atlantic/St Helena">Atlantic/St Helena</option><option id="cbi-system-cfg024279-zonename-Atlantic/Stanley" value="Atlantic/Stanley">Atlantic/Stanley</option><option id="cbi-system-cfg024279-zonename-Australia/Adelaide" value="Australia/Adelaide">Australia/Adelaide</option><option id="cbi-system-cfg024279-zonename-Australia/Brisbane" value="Australia/Brisbane">Australia/Brisbane</option><option id="cbi-system-cfg024279-zonename-Australia/Broken Hill" value="Australia/Broken Hill">Australia/Broken Hill</option><option id="cbi-system-cfg024279-zonename-Australia/Currie" value="Australia/Currie">Australia/Currie</option><option id="cbi-system-cfg024279-zonename-Australia/Darwin" value="Australia/Darwin">Australia/Darwin</option><option id="cbi-system-cfg024279-zonename-Australia/Eucla" value="Australia/Eucla">Australia/Eucla</option><option id="cbi-system-cfg024279-zonename-Australia/Hobart" value="Australia/Hobart">Australia/Hobart</option><option id="cbi-system-cfg024279-zonename-Australia/Lindeman" value="Australia/Lindeman">Australia/Lindeman</option><option id="cbi-system-cfg024279-zonename-Australia/Lord Howe" value="Australia/Lord Howe">Australia/Lord Howe</option><option id="cbi-system-cfg024279-zonename-Australia/Melbourne" value="Australia/Melbourne">Australia/Melbourne</option><option id="cbi-system-cfg024279-zonename-Australia/Perth" value="Australia/Perth">Australia/Perth</option><option id="cbi-system-cfg024279-zonename-Australia/Sydney" value="Australia/Sydney">Australia/Sydney</option><option id="cbi-system-cfg024279-zonename-Europe/Amsterdam" value="Europe/Amsterdam">Europe/Amsterdam</option><option id="cbi-system-cfg024279-zonename-Europe/Andorra" value="Europe/Andorra">Europe/Andorra</option><option id="cbi-system-cfg024279-zonename-Europe/Athens" value="Europe/Athens">Europe/Athens</option><option id="cbi-system-cfg024279-zonename-Europe/Belgrade" value="Europe/Belgrade">Europe/Belgrade</option><option id="cbi-system-cfg024279-zonename-Europe/Berlin" value="Europe/Berlin">Europe/Berlin</option><option id="cbi-system-cfg024279-zonename-Europe/Bratislava" value="Europe/Bratislava">Europe/Bratislava</option><option id="cbi-system-cfg024279-zonename-Europe/Brussels" value="Europe/Brussels">Europe/Brussels</option><option id="cbi-system-cfg024279-zonename-Europe/Bucharest" value="Europe/Bucharest">Europe/Bucharest</option><option id="cbi-system-cfg024279-zonename-Europe/Budapest" value="Europe/Budapest">Europe/Budapest</option><option id="cbi-system-cfg024279-zonename-Europe/Chisinau" value="Europe/Chisinau">Europe/Chisinau</option><option id="cbi-system-cfg024279-zonename-Europe/Copenhagen" value="Europe/Copenhagen">Europe/Copenhagen</option><option id="cbi-system-cfg024279-zonename-Europe/Dublin" value="Europe/Dublin">Europe/Dublin</option><option id="cbi-system-cfg024279-zonename-Europe/Gibraltar" value="Europe/Gibraltar">Europe/Gibraltar</option><option id="cbi-system-cfg024279-zonename-Europe/Guernsey" value="Europe/Guernsey">Europe/Guernsey</option><option id="cbi-system-cfg024279-zonename-Europe/Helsinki" value="Europe/Helsinki">Europe/Helsinki</option><option id="cbi-system-cfg024279-zonename-Europe/Isle of Man" value="Europe/Isle of Man">Europe/Isle of Man</option><option id="cbi-system-cfg024279-zonename-Europe/Istanbul" value="Europe/Istanbul">Europe/Istanbul</option><option id="cbi-system-cfg024279-zonename-Europe/Jersey" value="Europe/Jersey">Europe/Jersey</option><option id="cbi-system-cfg024279-zonename-Europe/Kaliningrad" value="Europe/Kaliningrad">Europe/Kaliningrad</option><option id="cbi-system-cfg024279-zonename-Europe/Kiev" value="Europe/Kiev">Europe/Kiev</option><option id="cbi-system-cfg024279-zonename-Europe/Lisbon" value="Europe/Lisbon">Europe/Lisbon</option><option id="cbi-system-cfg024279-zonename-Europe/Ljubljana" value="Europe/Ljubljana">Europe/Ljubljana</option><option id="cbi-system-cfg024279-zonename-Europe/London" value="Europe/London">Europe/London</option><option id="cbi-system-cfg024279-zonename-Europe/Luxembourg" value="Europe/Luxembourg">Europe/Luxembourg</option><option id="cbi-system-cfg024279-zonename-Europe/Madrid" value="Europe/Madrid">Europe/Madrid</option><option id="cbi-system-cfg024279-zonename-Europe/Malta" value="Europe/Malta">Europe/Malta</option><option id="cbi-system-cfg024279-zonename-Europe/Mariehamn" value="Europe/Mariehamn">Europe/Mariehamn</option><option id="cbi-system-cfg024279-zonename-Europe/Minsk" value="Europe/Minsk">Europe/Minsk</option><option id="cbi-system-cfg024279-zonename-Europe/Monaco" value="Europe/Monaco">Europe/Monaco</option><option id="cbi-system-cfg024279-zonename-Europe/Moscow" value="Europe/Moscow">Europe/Moscow</option><option id="cbi-system-cfg024279-zonename-Europe/Oslo" value="Europe/Oslo">Europe/Oslo</option><option id="cbi-system-cfg024279-zonename-Europe/Paris" value="Europe/Paris">Europe/Paris</option><option id="cbi-system-cfg024279-zonename-Europe/Podgorica" value="Europe/Podgorica">Europe/Podgorica</option><option id="cbi-system-cfg024279-zonename-Europe/Prague" value="Europe/Prague">Europe/Prague</option><option id="cbi-system-cfg024279-zonename-Europe/Riga" value="Europe/Riga">Europe/Riga</option><option id="cbi-system-cfg024279-zonename-Europe/Rome" value="Europe/Rome">Europe/Rome</option><option id="cbi-system-cfg024279-zonename-Europe/Samara" value="Europe/Samara">Europe/Samara</option><option id="cbi-system-cfg024279-zonename-Europe/San Marino" value="Europe/San Marino">Europe/San Marino</option><option id="cbi-system-cfg024279-zonename-Europe/Sarajevo" value="Europe/Sarajevo">Europe/Sarajevo</option><option id="cbi-system-cfg024279-zonename-Europe/Simferopol" value="Europe/Simferopol">Europe/Simferopol</option><option id="cbi-system-cfg024279-zonename-Europe/Skopje" value="Europe/Skopje">Europe/Skopje</option><option id="cbi-system-cfg024279-zonename-Europe/Sofia" value="Europe/Sofia">Europe/Sofia</option><option id="cbi-system-cfg024279-zonename-Europe/Stockholm" value="Europe/Stockholm">Europe/Stockholm</option><option id="cbi-system-cfg024279-zonename-Europe/Tallinn" value="Europe/Tallinn">Europe/Tallinn</option><option id="cbi-system-cfg024279-zonename-Europe/Tirane" value="Europe/Tirane">Europe/Tirane</option><option id="cbi-system-cfg024279-zonename-Europe/Uzhgorod" value="Europe/Uzhgorod">Europe/Uzhgorod</option><option id="cbi-system-cfg024279-zonename-Europe/Vaduz" value="Europe/Vaduz">Europe/Vaduz</option><option id="cbi-system-cfg024279-zonename-Europe/Vatican" value="Europe/Vatican">Europe/Vatican</option><option id="cbi-system-cfg024279-zonename-Europe/Vienna" value="Europe/Vienna">Europe/Vienna</option><option id="cbi-system-cfg024279-zonename-Europe/Vilnius" value="Europe/Vilnius">Europe/Vilnius</option><option id="cbi-system-cfg024279-zonename-Europe/Volgograd" value="Europe/Volgograd">Europe/Volgograd</option><option id="cbi-system-cfg024279-zonename-Europe/Warsaw" value="Europe/Warsaw">Europe/Warsaw</option><option id="cbi-system-cfg024279-zonename-Europe/Zagreb" value="Europe/Zagreb">Europe/Zagreb</option><option id="cbi-system-cfg024279-zonename-Europe/Zaporozhye" value="Europe/Zaporozhye">Europe/Zaporozhye</option><option id="cbi-system-cfg024279-zonename-Europe/Zurich" value="Europe/Zurich">Europe/Zurich</option><option id="cbi-system-cfg024279-zonename-Indian/Antananarivo" value="Indian/Antananarivo">Indian/Antananarivo</option><option id="cbi-system-cfg024279-zonename-Indian/Chagos" value="Indian/Chagos">Indian/Chagos</option><option id="cbi-system-cfg024279-zonename-Indian/Christmas" value="Indian/Christmas">Indian/Christmas</option><option id="cbi-system-cfg024279-zonename-Indian/Cocos" value="Indian/Cocos">Indian/Cocos</option><option id="cbi-system-cfg024279-zonename-Indian/Comoro" value="Indian/Comoro">Indian/Comoro</option><option id="cbi-system-cfg024279-zonename-Indian/Kerguelen" value="Indian/Kerguelen">Indian/Kerguelen</option><option id="cbi-system-cfg024279-zonename-Indian/Mahe" value="Indian/Mahe">Indian/Mahe</option><option id="cbi-system-cfg024279-zonename-Indian/Maldives" value="Indian/Maldives">Indian/Maldives</option><option id="cbi-system-cfg024279-zonename-Indian/Mauritius" value="Indian/Mauritius">Indian/Mauritius</option><option id="cbi-system-cfg024279-zonename-Indian/Mayotte" value="Indian/Mayotte">Indian/Mayotte</option><option id="cbi-system-cfg024279-zonename-Indian/Reunion" value="Indian/Reunion">Indian/Reunion</option><option id="cbi-system-cfg024279-zonename-Pacific/Apia" value="Pacific/Apia">Pacific/Apia</option><option id="cbi-system-cfg024279-zonename-Pacific/Auckland" value="Pacific/Auckland">Pacific/Auckland</option><option id="cbi-system-cfg024279-zonename-Pacific/Chatham" value="Pacific/Chatham">Pacific/Chatham</option><option id="cbi-system-cfg024279-zonename-Pacific/Efate" value="Pacific/Efate">Pacific/Efate</option><option id="cbi-system-cfg024279-zonename-Pacific/Enderbury" value="Pacific/Enderbury">Pacific/Enderbury</option><option id="cbi-system-cfg024279-zonename-Pacific/Fakaofo" value="Pacific/Fakaofo">Pacific/Fakaofo</option><option id="cbi-system-cfg024279-zonename-Pacific/Fiji" value="Pacific/Fiji">Pacific/Fiji</option><option id="cbi-system-cfg024279-zonename-Pacific/Funafuti" value="Pacific/Funafuti">Pacific/Funafuti</option><option id="cbi-system-cfg024279-zonename-Pacific/Galapagos" value="Pacific/Galapagos">Pacific/Galapagos</option><option id="cbi-system-cfg024279-zonename-Pacific/Gambier" value="Pacific/Gambier">Pacific/Gambier</option><option id="cbi-system-cfg024279-zonename-Pacific/Guadalcanal" value="Pacific/Guadalcanal">Pacific/Guadalcanal</option><option id="cbi-system-cfg024279-zonename-Pacific/Guam" value="Pacific/Guam">Pacific/Guam</option><option id="cbi-system-cfg024279-zonename-Pacific/Honolulu" value="Pacific/Honolulu">Pacific/Honolulu</option><option id="cbi-system-cfg024279-zonename-Pacific/Johnston" value="Pacific/Johnston">Pacific/Johnston</option><option id="cbi-system-cfg024279-zonename-Pacific/Kiritimati" value="Pacific/Kiritimati">Pacific/Kiritimati</option><option id="cbi-system-cfg024279-zonename-Pacific/Kosrae" value="Pacific/Kosrae">Pacific/Kosrae</option><option id="cbi-system-cfg024279-zonename-Pacific/Kwajalein" value="Pacific/Kwajalein">Pacific/Kwajalein</option><option id="cbi-system-cfg024279-zonename-Pacific/Majuro" value="Pacific/Majuro">Pacific/Majuro</option><option id="cbi-system-cfg024279-zonename-Pacific/Marquesas" value="Pacific/Marquesas">Pacific/Marquesas</option><option id="cbi-system-cfg024279-zonename-Pacific/Midway" value="Pacific/Midway">Pacific/Midway</option><option id="cbi-system-cfg024279-zonename-Pacific/Nauru" value="Pacific/Nauru">Pacific/Nauru</option><option id="cbi-system-cfg024279-zonename-Pacific/Niue" value="Pacific/Niue">Pacific/Niue</option><option id="cbi-system-cfg024279-zonename-Pacific/Norfolk" value="Pacific/Norfolk">Pacific/Norfolk</option><option id="cbi-system-cfg024279-zonename-Pacific/Noumea" value="Pacific/Noumea">Pacific/Noumea</option><option id="cbi-system-cfg024279-zonename-Pacific/Pago Pago" value="Pacific/Pago Pago">Pacific/Pago Pago</option><option id="cbi-system-cfg024279-zonename-Pacific/Palau" value="Pacific/Palau">Pacific/Palau</option><option id="cbi-system-cfg024279-zonename-Pacific/Pitcairn" value="Pacific/Pitcairn">Pacific/Pitcairn</option><option id="cbi-system-cfg024279-zonename-Pacific/Ponape" value="Pacific/Ponape">Pacific/Ponape</option><option id="cbi-system-cfg024279-zonename-Pacific/Port Moresby" value="Pacific/Port Moresby">Pacific/Port Moresby</option><option id="cbi-system-cfg024279-zonename-Pacific/Rarotonga" value="Pacific/Rarotonga">Pacific/Rarotonga</option><option id="cbi-system-cfg024279-zonename-Pacific/Saipan" value="Pacific/Saipan">Pacific/Saipan</option><option id="cbi-system-cfg024279-zonename-Pacific/Tahiti" value="Pacific/Tahiti">Pacific/Tahiti</option><option id="cbi-system-cfg024279-zonename-Pacific/Tarawa" value="Pacific/Tarawa">Pacific/Tarawa</option><option id="cbi-system-cfg024279-zonename-Pacific/Tongatapu" value="Pacific/Tongatapu">Pacific/Tongatapu</option><option id="cbi-system-cfg024279-zonename-Pacific/Truk" value="Pacific/Truk">Pacific/Truk</option><option id="cbi-system-cfg024279-zonename-Pacific/Wake" value="Pacific/Wake">Pacific/Wake</option><option id="cbi-system-cfg024279-zonename-Pacific/Wallis" value="Pacific/Wallis">Pacific/Wallis</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('system.cfg024279', 'general')</script>
+
+	<div class="cbi-tabcontainer" id="container.system.cfg024279.language" style="display:none">
+		
+		<div class="cbi-value" id="cbi-system-cfg024279-_lang"><label class="cbi-value-title" for="cbid.system.cfg024279._lang">Langue</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.cfg024279._lang" name="cbid.system.cfg024279._lang" size="1">
+	<option id="cbi-system-cfg024279-_lang-auto" value="auto">auto</option><option id="cbi-system-cfg024279-_lang-en" value="en">English</option><option id="cbi-system-cfg024279-_lang-fr" value="fr" selected="selected">Français</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-system-cfg024279-_mediaurlbase"><label class="cbi-value-title" for="cbid.system.cfg024279._mediaurlbase">Apparence</label>
+		<div class="cbi-value-field">
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.system.cfg024279._mediaurlbase" name="cbid.system.cfg024279._mediaurlbase" size="1">
+	<option id="cbi-system-cfg024279-_mediaurlbase-/luci-static/openwrt.org" value="/luci-static/openwrt.org" selected="selected">OpenWrt</option>
+	</select>
+
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('system.cfg024279', 'language')</script>
+
+
+
+
+
+
+
+
+		</fieldset>
+		<br />
+
+	
+
+	
+</fieldset>
+
+	<br />
+</div>
+
+<div class="cbi-map" id="cbi-timeserver">
+	<h2><a id="content" name="content">Time Server (rdate)</a></h2>
+	
+<!-- tblsection -->
+<fieldset class="cbi-section" id="cbi-timeserver-timeserver">
+	
+<div class="cbi-section-descr"></div>
+	<div class="cbi-section-node"><table class="cbi-section-table">
+			<tr class="cbi-section-table-titles"><th class="cbi-section-table-cell">Nom</th><th class="cbi-section-table-cell">Interface</th><th class="cbi-section-table-cell">&#160;</th></tr>
+			<tr class="cbi-section-table-descr"><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th><th class="cbi-section-table-cell"></th></tr><tr class="cbi-section-table-row" id="cbi-timeserver-cfg02ef5b">
+				
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg02ef5b-hostname">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.timeserver.cfg02ef5b.hostname" id="cbid.timeserver.cfg02ef5b.hostname" value="ptbtime1.ptb.de" />
+	
+	</div>
+<div id="cbip-timeserver-cfg02ef5b-hostname"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg02ef5b-interface">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.timeserver.cfg02ef5b.interface" name="cbid.timeserver.cfg02ef5b.interface" size="1">
+	<option id="cbi-timeserver-cfg02ef5b-interface-" value="">Default</option><option id="cbi-timeserver-cfg02ef5b-interface-lan" value="lan">lan</option><option id="cbi-timeserver-cfg02ef5b-interface-wan" value="wan">wan</option>
+	</select>
+
+</div>
+<div id="cbip-timeserver-cfg02ef5b-interface"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.timeserver.cfg02ef5b" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-timeserver-cfg04308d">
+				
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg04308d-hostname">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.timeserver.cfg04308d.hostname" id="cbid.timeserver.cfg04308d.hostname" value="time-a.nist.gov" />
+	
+	</div>
+<div id="cbip-timeserver-cfg04308d-hostname"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg04308d-interface">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.timeserver.cfg04308d.interface" name="cbid.timeserver.cfg04308d.interface" size="1">
+	<option id="cbi-timeserver-cfg04308d-interface-" value="">Default</option><option id="cbi-timeserver-cfg04308d-interface-lan" value="lan">lan</option><option id="cbi-timeserver-cfg04308d-interface-wan" value="wan">wan</option>
+	</select>
+
+</div>
+<div id="cbip-timeserver-cfg04308d-interface"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.timeserver.cfg04308d" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-timeserver-cfg068c6a">
+				
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg068c6a-hostname">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.timeserver.cfg068c6a.hostname" id="cbid.timeserver.cfg068c6a.hostname" value="ntp.xs4all.nl" />
+	
+	</div>
+<div id="cbip-timeserver-cfg068c6a-hostname"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg068c6a-interface">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.timeserver.cfg068c6a.interface" name="cbid.timeserver.cfg068c6a.interface" size="1">
+	<option id="cbi-timeserver-cfg068c6a-interface-" value="">Default</option><option id="cbi-timeserver-cfg068c6a-interface-lan" value="lan">lan</option><option id="cbi-timeserver-cfg068c6a-interface-wan" value="wan">wan</option>
+	</select>
+
+</div>
+<div id="cbip-timeserver-cfg068c6a-interface"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.timeserver.cfg068c6a" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-timeserver-cfg08c43c">
+				
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg08c43c-hostname">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.timeserver.cfg08c43c.hostname" id="cbid.timeserver.cfg08c43c.hostname" value="ptbtime2.ptb.de" />
+	
+	</div>
+<div id="cbip-timeserver-cfg08c43c-hostname"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg08c43c-interface">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.timeserver.cfg08c43c.interface" name="cbid.timeserver.cfg08c43c.interface" size="1">
+	<option id="cbi-timeserver-cfg08c43c-interface-" value="">Default</option><option id="cbi-timeserver-cfg08c43c-interface-lan" value="lan">lan</option><option id="cbi-timeserver-cfg08c43c-interface-wan" value="wan">wan</option>
+	</select>
+
+</div>
+<div id="cbip-timeserver-cfg08c43c-interface"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.timeserver.cfg08c43c" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr><tr class="cbi-section-table-row" id="cbi-timeserver-cfg0ac1ae">
+				
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg0ac1ae-hostname">
+
+
+	<input type="text" class="cbi-input-text" onchange="cbi_d_update(this.id)" name="cbid.timeserver.cfg0ac1ae.hostname" id="cbid.timeserver.cfg0ac1ae.hostname" value="time-b.nist.gov" />
+	
+	</div>
+<div id="cbip-timeserver-cfg0ac1ae-hostname"></div>
+</td>
+
+
+
+<td class="cbi-value-field">
+<div id="cbi-timeserver-cfg0ac1ae-interface">
+
+
+
+	<select class="cbi-input-select" onchange="cbi_d_update(this.id)" id="cbid.timeserver.cfg0ac1ae.interface" name="cbid.timeserver.cfg0ac1ae.interface" size="1">
+	<option id="cbi-timeserver-cfg0ac1ae-interface-" value="">Default</option><option id="cbi-timeserver-cfg0ac1ae-interface-lan" value="lan">lan</option><option id="cbi-timeserver-cfg0ac1ae-interface-wan" value="wan">wan</option>
+	</select>
+
+</div>
+<div id="cbip-timeserver-cfg0ac1ae-interface"></div>
+</td>
+
+
+
+<td class="cbi-section-table-cell" style="width:50px">
+							<input type="image" value="Effacer" onclick="this.form.cbi_state='del-section'; return true" name="cbi.rts.timeserver.cfg0ac1ae" alt="Effacer" title="Effacer" src="../luci-static/resources/cbi/remove.gif" /></td></tr></table>
+
+		
+<div class="cbi-section-create cbi-tblsection-create">
+				
+					<input class="cbi-button cbi-button-add" type="submit" value="Ajouter" name="cbi.cts.timeserver.timeserver" title="Ajouter" />
+				
+			</div>
+</div>
+</fieldset>
+<!-- /tblsection -->
+
+	<br />
+</div>
+
+<div class="cbi-map" id="cbi-luci">
+	
+	
+
+	<fieldset class="cbi-section" id="cbi-luci-main">
+		<legend>Fichiers à conserver lors d'une mise à jour du firmware</legend>
+		
+		
+		
+	<ul class="cbi-tabmenu">
+
+		<script type="text/javascript">cbi_c['container.luci.main.detected'] = 1;</script>
+		<li id="tab.luci.main.detected" class="cbi-tab-disabled">
+			<a onclick="this.blur(); return cbi_t_switch('luci.main', 'detected')" href="systemcfa2.html?tab.luci.main=detected">Detected Files</a>
+			
+		</li>
+	
+		<script type="text/javascript">cbi_c['container.luci.main.custom'] = 1;</script>
+		<li id="tab.luci.main.custom" class="cbi-tab">
+			<a onclick="this.blur(); return cbi_t_switch('luci.main', 'custom')" href="system985f.html?tab.luci.main=custom">Custom Files</a>
+			<input type="hidden" id="tab.luci.main" name="tab.luci.main" value="custom" />
+		</li>
+	</ul>
+
+		<div class="cbi-section-node" id="cbi-luci-main">
+			
+
+
+	
+	<div class="cbi-tabcontainer" id="container.luci.main.detected" style="display:none">
+		<div class="cbi-tab-descr">The following files are detected by the system and will be kept automatically during sysupgrade</div>
+		<div class="cbi-value" id="cbi-luci-main-_detected"><label class="cbi-value-title" for="cbid.luci.main._detected">Detected files</label>
+		<div class="cbi-value-field">
+
+<ul><li>/etc/config/dhcp</li><li>/etc/config/dropbear</li><li>/etc/config/firewall</li><li>/etc/config/luci</li><li>/etc/config/multiwan</li><li>/etc/config/network</li><li>/etc/config/openvpn</li><li>/etc/config/openvpn_recipes</li><li>/etc/config/system</li><li>/etc/config/timeserver</li><li>/etc/config/ucitrack</li><li>/etc/config/uhttpd</li><li>/etc/config/wireless</li><li>/etc/dropbear/dropbear_dss_host_key</li><li>/etc/dropbear/dropbear_rsa_host_key</li><li>/etc/group</li><li>/etc/hosts</li><li>/etc/inittab</li><li>/etc/passwd</li><li>/etc/profile</li><li>/etc/rc.local</li><li>/etc/shells</li><li>/etc/sysctl.conf</li><li>/etc/uhttpd.crt</li><li>/etc/uhttpd.key</li></ul>
+
+<input type="hidden" id="cbid.luci.main._detected" value="&#60;ul&#62;&#60;li&#62;/etc/config/dhcp&#60;/li&#62;&#60;li&#62;/etc/config/dropbear&#60;/li&#62;&#60;li&#62;/etc/config/firewall&#60;/li&#62;&#60;li&#62;/etc/config/luci&#60;/li&#62;&#60;li&#62;/etc/config/multiwan&#60;/li&#62;&#60;li&#62;/etc/config/network&#60;/li&#62;&#60;li&#62;/etc/config/openvpn&#60;/li&#62;&#60;li&#62;/etc/config/openvpn_recipes&#60;/li&#62;&#60;li&#62;/etc/config/system&#60;/li&#62;&#60;li&#62;/etc/config/timeserver&#60;/li&#62;&#60;li&#62;/etc/config/ucitrack&#60;/li&#62;&#60;li&#62;/etc/config/uhttpd&#60;/li&#62;&#60;li&#62;/etc/config/wireless&#60;/li&#62;&#60;li&#62;/etc/dropbear/dropbear_dss_host_key&#60;/li&#62;&#60;li&#62;/etc/dropbear/dropbear_rsa_host_key&#60;/li&#62;&#60;li&#62;/etc/group&#60;/li&#62;&#60;li&#62;/etc/hosts&#60;/li&#62;&#60;li&#62;/etc/inittab&#60;/li&#62;&#60;li&#62;/etc/passwd&#60;/li&#62;&#60;li&#62;/etc/profile&#60;/li&#62;&#60;li&#62;/etc/rc.local&#60;/li&#62;&#60;li&#62;/etc/shells&#60;/li&#62;&#60;li&#62;/etc/sysctl.conf&#60;/li&#62;&#60;li&#62;/etc/uhttpd.crt&#60;/li&#62;&#60;li&#62;/etc/uhttpd.key&#60;/li&#62;&#60;/ul&#62;" />
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('luci.main', 'detected')</script>
+
+	<div class="cbi-tabcontainer" id="container.luci.main.custom">
+		<div class="cbi-tab-descr">This is a list of shell glob patterns for matching files and directories to include during sysupgrade</div>
+		<div class="cbi-value" id="cbi-luci-main-_custom"><label class="cbi-value-title" for="cbid.luci.main._custom">Custom files</label>
+		<div class="cbi-value-field">
+
+	<textarea class="cbi-input-textarea"  style="width: 100%" onchange="cbi_d_update(this.id)" name="cbid.luci.main._custom" id="cbid.luci.main._custom" rows="30">## This file contains files and directories that should
+## be preserved during an upgrade.
+
+# /etc/example.conf
+# /etc/openvpn/
+</textarea>
+
+</div></div>
+
+
+
+
+
+
+	</div>
+	<script type="text/javascript">cbi_t_add('luci.main', 'custom')</script>
+
+
+
+
+
+
+
+
+		</div>
+		<br />
+	</fieldset>
+
+<!-- /nsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/system/system?tab.luci.main=custom by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:21:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+

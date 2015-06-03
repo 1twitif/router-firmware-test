@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="usb_storage.js"></script>
+
+<link rel="stylesheet" type="text/css" href="usb_storage.css" media="all">
+</head><body>
+	<div id="darken"><iframe id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="reboot.sh_fichiers/wait_icon.gif">
+		</div>
+		<iframe id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+var cronLine = "";
+
+</script>
+
+<fieldset>
+	<legend class="sectionheader">Reboot</legend>
+	<center><input value="Reboot Now" id="reboot_button" class="big_button" onclick="reboot()" type="button"></center>
+
+</fieldset>
+<fieldset>
+	<legend class="sectionheader">Scheduled Reboot</legend>
+	<select class="leftcolumn" id="sched_reboot" onchange="setVisibility()">
+		<option selected="selected" value="none">No Scheduled Reboot</option>
+		<option value="scheduled">Reboot Scheduled</option>
+	</select>
+	<br>
+
+	<div style="display: none;" id="schedule_reboot_container" class="indent">
+		<div>
+			<label class="narrowleftcolumn">Router Will Reboot:</label>
+			<select class="widerightcolumn" id="reboot_interval" onchange="setVisibility()">
+				<option selected="selected" value="day">Every Day</option>
+				<option value="week">Every Week</option>
+				<option value="month">Every Month</option>
+			</select>
+		</div>
+
+		<div style="display: none;" id="reboot_day_container">
+			<label class="narrowleftcolumn" id="reboot_day_label" for="reboot_day">Reboot Day:</label>
+			<select class="widerightcolumn" id="reboot_day" style="width: 125px;"></select>
+		</div>
+
+		<div id="reboot_hour_container">
+			<label class="narrowleftcolumn" id="reboot_hour_label" for="reboot_hour">Reboot Hour:</label>
+	
+			<select class="widerightcolumn" id="reboot_hour" style="width: 125px;">
+				<option selected="selected" value="0">12:00 AM</option>
+				<option value="1">01:00 AM</option>
+				<option value="2">02:00 AM</option>
+				<option value="3">03:00 AM</option>
+				<option value="4">04:00 AM</option>
+				<option value="5">05:00 AM</option>
+				<option value="6">06:00 AM</option>
+				<option value="7">07:00 AM</option>
+				<option value="8">08:00 AM</option>
+				<option value="9">09:00 AM</option>
+				<option value="10">10:00 AM</option>
+				<option value="11">11:00 AM</option>
+				<option value="12">12:00 PM</option>
+				<option value="13">01:00 PM</option>
+				<option value="14">02:00 PM</option>
+				<option value="15">03:00 PM</option>
+				<option value="16">04:00 PM</option>
+				<option value="17">05:00 PM</option>
+				<option value="18">06:00 PM</option>
+				<option value="19">07:00 PM</option>
+				<option value="20">08:00 PM</option>
+				<option value="21">09:00 PM</option>
+				<option value="22">10:00 PM</option>
+				<option value="23">11:00 PM</option>
+			</select>
+		</div>
+	</div>
+</fieldset>
+<div id="bottom_button_container">
+	<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+	<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+</div>
+
+<iframe id="reboot_test" onload="reloadPage()" style="display: none;"></iframe>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+	resetData();
+</script>
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">System</div>
+							<div id="submenu_container">
+								<a indepth="true" href="access.html">Router Access</a>
+								<a indepth="true" href="identification.html">Identification</a>
+								<a indepth="true" href="time.html">Time</a>
+								<div class="submenu_selected">USB Storage</div>
+								<a href="backup.html">Backup / Restore</a>
+								<a indepth="true" href="update.html">Update Firmware</a>
+								<a href="reboot.html">Reboot</a>
+								<a indepth="true" href="about.html">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

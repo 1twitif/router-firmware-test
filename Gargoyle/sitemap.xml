@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../../sitemap.xsl" type="text/xsl" media="all"?>
+<site>
+<page file="index.html" text="Gargoyle Router Management Utility" title="Gargoyle Router Management Utility">
+<page file="bandwidth.html" text="Bandwidth Usage" title="Gargoyle Router Management Utility"/>
+<page file="bandwidth_distribution.html" text="B/W Distribution" title="Gargoyle Router Management Utility"/>
+<page file="webmon.html" text="Web Usage" title="Gargoyle Router Management Utility"/>
+<page file="hosts.html" text="Connected Hosts" title="Gargoyle Router Management Utility"/>
+<page file="conntrack.html" text="Connection List" title="Gargoyle Router Management Utility"/>
+<page file="basic.html" text="Connection" title="Gargoyle Router Management Utility">
+<page file="dhcp.html" text="DHCP" title="Gargoyle Router Management Utility"/>
+<page file="ddns.html" text="Dynamic DNS" title="Gargoyle Router Management Utility"/>
+<page file="routing.html" text="Routing" title="Gargoyle Router Management Utility"/>
+<page file="wol.html" text="Wake on LAN" title="Gargoyle Router Management Utility"/>
+</page>
+<page file="port_forwarding.html" text="Firewall" title="Gargoyle Router Management Utility">
+<page file="connlimits.html" text="Connection Limits" title="Gargoyle Router Management Utility"/>
+<page file="restriction.html" text="Restrictions" title="Gargoyle Router Management Utility"/>
+<page file="quotas.html" text="Quotas" title="Gargoyle Router Management Utility"/>
+<page file="qos_upload.html" text="QoS (Upload)" title="Gargoyle Router Management Utility"/>
+<page file="qos_download.html" text="QoS (Download)" title="Gargoyle Router Management Utility"/>
+</page>
+<page file="access.html" text="System" title="Gargoyle Router Management Utility">
+<page file="identification.html" text="Identification" title="Gargoyle Router Management Utility"/>
+<page file="time.html" text="Time" title="Gargoyle Router Management Utility"/>
+<page file="usb_storage.html" text="USB Storage" title="Gargoyle Router Management Utility"/>
+<page file="update.html" text="Update Firmware" title="Gargoyle Router Management Utility"/>
+<page file="about.html" text="About" title="Gargoyle Router Management Utility"/>
+</page>
+</page>
+</site>

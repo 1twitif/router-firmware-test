@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="hosts.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+
+<link rel="stylesheet" type="text/css" href="hosts.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="hosts_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="hosts_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var wirelessIf = "wlan0";
+	var uciWireless = "radio0";
+	var currentWirelessMac = "30:46:9A:0B:88:35";
+	var defaultLanIf = "eth0";
+	var currentLanIf = "br-lan";
+	var currentLanMac = "30:46:9A:0B:88:35";
+	var currentLanIp = "192.168.1.1";
+	var currentLanMask = "255.255.255.0";
+	var defaultWanIf = "eth1";
+	var defaultWanMac = "30:46:9A:0B:88:36";
+	var currentWanIf = "eth1";
+	var currentWanMac = "30:46:9A:0B:88:36";
+	var currentWanIp = "192.168.0.8";
+	var currentWanMask = "255.255.255.0";
+	var currentWanGateway = "192.168.0.1";
+	var ipToHostname = [];
+	var ipsWithHostname = [ "127.0.0.1","192.168.0.8","192.168.1.1" ];
+	ipToHostname[ "127.0.0.1" ] = "Gargoyle";
+	ipToHostname[ "192.168.0.8" ] = "Gargoyle";
+	ipToHostname[ "192.168.1.1" ] = "Gargoyle";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('dhcp', 'cfg024c78', '', "dnsmasq");
+	uciOriginal.set('dhcp', 'cfg024c78', 'domainneeded', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'boguspriv', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'filterwin2k', "0");
+	uciOriginal.set('dhcp', 'cfg024c78', 'localise_queries', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'rebind_protection', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'rebind_localhost', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'local', "/lan/");
+	uciOriginal.set('dhcp', 'cfg024c78', 'domain', "lan");
+	uciOriginal.set('dhcp', 'cfg024c78', 'expandhosts', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'nonegcache', "0");
+	uciOriginal.set('dhcp', 'cfg024c78', 'authoritative', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'readethers', "1");
+	uciOriginal.set('dhcp', 'cfg024c78', 'leasefile', "/tmp/dhcp.leases");
+	uciOriginal.set('dhcp', 'cfg024c78', 'resolvfile', "/tmp/resolv.conf.auto");
+	uciOriginal.set('dhcp', 'lan', '', "dhcp");
+	uciOriginal.set('dhcp', 'lan', 'interface', "lan");
+	uciOriginal.set('dhcp', 'lan', 'start', "100");
+	uciOriginal.set('dhcp', 'lan', 'limit', "150");
+	uciOriginal.set('dhcp', 'lan', 'leasetime', "12h");
+	uciOriginal.set('dhcp', 'wan', '', "dhcp");
+	uciOriginal.set('dhcp', 'wan', 'interface', "wan");
+	uciOriginal.set('dhcp', 'wan', 'ignore', "1");
+	uciOriginal.set('wireless', 'radio0', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio0', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio0', 'channel', "11");
+	uciOriginal.set('wireless', 'radio0', 'macaddr', "30:46:9a:0b:88:35");
+	uciOriginal.set('wireless', 'radio0', 'hwmode', "11ng");
+	uciOriginal.set('wireless', 'radio0', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio0', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio0', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg035040', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg035040', 'device', "radio0");
+	uciOriginal.set('wireless', 'cfg035040', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg035040', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg035040', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg035040', 'encryption', "none");
+	uciOriginal.set('wireless', 'radio1', '', "wifi-device");
+	uciOriginal.set('wireless', 'radio1', 'type', "mac80211");
+	uciOriginal.set('wireless', 'radio1', 'channel', "36");
+	uciOriginal.set('wireless', 'radio1', 'macaddr', "30:46:9a:0b:88:37");
+	uciOriginal.set('wireless', 'radio1', 'hwmode', "11na");
+	uciOriginal.set('wireless', 'radio1', 'htmode', "HT20");
+	uciOriginal.set('wireless', 'radio1', 'ht_capab', "SHORT-GI-40 TX-STBC RX-STBC1 DSSS_CCK-40");
+	uciOriginal.set('wireless', 'radio1', 'disabled', "1");
+	uciOriginal.set('wireless', 'cfg062561', '', "wifi-iface");
+	uciOriginal.set('wireless', 'cfg062561', 'device', "radio1");
+	uciOriginal.set('wireless', 'cfg062561', 'network', "lan");
+	uciOriginal.set('wireless', 'cfg062561', 'mode', "ap");
+	uciOriginal.set('wireless', 'cfg062561', 'ssid', "OpenWrt");
+	uciOriginal.set('wireless', 'cfg062561', 'encryption', "none");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+var dhcpLeaseLines;
+var wifiLines;
+var wirelessDriver;
+var conntrackLines;
+var arpLines;
+var currentTime;
+dhcpLeaseLines = new Array();
+wifiLines = new Array();
+var wirelessDriver="mac80211";
+conntrackLines = new Array();
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51004 dport=80 packets=5 bytes=1053 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51004 packets=5 bytes=806 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50972 dport=80 packets=6 bytes=1087 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50972 packets=6 bytes=3196 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50995 dport=80 packets=8 bytes=1143 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50995 packets=7 bytes=7520 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51025 dport=80 packets=8 bytes=1098 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51025 packets=7 bytes=7618 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50956 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50956 packets=5 bytes=794 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51000 dport=80 packets=7 bytes=1135 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51000 packets=7 bytes=5638 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 100 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50958 dport=80 packets=5 bytes=1012 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50958 packets=5 bytes=285 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51012 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51012 packets=5 bytes=794 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50984 dport=80 packets=10 bytes=1243 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50984 packets=11 bytes=23321 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51038 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51038 packets=5 bytes=794 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51002 dport=80 packets=9 bytes=1216 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51002 packets=10 bytes=19551 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 299 ESTABLISHED src=192.168.1.165 dst=192.168.1.1 sport=51046 dport=80 packets=5 bytes=996 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51046 packets=8 bytes=6167 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51041 dport=80 packets=6 bytes=1100 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51041 packets=6 bytes=3051 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 114 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50962 dport=80 packets=8 bytes=1130 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50962 packets=7 bytes=7520 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51036 dport=80 packets=6 bytes=1104 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51036 packets=7 bytes=2113 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 119 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51047 dport=80 packets=7 bytes=1086 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51047 packets=7 bytes=7520 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50942 dport=80 packets=12 bytes=1291 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50942 packets=11 bytes=24316 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50975 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50975 packets=5 bytes=1769 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50997 dport=80 packets=15 bytes=1395 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50997 packets=14 bytes=52604 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50944 dport=80 packets=7 bytes=1063 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50944 packets=7 bytes=6774 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50966 dport=80 packets=12 bytes=1265 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50966 packets=11 bytes=25991 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50969 dport=80 packets=10 bytes=1243 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50969 packets=11 bytes=23321 [ASSURED] mark=0 use=2");
+conntrackLines.push("udp      17 59 src=192.168.1.165 dst=192.168.0.11 sport=49152 dport=161 packets=193 bytes=20458 [UNREPLIED] src=192.168.0.11 dst=192.168.0.8 sport=161 dport=49152 packets=0 bytes=0 mark=0 use=3");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51028 dport=80 packets=9 bytes=1216 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51028 packets=10 bytes=15923 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51042 dport=80 packets=5 bytes=1073 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51042 packets=5 bytes=667 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51040 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51040 packets=5 bytes=842 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51003 dport=80 packets=10 bytes=1256 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51003 packets=9 bytes=15883 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50948 dport=80 packets=5 bytes=1053 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50948 packets=5 bytes=806 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50951 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50951 packets=5 bytes=1769 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50953 dport=80 packets=6 bytes=1104 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50953 packets=6 bytes=2073 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50940 dport=80 packets=13 bytes=1357 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50940 packets=22 bytes=18944 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51016 dport=80 packets=5 bytes=1026 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51016 packets=5 bytes=285 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50950 dport=80 packets=5 bytes=1052 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50950 packets=5 bytes=594 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 119 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51045 dport=80 packets=5 bytes=1081 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51045 packets=5 bytes=718 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51010 dport=80 packets=6 bytes=1104 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51010 packets=7 bytes=2113 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 114 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50963 dport=80 packets=14 bytes=1372 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50963 packets=11 bytes=24316 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50945 dport=80 packets=7 bytes=1135 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50945 packets=7 bytes=5638 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51005 dport=80 packets=6 bytes=1087 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51005 packets=6 bytes=3196 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 58 SYN_RECV src=192.168.1.165 dst=192.168.1.1 sport=51044 dport=80 packets=1 bytes=52 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51044 packets=1 bytes=52 mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50985 dport=80 packets=5 bytes=1013 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50985 packets=5 bytes=285 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 114 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50961 dport=80 packets=14 bytes=1360 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50961 packets=25 bytes=23841 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50965 dport=80 packets=7 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50965 packets=8 bytes=7658 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 119 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51048 dport=80 packets=9 bytes=1168 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51048 packets=11 bytes=24316 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50992 dport=80 packets=9 bytes=1203 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50992 packets=9 bytes=23241 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 70 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50938 dport=80 packets=5 bytes=981 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50938 packets=5 bytes=850 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50941 dport=80 packets=8 bytes=1129 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50941 packets=7 bytes=7520 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51026 dport=80 packets=7 bytes=1135 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51026 packets=7 bytes=5638 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50947 dport=80 packets=10 bytes=1256 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50947 packets=9 bytes=15883 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 5 CLOSE src=192.168.1.165 dst=192.168.1.1 sport=50991 dport=80 packets=7 bytes=1123 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50991 packets=8 bytes=23201 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51030 dport=80 packets=6 bytes=1087 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51030 packets=6 bytes=3196 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51029 dport=80 packets=5 bytes=1053 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51029 packets=5 bytes=806 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50994 dport=80 packets=10 bytes=1213 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50994 packets=16 bytes=14677 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51018 dport=80 packets=11 bytes=1296 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51018 packets=10 bytes=19551 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50970 dport=80 packets=10 bytes=1256 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50970 packets=9 bytes=15883 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50968 dport=80 packets=7 bytes=1115 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50968 packets=6 bytes=4668 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50939 dport=80 packets=5 bytes=1034 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50939 packets=5 bytes=285 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50980 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50980 packets=5 bytes=648 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50976 dport=80 packets=5 bytes=1055 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50976 packets=5 bytes=1807 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50996 dport=80 packets=12 bytes=1305 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50996 packets=11 bytes=24316 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51023 dport=80 packets=17 bytes=1459 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51023 packets=14 bytes=52604 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51034 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51034 packets=5 bytes=1769 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50937 dport=80 packets=7 bytes=1205 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50937 packets=7 bytes=536 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51009 dport=80 packets=5 bytes=1055 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51009 packets=5 bytes=1807 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50954 dport=80 packets=5 bytes=1051 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50954 packets=5 bytes=552 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 600 ESTABLISHED src=192.168.1.165 dst=192.168.1.1 sport=51050 dport=80 packets=3 bytes=897 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51050 packets=2 bytes=92 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51031 dport=80 packets=5 bytes=1052 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51031 packets=5 bytes=594 [ASSURED] mark=0 use=2");
+conntrackLines.push("udp      17 44 src=192.168.1.165 dst=192.168.0.16 sport=427 dport=427 packets=140 bytes=10080 [UNREPLIED] src=192.168.0.16 dst=192.168.0.8 sport=427 dport=427 packets=0 bytes=0 mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51008 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51008 packets=5 bytes=1769 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51037 dport=80 packets=5 bytes=1051 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51037 packets=5 bytes=552 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51014 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51014 packets=5 bytes=842 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50990 dport=80 packets=9 bytes=1203 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50990 packets=10 bytes=23281 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50974 dport=80 packets=7 bytes=1138 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50974 packets=8 bytes=6263 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 7 CLOSE src=192.168.1.165 dst=192.168.1.1 sport=51017 dport=80 packets=5 bytes=1054 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51017 packets=4 bytes=1649 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51007 dport=80 packets=5 bytes=1338 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51007 packets=5 bytes=767 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50955 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50955 packets=5 bytes=842 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50988 dport=80 packets=7 bytes=1479 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50988 packets=9 bytes=4128 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51011 dport=80 packets=5 bytes=1051 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51011 packets=5 bytes=552 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50949 dport=80 packets=6 bytes=1087 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50949 packets=6 bytes=3196 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50946 dport=80 packets=7 bytes=1114 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50946 packets=6 bytes=4668 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51033 dport=80 packets=7 bytes=1138 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51033 packets=7 bytes=6223 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50952 dport=80 packets=5 bytes=1055 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50952 packets=5 bytes=1807 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50967 dport=80 packets=7 bytes=1135 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50967 packets=7 bytes=5638 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50981 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50981 packets=5 bytes=842 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51015 dport=80 packets=10 bytes=1256 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51015 packets=11 bytes=19591 [ASSURED] mark=0 use=2");
+conntrackLines.push("udp      17 56 src=192.168.1.165 dst=192.168.1.255 sport=138 dport=138 packets=1 bytes=239 [UNREPLIED] src=192.168.1.255 dst=192.168.1.165 sport=138 dport=138 packets=0 bytes=0 mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50998 dport=80 packets=8 bytes=1114 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50998 packets=8 bytes=7658 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51043 dport=80 packets=5 bytes=1010 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51043 packets=5 bytes=285 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50971 dport=80 packets=5 bytes=1053 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50971 packets=5 bytes=806 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51001 dport=80 packets=7 bytes=1128 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51001 packets=6 bytes=4668 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51021 dport=80 packets=7 bytes=1087 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51021 packets=8 bytes=7560 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51019 dport=80 packets=5 bytes=1082 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51019 packets=5 bytes=718 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51027 dport=80 packets=7 bytes=1112 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51027 packets=6 bytes=4668 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 119 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51049 dport=80 packets=19 bytes=1538 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51049 packets=15 bytes=52644 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51032 dport=80 packets=5 bytes=1071 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51032 packets=5 bytes=680 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50989 dport=80 packets=13 bytes=1361 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50989 packets=22 bytes=18945 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50977 dport=80 packets=6 bytes=1104 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50977 packets=6 bytes=2073 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50978 dport=80 packets=5 bytes=1051 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50978 packets=5 bytes=552 [ASSURED] mark=0 use=2");
+conntrackLines.push("udp      17 47 src=192.168.1.165 dst=192.168.1.255 sport=137 dport=137 packets=507 bytes=39978 [UNREPLIED] src=192.168.1.255 dst=192.168.1.165 sport=137 dport=137 packets=0 bytes=0 mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51035 dport=80 packets=5 bytes=1055 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51035 packets=5 bytes=1807 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51022 dport=80 packets=14 bytes=1369 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51022 packets=11 bytes=24316 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50987 dport=80 packets=7 bytes=1154 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50987 packets=7 bytes=5991 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51024 dport=80 packets=11 bytes=1219 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51024 packets=9 bytes=12647 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50957 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50957 packets=5 bytes=648 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 600 ESTABLISHED src=192.168.1.165 dst=192.168.1.1 sport=51051 dport=80 packets=3 bytes=897 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51051 packets=2 bytes=92 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50999 dport=80 packets=9 bytes=1154 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50999 packets=8 bytes=11614 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51020 dport=80 packets=11 bytes=1237 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51020 packets=19 bytes=15631 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50979 dport=80 packets=5 bytes=1050 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50979 packets=5 bytes=794 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 71 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50943 dport=80 packets=16 bytes=1421 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50943 packets=15 bytes=52644 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 118 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51039 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51039 packets=5 bytes=648 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51006 dport=80 packets=5 bytes=1052 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51006 packets=5 bytes=594 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 114 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50960 dport=80 packets=5 bytes=1085 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50960 packets=5 bytes=718 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50973 dport=80 packets=5 bytes=1052 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50973 packets=5 bytes=594 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50986 dport=80 packets=7 bytes=1158 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50986 packets=7 bytes=6333 [ASSURED] mark=0 use=2");
+conntrackLines.push("udp      17 19 src=192.168.1.165 dst=192.168.1.1 sport=49767 dport=53 packets=1 bytes=58 src=192.168.1.1 dst=192.168.1.165 sport=53 dport=49767 packets=1 bytes=58 mark=0 use=2");
+conntrackLines.push("tcp      6 116 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50993 dport=80 packets=5 bytes=1098 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50993 packets=5 bytes=718 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50982 dport=80 packets=12 bytes=1323 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50982 packets=11 bytes=23321 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 114 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50964 dport=80 packets=20 bytes=1582 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50964 packets=14 bytes=52604 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 115 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=50983 dport=80 packets=11 bytes=1283 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=50983 packets=10 bytes=23281 [ASSURED] mark=0 use=2");
+conntrackLines.push("tcp      6 117 TIME_WAIT src=192.168.1.165 dst=192.168.1.1 sport=51013 dport=80 packets=5 bytes=1061 src=192.168.1.1 dst=192.168.1.165 sport=80 dport=51013 packets=5 bytes=648 [ASSURED] mark=0 use=2");
+arpLines = new Array();
+arpLines.push("IP address       HW type     Flags       HW address            Mask     Device");
+arpLines.push("192.168.1.165    0x1         0x2         90:e6:ba:4e:00:18     *        br-lan");
+arpLines.push("192.168.0.16     0x1         0x0         00:00:00:00:00:00     *        eth1");
+arpLines.push("192.168.0.11     0x1         0x0         00:00:00:00:00:00     *        eth1");
+arpLines.push("192.168.0.1      0x1         0x2         c0:3f:0e:43:05:00     *        eth1");
+currentTime=1298455972;
+currentWanIp="192.168.0.8";
+currentLanIp="192.168.1.1";
+
+//-->
+</script>
+
+<fieldset>
+	<legend>Refresh Rate</legend>
+	<select id="refresh_rate">
+		<option value="2000">2 Seconds</option>
+		<option value="10000">10 Seconds</option>
+		<option value="30000">30 Seconds</option>
+		<option value="60000">60 Seconds</option>
+		<option value="never">Never</option>
+	</select>
+	<br>
+	<p><em>This specifies how frequently data on this page is reloaded</em></p>
+</fieldset>
+<fieldset style="display: block;" id="dhcp_data">
+	<legend class="sectionHeader">Current DHCP Leases</legend>
+	<div id="lease_table_container"><table style="display: none;" id="lease_table"><tbody><tr class="header_row"><th>Hostname</th><th>Host IP</th><th>Host MAC</th><th>Lease Expires</th></tr></tbody></table></div>
+</fieldset>
+<fieldset style="display: none;" id="wifi_data">
+	<legend class="sectionheader">Connected Wireless Hosts</legend>
+	<div id="wifi_table_container"></div>
+</fieldset>
+<fieldset id="active_data">
+	<legend class="sectionheader">Hosts With Active Connections</legend>
+	<div id="active_table_container"><table style="display: block;" id="active_table"><tbody><tr class="header_row"><th>Hostname</th><th>Host IP</th><th>Host MAC</th><th>Active TCP Cxns</th><th>Recent TCP Cxns</th><th>UDP Cxns</th></tr><tr class="odd"><td class="active_table_column_1">(unknown)</td><td class="active_table_column_2">192.168.1.165</td><td class="active_table_column_3">90:E6:BA:4E:00:18</td><td class="active_table_column_4">4</td><td class="active_table_column_5">110</td><td class="active_table_column_6">5</td></tr></tbody></table></div>
+</fieldset>
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_selected_divider_end1"></div>
+					<div class="nav_selected_end1">
+						<div class="nav_selected_container_end1">
+							<div class="selected_header">Status</div>
+							<div id="submenu_container">
+								<a indepth="true" href="index.html">Overview</a>
+								<a indepth="true" href="bandwidth.html">Bandwidth Usage</a>
+								<a indepth="true" href="bandwidth_distribution.html">B/W Distribution</a>
+								<a indepth="true" href="webmon.html">Web Usage</a>
+								<div class="submenu_selected">Connected Hosts</div>
+								<a indepth="true" href="conntrack.html">Connection List</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="port_forwarding.html">Firewall</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

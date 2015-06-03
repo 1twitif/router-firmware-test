@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	
+<!-- Mirrored from 192.168.1.1/Site_Survey.asp by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Feb 2011 11:40:13 GMT -->
+<head>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+		<script type="text/javascript" src="common.js"></script>
+		<script type="text/javascript" src="lang_pack/english.js"></script>
+		<script type="text/javascript" src="lang_pack/language.js"></script>
+		<link type="text/css" rel="stylesheet" href="style/elegant/style.css" />
+		<!--[if IE]><link type="text/css" rel="stylesheet" href="style/elegant/style_ie.css" /><![endif]-->
+		<script type="text/javascript" src="js/prototype.js"></script>
+		<script type="text/javascript" src="js/effects.js"></script>
+		<script type="text/javascript" src="js/window.js"></script>
+		<script type="text/javascript" src="js/window_effects.js"></script>
+		<link type="text/css" rel="stylesheet" href="style/pwc/default.css" />
+		<link type="text/css" rel="stylesheet" href="style/pwc/ddwrt.css" />
+		<title>DD-WRT (build 14896) - Site Survey</title>
+
+<script type="text/javascript">
+//<![CDATA[
+function do_join (F,SSID) {
+F.wl_ssid.value = SSID;
+F.ath0_ssid.value = SSID;
+
+F.wl_mode.value="sta"
+F.ath0_mode.value="sta"
+if (F.wl_ssid.value == "") {
+alert(errmsg.err47);
+return false;
+}
+apply(F);
+}
+
+//]]>
+</script>
+</head>
+<body>
+<div id="bulle" class="bulle"></div>
+<form name="wireless" action="http://admin:sdf@192.168.1.1/apply.cgi" method="post">
+<input type="hidden" name="submit_button" value="Join" />
+<input type="hidden" name="action" value="Apply" />
+<input type="hidden" name="change_action" />
+<input type="hidden" name="submit_type" />
+<input type="hidden" name="commit" value="1" />
+
+<input type="hidden" name="wl_ssid" />
+<input type="hidden" name="wl_mode" />
+<input type="hidden" name="ath0_ssid" />
+<input type="hidden" name="ath0_mode" />
+<h2><script type="text/javascript">Capture(survey.h2)</script></h2>
+<table class="center table" cellspacing="5" id="survey_table">
+<tr>
+<th width="25%"><script type="text/javascript">Capture(share.ssid)</script></th>
+<th width="7%">Mode</th>
+<th width="19%"><script type="text/javascript">Capture(share.mac)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.channel)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.rssi)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.noise)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.beacon)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.openn)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.dtim)</script></th>
+<th width="6%"><script type="text/javascript">Capture(share.rates)</script></th>
+<th width="7%"><script type="text/javascript">Capture(survey.thjoin)</script></th>
+</tr>
+<script type="text/javascript">
+//<![CDATA[
+
+var table = new Array(
+ "Bbox-19DCD6","AP","00:21:86:49:a4:2d","1","-65","-95","0","No","WPA2 WPA WME HT40","0","300(b/g/n)"
+,"NEUF_6024","AP","00:17:33:be:60:28","1","-78","-95","0","No","WPA WME","0","54(b/g)"
+,"Bbox-45453A","AP","00:1f:9f:e3:17:e9","1","-88","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"pavlafree","AP","82:8e:83:e0:03:d8","1","-87","-95","0","No","","0","54(b/g)"
+,"hidden","AP","82:8e:83:e0:03:d9","1","-87","-95","0","No","WPA2 WME","0","54(b/g)"
+,"FreeWifi","AP","82:8e:83:e0:03:da","1","-87","-95","0","Yes","WME","0","54(b/g)"
+,"hidden","AP","82:8e:83:e0:03:db","1","-87","-95","0","No","WPA2 WME","0","54(b/g)"
+,"Bbox-E8C878","AP","00:1f:9f:e7:40:8f","1","-85","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"Bbox-19DCD6","AP","00:21:86:49:a4:2d","1","-65","-95","0","No","WPA2 WPA WME HT40","0","300(b/g/n)"
+,"NEUF_6024","AP","00:17:33:be:60:28","1","-78","-95","0","No","WPA WME","0","54(b/g)"
+,"Bbox-45453A","AP","00:1f:9f:e3:17:e9","1","-88","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"pavlafree","AP","82:8e:83:e0:03:d8","1","-87","-95","0","No","","0","54(b/g)"
+,"hidden","AP","82:8e:83:e0:03:d9","1","-87","-95","0","No","WPA2 WME","0","54(b/g)"
+,"FreeWifi","AP","82:8e:83:e0:03:da","1","-87","-95","0","Yes","WME","0","54(b/g)"
+,"hidden","AP","82:8e:83:e0:03:db","1","-87","-95","0","No","WPA2 WME","0","54(b/g)"
+,"Bbox-E8C878","AP","00:1f:9f:e7:40:8f","1","-85","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"SFR_ADSL_14B14","AP","00:01:36:15:9f:6c","3","-91","-95","0","No","WME","0","54(b/g)"
+,"SFR_ADSL_14B14","AP","00:01:36:15:9f:6c","3","-91","-95","0","No","WME","0","54(b/g)"
+,"Livebox-2ad9","AP","00:1d:6a:64:68:99","6","-91","-95","0","No","WPA2 WPA WME ATH HT40","0","300(b/g/n)"
+,"NUMERICABLE-E43A","AP","c0:3f:0e:d5:72:90","6","-76","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-27F0","AP","00:1a:2b:3b:e8:e3","6","-84","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-C1F7","AP","00:1a:2b:19:ee:c6","6","-79","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-8102","AP","00:1a:2b:33:65:35","6","-89","-95","0","No","WME","0","54(b/g)"
+,"Bbox-58E5DA","AP","00:1f:9f:ef:ef:fd","6","-69","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"NUMERICABLE-9E06","AP","00:1f:33:ce:17:b5","6","-80","-95","0","No","WME","0","54(b/g)"
+,"open-network","AP","00:c0:49:53:18:b8","6","-26","-95","0","Yes","","0","13"
+,"SpeedTouch738E70","AP","00:14:7f:43:94:4f","6","-87","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-35EA","AP","00:1a:2b:12:8e:89","6","-90","-95","0","No","WME","0","54(b/g)"
+,"Livebox-2ad9","AP","00:1d:6a:64:68:99","6","-91","-95","0","No","WPA2 WPA WME ATH HT40","0","300(b/g/n)"
+,"NUMERICABLE-E43A","AP","c0:3f:0e:d5:72:90","6","-76","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-27F0","AP","00:1a:2b:3b:e8:e3","6","-84","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-C1F7","AP","00:1a:2b:19:ee:c6","6","-79","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-8102","AP","00:1a:2b:33:65:35","6","-89","-95","0","No","WME","0","54(b/g)"
+,"Bbox-58E5DA","AP","00:1f:9f:ef:ef:fd","6","-69","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"NUMERICABLE-9E06","AP","00:1f:33:ce:17:b5","6","-80","-95","0","No","WME","0","54(b/g)"
+,"open-network","AP","00:c0:49:53:18:b8","6","-26","-95","0","Yes","","0","13"
+,"SpeedTouch738E70","AP","00:14:7f:43:94:4f","6","-87","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-35EA","AP","00:1a:2b:12:8e:89","6","-90","-95","0","No","WME","0","54(b/g)"
+,"Livebox-2ad9","AP","00:1d:6a:64:68:99","6","-91","-95","0","No","WPA2 WPA WME ATH HT40","0","300(b/g/n)"
+,"NUMERICABLE-E43A","AP","c0:3f:0e:d5:72:90","6","-76","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-27F0","AP","00:1a:2b:3b:e8:e3","6","-84","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-C1F7","AP","00:1a:2b:19:ee:c6","6","-79","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-8102","AP","00:1a:2b:33:65:35","6","-89","-95","0","No","WME","0","54(b/g)"
+,"Bbox-58E5DA","AP","00:1f:9f:ef:ef:fd","6","-69","-95","0","No","WPA2 WPA WME","0","54(b/g)"
+,"NUMERICABLE-9E06","AP","00:1f:33:ce:17:b5","6","-80","-95","0","No","WME","0","54(b/g)"
+,"open-network","AP","00:c0:49:53:18:b8","6","-26","-95","0","Yes","","0","13"
+,"SpeedTouch738E70","AP","00:14:7f:43:94:4f","6","-87","-95","0","No","WME","0","54(b/g)"
+,"NUMERICABLE-35EA","AP","00:1a:2b:12:8e:89","6","-90","-95","0","No","WME","0","54(b/g)"
+,"Akira","AP","a2:ea:65:61:30:98","8","-91","-95","0","No","WPA WME HT20","0","150(b/g/n)"
+,"Akira","AP","a2:ea:65:61:30:98","8","-91","-95","0","No","WPA WME HT40","0","300(b/g/n)"
+,"MFRANCEFFREE","AP","e2:7c:cd:fc:c1:74","11","-5","-95","0","No","WME HT20","0","150(b/g/n)"
+,"hidden","AP","e2:7c:cd:fc:c1:75","11","-39","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","e2:7c:cd:fc:c1:76","11","-89","-95","0","Yes","WME HT40","0","300(b/g/n)"
+,"freephonie","AP","e2:7c:cd:fc:c1:77","11","-41","-95","0","No","WPA WME HT40","0","300(b/g/n)"
+,"hidden","AP","42:62:f0:14:e7:ad","11","-84","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","96:92:d8:bf:28:62","11","-72","-95","0","Yes","WME HT20","0","150(b/g/n)"
+,"hidden","AP","96:92:d8:bf:28:63","11","-72","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","96:5c:a3:85:a3:ae","11","-53","-95","0","Yes","WME","0","54(b/g)"
+,"freephonie","AP","96:5c:a3:85:a3:af","11","-53","-95","0","No","WPA WME","0","54(b/g)"
+,"Livebox-7247","AP","00:1d:6a:a7:02:0c","11","-35","-95","0","No","WPA WME ATH","0","54(b/g)"
+,"SFR WiFi Public","AP","00:25:15:b9:fd:32","11","-67","-95","0","Yes","WME","0","54(b/g)"
+,"NEUF_FD2C","AP","00:25:15:b9:fd:30","11","-66","-95","0","No","WPA WME","0","54(b/g)"
+,"Neuf WiFi","AP","00:25:15:b9:fd:31","11","-67","-95","0","Yes","WME","0","54(b/g)"
+,"Valkyr","AP","22:7b:d2:d3:76:fc","11","-80","-95","0","No","WPA","0","54(b/g)"
+,"FreeWifi","AP","22:7b:d2:d3:76:fe","11","-81","-95","0","Yes","WME","0","54(b/g)"
+,"hidden","AP","96:5c:a3:85:a3:ac","11","-53","-95","0","No","WPA2","0","54(b/g)"
+,"hidden","AP","96:5c:a3:85:a3:ad","11","-53","-95","0","No","WPA2 WME","0","54(b/g)"
+,"MFRANCEFFREE","AP","e2:7c:cd:fc:c1:74","11","-5","-95","0","No","WME HT20","0","150(b/g/n)"
+,"hidden","AP","e2:7c:cd:fc:c1:75","11","-39","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","e2:7c:cd:fc:c1:76","11","-89","-95","0","Yes","WME HT40","0","300(b/g/n)"
+,"freephonie","AP","e2:7c:cd:fc:c1:77","11","-41","-95","0","No","WPA WME HT40","0","300(b/g/n)"
+,"hidden","AP","42:62:f0:14:e7:ad","11","-84","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","96:92:d8:bf:28:62","11","-72","-95","0","Yes","WME HT20","0","150(b/g/n)"
+,"hidden","AP","96:92:d8:bf:28:63","11","-72","-95","0","No","WPA2 WME HT20","0","150(b/g/n)"
+,"FreeWifi","AP","96:5c:a3:85:a3:ae","11","-53","-95","0","Yes","WME","0","54(b/g)"
+,"freephonie","AP","96:5c:a3:85:a3:af","11","-53","-95","0","No","WPA WME","0","54(b/g)"
+,"Livebox-7247","AP","00:1d:6a:a7:02:0c","11","-35","-95","0","No","WPA WME ATH","0","54(b/g)"
+,"SFR WiFi Public","AP","00:25:15:b9:fd:32","11","-67","-95","0","Yes","WME","0","54(b/g)"
+,"NEUF_FD2C","AP","00:25:15:b9:fd:30","11","-66","-95","0","No","WPA WME","0","54(b/g)"
+,"Neuf WiFi","AP","00:25:15:b9:fd:31","11","-67","-95","0","Yes","WME","0","54(b/g)"
+,"Valkyr","AP","22:7b:d2:d3:76:fc","11","-80","-95","0","No","WPA","0","54(b/g)"
+,"FreeWifi","AP","22:7b:d2:d3:76:fe","11","-81","-95","0","Yes","WME","0","54(b/g)"
+,"hidden","AP","96:5c:a3:85:a3:ac","11","-53","-95","0","No","WPA2","0","54(b/g)"
+,"hidden","AP","96:5c:a3:85:a3:ad","11","-53","-95","0","No","WPA2 WME","0","54(b/g)"
+
+);
+
+if (table.length == 0) {
+document.write("<tr><td colspan=\"11\" align=\"center\">" + share.none + "</td></tr>");
+}
+else {
+for (var i = 0; i < table.length; i = i + 11) {
+document.write("<tr>");
+document.write("<td>"+table[i]+"</td>");
+document.write("<td align=\"left\">"+table[i+1]+"</td>");
+document.write("<td align=\"left\" style=\"cursor:pointer; text-decoration:underline;\" title=\"OUI Search\" onclick=\"getOUIFromMAC('" + table[i+2] + "')\" >"+table[i+2]+"</td>");
+document.write("<td align=\"right\">"+table[i+3]+"</td>");
+document.write("<td align=\"right\">"+table[i+4]+"</td>");
+document.write("<td align=\"right\">"+table[i+5]+"</td>");
+document.write("<td align=\"right\">"+table[i+6]+"</td>");
+document.write("<td align=\"right\" style=\"cursor:pointer; text-decoration:underline;\" onmouseover='DisplayDiv(this, event, 15, 15,\"" + table[i+8] + "\")' onmouseout=\"unDisplayDiv()\">"+table[i+7]+"</td>");
+document.write("<td align=\"right\">"+table[i+9]+"</td>");
+document.write("<td align=\"right\">"+table[i+10]+"</td>");
+document.write("<td align=\"right\"><input class=\"button\" type=\"button\" value=\"" + sbutton.join + "\" onclick='do_join(this.form,\"" + table[i] + "\")' /></td>");
+document.write("<\/tr>");
+}
+}
+
+//]]>
+</script>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+var t = new SortableTable(document.getElementById('survey_table'), 1000);
+//]]>
+</script>
+<br />
+<div class="submitFooter">
+<script type="text/javascript">
+//<![CDATA[
+submitFooterButton(0,0,0,0,1,1);
+//]]>
+</script>
+</div>
+</form>
+</body>
+
+<!-- Mirrored from 192.168.1.1/Site_Survey.asp by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Feb 2011 11:40:13 GMT -->
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	<title>Gargoyle Router Management Utility</title>
+	
+	
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	<script language="javascript" type="text/javascript" src="table.js"></script>
+	<script language="javascript" type="text/javascript" src="restrictions.js"></script>
+
+<link rel="stylesheet" type="text/css" href="restriction.css" media="all">
+</head><body>
+	<div id="darken"><iframe src="restriction_1.html" id="d_iframe" class="select_free"></iframe></div>
+	<div id="wait_msg">
+		<div id="wait_txt">
+			Please Wait While Settings Are Applied
+		</div>
+		<div id="wait_icon">
+			<img src="wait_icon.gif">
+		</div>
+		<iframe src="restriction_2.html" id="m_iframe" class="select_free"></iframe>
+	</div>
+	<div id="outer_logo">
+		<div id="inner_logo">
+			<div id="garg_title">Gargoyle</div>
+			<div id="garg_desc">Router<br>Management<br>Utility</div>
+			<div id="garg_host">Device Name: Gargoyle</div>
+		</div>
+	</div>
+	<div id="outer_header"></div>
+	<div id="outer_container">
+		<div id="main_external_container">
+			<div id="main_top"></div>
+			<div id="main_internal_container">
+
+
+<script>
+<!--
+	var gargoyleBinRoot = "/www/.";
+	var uciOriginal = new UCIContainer();
+	uciOriginal.set('gargoyle', 'global', '', "global");
+	uciOriginal.set('gargoyle', 'global', 'web_root', "/www");
+	uciOriginal.set('gargoyle', 'global', 'bin_root', ".");
+	uciOriginal.set('gargoyle', 'global', 'js_root', "js");
+	uciOriginal.set('gargoyle', 'global', 'theme_root', "themes");
+	uciOriginal.set('gargoyle', 'global', 'theme', "default");
+	uciOriginal.set('gargoyle', 'global', 'common_css', "common.css");
+	uciOriginal.set('gargoyle', 'global', 'common_js', "common.js");
+	uciOriginal.set('gargoyle', 'global', 'require_web_password', "1");
+	uciOriginal.set('gargoyle', 'global', 'session_timeout', "15");
+	uciOriginal.set('gargoyle', 'display', '', "display");
+	uciOriginal.set('gargoyle', 'display', 'firewall', "Firewall");
+	uciOriginal.set('gargoyle', 'display', 'firewall_portforwarding', "Port Forwarding");
+	uciOriginal.set('gargoyle', 'display', 'firewall_connlimits', "Connection Limits");
+	uciOriginal.set('gargoyle', 'display', 'firewall_restriction', "Restrictions");
+	uciOriginal.set('gargoyle', 'display', 'firewall_quotas', "Quotas");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosupload', "QoS (Upload)");
+	uciOriginal.set('gargoyle', 'display', 'firewall_qosdownload', "QoS (Download)");
+	uciOriginal.set('gargoyle', 'display', 'status', "Status");
+	uciOriginal.set('gargoyle', 'display', 'status_overview', "Overview");
+	uciOriginal.set('gargoyle', 'display', 'status_bandwidth', "Bandwidth Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_bdist', "B/W Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_webmon', "Web Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_quotause', "Quota Usage");
+	uciOriginal.set('gargoyle', 'display', 'status_qos', "QoS Distribution");
+	uciOriginal.set('gargoyle', 'display', 'status_hosts', "Connected Hosts");
+	uciOriginal.set('gargoyle', 'display', 'status_connections', "Connection List");
+	uciOriginal.set('gargoyle', 'display', 'connection', "Connection");
+	uciOriginal.set('gargoyle', 'display', 'connection_dyndns', "Dynamic DNS");
+	uciOriginal.set('gargoyle', 'display', 'connection_dhcp', "DHCP");
+	uciOriginal.set('gargoyle', 'display', 'connection_basic', "Basic");
+	uciOriginal.set('gargoyle', 'display', 'connection_routing', "Routing");
+	uciOriginal.set('gargoyle', 'display', 'connection_wol', "Wake on LAN");
+	uciOriginal.set('gargoyle', 'display', 'system', "System");
+	uciOriginal.set('gargoyle', 'display', 'system_access', "Router Access");
+	uciOriginal.set('gargoyle', 'display', 'system_ident', "Identification");
+	uciOriginal.set('gargoyle', 'display', 'system_time', "Time");
+	uciOriginal.set('gargoyle', 'display', 'system_backup', "Backup / Restore");
+	uciOriginal.set('gargoyle', 'display', 'system_update', "Update Firmware");
+	uciOriginal.set('gargoyle', 'display', 'system_reboot', "Reboot");
+	uciOriginal.set('gargoyle', 'display', 'system_about', "About");
+	uciOriginal.set('gargoyle', 'display', 'logout', "Logout");
+	uciOriginal.set('gargoyle', 'display', 'system_usb_storage', "USB Storage");
+	uciOriginal.set('gargoyle', 'scripts', '', "scripts");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_portforwarding', "port_forwarding.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_connlimits', "connlimits.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_restriction', "restriction.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_quotas', "quotas.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosupload', "qos_upload.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'firewall_qosdownload', "qos_download.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_overview', "overview.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bandwidth', "bandwidth.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_bdist', "bandwidth_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_quotause', "quota_usage.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_webmon', "webmon.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_qos', "qos_distribution.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_hosts', "hosts.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'status_connections', "conntrack.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dyndns', "ddns.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_basic', "basic.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_dhcp', "dhcp.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_routing', "routing.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'connection_wol', "wol.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_access', "access.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_ident', "identification.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_time', "time.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_backup', "backup.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_update', "update.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_reboot', "reboot.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_about', "about.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'logout', "logout.sh");
+	uciOriginal.set('gargoyle', 'scripts', 'system_usb_storage', "usb_storage.sh");
+	uciOriginal.set('gargoyle', 'firewall', '', "300");
+	uciOriginal.set('gargoyle', 'firewall', 'portforwarding', "100");
+	uciOriginal.set('gargoyle', 'firewall', 'connlimits', "115");
+	uciOriginal.set('gargoyle', 'firewall', 'restriction', "125");
+	uciOriginal.set('gargoyle', 'firewall', 'quotas', "175");
+	uciOriginal.set('gargoyle', 'firewall', 'qosupload', "200");
+	uciOriginal.set('gargoyle', 'firewall', 'qosdownload', "300");
+	uciOriginal.set('gargoyle', 'status', '', "100");
+	uciOriginal.set('gargoyle', 'status', 'overview', "100");
+	uciOriginal.set('gargoyle', 'status', 'bandwidth', "200");
+	uciOriginal.set('gargoyle', 'status', 'bdist', "220");
+	uciOriginal.set('gargoyle', 'status', 'webmon', "250");
+	uciOriginal.set('gargoyle', 'status', 'hosts', "400");
+	uciOriginal.set('gargoyle', 'status', 'connections', "500");
+	uciOriginal.set('gargoyle', 'connection', '', "200");
+	uciOriginal.set('gargoyle', 'connection', 'basic', "100");
+	uciOriginal.set('gargoyle', 'connection', 'dhcp', "200");
+	uciOriginal.set('gargoyle', 'connection', 'dyndns', "300");
+	uciOriginal.set('gargoyle', 'connection', 'routing', "400");
+	uciOriginal.set('gargoyle', 'connection', 'wol', "500");
+	uciOriginal.set('gargoyle', 'system', '', "400");
+	uciOriginal.set('gargoyle', 'system', 'access', "100");
+	uciOriginal.set('gargoyle', 'system', 'ident', "200");
+	uciOriginal.set('gargoyle', 'system', 'time', "300");
+	uciOriginal.set('gargoyle', 'system', 'backup', "400");
+	uciOriginal.set('gargoyle', 'system', 'update', "500");
+	uciOriginal.set('gargoyle', 'system', 'reboot', "600");
+	uciOriginal.set('gargoyle', 'system', 'about', "1000");
+	uciOriginal.set('gargoyle', 'system', 'usb_storage', "350");
+	uciOriginal.set('gargoyle', 'logout', '', "500");
+	uciOriginal.set('gargoyle', 'bandwidth_display', '', "bandwidth_display");
+	uciOriginal.set('gargoyle', 'help', '', "help");
+	uciOriginal.set('gargoyle', 'help', 'ddns_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_up_2', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_1', "1");
+	uciOriginal.set('gargoyle', 'help', 'qos_down_2', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', '', "defaults");
+	uciOriginal.set('firewall', 'cfg02f50e', 'syn_flood', "1");
+	uciOriginal.set('firewall', 'cfg02f50e', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg02f50e', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg04e8f0', '', "zone");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'name', "lan");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'input', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg04e8f0', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', '', "zone");
+	uciOriginal.set('firewall', 'cfg062fd8', 'name', "wan");
+	uciOriginal.set('firewall', 'cfg062fd8', 'input', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'output', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'forward', "REJECT");
+	uciOriginal.set('firewall', 'cfg062fd8', 'masq', "1");
+	uciOriginal.set('firewall', 'cfg062fd8', 'mtu_fix', "1");
+	uciOriginal.set('firewall', 'cfg087a91', '', "forwarding");
+	uciOriginal.set('firewall', 'cfg087a91', 'src', "lan");
+	uciOriginal.set('firewall', 'cfg087a91', 'dest', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', '', "rule");
+	uciOriginal.set('firewall', 'cfg0a0261', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0a0261', 'proto', "udp");
+	uciOriginal.set('firewall', 'cfg0a0261', 'dest_port', "68");
+	uciOriginal.set('firewall', 'cfg0a0261', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0c0a5e', '', "rule");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'src', "wan");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'proto', "icmp");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'icmp_type', "echo-request");
+	uciOriginal.set('firewall', 'cfg0c0a5e', 'target', "ACCEPT");
+	uciOriginal.set('firewall', 'cfg0e2df3', '', "include");
+	uciOriginal.set('firewall', 'cfg0e2df3', 'path', "/etc/firewall.user");
+	uciOriginal.set('firewall', 'cfg10536b', '', "include");
+	uciOriginal.set('firewall', 'cfg10536b', 'path', "/usr/lib/gargoyle_firewall_util/gargoyle_additions.firewall");
+
+	setBrowserTimeCookie();
+
+	var testAjax = getRequestObj();
+	if(!testAjax) { window.location = "no_ajax.sh"; }
+//-->
+</script>
+
+
+
+
+<script>
+<!--
+	var uci = uciOriginal.clone();
+//-->
+</script>
+
+
+
+<form action="http://192.168.1.1/restriction.sh">
+	<fieldset>
+		<legend class="sectionheader">Access Restrictions</legend>
+
+		<span id="add_rule_label" style="text-decoration: underline;">New Restriction Rule:</span>
+
+		<div>
+			<div>
+	<label class="narrowleftcolumn" for="rule_name" id="rule_name_label">Rule Description:</label>
+	<input value="" class="rightcolumn" id="rule_name" size="30" type="text"> 
+</div>
+<div>
+	<label class="narrowleftcolumn" for="rule_applies_to" id="rule_applies_to_label">Rule Applies To:</label>
+	<select class="rightcolumn" id="rule_applies_to" onchange='setVisibility(document,"rule_")'>
+		<option value="all">All Hosts</option>
+		<option value="except">All Hosts Except</option>
+		<option value="only">Only The Following Hosts</option>
+	</select>
+</div>
+<div style="display: none;" id="rule_applies_to_container">
+	<div class="widerightcolumnonly" id="rule_applies_to_table_container"></div>
+	<div class="widerightcolumnonly">
+		<input value="" id="rule_applies_to_addr" size="30" onkeyup="proofreadMultipleIpsOrMacs(this)" type="text">
+		<input class="default_button" id="rule_add_applies_to_addr" value="Add" onclick='addAddressesToTable(document,"rule_applies_to_addr","rule_applies_to_table_container","rule_applies_to_table",true)' type="button">
+	</div>
+	<div class="widerightcolumnonly">
+		<em>Specify an IP, IP range or MAC addresss</em>
+	</div>
+</div>
+<div>
+	<label class="narrowleftcolumn" for="rule_all_day" id="rule_schedule_label">Schedule:</label>
+	<input checked="checked" id="rule_all_day" onclick='setVisibility(document,"rule_")' type="checkbox"><label for="rule_all_day">All Day</label>
+	<input checked="checked" id="rule_every_day" onclick='setVisibility(document,"rule_")' type="checkbox"><label for="rule_every_day">Every Day</label>&nbsp;&nbsp;
+	<select style="display: none;" id="rule_schedule_repeats" onchange='setVisibility(document,"rule_")'>
+		<option value="daily">Schedule Repeats Daily</option>
+		<option value="weekly">Schedule Repeats Weekly</option>
+	</select>&nbsp;&nbsp;
+</div>
+<div style="display: none;" id="rule_days_active" class="indent">
+	<label class="narrowleftcolumn">Days Active:</label>
+	<input checked="checked" id="rule_sun" type="checkbox"><label for="rule_sun">Sun</label>
+	<input checked="checked" id="rule_mon" type="checkbox"><label for="rule_mon">Mon</label>
+	<input checked="checked" id="rule_tue" type="checkbox"><label for="rule_tue">Tue</label>
+	<input checked="checked" id="rule_wed" type="checkbox"><label for="rule_wed">Wed</label>
+	<input checked="checked" id="rule_thu" type="checkbox"><label for="rule_thu">Thu</label>
+	<input checked="checked" id="rule_fri" type="checkbox"><label for="rule_fri">Fri</label>
+	<input checked="checked" id="rule_sat" type="checkbox"><label for="rule_sat">Sat</label>
+</div>	
+<div style="display: none;" id="rule_hours_active_container" class="indent">
+	<label class="narrowleftcolumn" for="rule_hours_active" id="rule_hours_active_label">Hours Active:</label>
+	<input value="" id="rule_hours_active" size="30" onkeyup="proofreadHours(this)" type="text">
+
+	<br>
+	<div class="widerightcolumnonly">
+		<em>e.g. 00:30-13:15, 14:00-15:00</em>
+	</div>
+</div>
+
+
+<div style="display: none;" id="rule_days_and_hours_active_container" class="indent">
+	<label class="narrowleftcolumn" for="rule_days_and_hours_active" id="rule_days_and_hours_active_label">Days And Hours Active:</label>
+	<input value="" id="rule_days_and_hours_active" size="30" onkeyup="proofreadWeeklyRange(this)" type="text">
+	<br>
+	<div class="widerightcolumnonly">
+		<em>e.g. Mon 00:30 - Thu 13:15, Fri 14:00 - Fri 15:00</em>
+	</div>
+</div>
+
+<div>
+	<label class="narrowleftcolumn" for="rule_all_access" id="rule_all_access_label">Restricted Resources:</label>
+	<input checked="checked" id="rule_all_access" onclick='setVisibility(document,"rule_")' type="checkbox"><label for="rule_all_access">All Network Access</label>
+</div>
+
+<div style="display: none;" class="indent" id="rule_resources">
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="rule_remote_ip_label" for="rule_remote_ip">Remote IP(s):</label>
+		</span>
+		<select class="middlecolumn" id="rule_remote_ip_type" onchange='setVisibility(document,"rule_")'>
+			<option value="all">Block All</option>
+			<option value="only">Block Only</option>
+			<option value="except">Block All Except</option>
+		</select>
+	</div>
+	<div style="display: none;" id="rule_remote_ip_container">
+		<div class="widerightcolumnonly" id="rule_remote_ip_table_container"></div>
+		<div class="widerightcolumnonly">
+			<input value="" id="rule_remote_ip" size="30" onkeyup="proofreadMultipleIps(this)" type="text">
+			<input class="default_button" id="rule_add_remote_ip" value="Add" onclick='addAddressesToTable(document,"rule_remote_ip","rule_remote_ip_table_container","rule_remote_ip_table",false)' type="button">
+		</div>
+	</div>
+
+
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="rule_remote_port_label" for="rule_remote_port">Remote Port(s):</label>
+		</span>
+		<select class="middlecolumn" id="rule_remote_port_type" onchange='setVisibility(document,"rule_")'>
+			<option value="all">Block All</option>
+			<option value="only">Block Only</option>
+			<option value="except">Block All Except</option>
+		</select>
+		<span class="rightcolumn">
+			<input value="" style="display: none;" id="rule_remote_port" onkeyup="proofreadMultiplePorts(this)" size="20" type="text">	
+		</span>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="rule_local_port_label" for="rule_local_port">Local Port(s):</label>
+		</span>
+		<select class="middlecolumn" id="rule_local_port_type" onchange='setVisibility(document,"rule_")'>
+			<option value="all">Block All</option>
+			<option value="only">Block Only</option>
+			<option value="except">Block All Except</option>
+		</select>
+		<span>	
+			<input value="" style="display: none;" class="rightcolumn" id="rule_local_port" onkeyup="proofreadMultiplePorts(this)" size="20" type="text">	
+		</span>
+	</div>
+
+	
+
+	<div>
+		<span class="narrowleftcolumn">
+			<label class="rightcolumn" id="rule_transport_protocol_label" for="rule_transport_protocol">Transport Protocol:</label>
+		</span>	
+		<select class="middlecolumn" id="rule_transport_protocol">
+			<option value="both">Block All</option>
+			<option value="tcp">Block TCP</option>
+			<option value="udp">Block UDP</option>
+		</select>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="rule_app_protocol_label" for="rule_app_protocol">Application Protocol:</label>
+		</span>
+		<select id="rule_app_protocol_type" class="middlecolumn" onchange='setVisibility(document,"rule_")'>
+			<option value="all">Block All</option>
+			<option value="only">Block Only</option>
+			<option value="except">Block All Except</option>
+		</select>
+		
+		<select style="display: none;" class="rightcolumn" id="rule_app_protocol">
+<option value="aim ">AIM</option>
+<option value="bittorrent ">BitTorrent</option>
+<option value="dns ">DNS</option>
+<option value="edonkey ">eDonkey</option>
+<option value="fasttrack ">FastTrack</option>
+<option value="ftp ">FTP</option>
+<option value="gnutella ">Gnutella</option>
+<option value="http ">HTTP</option>
+<option value="httpaudio ">HTTP Audio</option>
+<option value="httpvideo ">HTTP Video</option>
+<option value="ident ">Ident</option>
+<option value="imap ">IMAP E-Mail</option>
+<option value="irc ">IRC</option>
+<option value="jabber ">Jabber</option>
+<option value="msnmessenger ">MSN Messenger</option>
+<option value="ntp ">NTP</option>
+<option value="pop3 ">POP3</option>
+<option value="skypeout ">Skype Out Calls</option>
+<option value="skypetoskype ">Skype to Skype</option>
+<option value="smtp ">SMTP E-Mail</option>
+<option value="ssh ">SSH Secure Shell</option>
+<option value="ssl ">SSL Secure Socket</option>
+<option value="vnc ">VNC</option>
+<option value="rtp ">VoIP Audio</option>
+		</select>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="rule_url_label" for="rule_url_type">Website URL(s):</label>
+		</span>
+		<select id="rule_url_type" class="rightcolumn" onchange='setVisibility(document,"rule_")'>
+			<option value="all">Block All</option>
+			<option value="only">Block Only</option>
+			<option value="except">Block All Except</option>
+		</select>	
+	</div>
+	<div style="display: none;" id="rule_url_match_list">
+		<div id="rule_url_match_table_container"></div>
+		<div>
+			<select id="rule_url_match_type">
+				<option value="url_exact">Full URL matches exactly:</option>
+				<option value="url_contains">Full URL contains:</option>
+				<option value="url_regex">full URL matches Regex:</option>
+				<option value="url_domain_exact">Domain matches exactly:</option>
+				<option value="url_domain_contains">Domain contains:</option>
+				<option value="url_domain_regex">Domain matches Regex:</option>
+			</select>
+			<input value="" id="rule_url_match" size="30" type="text">
+			<input class="default_button" id="rule_add_url_match" value="Add" onclick='addUrlToTable(document, "rule_url_match", "rule_url_match_type", "rule_url_match_table_container", "rule_url_match_table")' type="button">
+		</div>
+	</div>
+</div>
+
+
+
+			<div>
+				<input id="add_restriction_button" class="default_button" value="Add New Rule" onclick='addNewRule("restriction_rule", "rule_")' type="button">
+			</div>
+		</div>
+
+
+		<div id="internal_divider1" class="internal_divider"></div>
+
+
+
+		<span id="current_rule_label" style="text-decoration: underline;">Current Restrictions:</span>
+
+		<div id="rule_table_container"><table style="display: none;" id="rule_table"><tbody><tr class="header_row"><th>Rule Description</th><th>Enabled</th><th></th><th></th></tr></tbody></table></div>
+
+	</fieldset>
+
+		<fieldset>
+		<legend class="sectionheader">Exceptions (White List)</legend>
+
+		<span id="add_exception_label" style="text-decoration: underline;">New Exception:</span>
+
+		<div>
+			<div>
+	<label class="narrowleftcolumn" for="exception_name" id="exception_name_label">Exception Description:</label>
+	<input value="" class="rightcolumn" id="exception_name" size="30" type="text"> 
+</div>
+<div>
+	<label class="narrowleftcolumn" for="exception_applies_to" id="exception_applies_to_label">Exception Applies To:</label>
+	<select class="rightcolumn" id="exception_applies_to" onchange='setVisibility(document,"exception_")'>
+		<option value="all">All Hosts</option>
+		<option value="except">All Hosts Except</option>
+		<option value="only">Only The Following Hosts</option>
+	</select>
+</div>
+<div style="display: none;" id="exception_applies_to_container">
+	<div class="widerightcolumnonly" id="exception_applies_to_table_container"></div>
+	<div class="widerightcolumnonly">
+		<input value="" id="exception_applies_to_addr" size="30" onkeyup="proofreadMultipleIpsOrMacs(this)" type="text">
+		<input class="default_button" id="exception_add_applies_to_addr" value="Add" onclick='addAddressesToTable(document,"exception_applies_to_addr","exception_applies_to_table_container","exception_applies_to_table",true)' type="button">
+	</div>
+	<div class="widerightcolumnonly">
+		<em>Specify an IP, IP range or MAC addresss</em>
+	</div>
+</div>
+
+<div>
+	<label class="narrowleftcolumn" for="exception_all_day" id="exception_schedule_label">Schedule:</label>
+	<input checked="checked" id="exception_all_day" onclick='setVisibility(document,"exception_")' type="checkbox"><label for="exception_all_day">All Day</label>
+	<input checked="checked" id="exception_every_day" onclick='setVisibility(document,"exception_")' type="checkbox"><label for="exception_every_day">Every Day</label>&nbsp;&nbsp;
+	<select style="display: none;" id="exception_schedule_repeats" onchange='setVisibility(document,"exception_")'>
+		<option value="daily">Schedule Repeats Daily</option>
+		<option value="weekly">Schedule Repeats Weekly</option>
+	</select>&nbsp;&nbsp;
+</div>
+<div style="display: none;" id="exception_days_active" class="indent">
+	<label class="narrowleftcolumn">Days Active:</label>
+	<input checked="checked" id="exception_sun" type="checkbox"><label for="exception_sun">Sun</label>
+	<input checked="checked" id="exception_mon" type="checkbox"><label for="exception_mon">Mon</label>
+	<input checked="checked" id="exception_tue" type="checkbox"><label for="exception_tue">Tue</label>
+	<input checked="checked" id="exception_wed" type="checkbox"><label for="exception_wed">Wed</label>
+	<input checked="checked" id="exception_thu" type="checkbox"><label for="exception_thu">Thu</label>
+	<input checked="checked" id="exception_fri" type="checkbox"><label for="exception_fri">Fri</label>
+	<input checked="checked" id="exception_sat" type="checkbox"><label for="exception_sat">Sat</label>
+</div>	
+<div style="display: none;" id="exception_hours_active_container" class="indent">
+	<label class="narrowleftcolumn" for="exception_hours_active" id="exception_hours_active_label">Hours Active:</label>
+	<input value="" id="exception_hours_active" size="30" onkeyup="proofreadHours(this)" type="text">
+
+	<br>
+	<div class="widerightcolumnonly">
+		<em>e.g. 00:30-13:15, 14:00-15:00</em>
+	</div>
+</div>
+
+
+<div style="display: none;" id="exception_days_and_hours_active_container" class="indent">
+	<label class="narrowleftcolumn" for="exception_days_and_hours_active" id="exception_days_and_hours_active_label">Days And Hours Active:</label>
+	<input value="" id="exception_days_and_hours_active" size="30" onkeyup="proofreadWeeklyRange(this)" type="text">
+	<br>
+	<div class="widerightcolumnonly">
+		<em>e.g. Mon 00:30 - Thu 13:15, Fri 14:00 - Fri 15:00</em>
+	</div>
+</div>
+
+
+
+
+
+<div>
+	<label class="narrowleftcolumn" for="exception_all_access" id="exception_all_access_label">Permitted Resources:</label>
+	<input checked="checked" id="exception_all_access" onclick='setVisibility(document,"exception_")' type="checkbox"><label for="exception_all_access">All Network Access</label>
+</div>
+
+
+
+<div style="display: none;" class="indent" id="exception_resources">
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="exception_remote_ip_label" for="exception_remote_ip">Remote IP(s):</label>
+		</span>
+		<select class="middlecolumn" id="exception_remote_ip_type" onchange='setVisibility(document,"exception_")'>
+			<option value="all">Permit All</option>
+			<option value="only">Permit Only</option>
+			<option value="except">Permit All Except</option>
+		</select>
+	</div>
+	<div style="display: none;" id="exception_remote_ip_container">
+		<div class="widerightcolumnonly" id="exception_remote_ip_table_container"></div>
+		<div class="widerightcolumnonly">
+			<input value="" id="exception_remote_ip" size="30" onkeyup="proofreadMultipleIps(this)" type="text">
+			<input class="default_button" id="exception_add_remote_ip" value="Add" onclick='addAddressesToTable(document,"exception_remote_ip","exception_remote_ip_table_container","exception_remote_ip_table",false)' type="button">
+		</div>
+	</div>
+
+
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="exception_remote_port_label" for="exception_remote_port">Remote Port(s):</label>
+		</span>
+		<select class="middlecolumn" id="exception_remote_port_type" onchange='setVisibility(document,"exception_")'>
+			<option value="all">Permit All</option>
+			<option value="only">Permit Only</option>
+			<option value="except">Permit All Except</option>
+		</select>
+		<span class="rightcolumn">
+			<input value="" style="display: none;" id="exception_remote_port" onkeyup="proofreadMultiplePorts(this)" size="20" type="text">	
+		</span>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="exception_local_port_label" for="exception_local_port">Local Port(s):</label>
+		</span>
+		<select class="middlecolumn" id="exception_local_port_type" onchange='setVisibility(document,"exception_")'>
+			<option value="all">Permit All</option>
+			<option value="only">Permit Only</option>
+			<option value="except">Permit All Except</option>
+		</select>
+		<span>	
+			<input value="" style="display: none;" class="rightcolumn" id="exception_local_port" onkeyup="proofreadMultiplePorts(this)" size="20" type="text">	
+		</span>
+	</div>
+
+	
+
+	<div>
+		<span class="narrowleftcolumn">
+			<label class="rightcolumn" id="exception_transport_protocol_label" for="exception_transport_protocol">Transport Protocol:</label>
+		</span>	
+		<select class="middlecolumn" id="exception_transport_protocol">
+			<option value="both">Permit All</option>
+			<option value="tcp">Permit TCP</option>
+			<option value="udp">Permit UDP</option>
+		</select>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="exception_app_protocol_label" for="exception_app_protocol">Application Protocol:</label>
+		</span>
+		<select id="exception_app_protocol_type" class="middlecolumn" onchange='setVisibility(document,"exception_")'>
+			<option value="all">Permit All</option>
+			<option value="only">Permit Only</option>
+			<option value="except">Permit All Except</option>
+		</select>
+		
+		<select style="display: none;" class="rightcolumn" id="exception_app_protocol">
+<option value="aim AIM">AIM</option>
+<option value="bittorrent BitTorrent">BitTorrent</option>
+<option value="dns DNS">DNS</option>
+<option value="edonkey eDonkey">eDonkey</option>
+<option value="fasttrack FastTrack">FastTrack</option>
+<option value="ftp FTP">FTP</option>
+<option value="gnutella Gnutella">Gnutella</option>
+<option value="http HTTP">HTTP</option>
+<option value="httpaudio HTTP Audio">HTTP Audio</option>
+<option value="httpvideo HTTP Video">HTTP Video</option>
+<option value="ident Ident">Ident</option>
+<option value="imap IMAP E-Mail">IMAP E-Mail</option>
+<option value="irc IRC">IRC</option>
+<option value="jabber Jabber">Jabber</option>
+<option value="msnmessenger MSN Messenger">MSN Messenger</option>
+<option value="ntp NTP">NTP</option>
+<option value="pop3 POP3">POP3</option>
+<option value="skypeout Skype Out Calls">Skype Out Calls</option>
+<option value="skypetoskype Skype to Skype">Skype to Skype</option>
+<option value="smtp SMTP E-Mail">SMTP E-Mail</option>
+<option value="ssh SSH Secure Shell">SSH Secure Shell</option>
+<option value="ssl SSL Secure Socket">SSL Secure Socket</option>
+<option value="vnc VNC">VNC</option>
+<option value="rtp VoIP Audio">VoIP Audio</option>
+		</select>
+	</div>
+	<div>
+		<span class="narrowleftcolumn">
+			<label id="exception_url_label" for="exception_url_type">Website URL(s):</label>
+		</span>
+		<select id="exception_url_type" class="rightcolumn" onchange='setVisibility(document,"exception_")'>
+			<option value="all">Permit All</option>
+			<option value="only">Permit Only </option>
+			<option value="except">Permit All Except </option>
+		</select>	
+	</div>
+	<div style="display: none;" id="exception_url_match_list">
+		<div id="exception_url_match_table_container"></div>
+		<div>
+			<select id="exception_url_match_type">
+				<option value="url_exact">Full URL matches exactly:</option>
+				<option value="url_contains">Full URL contains:</option>
+				<option value="url_regex">full URL matches Regex:</option>
+				<option value="url_domain_exact">Domain matches exactly:</option>
+				<option value="url_domain_contains">Domain contains:</option>
+				<option value="url_domain_regex">Domain matches Regex:</option>
+			</select>
+			<input value="" id="exception_url_match" size="30" type="text">
+			<input class="default_button" id="exception_add_url_match" value="Add" onclick='addUrlToTable(document, "exception_url_match", "exception_url_match_type", "exception_url_match_table_container", "exception_url_match_table")' type="button">
+		</div>
+	</div>
+</div>
+
+
+
+
+			<div>
+				<input id="add_restriction_button" class="default_button" value="Add New Rule" onclick='addNewRule("whitelist_rule", "exception_")' type="button">
+			</div>
+		</div>
+
+
+		<div id="internal_divider1" class="internal_divider"></div>
+
+
+
+		<span id="current_exceptions_label" style="text-decoration: underline;">Current Exceptions:</span>
+
+		<div id="exception_table_container"><table style="display: none;" id="exception_table"><tbody><tr class="header_row"><th>Exception Description</th><th>Enabled</th><th></th><th></th></tr></tbody></table></div>
+
+	</fieldset>
+	<div id="bottom_button_container">
+		<input value="Save Changes" id="save_button" class="bottom_button" onclick="saveChanges()" type="button">
+		<input value="Reset" id="reset_button" class="bottom_button" onclick="resetData()" type="button">
+	</div>
+
+
+	<span id="update_container">Please wait while new settings are applied. . .</span>
+</form>
+
+<!-- <br /><textarea style="margin-left:20px;" rows=30 cols=60 id='output'></textarea> -->
+
+<script>
+<!--
+	resetData();
+//-->
+</script>
+
+
+			</div>
+			<div id="main_bottom"></div>
+		</div>
+		<div id="nav_external_container">
+			<div id="nav_top"></div>
+			<div id="nav_internal_container1">
+				<div id="nav_internal_container2">
+					<div class="nav_internal_end1"></div>
+					<div class="nav_unselected_divider_end1"></div>
+					<div class="nav_unselected_end1">
+						<a indepth="true" href="index.html">Status</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="basic.html">Connection</a>
+					</div>
+					<div class="nav_selected_divider1"></div>
+					<div class="nav_selected">
+						<div class="nav_selected_container">
+							<div class="selected_header">Firewall</div>
+							<div id="submenu_container">
+								<a indepth="true" href="port_forwarding.html">Port Forwarding</a>
+								<a indepth="true" href="connlimits.html">Connection Limits</a>
+								<div class="submenu_selected">Restrictions</div>
+								<a indepth="true" href="quotas.html">Quotas</a>
+								<a indepth="true" href="qos_upload.html">QoS (Upload)</a>
+								<a indepth="true" href="qos_download.html">QoS (Download)</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_selected_divider2"></div>
+					<div class="nav_unselected">
+						<a indepth="true" href="access.html">System</a>
+					</div>
+					<div class="nav_unselected_divider"></div>
+					<div class="nav_unselected">
+						<a href="logout.html">Logout</a>
+					</div>
+					<div class="nav_unselected_divider_end2"></div>
+					<div class="nav_internal_end2"></div>
+				</div>
+			</div>
+			<div id="nav_bottom"></div>
+		</div>
+	</div>
+	<div id="outer_footer"></div>
+</body></html>

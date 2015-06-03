@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn/advanced/sample_client/cryptography by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:23:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../../../luci-static/openwrt.org/cascade.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie7.css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/luci-static/openwrt.org/ie8.css" /><![endif]-->
+<script type="text/javascript" src="../../../../luci-static/resources/xhr.js"></script>
+<title>OpenWrt - LuCI</title>
+</head>
+<body class="lang_fr">
+
+<p class="skiplink">
+<span id="skiplink1"><a href="#navigation">Skip to navigation</a></span>
+<span id="skiplink2"><a href="#content">Skip to content</a></span>
+</p>
+
+<div id="menubar">
+<h2 class="navigation"><a id="navigation" name="navigation">Navigation</a></h2>
+
+<div class="hostinfo">
+	OpenWrt | Attitude Adjustment (r25661) |
+	Charger: 0.42 0.25 0.10
+</div>
+
+<ul id="modemenu">
+<li><a class="active" href="../../../../index.html">Administration</a></li>
+</ul>
+
+<div id="savemenu">
+	
+		<a class="warning" href="../../../../uci/changes/index3bdc.html?redir=%2fcgi-bin%2fluci%2f%3bstok%3da60874d2283a270704d35fda36d0f49c%2fadmin%2fservices%2fopenvpn%2fadvanced%2fsample_client%2fcryptography">Changements non appliqués: 10</a></div>
+
+<div class="clear"></div>
+</div>
+
+<div id="maincontainer">
+	<div id="tabmenu">
+		
+	<div class="tabmenu1">
+	<ul class="tabmenu l1">
+		
+			<li class="tabmenu-item-status">
+				<a href="../../../../status/index.html">Status</a>
+			</li>
+		
+			<li class="tabmenu-item-system">
+				<a href="../../../../system/index.html">Système</a>
+			</li>
+		
+			<li class="tabmenu-item-services active">
+				<a href="../../../index.html">Services</a>
+			</li>
+		
+			<li class="tabmenu-item-network">
+				<a href="../../../../network/index.html">Réseau</a>
+			</li>
+		
+			<li class="tabmenu-item-logout">
+				<a href="javascript:alert('Indisponible dans cette copie d\'interface');">Déconnexion</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	<div class="tabmenu2">
+	<ul class="tabmenu l2">
+		
+			<li class="tabmenu-item-init">
+				<a href="../../../init/index.html">Scripts d&#39;initialisation</a>
+			</li>
+		
+			<li class="tabmenu-item-dropbear">
+				<a href="../../../dropbear/index.html">Dropbear SSHd</a>
+			</li>
+		
+			<li class="tabmenu-item-dnsmasq">
+				<a href="../../../dnsmasq/index.html">Dnsmasq</a>
+			</li>
+		
+			<li class="tabmenu-item-crontab">
+				<a href="../../../crontab/index.html">Tâches Régulières</a>
+			</li>
+		
+			<li class="tabmenu-item-openvpn active">
+				<a href="../../index.html">OpenVPN</a>
+			</li>
+		
+	</ul>
+	<br style="clear:both" />
+
+	</div>
+
+	</div>
+
+	</div>
+
+	<div id="maincontent">
+		<noscript>
+			<div class="errorbox">
+				<strong>Java Script required!</strong><br />
+				You must enable Java Script in your browser or LuCI will not work properly.
+			</div>
+		</noscript>
+
+<form method="post" name="cbi" action="javascript:alert('Indisponible dans cette copie d\'interface');" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')">
+	<div>
+		<script type="text/javascript" src="../../../../luci-static/resources/cbi.js"></script>
+		<input type="hidden" name="cbi.submit" value="1" />
+		<input type="submit" value="Sauvegarder" class="hidden" />
+	</div>
+
+<div class="cbi-map" id="cbi-openvpn">
+	
+	
+<fieldset class="cbi-section">
+	<legend>
+		<a href="../../../openvpn.html">Vue d&#39;ensemble</a> &raquo;
+		Instance "sample_client"
+	</legend>
+
+	
+		<a href="../../basic/sample_client.html">« Switch to basic configuration</a>
+		<hr style="margin:0.5em 0" />
+		Configuration category:
+		
+			
+				<a href="service.html">service</a>
+			
+			|
+		
+			
+				<a href="networking.html">networking</a>
+			
+			|
+		
+			
+				<a href="vpn.html">vpn</a>
+			
+			|
+		
+			
+				<strong>cryptography</strong>
+			
+			
+		
+	
+</fieldset>
+
+	<fieldset class="cbi-section" id="cbi-openvpn-sample_client">
+		<legend>openvpn_cryptography</legend>
+		<div class="cbi-section-descr">openvpn_cryptography_desc</div>
+		
+		
+		<div class="cbi-section-node" id="cbi-openvpn-sample_client">
+			
+
+
+	<div class="cbi-value" id="cbi-openvpn-sample_client-no_replay"><label class="cbi-value-title" for="cbid.openvpn.sample_client.no_replay">openvpn_param_no_replay</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.no_replay" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.no_replay" name="cbid.openvpn.sample_client.no_replay" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_no_replay_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-mute_replay_warnings"><label class="cbi-value-title" for="cbid.openvpn.sample_client.mute_replay_warnings">openvpn_param_mute_replay_warnings</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.mute_replay_warnings" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.mute_replay_warnings" name="cbid.openvpn.sample_client.mute_replay_warnings" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_mute_replay_warnings_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-no_iv"><label class="cbi-value-title" for="cbid.openvpn.sample_client.no_iv">openvpn_param_no_iv</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.no_iv" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.no_iv" name="cbid.openvpn.sample_client.no_iv" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_no_iv_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-tls_server"><label class="cbi-value-title" for="cbid.openvpn.sample_client.tls_server">openvpn_param_tls_server</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.tls_server" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.tls_server" name="cbid.openvpn.sample_client.tls_server" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_tls_server_desc
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-openvpn-sample_client-tls_server">
+		
+		cbi_d_add("cbi-openvpn-sample_client-tls_server", {"cbid.openvpn.sample_client.tls_client":"0"}, "cbip-openvpn-sample_client-tls_server");
+	</script>
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-tls_client"><label class="cbi-value-title" for="cbid.openvpn.sample_client.tls_client">openvpn_param_tls_client</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.tls_client" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.tls_client" name="cbid.openvpn.sample_client.tls_client" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_tls_client_desc
+			</div>
+</div></div>
+
+
+<script type="text/javascript" id="cbip-openvpn-sample_client-tls_client">
+		
+		cbi_d_add("cbi-openvpn-sample_client-tls_client", {"cbid.openvpn.sample_client.tls_server":"0"}, "cbip-openvpn-sample_client-tls_client");
+	</script>
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-single_session"><label class="cbi-value-title" for="cbid.openvpn.sample_client.single_session">openvpn_param_single_session</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.single_session" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.single_session" name="cbid.openvpn.sample_client.single_session" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_single_session_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-tls_exit"><label class="cbi-value-title" for="cbid.openvpn.sample_client.tls_exit">openvpn_param_tls_exit</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.tls_exit" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.tls_exit" name="cbid.openvpn.sample_client.tls_exit" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_tls_exit_desc
+			</div>
+</div></div>
+
+
+
+
+
+<div class="cbi-value" id="cbi-openvpn-sample_client-auth_nocache"><label class="cbi-value-title" for="cbid.openvpn.sample_client.auth_nocache">openvpn_param_auth_nocache</label>
+		<div class="cbi-value-field">
+
+	<input type="hidden" value="1" name="cbi.cbe.openvpn.sample_client.auth_nocache" />
+	<input class="cbi-input-checkbox" onclick="cbi_d_update(this.id)" onchange="cbi_d_update(this.id)" type="checkbox" id="cbid.openvpn.sample_client.auth_nocache" name="cbid.openvpn.sample_client.auth_nocache" value="1" />
+
+			<div class="cbi-value-description">
+				<span class="cbi-value-helpicon"><img src="../../../../luci-static/resources/cbi/help.gif" alt="help" /></span>
+				openvpn_param_auth_nocache_desc
+			</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="cbi-optionals">
+		
+		<select id="cbi.opt.openvpn.sample_client" name="cbi.opt.openvpn.sample_client">
+			<option>-- Champ Supplémentaire --</option>
+			<option id="cbi-openvpn-sample_client-secret" value="secret">openvpn_param_secret</option><option id="cbi-openvpn-sample_client-auth" value="auth">openvpn_param_auth</option><option id="cbi-openvpn-sample_client-cipher" value="cipher">openvpn_param_cipher</option><option id="cbi-openvpn-sample_client-keysize" value="keysize">openvpn_param_keysize</option><option id="cbi-openvpn-sample_client-engine" value="engine">openvpn_param_engine</option><option id="cbi-openvpn-sample_client-replay_window" value="replay_window">openvpn_param_replay_window</option><option id="cbi-openvpn-sample_client-replay_persist" value="replay_persist">openvpn_param_replay_persist</option><option id="cbi-openvpn-sample_client-ca" value="ca">openvpn_param_ca</option><option id="cbi-openvpn-sample_client-dh" value="dh">openvpn_param_dh</option><option id="cbi-openvpn-sample_client-cert" value="cert">openvpn_param_cert</option><option id="cbi-openvpn-sample_client-key" value="key">openvpn_param_key</option><option id="cbi-openvpn-sample_client-pkcs12" value="pkcs12">openvpn_param_pkcs12</option><option id="cbi-openvpn-sample_client-key_method" value="key_method">openvpn_param_key_method</option><option id="cbi-openvpn-sample_client-tls_cipher" value="tls_cipher">openvpn_param_tls_cipher</option><option id="cbi-openvpn-sample_client-tls_timeout" value="tls_timeout">openvpn_param_tls_timeout</option><option id="cbi-openvpn-sample_client-reneg_bytes" value="reneg_bytes">openvpn_param_reneg_bytes</option><option id="cbi-openvpn-sample_client-reneg_pkts" value="reneg_pkts">openvpn_param_reneg_pkts</option><option id="cbi-openvpn-sample_client-reneg_sec" value="reneg_sec">openvpn_param_reneg_sec</option><option id="cbi-openvpn-sample_client-hand_window" value="hand_window">openvpn_param_hand_window</option><option id="cbi-openvpn-sample_client-tran_window" value="tran_window">openvpn_param_tran_window</option><option id="cbi-openvpn-sample_client-tls_auth" value="tls_auth">openvpn_param_tls_auth</option><option id="cbi-openvpn-sample_client-tls_remote" value="tls_remote">openvpn_param_tls_remote</option><option id="cbi-openvpn-sample_client-ns_cert_type" value="ns_cert_type">openvpn_param_ns_cert_type</option><option id="cbi-openvpn-sample_client-remote_cert_tls" value="remote_cert_tls">openvpn_param_remote_cert_tls</option><option id="cbi-openvpn-sample_client-crl_verify" value="crl_verify">openvpn_param_crl_verify</option>
+		</select>
+		<script type="text/javascript">
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		</script>
+	
+		<input type="submit" class="cbi-button cbi-button-fieldadd" value="Ajouter" />
+	</div>
+
+
+		</div>
+		<br />
+	</fieldset>
+
+<!-- /nsection -->
+
+	<br />
+</div>
+<div class="cbi-page-actions">
+		
+
+		
+		
+			<input class="cbi-button cbi-button-apply" type="submit" name="cbi.apply" value="Sauvegarder et Appliquer" />
+		
+		<input class="cbi-button cbi-button-save" type="submit" value="Sauvegarder" />
+		<input class="cbi-button cbi-button-reset" type="reset" value="Remise à zéro" />
+
+		<script type="text/javascript">cbi_d_update();</script>
+	</div></form>
+<div class="clear"></div>
+</div>
+</div>
+
+<p class="luci"><a href="../../../../../abouthtml.html">Powered by LuCI Trunk (v0.10+svn6924)</a></p>
+</body>
+
+<!-- Mirrored from 192.168.1.1/cgi-bin/luci/;stok=a60874d2283a270704d35fda36d0f49c/admin/services/openvpn/advanced/sample_client/cryptography by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 24 Feb 2011 17:23:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+
